@@ -12,11 +12,21 @@
 }
 
 .navbar__top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
     transform: scaleY(0);
     width: 100vw;
     height: 2.5rem;
-    background-color: var(--Gray-9);
+    padding: 0 4rem;
+    margin: 0;
+    background-color: var(--Blue-10);
     transition: transform 0.3s ease-in-out;
+}
+
+.navbar__top a:link {
+    text-decoration: none;
+    color: #fff;
 }
 
 .navbar__bottom {
@@ -27,7 +37,7 @@
     justify-content: space-between;
     width: 100vw;
     height: 5rem;
-    padding: 0 3vw;
+    padding: 0 5vw;
     transition: transform 0.3s ease-in-out, background-color 0.5s ease-in-out;
 }
 
@@ -46,21 +56,20 @@
 
 .navbar__menu-list {
     display: flex;
+    justify-content:space-around;
+    font-family: "Nunito Sans", serif;
+    font-size: 1rem;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
 }
 
-/* Ensure it applies to all anchor tags inside a menu */
-.navbar__menu-link a:link {
-    display: inline-block; /* Ensures proper padding */
-    padding: 0.5rem 1rem;
-    background-color: aqua;
-    color: black;
-    text-decoration: none; /* Removes underline */
-    border-radius: 5px;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-}
+/* For navbar__menu-list css settings to to site.css */
+
 
 
 
 .navbar__burger {
     display: none;
 }
+

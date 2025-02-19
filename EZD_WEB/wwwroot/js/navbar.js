@@ -9,7 +9,9 @@ window.onscroll = function () {
     const logoBlue = document.getElementById("navbar__logo-blue");
     const logoWhite = document.getElementById("navbar__logo-white");
 
-    console.log(navbarBottom);
+    const navbarMenuList = document.getElementById("navbar__menu-list");
+    const navbarBottomATags = navbarMenuList.querySelectorAll(".navbar__menu-list a:link");
+
 
     if (prevScrollPos > currentScrollPos) {
         // Scrolling up
@@ -22,17 +24,53 @@ window.onscroll = function () {
 
         navbarTop.style.transform = "ScaleY(0)";
         navbarTop.style.transformOrigin = "top";
+
+        console.log(navbarBottomATags);
+
+        navbarBottomATags.forEach(tag => {
+            tag.style.color = "var(--Gray-0)";
+            tag.style.transition = "color 0.3s ease-in-out";
+
+            tag.addEventListener("mouseover", () => {
+                tag.style.color = "greenyellow";
+                tag.style.transition = "color 0.3s ease-in-out";
+            });
+
+            tag.addEventListener("mouseout", () => {
+                tag.style.color = "var(--Gray-0)";
+                tag.style.transition = "color 0.3s ease-in-out";
+            });
+        });
+
     } else {
         // Scrolling down
         navbarBottom.style.transform = "translateY(2.5rem)"; /* Adjust based on navbar height */
         navbarBottom.style.backgroundColor = "var(--Gray-0)";
-        navbarBottom.style.boxShadow = "0px 5px 10px var(--Gray-6)";
+        navbarBottom.style.boxShadow = "0px 5px 15px var(--Gray-8)";
 
         logoWhite.style.display = "none";
         logoBlue.style.display = "block";
 
         navbarTop.style.transform = "ScaleY(1)";
         navbarTop.style.transformOrigin = "top";
+
+        navbarBottomATags.forEach(tag => {
+            tag.style.color = "var(--Gray-9)";
+            tag.style.transition = "textShadow 0.3s ease-in-out";
+
+            tag.addEventListener("mouseover", () => {
+                tag.style.color = "orangered";
+                tag.style.transition = "color 0.3s ease-in-out";
+            });
+
+            tag.addEventListener("mouseout", () => {
+                tag.style.color = "var(--Gray-9)";
+                tag.style.transition = "color 0.3s ease-in-out";
+            });
+        });
+
+
+
     }
 
     prevScrollPos = 100;
