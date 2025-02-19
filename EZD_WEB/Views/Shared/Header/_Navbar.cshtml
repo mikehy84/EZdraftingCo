@@ -1,0 +1,48 @@
+﻿<nav class="navbar" id="navbar">
+    <!-- Top Section -->
+    <div class="navbar__top" id="navbar__top">
+        <a class="navbar__top-link" href="skype:live:.cid.3c96f46f7f7b98e1?call" target="_blank">
+            <img class="navbar__top-icon" loading="lazy" width="30" height="30" src="~/image/social_media/skype.webp" alt="Skype" />
+        </a>
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="navbar__bottom" id="navbar__bottom">
+
+        <!-- Logo -->
+        <a class="navbar__logo-link" asp-controller="Home" asp-action="Index">
+            <div class="navbar__logo-box">
+                <img class="navbar__logo-blue" id="navbar__logo-blue" loading="lazy" src="/media/logo/ez-code_B.png" alt="Logo" />
+                <img class="navbar__logo-white" id="navbar__logo-white" loading="lazy" src="/media/logo/ez-code_w.png" alt="Logo" />
+                @* <h1 class="navbar__logo-text">Logo</h1> *@
+            </div>
+        </a>
+
+        <!-- Burger Button -->
+        <div class="navbar__burger-btn">
+            <div class="navbar__burger-icon" id="burger"></div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="navbar__burger">
+            <div class="navbar__burger-list" id="burger-list">
+                <a class="navbar__burger-link" asp-controller="Services" asp-action="Index">Services</a>
+                <a class="navbar__burger-link" asp-controller="Projects" asp-action="Index">Projects</a>
+                <a class="navbar__burger-link" asp-controller="About" asp-action="Index">About us</a>
+                <a class="navbar__burger-link" asp-controller="Contact" asp-action="Index">Contact us</a>
+            </div>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="navbar__menu">
+            <div class="navbar__menu-list">
+                <a class="navbar__menu-link" asp-controller="Services" asp-action="Index">Services</a>
+                <a class="navbar__menu-link" asp-controller="Projects" asp-action="Index">Projects</a>
+                <a class="navbar__menu-link" asp-controller="About" asp-action="Index">About us</a>
+                <a class="navbar__menu-link" asp-controller="Contact" asp-action="Index">Contact us</a>
+                <a class="navbar__menu-link" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </div>
+    </div>
+    <script src="~/js/navbar.js"></script>
+</nav>

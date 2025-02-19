@@ -1,0 +1,66 @@
+﻿.navbar {
+    position: fixed;
+    top:0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: 7.5rem;
+    padding: 0;
+    z-index:100;
+}
+
+.navbar__top {
+    transform: scaleY(0);
+    width: 100vw;
+    height: 2.5rem;
+    background-color: var(--Gray-9);
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar__bottom {
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: 5rem;
+    padding: 0 3vw;
+    transition: transform 0.3s ease-in-out, background-color 0.5s ease-in-out;
+}
+
+.navbar__logo-blue{
+    display:none;
+    width: 10rem;
+}
+
+.navbar__logo-white {
+    width: 10rem;
+}
+
+.navbar__menu {
+    display: flex;
+}
+
+.navbar__menu-list {
+    display: flex;
+}
+
+/* Ensure it applies to all anchor tags inside a menu */
+.navbar__menu-link a:link {
+    display: inline-block; /* Ensures proper padding */
+    padding: 0.5rem 1rem;
+    background-color: aqua;
+    color: black;
+    text-decoration: none; /* Removes underline */
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+
+
+.navbar__burger {
+    display: none;
+}
