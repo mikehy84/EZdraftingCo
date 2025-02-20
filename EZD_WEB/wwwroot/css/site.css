@@ -43,18 +43,21 @@ html {
 
 html {
   position: relative;
-  min-height: 100%;
+  height: 100%;
 }
 
-header{
+/*header{
     position: fixed;
     margin: 0;
-}
+}*/
+
 body {
-    margin-bottom: 60px;
-/*    background-color: var(--Blue-10);*/
-    width:100%;
-    height: 160vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 100vh;
+    background-color:red;
 }
 
 /* Ensure it applies to all anchor tags inside a menu */

@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 57rem;
+    height: 63rem;
     color: var(--Gray-0);
     background-color: transparent;
     font-family: "Russo One", Helvetica, Arial, sans-serif;
@@ -101,7 +101,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 40rem;
+    min-height: fit-content;
+    padding: 2rem;
     color: var(--Gray-9);
     font-family: "Russo One", Helvetica, Arial, sans-serif;
     font-weight: 400;
@@ -132,8 +133,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 40rem;
-    padding: 0 2rem;
+    min-height: fit-content;
+    padding: 4rem 2rem;
     justify-content: space-around;
     background-color: var(--Gray-3);
 }
