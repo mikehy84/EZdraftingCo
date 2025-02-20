@@ -1,18 +1,35 @@
-﻿.home__sec1 {
+﻿
+/*.home__sec1-background {
+    position: relative;
+    top: 0;
+    width: 100vw;
+    height: 60rem;
+    color: var(--Gray-0);
+    background: url(/media/images/home/home_sec1_background.png);
+    background-size: cover;
+    z-index: 1;
+    background-attachment: fixed;
+        opacity:0.1;
+}*/
+
+.home__sec1 {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
     width: 100vw;
-    height: 40rem;
+    height: 50rem;
     color: var(--Gray-0);
+    background-color: transparent;
     font-family: "Russo One", Helvetica, Arial, sans-serif;
     font-weight: 400;
     font-style: normal;
-/*    background: linear-gradient(90deg, rgba(65, 93, 129, 0.801), var(--Gray-0)), url(/media/images/pump_building2.jpg);*/
-/*    background: linear-gradient(90deg, rgba(65, 93, 129, 0.801), var(--Gray-0));*/
-    background-size: cover;
+    background: url(/media/images/home/home_sec1_background.png);
+    background-attachment: fixed;
 }
+
+
+
 
 .home__sec1-banner,
 .home__sec1-slogan {
