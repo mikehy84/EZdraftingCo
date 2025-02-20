@@ -75,3 +75,21 @@ window.onscroll = function () {
 
 
 
+const menuBtn = document.querySelector(".navbar__burger-btn");
+let menuOpen = false;
+menuBtn.addEventListener("click", () => {
+    if (!menuOpen) {
+        menuBtn.classList.add("open");
+        document.getElementById("navbar__burger-list").style.opacity = "1";
+        document.getElementById("navbar__burger-list").style.transform = "scaleY(1)";
+        menuOpen = true;
+    } else {
+        menuBtn.classList.remove("open");
+        document.getElementById("navbar__burger-list").style.opacity = "0";
+        document.getElementById("navbar__burger-list").style.transform = "scaleY(0)";
+        menuOpen = false;
+    }
+});
+
+
+

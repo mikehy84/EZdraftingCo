@@ -12,6 +12,7 @@
     background: url(/media/images/home/home_sec1_background.webp);
     background-attachment: fixed;
     background-size:cover;
+    background-position:right;
 }
 
 
@@ -42,7 +43,8 @@
 
 .home__sec1-slogan {
     font-size: 2.5rem;
-    margin-right:auto;
+    text-shadow: 3px 3px 6px var(--Blue-10);
+    margin-right: auto;
 }
 
 
@@ -52,7 +54,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    height: 6.5rem;
+    height: fit-content;
     color: var(--Gray-0);
     font-family: "Russo One", Helvetica, Arial, sans-serif;
     font-weight: 400;
@@ -67,29 +69,38 @@
     width: 100%;
 }
 
-.navbar__tools {
+.home__sec2-subsec2{
+    display:none;
+}
+
+.home__sec2-tools {
     color: var(--Gray-0);
     font-family: "Russo One", Helvetica, Arial, sans-serif;
     font-size: 2.5rem;
     font-weight: 500;
     font-style: normal;
     text-shadow: 1px 1px 2px var(--Gray-0);
+    padding: 2rem 1rem;
 }
 
-.navbar__tools:nth-child(1) {
-    color: #ed2424;
-}
-
-.navbar__tools:nth-child(2) {
+.home__sec2-tools:nth-child(1) {
     color: #37639f;
 }
 
-.navbar__tools:nth-child(3) {
+.home__sec2-tools:nth-child(2) {
+    color: #ed2424;
+}
+
+.home__sec2-tools:nth-child(3) {
+    color: #2387b4;
+}
+
+.home__sec2-tools:nth-child(4) {
     color: orangered;
 }
 
-.navbar__tools:nth-child(4) {
-    color: #2387b4;
+.home__sec2-icons{
+    width:6rem;
 }
 
 
@@ -164,3 +175,34 @@
     background-color: var(--Gray-6);
     box-shadow: 0px 0px 9px var(--Gray-6);
 }
+
+
+@media (max-width: 990px) {
+    .home__sec1 {
+        height: fit-content;
+        background-size:contain;
+        background-position:top;
+/*        background-repeat:no-repeat;*/
+    }
+
+    .home__sec1-banner {
+        font-size: 3rem;
+    }
+
+    .home__sec1-slogan {
+        font-size: 2rem;
+        margin-top: 4.5rem;
+    }
+
+    .home__sec2-subsec1 {
+        display: none;
+    }
+
+    .home__sec2-subsec2 {
+        display: inline-flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+}
+
+

@@ -70,7 +70,139 @@
 
 
 
-.navbar__burger {
+.navbar__burger{
     display: none;
+}
+
+/* ---------------------------- burger menu ---------------------------- */
+.navbar__burger-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0px;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar__burger-icon {
+    width: 30px;
+    height: 3px;
+    background-color: var(--Gray-0);
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar__burger-icon::before,
+.navbar__burger-icon::after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background-color: var(--Gray-0);
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar__burger-icon::before {
+    transform: translateY(-10px);
+}
+
+.navbar__burger-icon::after {
+    transform: translateY(10px);
+}
+
+/* ANIMATION */
+
+.navbar__burger-btn.open .navbar__burger-icon::before {
+    transform: rotate(45deg);
+}
+
+.navbar__burger-btn.open .navbar__burger-icon::after {
+    transform: rotate(-45deg);
+}
+
+.navbar__burger-btn:hover > .navbar__burger-icon,
+.navbar__burger-btn:hover > .navbar__burger-icon::before,
+.navbar__burger-btn:hover > .navbar__burger-icon::after {
+    cursor: pointer;
+    filter: drop-shadow(0px 0px 0.3px black);
+}
+
+.navbar__burger-btn.open .navbar__burger-icon {
+    transform: rotate(90deg);
+    background: transparent;
+}
+
+/* --------------------------------------------------------------------------- */
+.navbar__burger-list {
+    display: none;
+    position: absolute;
+    top: 5rem;
+    left: 0px;
+    margin-top: 0;
+    padding-top: 1rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 41vh;
+    background: linear-gradient(0deg, var(--Gray-0), var(--Blue-10));
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: all 0.2s ease-in-out;
+    color: var(--Gray-2);
+    z-index: 110;
+}
+
+
+
+.navbar__burger-link {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    margin: 3px;
+    font-family: Vazir-FD;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    padding: 10px;
+    padding-left: 10px;
+    border: 0;
+    color: inherit;
+    background-color: var(--Blue-10);
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar__burger-link:nth-child(1) {
+    margin-top: 2.5rem;
+    border: 0;
+    width: 100%;
+}
+
+.navbar__burger-link:hover {
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--Gray-0);
+    background-color: var(--Red-10);
+}
+
+
+
+/* ------------------------------------------------------------------------ */
+
+@media (max-width: 680px) {
+    .navbar__menu {
+        display: none;
+    }
+
+    .navbar__burger-btn {
+        display: flex;
+    }
+
+    .navbar__burger-list{
+        display:flex;
+    }
 }
 
