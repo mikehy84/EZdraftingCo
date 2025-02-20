@@ -10,7 +10,8 @@ window.onscroll = function () {
     const logoWhite = document.getElementById("navbar__logo-white");
 
     const navbarMenuList = document.getElementById("navbar__menu-list");
-    const navbarBottomATags = navbarMenuList.querySelectorAll(".navbar__menu-list a:link");
+    const navbarBottomATags = navbarMenuList.querySelectorAll(".navbar__menu-list a");
+    //const navbarBottomATags = navbarMenuList.querySelectorAll(".navbar__menu-list a:link");
 
 
     if (prevScrollPos > currentScrollPos) {
@@ -25,7 +26,6 @@ window.onscroll = function () {
         navbarTop.style.transform = "ScaleY(0)";
         navbarTop.style.transformOrigin = "top";
 
-        console.log(navbarBottomATags);
 
         navbarBottomATags.forEach(tag => {
             tag.style.color = "var(--Gray-0)";
@@ -68,10 +68,10 @@ window.onscroll = function () {
                 tag.style.transition = "color 0.3s ease-in-out";
             });
         });
-
-
-
     }
 
     prevScrollPos = 100;
 };
+
+
+

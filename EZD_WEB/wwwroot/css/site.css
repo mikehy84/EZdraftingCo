@@ -57,7 +57,7 @@ body {
     justify-content: space-between;
     width: 100%;
     min-height: 100vh;
-    background-color:red;
+    background-color: var(--Blue-10);
 }
 
 /* Ensure it applies to all anchor tags inside a menu */
@@ -69,8 +69,8 @@ body {
     color: var(--Gray-0);
     text-transform: uppercase;
     text-decoration: none;
+    cursor:pointer;
     transition: text-shadow 0.2s ease-in-out, text-decoration 0.5s ease-in-out;
-    /*    background-color:red;*/
 }
 
 

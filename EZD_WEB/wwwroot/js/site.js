@@ -1,4 +1,34 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿document.getElementById("services").addEventListener("click", function () {
+    const target = document.getElementById("home__sec3");
+    const targetPosition = target.getBoundingClientRect().top + (window.scrollY - 110);
 
-// Write your JavaScript code.
+    window.scrollTo({ top: targetPosition, behavior: "smooth" });
+});
+
+
+document.getElementById("projects").addEventListener("click", function () {
+    const target = document.getElementById("home__sec4");
+    const targetPosition = target.getBoundingClientRect().top + (window.scrollY - 110);
+
+    window.scrollTo({ top: targetPosition, behavior: "smooth" });
+});
+
+
+document.getElementById("about").addEventListener("click", function () {
+    const target = document.getElementById("home__sec1");
+    const targetPosition = target.getBoundingClientRect().top + (window.scrollY + 0);
+
+    window.scrollTo({ top: targetPosition, behavior: "smooth" });
+});
+
+
+document.getElementById("contact").addEventListener("click", function () {
+    const target = document.getElementById("home__sec4");
+    const targetPosition = target.getBoundingClientRect().top + (window.scrollY - 110);
+
+    window.scrollTo({ top: targetPosition, behavior: "smooth" });
+});
+
+
+
+

@@ -1,5 +1,5 @@
 ﻿.footer {
-    position:relative;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -9,7 +9,7 @@
     background-size: cover;
     background-position: right;
     transition: all 0.2s ease-in-out;
-    background-color:red;
+    background-color: var(--Blue-10);
 }
 
 .footer__contact {
