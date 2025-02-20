@@ -12,7 +12,6 @@
     background: url(/media/images/home/home_sec1_background.png);
     background-attachment: fixed;
     background-size:cover;
-    box-shadow: 0 0 5px black;
 }
 
 
@@ -53,13 +52,44 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    height: 15rem;
+    height: 6.5rem;
     color: var(--Gray-0);
     font-family: "Russo One", Helvetica, Arial, sans-serif;
     font-weight: 400;
     font-style: normal;
-    background: linear-gradient(10deg, rgba(65, 93, 129, 0.801), var(--Gray-0));
     background-size: cover;
+    background-color: var(--Gray-9);
+}
+
+.home__sec2-subsec1 {
+    display: inline-flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.navbar__tools {
+    color: var(--Gray-0);
+    font-family: "Russo One", Helvetica, Arial, sans-serif;
+    font-size: 2.5rem;
+    font-weight: 500;
+    font-style: normal;
+    text-shadow: 1px 1px 2px var(--Gray-0);
+}
+
+.navbar__tools:nth-child(1) {
+    color: #ed2424;
+}
+
+.navbar__tools:nth-child(2) {
+    color: #37639f;
+}
+
+.navbar__tools:nth-child(3) {
+    color: orangered;
+}
+
+.navbar__tools:nth-child(4) {
+    color: #2387b4;
 }
 
 
@@ -70,12 +100,66 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    height: 32rem;
-    color: var(--Gray-0);
+    justify-content: center;
+    height: 40rem;
+    color: var(--Gray-9);
     font-family: "Russo One", Helvetica, Arial, sans-serif;
     font-weight: 400;
     font-style: normal;
-    background: linear-gradient(-20deg, rgba(65, 93, 129, 0.801), var(--Gray-9));
-    background-size: cover;
+    background-color: var(--Gray-3);
+}
+
+.home__sec3-banner{
+    color: var(--Gray-0);
+    font-family: "Russo One", Helvetica, Arial, sans-serif;
+    font-size: 4rem;
+    font-weight: 400;
+    font-style: normal;
+    text-shadow: 3px 3px 6px var(--Gray-7);
+}
+
+.home__sec3-service {
+    font-family: "Nunito Sans", serif;
+    font-optical-sizing: auto;
+    width: 75vw;
+    padding: 0 2rem;
+    border-radius: 1rem;
+    background: linear-gradient(-20deg, var(--Gray-6), var(--Gray-3));
+    box-shadow: 0px 0px 9px var(--Gray-9);
+}
+
+.home__sec4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 40rem;
+    padding: 0 2rem;
+    justify-content: space-around;
+    background-color: var(--Gray-3);
+}
+
+.home__sec4-banner {
+    color: var(--Gray-0);
+    font-family: "Russo One", Helvetica, Arial, sans-serif;
+    font-size: 4rem;
+    font-weight: 400;
+    font-style: normal;
+    text-shadow: 3px 3px 6px var(--Gray-7);
+}
+
+.home__sec4-subsec1 {
+    display: grid;
+    gap:2rem;
+    grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+    width:100%;
+}
+
+.home__sec4-proj {
+    width: 27rem;
+    height: 27rem;
+    margin: auto;
+    padding: 0.2rem;
+    border-radius: 1rem;
+    background-color: var(--Gray-6);
+    box-shadow: 0px 0px 9px var(--Gray-6);
 }

@@ -33,13 +33,20 @@
         <!-- Desktop Menu -->
         <div class="navbar__menu">
             <div class="navbar__menu-list" id="navbar__menu-list">
-                <a class="navbar__menu-link" asp-controller="Services" asp-action="Index">Services</a>
-                <a class="navbar__menu-link" asp-controller="Projects" asp-action="Index">Projects</a>
+                <a class="navbar__menu-link" id="services" asp-controller="Services" asp-action="Index">Services</a>
+                <a class="navbar__menu-link" id="projects" asp-controller="Projects" asp-action="Index">Projects</a>
                 <a class="navbar__menu-link" asp-controller="About" asp-action="Index">About us</a>
                 <a class="navbar__menu-link" asp-controller="Contact" asp-action="Index">Contact us</a>
-                <a class="navbar__menu-link" asp-controller="Home" asp-action="Privacy">Privacy</a>
             </div>
         </div>
     </div>
     <script src="~/js/navbar.js"></script>
+
+    @* <script> *@
+    @*     document.getElementById("services").addEventListener("click", function() { *@
+    @*         document.getElementById("home__sec3").scrollIntoView({ *@
+    @*             behavior: "smooth" *@
+    @*         }); *@
+    @*     }); *@
+    @* </script> *@
 </nav>

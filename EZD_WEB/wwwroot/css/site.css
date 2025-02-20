@@ -58,7 +58,7 @@ body {
 }
 
 /* Ensure it applies to all anchor tags inside a menu */
-.navbar__menu-list a:link {
+.navbar__menu-list a {
     display: inline-block;
     margin: 0.5rem;
     padding: 0.5rem;
