@@ -83,23 +83,32 @@
     width: 35px;
     height: 35px;
     cursor: pointer;
+    z-index:91;
     transition: all 0.3s ease-in-out;
 }
 
 .navbar__burger-icon {
     width: 30px;
     height: 3px;
-    background-color: var(--Gray-0);
+    background-color: var(--middleLine, var(--BurgerIcon));
     transition: all 0.3s ease-in-out;
 }
 
-.navbar__burger-icon::before,
+.navbar__burger-icon::before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background-color: var(--before, var(--BurgerIcon));
+    transition: all 0.3s ease-in-out;
+}
+
 .navbar__burger-icon::after {
     content: "";
     position: absolute;
     width: 30px;
     height: 3px;
-    background-color: var(--Gray-0);
+    background-color: var(--after, var(--BurgerIcon));
     transition: all 0.3s ease-in-out;
 }
 
@@ -137,24 +146,23 @@
 .navbar__burger-list {
     display: none;
     position: absolute;
-    top: 5rem;
+    top: 0rem;
     left: 0px;
     margin-top: 0;
-    padding-top: 1rem;
+    padding-top: 5rem;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    height: 41vh;
-    background: linear-gradient(0deg, var(--Gray-0), var(--Blue-10));
+    height: 100vh;
+    background: var(--Gray-0);
     opacity: 0;
     transform: scaleY(0);
     transform-origin: top;
-    transition: all 0.2s ease-in-out;
     color: var(--Gray-2);
-    z-index: 110;
+    transition: all 0.3s ease-in-out;
+    z-index: 90;
 }
-
 
 
 .navbar__burger-link {
@@ -164,10 +172,9 @@
     text-decoration: none;
     margin: 3px;
     font-family: Vazir-FD;
-    font-size: 15px;
+    font-size: 1.2rem;
     letter-spacing: 1.5px;
     padding: 10px;
-    padding-left: 10px;
     border: 0;
     color: inherit;
     background-color: var(--Blue-10);
@@ -175,18 +182,9 @@
     transition: all 0.3s ease-in-out;
 }
 
-.navbar__burger-link:nth-child(1) {
-    margin-top: 2.5rem;
-    border: 0;
-    width: 100%;
-}
 
-.navbar__burger-link:hover {
-    text-decoration: none;
-    cursor: pointer;
-    color: var(--Gray-0);
-    background-color: var(--Red-10);
-}
+
+
 
 
 

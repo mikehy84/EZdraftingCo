@@ -1,6 +1,7 @@
 ﻿// script.js
 let prevScrollPos = window.scrollY;
 
+
 window.onscroll = function () {
     const currentScrollPos = window.scrollY;
     const navbarBottom = document.getElementById("navbar__bottom");
@@ -13,6 +14,9 @@ window.onscroll = function () {
     const navbarBottomATags = navbarMenuList.querySelectorAll(".navbar__menu-list a");
     //const navbarBottomATags = navbarMenuList.querySelectorAll(".navbar__menu-list a:link");
 
+    const burger = document.querySelector(".navbar__burger-icon");
+    const burgerBefore = document.querySelector(".navbar__burger-icon");
+    const burgerAfter = document.querySelector(".navbar__burger-icon");
 
     if (prevScrollPos > currentScrollPos) {
         // Scrolling up
@@ -42,6 +46,11 @@ window.onscroll = function () {
             });
         });
 
+        setBurgerLine();
+        burger.style.setProperty("--middleLine", "var(--BurgerIcon)");
+        burgerBefore.style.setProperty("--before", "var(--BurgerIcon)");
+        burgerAfter.style.setProperty("--after", "var(--BurgerIcon)");
+
     } else {
         // Scrolling down
         navbarBottom.style.transform = "translateY(2.5rem)"; /* Adjust based on navbar height */
@@ -59,7 +68,7 @@ window.onscroll = function () {
             tag.style.transition = "textShadow 0.3s ease-in-out";
 
             tag.addEventListener("mouseover", () => {
-                tag.style.color = "orangered";
+                tag.style.color = "var(--LinkInWhite)";
                 tag.style.transition = "color 0.3s ease-in-out";
             });
 
@@ -68,28 +77,48 @@ window.onscroll = function () {
                 tag.style.transition = "color 0.3s ease-in-out";
             });
         });
+
+        setBurgerLine();
+        burger.style.setProperty("--middleLine", "var(--Gray-9)");
+        burgerBefore.style.setProperty("--before", "var(--Gray-9)");
+        burgerAfter.style.setProperty("--after", "var(--Gray-9)");
     }
 
     prevScrollPos = 100;
 };
 
 
-
 const menuBtn = document.querySelector(".navbar__burger-btn");
-let menuOpen = false;
+let isOpen = false;
 menuBtn.addEventListener("click", () => {
-    if (!menuOpen) {
+    if (!isOpen) {
         menuBtn.classList.add("open");
-        document.getElementById("navbar__burger-list").style.opacity = "1";
+        burger.style.backgroundColor.opacity = "0";
+
+        document.getElementById("navbar__burger-list").style.opacity = "0.9";
         document.getElementById("navbar__burger-list").style.transform = "scaleY(1)";
-        menuOpen = true;
+        isOpen = true;
     } else {
         menuBtn.classList.remove("open");
+        burger.style.backgroundColor.opacity = "1";
+
         document.getElementById("navbar__burger-list").style.opacity = "0";
         document.getElementById("navbar__burger-list").style.transform = "scaleY(0)";
-        menuOpen = false;
+        isOpen = false;
     }
 });
+
+function setBurgerLine() {
+    if (!isOpen) {
+        burger.style.backgroundColor.opacity = "0";
+    } else {
+        burger.style.backgroundColor.opacity = "1";
+    }
+}
+
+
+
+
 
 
 

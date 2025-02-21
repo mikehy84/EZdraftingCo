@@ -180,9 +180,8 @@
 @media (max-width: 990px) {
     .home__sec1 {
         height: fit-content;
-        background-size:contain;
-        background-position:top;
-/*        background-repeat:no-repeat;*/
+        background-size:cover;
+        background-position:right;
     }
 
     .home__sec1-banner {
@@ -205,4 +204,39 @@
     }
 }
 
+@media (max-width: 600px) {
+    .home__sec1 {
+        height: fit-content;
+        background-size: cover;
+        background-position-x: 730px;
+    }
 
+    .home__sec1-banner {
+        font-size: 1.8rem;
+    }
+
+    .home__sec1-subsec1 {
+        padding-left:1rem;
+    }
+
+    .home__sec1-slogan {
+        font-size: 1.5rem;
+    }
+}
+
+
+@media (max-width: 450px) {
+    .home__sec4 {
+        padding: 1rem 0.5rem;
+    }
+
+    .home__sec4-subsec1 {
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    }
+
+    .home__sec4-proj {
+        width: 25rem;
+        height: 25rem;
+    }
+}
