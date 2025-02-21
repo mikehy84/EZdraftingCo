@@ -182,14 +182,13 @@
     transition: all 0.3s ease-in-out;
 }
 
-
-
-
-
+.navbar__burger-logo{
+    width:20rem;
+    margin-top: 5rem;
+}
 
 
 /* ------------------------------------------------------------------------ */
-
 @media (max-width: 680px) {
     .navbar__menu {
         display: none;

@@ -17,6 +17,7 @@
     --boxShadow: 0px 0px 10px var(--Gray-6);
     --BurgerIcon: orangered;
     --LinkInWhite: orangered;
+    --LinkInBlack: greenyellow;
 }
 
 *:focus {
@@ -92,7 +93,8 @@ body {
 
 .navbar__menu-list a:hover {
     font-weight: 500;
-    transition: font-weight 0.2s ease-in-out;
+    color: var(--LinkInBlack);
+    transition: all 0.3s ease-in-out;
 }
 
 

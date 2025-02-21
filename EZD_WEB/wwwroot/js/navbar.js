@@ -12,7 +12,6 @@ window.onscroll = function () {
 
     const navbarMenuList = document.getElementById("navbar__menu-list");
     const navbarBottomATags = navbarMenuList.querySelectorAll(".navbar__menu-list a");
-    //const navbarBottomATags = navbarMenuList.querySelectorAll(".navbar__menu-list a:link");
 
     const burger = document.querySelector(".navbar__burger-icon");
     const burgerBefore = document.querySelector(".navbar__burger-icon");
@@ -95,7 +94,7 @@ menuBtn.addEventListener("click", () => {
         menuBtn.classList.add("open");
         burger.style.backgroundColor.opacity = "0";
 
-        document.getElementById("navbar__burger-list").style.opacity = "0.9";
+        document.getElementById("navbar__burger-list").style.opacity = "1";
         document.getElementById("navbar__burger-list").style.transform = "scaleY(1)";
         isOpen = true;
     } else {
