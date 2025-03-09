@@ -22,8 +22,9 @@
 
         <!-- Mobile Menu -->
         <div class="navbar__burger-list" id="navbar__burger-list">
+            <a class="navbar__burger-link" asp-controller="Home" asp-action="Index">Home</a>
             <a class="navbar__burger-link" asp-controller="Home" asp-action="Index">Services</a>
-            <a class="navbar__burger-link" asp-controller="Home" asp-action="Index">Projects</a>
+            <a class="navbar__burger-link" asp-controller="Project" asp-action="Index">Projects</a>
             <a class="navbar__burger-link" asp-controller="Home" asp-action="Index">About us</a>
             <a class="navbar__burger-link" asp-controller="Home" asp-action="Index">Contact us</a>
             <img class="navbar__burger-logo" loading="lazy" src="/media/logo/ez-code_B2.webp" alt="EZDRAFTING_Logo" />
@@ -33,23 +34,16 @@
         <div class="navbar__menu">
             <div class="navbar__menu-list" id="navbar__menu-list">
                 @* <a class="navbar__menu-link" id="services" asp-controller="Services" asp-action="Index">Services</a> *@
-                @* <a class="navbar__menu-link" id="projects" asp-controller="Projects" asp-action="Index">Projects</a> *@
                 @* <a class="navbar__menu-link" asp-controller="About" asp-action="Index">About us</a> *@
                 @* <a class="navbar__menu-link" asp-controller="Contact" asp-action="Index">Contact us</a> *@
+                <a class="navbar__menu-link" id="home" asp-controller="Home" asp-action="Index">Home</a>
                 <a class="navbar__menu-link" id="services">Services</a>
-                <a class="navbar__menu-link" id="projects">Projects</a>
+                <a class="navbar__menu-link" id="projects" asp-controller="Project" asp-action="Index">Projects</a>
+                @* <a class="navbar__menu-link" id="projects">Projects</a> *@
                 <a class="navbar__menu-link" id="about">About us</a>
                 <a class="navbar__menu-link" id="contact">Contact us</a>
             </div>
         </div>
     </div>
     <script src="~/js/navbar.js"></script>
-
-    @* <script> *@
-    @*     document.getElementById("services").addEventListener("click", function() { *@
-    @*         document.getElementById("home__sec3").scrollIntoView({ *@
-    @*             behavior: "smooth" *@
-    @*         }); *@
-    @*     }); *@
-    @* </script> *@
 </nav>
