@@ -1,7 +1,7 @@
-﻿using EZD_WEB.Models;
+﻿using EZD_DAL.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace EZD_WEB.Data
+namespace EZD_DAL.Data
 {
     public class ApplicationDbContext : DbContext
     {

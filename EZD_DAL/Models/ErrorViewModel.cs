@@ -1,4 +1,4 @@
-namespace EZD_WEB.Models
+namespace EZD_DAL.Models
 {
     public class ErrorViewModel
     {

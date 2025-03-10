@@ -1,5 +1,5 @@
 using System.Diagnostics;
-using EZD_WEB.Models;
+using EZD_DAL.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EZD_WEB.Controllers

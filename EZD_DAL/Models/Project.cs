@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EZD_WEB.Models
+namespace EZD_DAL.Models
 {
     public class Project
     {

@@ -1,4 +1,9 @@
-using EZD_WEB.Data;
+using EZD_BLL.Mapper;
+using EZD_BLL.ProjectDir;
+using EZD_DAL.Data;
+using EZD_DAL.Repository.IRepository;
+using EZD_DAL.Repository;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +13,13 @@ builder.Services.AddControllersWithViews();
 
 var conStr = builder.Configuration.GetConnectionString("EZdrafting");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(conStr));
+options.UseSqlServer(conStr));
+
+builder.Services.AddAutoMapper(typeof(MappingConfig));
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+builder.Services.AddScoped<IService<ProjectDto>, ProjectService>();
 
 var app = builder.Build();
 

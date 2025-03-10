@@ -1,4 +1,4 @@
-﻿@model List<Project> 
+﻿@model List<ProjectDto>
 
 <div class="projects" id="projects">
     <h1 class="projects__banner">Our Projects</h1>
@@ -8,10 +8,10 @@
             <figure class="projects__figure">
                 <img loading="lazy" src="/media/images/pump_building2.webp" alt="pump_building2_Tekla" />
                 <figcaption>
-                    <h2>@project.ProjectName</h2>
-                    <h4>@project.BuildingName</h4>
-                    <p>@project.Description</p>
-                    <p>@project.Weight</p>
+                    <h2>@project.ProjectName</h2> 
+                    <h4>@project.BuildingName</h4> 
+                    <p>@project.Description</p> 
+                    <p>@project.Weight</p> 
                 </figcaption>
             </figure>
         }
