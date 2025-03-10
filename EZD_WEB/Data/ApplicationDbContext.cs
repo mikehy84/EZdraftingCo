@@ -9,5 +9,18 @@ namespace EZD_WEB.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         public DbSet<Project> Projects { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Project>().HasData(
+                new Project { 
+                    Id = 1,
+                    ProjectName="Parand Project",
+                    BuildingName="AUX",
+                    Description="It was a great job",
+                    Weight= 2500
+                }
+            );
+        }
     }
 }

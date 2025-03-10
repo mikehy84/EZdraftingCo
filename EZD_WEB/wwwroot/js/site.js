@@ -6,12 +6,12 @@
 });
 
 
-document.getElementById("projects").addEventListener("click", function () {
-    const target = document.getElementById("home__sec4");
-    const targetPosition = target.getBoundingClientRect().top + (window.scrollY - 110);
+//document.getElementById("projects").addEventListener("click", function () {
+//    const target = document.getElementById("home__sec4");
+//    const targetPosition = target.getBoundingClientRect().top + (window.scrollY - 110);
 
-    window.scrollTo({ top: targetPosition, behavior: "smooth" });
-});
+//    window.scrollTo({ top: targetPosition, behavior: "smooth" });
+//});
 
 
 document.getElementById("about").addEventListener("click", function () {
