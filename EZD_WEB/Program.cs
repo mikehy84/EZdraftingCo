@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-var conStr = builder.Configuration.GetConnectionString("EZdrafting");
+var conStr = builder.Configuration.GetConnectionString("EZdraftingAzure");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlServer(conStr));
 
