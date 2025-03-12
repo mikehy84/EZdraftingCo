@@ -26,6 +26,10 @@ namespace EZD_BLL.ProjectDir
         public async Task<List<ProjectDto>> GetAllAsync()
         {
             var projects = await _unitOfWork.Projects.GetAllAsync();
+            if (projects == null || !projects.Any())
+            {
+                return new List<ProjectDto>();
+            }
 
             return _mapper.Map<List<ProjectDto>>(projects);
         }
