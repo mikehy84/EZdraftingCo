@@ -2,6 +2,8 @@
 using EZD_BLL.Helper;
 using EZD_DAL.Models;
 using EZD_DAL.Repository.IRepository;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.JsonPatch;
 
 
@@ -19,6 +21,15 @@ namespace EZD_BLL.ProjectDir
             _mapper = mapper;
             _responseType = new ResponseType();
         }
+
+
+        public async Task<List<ProjectDto>> GetAllAsync()
+        {
+            var projects = await _unitOfWork.Projects.GetAllAsync();
+
+            return _mapper.Map<List<ProjectDto>>(projects);
+        }
+
 
 
         //public async Task<ApiResponse> GetAllAsync()
@@ -39,23 +50,7 @@ namespace EZD_BLL.ProjectDir
         //    }
         //}
 
-        public async Task<ApiResponse> GetAllAsync()
-        {
-            try
-            {
-                var projects = await _unitOfWork.Projects.GetAllAsync();
 
-                if (!projects.Any())
-                    return _responseType.NotFound(ValidationMessage.Entity_Not_Found);
-
-                var projectsDtoList = _mapper.Map<List<ProjectDto>>(projects);
-                return _responseType.Ok(projectsDtoList);
-            }
-            catch (Exception ex)
-            {
-                return _responseType.HandleException(ex);
-            }
-        }
 
 
         public async Task<ApiResponse> GetByIdAsync(int id)

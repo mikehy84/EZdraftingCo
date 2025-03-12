@@ -13,15 +13,22 @@ namespace EZD_WEB.Controllers
             _projectService = projectService;
         }
 
+        //public async Task<IActionResult> Index()
+        //{
+        //    var response = await _projectService.GetAllAsync();
+
+        //    if (!response.IsSuccess) // Assuming ApiResponse has a Success property
+        //        return View(new List<ProjectDto>()); // Return an empty list in case of failure
+
+        //    var projects = response.Result as List<ProjectDto> ?? new(); // Extract the list safely
+        //    return View(projects);
+        //}
+
         public async Task<IActionResult> Index()
         {
-            var response = await _projectService.GetAllAsync();
+            var projectsDto = await _projectService.GetAllAsync();
 
-            if (!response.IsSuccess) // Assuming ApiResponse has a Success property
-                return View(new List<ProjectDto>()); // Return an empty list in case of failure
-
-            var projects = response.Result as List<ProjectDto> ?? new(); // Extract the list safely
-            return View(projects);
+            return View(projectsDto);
         }
     }
 }
