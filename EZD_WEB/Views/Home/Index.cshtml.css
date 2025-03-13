@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 63rem;
+    height: 100vh;
     color: var(--Gray-0);
     background-color: transparent;
     font-family: "Russo One", Helvetica, Arial, sans-serif;
@@ -113,7 +113,7 @@
     align-items: center;
     justify-content: center;
     min-height: fit-content;
-    padding: 4rem 0;
+    padding: 3rem 0;
     color: var(--Gray-9);
     font-family: "Russo One", Helvetica, Arial, sans-serif;
     font-weight: 400;
@@ -134,7 +134,7 @@
     font-family: "Nunito Sans", serif;
     font-optical-sizing: auto;
     width: 75vw;
-    padding: 0 2rem;
+    padding: 2rem;
     border-radius: 1rem;
     background: linear-gradient(-20deg, var(--Gray-6), var(--Gray-3));
     box-shadow: 0px 0px 9px var(--Gray-9);
@@ -179,9 +179,8 @@
 
 @media (max-width: 990px) {
     .home__sec1 {
-        height: fit-content;
-        background-size:cover;
-        background-position:right;
+        background-size:revert;
+        background-position: left;
     }
 
     .home__sec1-banner {
@@ -205,14 +204,11 @@
 }
 
 @media (max-width: 600px) {
-    .home__sec1 {
-        height: fit-content;
-        background-size: cover;
-        background-position-x: 730px;
-    }
 
-    .home__sec1-banner {
-        font-size: 1.8rem;
+    .home__sec1-banner,
+    .home__sec3-banner {
+        /*        font-size: 1.8rem;*/
+        text-align: center;
     }
 
     .home__sec1-subsec1 {

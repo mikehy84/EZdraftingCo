@@ -6,6 +6,9 @@
     padding: 4rem 2rem;
     justify-content: space-around;
     background-color: var(--Blue-10);
+    background: url(/media/images/home/Project_sec1_background.webp);
+    background-size: cover;
+    background-attachment:fixed;
 }
 
 .projects__banner {
@@ -34,24 +37,48 @@
     align-items: center;
     text-align: center;
     width: 27rem;
-    height: fit-content;
+    min-height: fit-content;
     margin: auto;
     padding: 0.2rem;
-    color: var(--Gray-2);
-    background-color: var(--Gray-7);
-    box-shadow: 0px 0px 15px var(--Gray-9);
+    color: var(--Gray-8);
+    border-radius: 1rem;
+    background-color: var(--Gray-0);
+    box-shadow: 0px 0px 10px var(--Gray-9);
+    overflow: hidden;
+    transition:all 0.2s ease-in-out;
 }
 
 .projects__figure img {
+    margin-bottom: -3px;
     width: 27rem;
     height: 27rem;
+    border-end-end-radius: 1rem;
+    border-end-start-radius: 1rem;
+}
+
+.projects__figure:hover {
+    transform: translate(0px, -20px);
+    cursor: pointer;
+}
+
+.projects__figure img:hover {
+    transform: scale(1.05);
 }
 
 
-    @media (max-width: 990px) {
-    }
+@media (max-width: 990px) {
+}
 
 @media (max-width: 600px) {
+    .projects {
+        text-align: center;
+    }
+
+    .projects__banner {
+        margin-top:6rem;
+        margin-bottom:2rem;
+        font-size: 3rem;
+    }
 }
 
 
@@ -65,6 +92,7 @@
         grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     }
 
+    .projects__figure,
     .projects__figure img {
         width: 25rem;
         height: 25rem;
