@@ -61,9 +61,7 @@
     cursor: pointer;
 }
 
-.projects__figure img:hover {
-    transform: scale(1.05);
-}
+
 
 
 @media (max-width: 990px) {
