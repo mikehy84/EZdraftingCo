@@ -10,6 +10,8 @@ namespace EZD_BLL.Mapper
         public MappingConfig() 
         { 
             CreateMap<Project, ProjectDto>().ReverseMap();
+            CreateMap<CreateProjectDto, ProjectDto>()
+            .ForMember(dest => dest.ImageUrls, opt => opt.Ignore()); // We'll handle this manually
         }
     }
 }

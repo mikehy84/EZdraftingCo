@@ -2,11 +2,13 @@
 
 <div class="projects" id="projects">
     <h1 class="projects__banner">Our Projects</h1>
+        <a class="navbar__menu-link" id="projects" asp-controller="Project" asp-action="Create">Create New Projects</a>
     <div class="projects__subsec1">
-
         @foreach(var project in Model){
             <figure class="projects__figure">
-                <img loading="lazy" src="/media/images/pump_building2.webp" alt="pump_building2_Tekla" />
+                <img loading="lazy"
+                     src="@(project.ImageUrls != null && project.ImageUrls.Length > 0 ? project.ImageUrls[0] : "/media/images/pump_building2.webp")"
+                     alt="@project.ProjectName" />
                 <figcaption>
                     <h2>@project.ProjectName</h2> 
                     <h4>@project.BuildingName</h4> 
@@ -15,85 +17,5 @@
                 </figcaption>
             </figure>
         }
-
-        <figure class="projects__figure">
-            <img loading="lazy" src="/media/images/pump_building2.webp" alt="pump_building2_Tekla" />
-            <figcaption>
-                <h2>Project Name</h2>
-                <h4>Building Name</h4>
-                <p>This is an image caption.</p>
-                <p>2300 ton</p>
-            </figcaption>
-        </figure>
-
-        <figure class="projects__figure">
-        <img loading="lazy" src="/media/images/pump_building.webp" alt="pump_building_Tekla" />
-            <figcaption>
-                <h2>Project Name</h2>
-                <h4>Building Name</h4>
-                <p>This is an image caption.</p>
-                <p>2300 ton</p>
-            </figcaption>
-        </figure>
-
-        <figure class="projects__figure">
-            <img loading="lazy" src="/media/images/fan.webp" alt="fan_SolidWorks" />
-            <figcaption>
-                <h2>Project Name</h2>
-                <h4>Building Name</h4>
-                <p>This is an image caption.</p>
-                <p>2300 ton</p>
-            </figcaption>
-        </figure>
-
-        <figure class="projects__figure">
-            <img loading="lazy" src="/media/images/auxilary_bldg.webp" alt="auxilary_bldg_Tekla" />
-            <figcaption>
-                <h2>Project Name</h2>
-                <h4>Building Name</h4>
-                <p>This is an image caption.</p>
-                <p>2300 ton</p>
-            </figcaption>
-        </figure>
-
-        <figure class="projects__figure">
-        <img loading="lazy" src="/media/images/pump_building2.webp" alt="pump_building2_Tekla" />
-            <figcaption>
-                <h2>Project Name</h2>
-                <h4>Building Name</h4>
-                <p>This is an image caption.</p>
-                <p>2300 ton</p>
-            </figcaption>
-        </figure>
-
-        <figure class="projects__figure">
-        <img loading="lazy" src="/media/images/pump_building.webp" alt="pump_building_Tekla" />
-            <figcaption>
-                <h2>Project Name</h2>
-                <h4>Building Name</h4>
-                <p>This is an image caption.</p>
-                <p>2300 ton</p>
-            </figcaption>
-        </figure>
-
-        <figure class="projects__figure">
-            <img loading="lazy" src="/media/images/pump_building2.webp" alt="pump_building2_Tekla" />
-            <figcaption>
-                <h2>Project Name</h2>
-                <h4>Building Name</h4>
-                <p>This is an image caption.</p>
-                <p>2300 ton</p>
-            </figcaption>
-        </figure>
-
-        <figure class="projects__figure">
-            <img loading="lazy" src="/media/images/pump_building2.webp" alt="pump_building2_Tekla" />
-            <figcaption>
-                <h2>Project Name</h2>
-                <h4>Building Name</h4>
-                <p>This is an image caption.</p>
-                <p>2300 ton</p>
-            </figcaption>
-        </figure>
     </div>
 </div>

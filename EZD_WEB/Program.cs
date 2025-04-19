@@ -5,6 +5,9 @@ using EZD_DAL.Repository.IRepository;
 using EZD_DAL.Repository;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Azure.Storage.Blobs;
+using EZD_BLL.Services;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +17,29 @@ builder.Services.AddControllersWithViews();
 var conStr = builder.Configuration.GetConnectionString("EZdraftingAzure");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlServer(conStr));
+
+
+
+
+
+
+// injecting blob service here
+builder.Services.Configure<AzureStorageSettings>(
+    builder.Configuration.GetSection("AzureStorage"));
+
+// Register BlobServiceClient using the config
+builder.Services.AddSingleton<BlobServiceClient>(sp =>
+{
+    var options = sp.GetRequiredService<IOptions<AzureStorageSettings>>().Value;
+    return new BlobServiceClient(options.ConnectionString);
+});
+
+// Register your blob service
+builder.Services.AddScoped<IBlobService, BlobService>();
+
+
+
+
 
 builder.Services.AddAutoMapper(typeof(MappingConfig));
 
@@ -30,6 +56,11 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+
+
+
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

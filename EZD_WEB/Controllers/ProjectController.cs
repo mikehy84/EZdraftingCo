@@ -1,6 +1,10 @@
-﻿using EZD_BLL.ProjectDir;
+﻿using AutoMapper;
+using EZD_BLL.ProjectDir;
+using EZD_BLL.Services;
 using EZD_DAL.Repository.IRepository;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace EZD_WEB.Controllers
 {
@@ -8,9 +12,73 @@ namespace EZD_WEB.Controllers
     {
 
         private readonly IService<ProjectDto> _projectService;
-        public ProjectController(IService<ProjectDto> projectService)
+        private readonly IBlobService _blobService;
+        private readonly IOptions<AzureStorageSettings> _storageSettings;
+        private readonly IMapper _mapper;
+
+        public ProjectController(
+            IService<ProjectDto> projectService, 
+            IBlobService blobService, 
+            IOptions<AzureStorageSettings> storageSettings,
+            IMapper mapper)
         {
             _projectService = projectService;
+            _blobService = blobService;
+            _storageSettings = storageSettings;
+            _mapper = mapper;
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(CreateProjectDto createProjectDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(createProjectDto);
+            }
+
+            var allowedContentType = "image/webp";
+            var allowedExtension = ".webp";
+
+            // Validate all uploaded files
+            foreach (var file in createProjectDto.Photos)
+            {
+                var extension = Path.GetExtension(file.FileName).ToLowerInvariant();
+                var contentType = file.ContentType.ToLowerInvariant();
+
+                if (extension != allowedExtension || contentType != allowedContentType)
+                {
+                    ModelState.AddModelError("photos", "Only WebP images are allowed.");
+                    ModelState.Clear();
+                    return View("Create");
+                }
+            }
+
+
+            var projectDto = _mapper.Map<ProjectDto>(createProjectDto);
+
+            if (createProjectDto.Photos != null && createProjectDto.Photos.Count > 0)
+            {
+                var containerName = _storageSettings.Value.ContainerName;
+                var imageUrls = await _blobService.UploadBlob(containerName, createProjectDto.Photos);
+                projectDto.ImageUrls = imageUrls.ToArray();
+            }
+
+            var response = await _projectService.CreateAsync(projectDto);
+
+            if (!response.IsSuccess)
+            {
+                ModelState.AddModelError(string.Empty, "Failed to create project.");
+                return View(createProjectDto);
+            }
+
+            return RedirectToAction("Index");
         }
 
         //public async Task<IActionResult> Index()
