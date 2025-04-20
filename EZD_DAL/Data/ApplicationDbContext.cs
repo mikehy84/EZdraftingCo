@@ -17,15 +17,15 @@ namespace EZD_DAL.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Project>().HasData(
-                new Project { 
-                    Id = 1,
-                    ProjectName="Parand Project",
-                    BuildingName="AUX",
-                    Description="It was a great job",
-                    Weight= 2500
-                }
-            );
+            //modelBuilder.Entity<Project>().HasData(
+            //    new Project { 
+            //        Id = 1,
+            //        ProjectName="Parand Project",
+            //        BuildingName="AUX",
+            //        Description="It was a great job",
+            //        Weight= 2500
+            //    }
+            //);
         }
     }
 }

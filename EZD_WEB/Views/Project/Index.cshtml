@@ -14,10 +14,10 @@
                      src="@(project.ImageUrls != null && project.ImageUrls.Length > 0 ? project.ImageUrls[0] : "/media/images/pump_building2.webp")"
                      alt="@project.ProjectName" />
                 <figcaption>
-                    <h2>@project.ProjectName</h2> 
+                    <h3>@project.ProjectName</h3> 
                     <h4>@project.BuildingName</h4> 
                     <p>@project.Description</p> 
-                    <p>@project.Weight</p> 
+                    <p>@project.Weight <small>tons</small></p> 
                 </figcaption>
             </figure>
         }

@@ -27,6 +27,7 @@
     grid-row-gap: 6rem;
     grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
     width: 100%;
+    margin-top:2rem;
 }
 
 
@@ -39,7 +40,7 @@
     width: 27rem;
     min-height: fit-content;
     margin: auto;
-    padding: 0.2rem;
+    padding: 1rem;
     color: var(--Gray-8);
     border-radius: 1rem;
     background-color: var(--Gray-0);
