@@ -15,6 +15,7 @@
     --Blue-91: #1864ab;
     --Blue-9: #105188; /*logo Blue*/
     --Blue-10: #0a2f45; /*Main Blue*/
+    --Blue-11: rgba(65, 93, 129, 0.897);
     /*    -----------------------------------------------*/
     --Gray-0: #f8f9fa;
     --Gray-1: #f1f3f5;
@@ -39,7 +40,7 @@
     --Green-8: #2f9e44;
     --Green-81: #2b8a3e;
     /* main theme, DO NOT CHANGE IT*/
-    --Green-9: rgba(65, 93, 129, 0.897);
+
     --Green-10: #0c3236;
     /* /////////////////////////////////////////////////////////// */
     --Red-0: #fff5f5;
@@ -159,14 +160,13 @@ body {
 .std__btn {
     text-decoration: none;
     padding: 0.5rem 1rem;
-    margin: 0.5rem 1rem;
-    border: 1px solid var(--Blue-7);
     border-radius: 0.5rem;
 }
 
 
 .primary {
-    color: var(--Gray-3);
+    color: var(--Gray-0);
+    border: 1px solid var(--Blue-9);
     background-color: var(--Blue-7);
 }
 
@@ -176,6 +176,57 @@ body {
     border: 1px solid var(--Gray-0);
     box-shadow: 0 0 6px var(--Gray-0);
 }
+
+
+
+
+
+
+.sec__row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10rem;
+    margin-top: 7rem;
+    padding: 1rem;
+    color: var(--Gray-2);
+/*    background-color: var(--Gray-6);*/
+}
+
+
+.sec_col {
+    display: flex;
+    flex-direction:column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2rem;
+/*    background-color: var(--Gray-8);*/
+}
+
+
+.typ__input-box {
+    height: 4rem;
+/*    background-color: var(--Gray-5);*/
+}
+
+.typ__input {
+    height: 2rem;
+    width:100%;
+    padding: 0.5rem;
+    border:0;
+    border-radius:0.3rem;
+    background-color: var(--Gray-1);
+}
+
+
+
+.typ__txt-danger {
+    color: var(--Gray-1);
+    border-radius: 0.2rem;
+    background-color: var(--Red-9);
+}
+
+
 
 
 
@@ -193,7 +244,7 @@ body {
     color: var(--Gray-0);
     text-transform: uppercase;
     text-decoration: none;
-    cursor:pointer;
+    cursor: pointer;
     transition: text-shadow 0.2s ease-in-out, text-decoration 0.5s ease-in-out;
 }
 
