@@ -19,7 +19,9 @@ var conStr = builder.Configuration.GetConnectionString("EZdraftingAzure");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlServer(conStr));
 
-builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
 //builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 //    options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
 

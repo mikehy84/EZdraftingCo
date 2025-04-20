@@ -39,7 +39,12 @@
                 <a class="navbar__menu-link" id="home" asp-controller="Home" asp-action="Index">Home</a>
                 <a class="navbar__menu-link" id="services">Services</a>
                 <a class="navbar__menu-link" id="projects" asp-controller="Project" asp-action="Index">Projects</a>
-                <a class="navbar__menu-link" id="admin" asp-controller="Admin" asp-action="Index">Admin</a>
+                
+                @if(User.IsInRole("Admin"))
+                {
+                    <a class="navbar__menu-link" id="admin" asp-controller="Admin" asp-action="Index">Admin</a>
+                }
+
                 @* <a class="navbar__menu-link" id="projects">Projects</a> *@
                 <a class="navbar__menu-link" id="about">About us</a>
                 <a class="navbar__menu-link" id="contact">Contact us</a>

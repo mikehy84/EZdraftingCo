@@ -2,7 +2,11 @@
 
 <div class="projects" id="projects">
     <h1 class="projects__banner">Our Projects</h1>
-        <a class="navbar__menu-link" id="projects" asp-controller="Project" asp-action="Create">Create New Projects</a>
+    @if (User.IsInRole("Admin"))
+    {
+        <a class="std__btn primary" asp-controller="Project" asp-action="Create">Create New Projects</a>
+    }
+    
     <div class="projects__subsec1">
         @foreach(var project in Model){
             <figure class="projects__figure">
