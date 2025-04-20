@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Azure.Storage.Blobs;
 using EZD_BLL.Services;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,10 @@ builder.Services.AddControllersWithViews();
 var conStr = builder.Configuration.GetConnectionString("EZdraftingAzure");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlServer(conStr));
+
+builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>();
+//builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+//    options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
 
 
 
@@ -39,7 +44,7 @@ builder.Services.AddScoped<IBlobService, BlobService>();
 
 
 
-
+builder.Services.AddRazorPages();
 
 builder.Services.AddAutoMapper(typeof(MappingConfig));
 
@@ -66,9 +71,10 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
