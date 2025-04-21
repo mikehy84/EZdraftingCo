@@ -12,13 +12,11 @@
             <figure>
                 <a asp-action="Detail" asp-route-id="@project.Id">
                     <img loading="lazy"
-                         src="@(project.ImageUrls != null && project.ImageUrls.Length > 0 ? project.ImageUrls[0] : "/media/images/pump_building2.webp")"
+                         src="@(project.ImageUrls != null && project.ImageUrls.Length > 0 ? project.ImageUrls[0] : "/media/images/pump_building.webp")"
                          alt="@project.ProjectName" />
                     <figcaption>
                         <h3>@project.ProjectName</h3> 
                         <h4>@project.BuildingName</h4> 
-                        @* <p>@project.Description</p>  *@
-                        @* <p>@project.Weight <small>tons</small></p>  *@
                     </figcaption>
                 </a>
             </figure>

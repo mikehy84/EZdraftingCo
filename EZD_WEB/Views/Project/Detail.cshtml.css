@@ -8,24 +8,83 @@
 figure {
     display: grid;
     gap: 1rem;
+    width: 80%;
     margin-top: 7rem;
-    grid-template-areas:
-        "sb0 sb1 sb2"
-        "sb3 sb4 sb5"
-        "sb6 sb7 sb8";
-    grid-template-columns: repeat(3, 25rem);
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    max-width: calc(3 * 25rem + 2rem); /* 3 columns + 2 gaps of 1rem each */
 }
 
 figure img{
     width:25rem;
     height:25rem;
+    margin:auto;
 }
 
 figcaption {
-    grid-area: sb0;
-    padding: 0.5rem;
+    /*    grid-area: sb0;*/
+    /*grid-column: 1 / -1;*/ /* span full row */
+    order: -1; /* force it to appear first */
+    width: 25rem;
+    height: 100%;
+    margin: auto;
+    padding: 1rem;
     text-shadow: 1px 1px 3px var(--Gray-9);
     color: var(--Gray-0);
     background-color: var(--Gray-7);
+}
+
+@media (max-width: 1025px) {
+    figure {
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        max-width: calc(3 * 20rem + 2rem);
+    }
+
+    figure img{
+        width:20rem;
+        height:20rem;
+        margin:auto;
+    }
+
+    figcaption {
+        width: 20rem;
+    }
+}
+
+
+@media (max-width:845px) {
+    figure {
+        width: 100%;
+        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+        max-width: 30rem;
+    }
+
+        figure img {
+            width: 30rem;
+            height: 30rem;
+            margin: auto;
+        }
+
+    figcaption {
+        width: 30rem;
+    }
+}
+
+
+@media (max-width:440px) {
+    figure {
+        width: 100%;
+        grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+        max-width: 22rem;
+    }
+
+        figure img {
+            width: 22rem;
+            height: 22rem;
+            margin: auto;
+        }
+
+    figcaption {
+        width: 22rem;
+    }
 }
 
