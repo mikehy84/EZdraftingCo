@@ -29,6 +29,7 @@ namespace EZD_WEB.Controllers
         }
 
         [HttpGet]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Create()
         {
             return View();
