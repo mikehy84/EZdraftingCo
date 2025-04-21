@@ -56,27 +56,38 @@ namespace EZD_BLL.ProjectDir
 
 
 
-
-        public async Task<ApiResponse> GetByIdAsync(int id)
+        public async Task<ProjectDto> GetByIdAsync(int id)
         {
-            if (IsIdValid(id))
-                return _responseType.BadRequest(ValidationMessage.Invalid_Input);
-
-            try
+            var project = await _unitOfWork.Projects.GetAsync(p => p.Id.Equals(id));
+            if (project == null)
             {
-                Project project = await _unitOfWork.Projects.GetAsync(p => p.Id == id);
-
-                if (IsNull(project))
-                    return _responseType.NotFound(ValidationMessage.Entity_Not_Found);
-
-                var projectDto = _mapper.Map<ProjectDto>(project);
-                return _responseType.Ok(projectDto);
+                return new ProjectDto();
             }
-            catch (Exception ex)
-            {
-                return _responseType.HandleException(ex);
-            }
+
+            return _mapper.Map<ProjectDto>(project);
         }
+
+
+        //public async Task<ApiResponse> GetByIdAsync(int id)
+        //{
+        //    if (IsIdValid(id))
+        //        return _responseType.BadRequest(ValidationMessage.Invalid_Input);
+
+        //    try
+        //    {
+        //        Project project = await _unitOfWork.Projects.GetAsync(p => p.Id == id);
+
+        //        if (IsNull(project))
+        //            return _responseType.NotFound(ValidationMessage.Entity_Not_Found);
+
+        //        var projectDto = _mapper.Map<ProjectDto>(project);
+        //        return _responseType.Ok(projectDto);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return _responseType.HandleException(ex);
+        //    }
+        //}
 
 
         public async Task<ApiResponse> CreateAsync(ProjectDto projectDto)

@@ -1,0 +1,31 @@
+﻿.project__detail {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:auto;
+}
+
+figure {
+    display: grid;
+    gap: 1rem;
+    margin-top: 7rem;
+    grid-template-areas:
+        "sb0 sb1 sb2"
+        "sb3 sb4 sb5"
+        "sb6 sb7 sb8";
+    grid-template-columns: repeat(3, 25rem);
+}
+
+figure img{
+    width:25rem;
+    height:25rem;
+}
+
+figcaption {
+    grid-area: sb0;
+    padding: 0.5rem;
+    text-shadow: 1px 1px 3px var(--Gray-9);
+    color: var(--Gray-0);
+    background-color: var(--Gray-7);
+}
+

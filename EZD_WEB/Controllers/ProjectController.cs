@@ -98,5 +98,13 @@ namespace EZD_WEB.Controllers
 
             return View(projectsDto);
         }
+
+
+        public async Task<IActionResult> Detail(int id)
+        {
+            var projectsDto = await _projectService.GetByIdAsync(id);
+
+            return View(projectsDto);
+        }
     }
 }

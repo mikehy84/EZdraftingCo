@@ -11,11 +11,11 @@
     --Blue-7: #1c7ed6;
     --Blue-8: #004783ff; /* Admin portfolio menu bar */
 
-    --Blue-81: #1971c2; /* btnPrimary */
-    --Blue-91: #1864ab;
     --Blue-9: #105188; /*logo Blue*/
     --Blue-10: #0a2f45; /*Main Blue*/
     --Blue-11: rgba(65, 93, 129, 0.897);
+    --Blue-12: #1971c2; /* btnPrimary */
+    --Blue-13: #1864ab;
     /*    -----------------------------------------------*/
     --Gray-0: #f8f9fa;
     --Gray-1: #f1f3f5;
@@ -38,7 +38,7 @@
     --Green-6: #40c057;
     --Green-7: #37b24d; /* btnSuccess */
     --Green-8: #2f9e44;
-    --Green-81: #2b8a3e;
+    --Green-9: #275c32;
     /* main theme, DO NOT CHANGE IT*/
 
     --Green-10: #0c3236;
@@ -139,6 +139,9 @@ html {
   }
 }
 
+a {
+    text-decoration: none;
+}
 
 
 html {

@@ -1,0 +1,18 @@
+﻿@model ProjectDto
+
+<div class="project__detail">
+    <figure>
+        @foreach (var photo in Model.ImageUrls)
+        {
+                    <img loading="lazy"
+                        src="@photo"
+                        alt="Photo" />
+        }
+        <figcaption>
+            <h3>@Model.ProjectName</h3>
+            <h4>@Model.BuildingName</h4>
+            <p>@Model.Description</p>
+            <p>@Model.Weight <small>tons</small></p>
+        </figcaption>
+    </figure>
+</div>
