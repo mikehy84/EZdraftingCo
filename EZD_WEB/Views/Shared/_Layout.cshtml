@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/EZD_WEB.styles.css" asp-append-version="true" />
 
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
@@ -32,6 +33,9 @@
         @RenderBody()
     </main>
 
+    <partial name="_Spinner" />
+
+
     <footer>
         <partial name="Footer/_Footer" />
     </footer>
@@ -40,5 +44,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/js/spinner.js"></script>
+
 </body>
 </html>

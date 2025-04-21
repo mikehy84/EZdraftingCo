@@ -1,3 +1,7 @@
+@import 'spinner.css';
+
+
+
 :root {
     --Blue-0: #e7f5ff;
     --Blue-1: #d0ebff;
@@ -301,4 +305,10 @@ body {
     background-color: var(--Blue-10);
     cursor: pointer;
 }
+
+
+
+
+
+
 
