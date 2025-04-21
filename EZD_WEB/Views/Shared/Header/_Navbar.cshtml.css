@@ -29,6 +29,11 @@
     color: #fff;
 }
 
+.navbar__top a:link:hover {
+    text-decoration: none;
+    color: var(--LinkInBlack);
+}
+
 .navbar__bottom {
     position: fixed;
     top: 0;

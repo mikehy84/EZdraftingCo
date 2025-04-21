@@ -66,6 +66,13 @@
     text-decoration: none;
 }
 
+.footer__contact-info a:link:hover {
+    color: var(--Blue-91);
+}
+
+
+
+
 .footer__ribbon {
     display: flex;
     align-items: center;
