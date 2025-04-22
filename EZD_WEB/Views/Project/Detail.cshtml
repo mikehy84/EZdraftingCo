@@ -1,12 +1,19 @@
 ﻿@model ProjectDto
 
 <div class="project__detail">
+    <div id="zoomed-layout">
+        <img class="zoomed-img"
+             loading="lazy"
+             src="#"
+             alt="Photo" />
+    </div>
     <figure>
         @foreach (var photo in Model.ImageUrls)
         {
-                    <img loading="lazy"
-                        src="@photo"
-                        alt="Photo" />
+            <img class="project-img"
+                loading="lazy"
+                src="@photo"
+                alt="Photo" />
         }
         <figcaption>
             <h3>@Model.ProjectName</h3>
@@ -16,3 +23,5 @@
         </figcaption>
     </figure>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/js/projectDetail.js"></script>

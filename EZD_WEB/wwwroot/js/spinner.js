@@ -13,13 +13,13 @@
     });
 
     // Optional: For AJAX
-    $(document).ajaxStart(function () {
-        $("#loader").show();
-    }).ajaxStop(function () {
-        $("#loader").hide();
-    });
+    //$(document).ajaxStart(function () {
+    //    $("#loader").show();
+    //}).ajaxStop(function () {
+    //    $("#loader").hide();
+    //});
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("spinner").style.display = "none";
-});
+//document.addEventListener("DOMContentLoaded", function () {
+//    document.getElementById("spinner").style.display = "none";
+//});

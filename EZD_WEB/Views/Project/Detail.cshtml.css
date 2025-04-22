@@ -3,22 +3,28 @@
     align-items:center;
     justify-content:center;
     margin:auto;
+    width:100%;
 }
 
 figure {
+    position: relative;
     display: grid;
-    gap: 1rem;
+    gap: 2rem;
     width: 80%;
     margin-top: 7rem;
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-    max-width: calc(3 * 25rem + 2rem); /* 3 columns + 2 gaps of 1rem each */
+    max-width: calc(3 * 25rem + 4rem); /* 3 columns + 2 gaps of 1rem each */
 }
 
-figure img{
-    width:25rem;
-    height:25rem;
-    margin:auto;
+figure img {
+    width: 25rem;
+    height: 25rem;
+    margin: auto;
+    border: 0.75rem solid var(--Gray-5);
+    background-color: var(--Gray-5);
+    cursor: zoom-in;
 }
+
 
 figcaption {
     /*    grid-area: sb0;*/
@@ -32,6 +38,48 @@ figcaption {
     color: var(--Gray-0);
     background-color: var(--Gray-7);
 }
+
+
+#zoomed-layout {
+    position: absolute;
+    display: none;
+
+    margin: auto;
+    margin-top: 2rem;
+    width: fit-content;
+    height: fit-content;
+    font-size: 22px;
+    border: 0.25rem solid var(--Gray-5);
+    background-color: var(--Blue-10);
+    box-shadow: 0px 0px 20px rgb(50, 118, 163);
+    transition: all 0.3s ease-in-out;
+    z-index: 2;
+}
+
+.zoomed-img {
+    position: relative;
+    width: 35rem;
+    height: 35rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 1025px) {
     figure {
