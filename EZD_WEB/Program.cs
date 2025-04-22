@@ -9,6 +9,8 @@ using Azure.Storage.Blobs;
 using EZD_BLL.Services;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Identity;
+using EZD_BLL;
+using EZD_BLL.AppUserDtoDir;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -53,6 +55,7 @@ builder.Services.AddAutoMapper(typeof(MappingConfig));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddScoped<IService<ProjectDto>, ProjectService>();
+builder.Services.AddScoped<IService<AppUserDto>, AppUserService>();
 
 var app = builder.Build();
 

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using EZD_BLL.AppUserDtoDir;
 using EZD_BLL.ProjectDir;
 using EZD_DAL.Models;
 
@@ -12,6 +13,9 @@ namespace EZD_BLL.Mapper
             CreateMap<Project, ProjectDto>().ReverseMap();
             CreateMap<CreateProjectDto, ProjectDto>()
             .ForMember(dest => dest.ImageUrls, opt => opt.Ignore()); // We'll handle this manually
+
+
+            CreateMap<AppUser, AppUserDto>().ReverseMap();
         }
     }
 }

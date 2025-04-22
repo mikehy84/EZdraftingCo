@@ -1,5 +1,9 @@
 ﻿@model List<ProjectDto>
 
+@{
+    ViewData["Title"] = "Projects";
+}
+
 <div class="projects" id="projects">
     <h1 class="projects__banner">Our Projects</h1>
     @if (User.IsInRole("Admin"))

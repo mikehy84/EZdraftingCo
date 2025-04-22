@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.JsonPatch;
 
 
-namespace EZD_BLL.ProjectDir
+namespace EZD_BLL
 {
     public interface IService<T> where T : class
     {

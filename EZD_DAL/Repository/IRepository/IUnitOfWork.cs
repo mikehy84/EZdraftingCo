@@ -10,6 +10,7 @@ namespace EZD_DAL.Repository.IRepository
     public interface IUnitOfWork
     {
         IProject Projects { get; }
+        IAppUser AppUsers { get; }
 
         Task Save();
     }

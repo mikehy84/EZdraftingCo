@@ -1,0 +1,126 @@
+﻿.projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: fit-content;
+    padding: 4rem 2rem;
+    justify-content: space-around;
+    background-color: var(--Blue-10);
+    background: url(/media/images/home/Project_sec1_background.webp);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.projects__banner {
+    margin: 4rem;
+    color: var(--Gray-0);
+    font-family: "Russo One", Helvetica, Arial, sans-serif;
+    font-size: 4rem;
+    font-weight: 400;
+    font-style: normal;
+    text-shadow: 3px 3px 6px var(--Gray-7);
+}
+
+.projects__subsec1 {
+    display: grid;
+    gap: 2rem;
+    grid-row-gap: 6rem;
+    grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+    width: 100%;
+    margin-top: 2rem;
+}
+
+
+
+figure {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 27rem;
+    min-height: 32rem;
+    margin: auto;
+    color: var(--Gray-8);
+    /*    border-radius: 1rem;*/
+    background-color: var(--Gray-0);
+    box-shadow: 0px 0px 20px var(--Gray-9);
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+}
+
+    figure img {
+        width: 27rem;
+        height: 27rem;
+    }
+
+figcaption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0.5rem;
+    font-family: "Russo One", Helvetica, Arial, sans-serif;
+    text-shadow: 3px 3px 6px var(--Gray-9);
+    color: var(--Gray-0);
+    background-color: var(--Gray-7);
+    box-shadow: 0px 0px 20px var(--Blue-11);
+}
+
+
+figure:hover figcaption {
+    background-color: var(--Blue-11);
+}
+
+figcaption h4 {
+    margin: 0;
+}
+
+
+
+
+
+
+figure:hover {
+    transform: translate(0px, -20px);
+    cursor: pointer;
+}
+
+
+
+
+@media (max-width: 990px) {
+}
+
+@media (max-width: 600px) {
+    .projects {
+        text-align: center;
+    }
+
+    .projects__banner {
+        margin-top: 6rem;
+        margin-bottom: 2rem;
+        font-size: 3rem;
+    }
+}
+
+
+@media (max-width: 450px) {
+    .projects {
+        padding: 1rem 0.5rem;
+    }
+
+    .projects__subsec1 {
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    }
+
+    figure,
+    figure img {
+        width: 25rem;
+        height: 25rem;
+    }
+
+    figure {
+        min-height: 30rem;
+    }
+}

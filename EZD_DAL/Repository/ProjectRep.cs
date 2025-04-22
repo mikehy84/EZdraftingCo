@@ -32,7 +32,7 @@ namespace EZD_DAL.Repository
             if (project == null)
                 throw new ArgumentNullException(nameof(project));
 
-            return await _db.Projects.AnyAsync(p => p.BuildingName == project.BuildingName);
+            return await _db.Projects.AnyAsync(p => p.BuildingName.Equals(project.BuildingName));
         }
 
     }

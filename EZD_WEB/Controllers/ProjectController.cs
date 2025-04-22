@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using EZD_BLL;
 using EZD_BLL.ProjectDir;
 using EZD_BLL.Services;
 using EZD_DAL.Repository.IRepository;
