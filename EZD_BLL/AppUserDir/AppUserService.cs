@@ -14,13 +14,11 @@ namespace EZD_BLL.ProjectDir
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        protected ResponseType _responseType;
 
         public AppUserService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _responseType = new ResponseType();
         }
 
         

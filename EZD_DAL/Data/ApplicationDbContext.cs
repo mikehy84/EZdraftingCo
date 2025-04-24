@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EZD_DAL.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
+    public class ApplicationDbContext : IdentityDbContext<AppUser>
     {
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
@@ -16,16 +16,6 @@ namespace EZD_DAL.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            //modelBuilder.Entity<Project>().HasData(
-            //    new Project { 
-            //        Id = 1,
-            //        ProjectName="Parand Project",
-            //        BuildingName="AUX",
-            //        Description="It was a great job",
-            //        Weight= 2500
-            //    }
-            //);
         }
     }
 }

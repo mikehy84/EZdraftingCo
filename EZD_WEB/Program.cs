@@ -11,6 +11,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Identity;
 using EZD_BLL;
 using EZD_BLL.AppUserDtoDir;
+using EZD_DAL.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +22,7 @@ var conStr = builder.Configuration.GetConnectionString("EZdraftingAzure");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlServer(conStr));
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+builder.Services.AddIdentity<AppUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 //builder.Services.AddDefaultIdentity<IdentityUser>(options =>
