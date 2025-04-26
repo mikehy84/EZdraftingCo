@@ -1,0 +1,27 @@
+﻿
+@model List<AppUserDto>
+
+@{
+    ViewData["Title"] = "Update User";
+}
+
+<h1 style="color:white">About Us</h1>
+
+
+
+
+
+<div class="projects" id="projects">
+
+    <div class="projects__subsec1">
+        @foreach (var appUser in Model)
+        {
+            <figure>
+                    <figcaption>
+                        <h3>@appUser.Name</h3>
+                        <h4>@appUser.Email</h4>
+                    </figcaption>
+            </figure>
+        }
+    </div>
+</div>

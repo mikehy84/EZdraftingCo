@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using EZD_BLL.AppUserDir;
 using EZD_BLL.AppUserDtoDir;
 using EZD_BLL.Helper;
 using EZD_DAL.Models;
@@ -8,9 +9,9 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.JsonPatch;
 
 
-namespace EZD_BLL.ProjectDir
+namespace EZD_BLL.AppUsertDir
 {
-    public class AppUserService : IService<AppUserDto>
+    public class AppUserService : IAppUserService<AppUserDto>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -40,7 +41,7 @@ namespace EZD_BLL.ProjectDir
 
 
 
-        public async Task<AppUserDto> GetByIdAsync(int id)
+        public async Task<AppUserDto> GetByIdAsync(string id)
         {
             var appUser = await _unitOfWork.AppUsers.GetAsync(p => p.Id.Equals(id));
             if (appUser == null)
@@ -53,24 +54,36 @@ namespace EZD_BLL.ProjectDir
 
 
 
-        public Task<ApiResponse> CreateAsync(AppUserDto model)
+
+        public Task<ApiResponse> DeleteAsync(string id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<ApiResponse> DeleteAsync(int id)
+
+
+        public async Task<AppUserDto> UpdateAsync(string id, AppUserDto appUserDto)
         {
-            throw new NotImplementedException();
+            if (String.IsNullOrEmpty(id))
+                throw new ArgumentException("Invalid user ID.", nameof(id));
+
+            if (appUserDto == null)
+                throw new ArgumentNullException(nameof(appUserDto));
+
+            var appUserFromDb = await _unitOfWork.AppUsers.GetAsync(c => c.Id.Equals(id), tracked: true);
+
+            if (appUserFromDb == null)
+                throw new KeyNotFoundException($"User with ID {id} not found.");
+
+            _mapper.Map(appUserDto, appUserFromDb);
+
+            return _mapper.Map<AppUserDto>(appUserFromDb);
         }
 
 
 
-        public Task<ApiResponse> UpdateAsync(int id, AppUserDto model)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task<ApiResponse> UpdatePartialAsync(int id, JsonPatchDocument<AppUserDto> model)
+        public Task<ApiResponse> UpdatePartialAsync(string id, JsonPatchDocument<AppUserDto> model)
         {
             throw new NotImplementedException();
         }
@@ -84,6 +97,11 @@ namespace EZD_BLL.ProjectDir
         private bool IsNull<T>(T entity)
         {
             return entity == null;
+        }
+
+        public Task<ApiResponse> CreateAsync(AppUserDto model)
+        {
+            throw new NotImplementedException();
         }
     }
 }

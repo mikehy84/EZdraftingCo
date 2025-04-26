@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace EZD_WEB.Controllers
+namespace EZD_WEB.Areas.Admin.Controllers
 {
-    public class AdminController : Controller
+    [Area("Admin")]
+    public class RFIController : Controller
     {
         public IActionResult Index()
         {

@@ -9,9 +9,10 @@ using Azure.Storage.Blobs;
 using EZD_BLL.Services;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Identity;
-using EZD_BLL;
-using EZD_BLL.AppUserDtoDir;
 using EZD_DAL.Models;
+using EZD_BLL.AppUserDtoDir;
+using EZD_BLL.AppUsertDir;
+using EZD_BLL.AppUserDir;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -55,8 +56,8 @@ builder.Services.AddAutoMapper(typeof(MappingConfig));
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-builder.Services.AddScoped<IService<ProjectDto>, ProjectService>();
-builder.Services.AddScoped<IService<AppUserDto>, AppUserService>();
+builder.Services.AddScoped<IProjectService<ProjectDto>, ProjectService>();
+builder.Services.AddScoped<IAppUserService<AppUserDto>, AppUserService>();
 
 var app = builder.Build();
 
@@ -92,6 +93,23 @@ app.Use(async (context, next) =>
 app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{area=Client}/{controller=Home}/{action=Index}/{id?}");
+
+
+// Replace the app.UseEndpoints block with top-level route registrations as follows:
+
+// Area-based route (Admin, Identity, etc.)
+//app.MapControllerRoute(
+//   name: "areaRoute",
+//   pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+//// Default route for non-areas
+//app.MapControllerRoute(
+//   name: "defaultRoute",
+//   pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
+
+
 
 app.Run();

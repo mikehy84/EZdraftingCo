@@ -4,8 +4,8 @@ namespace EZD_DAL.Repository.IRepository
 {
     public interface IAppUser : IRepository<AppUser>
     {
-        Task<AppUser> UpdateAsync(AppUser employee);
+        Task<AppUser> UpdateAsync(AppUser appUser);
 
-        Task<bool> ContainsAsync(AppUser employee);
+        Task<bool> ContainsAsync(AppUser appUser);
     }
 }

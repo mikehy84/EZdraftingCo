@@ -1,0 +1,20 @@
+﻿@model AppUserDto
+
+
+
+<div class="projects" id="projects">
+    @* <h1 class="projects__banner">Our Projects</h1> *@
+
+
+    <div class="projects__subsec1">
+        <figure>
+            @* <img loading="lazy" *@
+            @*      src="@(project.ImageUrls != null && project.ImageUrls.Length > 0 ? project.ImageUrls[0] : "/media/images/pump_building.webp")" *@
+            @*      alt="@project.ProjectName" /> *@
+            <figcaption>
+                <h3>@Model.Name</h3>
+                <h4>@Model.Email</h4>
+            </figcaption>
+        </figure>
+    </div>
+</div>

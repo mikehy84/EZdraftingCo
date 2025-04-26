@@ -2,8 +2,9 @@ using System.Diagnostics;
 using EZD_DAL.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EZD_WEB.Controllers
+namespace EZD_WEB.Areas.Client.Controllers
 {
+    [Area("Client")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

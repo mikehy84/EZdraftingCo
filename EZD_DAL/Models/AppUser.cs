@@ -29,7 +29,9 @@ namespace EZD_DAL.Models
         public string? JobLocation { get; set; } = string.Empty;
         public string? Licensure { get; set; } = string.Empty;
         public string? QuestionFirst { get; set; } = string.Empty;
+        public string? AnswerFirst { get; set; } = string.Empty;
         public string? QuestionSecond { get; set; } = string.Empty;
+        public string? AnswerSecond { get; set; } = string.Empty;
         public string? Description { get; set; } = string.Empty;
         public string? StreetAddress { get; set; } = string.Empty;
         public string? City { get; set; } = string.Empty;

@@ -22,11 +22,11 @@
 
         <!-- Mobile Menu -->
         <div class="navbar__burger-list" id="navbar__burger-list">
-            <a class="navbar__burger-link" asp-controller="Home" asp-action="Index">Home</a>
-            <a class="navbar__burger-link" asp-controller="Home" asp-action="Index">Services</a>
-            <a class="navbar__burger-link" asp-controller="Project" asp-action="Index">Projects</a>
-            <a class="navbar__burger-link" asp-controller="Home" asp-action="Index">About us</a>
-            <a class="navbar__burger-link" asp-controller="Home" asp-action="Index">Contact us</a>
+            <a class="navbar__burger-link" asp-area="Client" asp-controller="Home" asp-action="Index">Home</a>
+            <a class="navbar__burger-link" asp-area="Client" asp-controller="Home" asp-action="Index">Services</a>
+            <a class="navbar__burger-link" asp-area="Client" asp-controller="Project" asp-action="Index">Projects</a>
+            <a class="navbar__burger-link" asp-area="Client" asp-controller="Home" asp-action="Index">About us</a>
+            <a class="navbar__burger-link" asp-area="Client" asp-controller="Home" asp-action="Index">Contact us</a>
             <img class="navbar__burger-logo" loading="lazy" src="/media/logo/ez-code_B2.webp" alt="EZDRAFTING_Logo" />
         </div>
 
@@ -36,16 +36,16 @@
                 @* <a class="navbar__menu-link" id="services" asp-controller="Services" asp-action="Index">Services</a> *@
                 @* <a class="navbar__menu-link" asp-controller="About" asp-action="Index">About us</a> *@
                 @* <a class="navbar__menu-link" asp-controller="Contact" asp-action="Index">Contact us</a> *@
-                <a class="navbar__menu-link" id="home" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="navbar__menu-link" asp-area="Client" asp-controller="Home" asp-action="Index">Home</a>
                 <a class="navbar__menu-link" id="services">Services</a>
-                <a class="navbar__menu-link" id="projects" asp-controller="Project" asp-action="Index">Projects</a>
+                <a class="navbar__menu-link" asp-area="Client" asp-controller="Project" asp-action="Index">Projects</a>
                 
                 @if(User.IsInRole("Admin"))
                 {
-                    <a class="navbar__menu-link" id="admin" asp-controller="Admin" asp-action="Index">Admin</a>
+                    <a class="navbar__menu-link" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Admin</a>
                 }
 
-                <a class="navbar__menu-link" id="about" asp-controller="AboutUs" asp-action="Index">About us</a>
+                <a class="navbar__menu-link" asp-area="Client" asp-controller="AboutUs" asp-action="Index">About us</a>
                 <a class="navbar__menu-link" id="contact">Contact us</a>
                 @* <partial class="navbar__menu-link" name="_LoginPartial" /> *@
             </div>

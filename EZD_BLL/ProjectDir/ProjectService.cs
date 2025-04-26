@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.JsonPatch;
 
 namespace EZD_BLL.ProjectDir
 {
-    public class ProjectService : IService<ProjectDto>
+    public class ProjectService : IProjectService<ProjectDto>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -137,27 +137,27 @@ namespace EZD_BLL.ProjectDir
         }
 
 
-        public async Task<ApiResponse> UpdateAsync(int id, ProjectDto projectDto)
-        {
-            if (IsNull(projectDto) || IsIdValid(id))
-                return _responseType.BadRequest(ValidationMessage.Invalid_Input);
+        //public async Task<ApiResponse> UpdateAsync(int id, ProjectDto projectDto)
+        //{
+        //    if (IsNull(projectDto) || IsIdValid(id))
+        //        return _responseType.BadRequest(ValidationMessage.Invalid_Input);
 
-            try
-            {
-                var projectFromDb = await _unitOfWork.Projects.GetAsync(c => c.Id == id, tracked: true);
+        //    try
+        //    {
+        //        var projectFromDb = await _unitOfWork.Projects.GetAsync(c => c.Id == id, tracked: true);
 
-                if (IsNull(projectFromDb))
-                    return _responseType.NotFound(ValidationMessage.Entity_Not_Found);
+        //        if (IsNull(projectFromDb))
+        //            return _responseType.NotFound(ValidationMessage.Entity_Not_Found);
 
-                _mapper.Map(projectDto, projectFromDb);
-                await _unitOfWork.Projects.UpdateAsync(projectFromDb);
-                return _responseType.Ok(ValidationMessage.Entity_Updated_Successfully);
-            }
-            catch (Exception ex)
-            {
-                return _responseType.HandleException(ex);
-            }
-        }
+        //        _mapper.Map(projectDto, projectFromDb);
+        //        await _unitOfWork.Projects.UpdateAsync(projectFromDb);
+        //        return _responseType.Ok(ValidationMessage.Entity_Updated_Successfully);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return _responseType.HandleException(ex);
+        //    }
+        //}
 
 
         public async Task<ApiResponse> UpdatePartialAsync(int id, JsonPatchDocument<ProjectDto> patchDto)
@@ -196,6 +196,11 @@ namespace EZD_BLL.ProjectDir
         private bool IsNull<T>(T entity)
         {
             return entity == null;
+        }
+
+        public Task<ProjectDto> UpdateAsync(int id, ProjectDto model)
+        {
+            throw new NotImplementedException();
         }
     }
 }

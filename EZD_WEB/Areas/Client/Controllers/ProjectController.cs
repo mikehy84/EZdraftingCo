@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using EZD_BLL;
 using EZD_BLL.ProjectDir;
 using EZD_BLL.Services;
 using EZD_DAL.Repository.IRepository;
@@ -7,19 +6,21 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
-namespace EZD_WEB.Controllers
+namespace EZD_WEB.Areas.Client.Controllers
 {
+    [Area("Client")]
+    //[Route("Client/{controller}/{action}")]
     public class ProjectController : Controller
     {
 
-        private readonly IService<ProjectDto> _projectService;
+        private readonly IProjectService<ProjectDto> _projectService;
         private readonly IBlobService _blobService;
         private readonly IOptions<AzureStorageSettings> _storageSettings;
         private readonly IMapper _mapper;
 
         public ProjectController(
-            IService<ProjectDto> projectService, 
-            IBlobService blobService, 
+            IProjectService<ProjectDto> projectService,
+            IBlobService blobService,
             IOptions<AzureStorageSettings> storageSettings,
             IMapper mapper)
         {
@@ -35,6 +36,8 @@ namespace EZD_WEB.Controllers
         {
             return View();
         }
+
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -72,6 +75,9 @@ namespace EZD_WEB.Controllers
                 projectDto.ImageUrls = imageUrls.ToArray();
             }
 
+
+
+
             var response = await _projectService.CreateAsync(projectDto);
 
             if (!response.IsSuccess)
@@ -94,6 +100,9 @@ namespace EZD_WEB.Controllers
         //    return View(projects);
         //}
 
+
+
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             var projectsDto = await _projectService.GetAllAsync();
@@ -102,6 +111,7 @@ namespace EZD_WEB.Controllers
         }
 
 
+        [HttpGet]
         public async Task<IActionResult> Detail(int id)
         {
             var projectsDto = await _projectService.GetByIdAsync(id);
