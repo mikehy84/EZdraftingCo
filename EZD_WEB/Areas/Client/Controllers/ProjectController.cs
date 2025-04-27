@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
+using EZD_BLL.Helper;
 using EZD_BLL.ProjectDir;
+using EZD_BLL.ProjectDir.Dto;
 using EZD_BLL.Services;
-using EZD_DAL.Repository.IRepository;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
 namespace EZD_WEB.Areas.Client.Controllers
 {
-    [Area("Client")]
+    [Area(AreaNames.Client)]
     //[Route("Client/{controller}/{action}")]
     public class ProjectController : Controller
     {

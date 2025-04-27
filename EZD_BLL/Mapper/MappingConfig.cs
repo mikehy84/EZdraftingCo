@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using EZD_BLL.AppUserDtoDir;
-using EZD_BLL.ProjectDir;
+using EZD_BLL.AppUserDir.Dto;
+using EZD_BLL.ProjectDir.Dto;
 using EZD_DAL.Models;
 
 namespace EZD_BLL.Mapper

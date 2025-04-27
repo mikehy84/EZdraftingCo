@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EZD_BLL.Helper;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EZD_WEB.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area(AreaNames.Admin)]
     //[Route("Admin")]
     //[Route("Admin/{controller}/{action}")]
     public class DashboardController : Controller

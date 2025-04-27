@@ -1,4 +1,4 @@
-﻿.users__sidebar {
+﻿.dashboard__sidebar {
     position: fixed;
     top: 8rem;
     left: 0;
@@ -11,19 +11,19 @@
     z-index: 100;
 }
 
-.users__menu {
+.dashboard__sidebar__menu {
     display: flex;
     flex-direction: column;
     box-shadow: 3px 3px 8px var(--Gray-5);
 }
 
-.users__list {
+.dashboard__sidebar__list {
     display: flex;
     flex-direction: column;
-    align-content:center;
-    justify-content:center;
+    align-content: center;
+    justify-content: center;
     padding: 1rem 0;
-    background-color:#b5c166;
+    background-color: #b5c166;
 }
 
 /*.users__list a {

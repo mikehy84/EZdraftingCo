@@ -10,9 +10,10 @@ using EZD_BLL.Services;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Identity;
 using EZD_DAL.Models;
-using EZD_BLL.AppUserDtoDir;
 using EZD_BLL.AppUsertDir;
 using EZD_BLL.AppUserDir;
+using EZD_BLL.ProjectDir.Dto;
+using EZD_BLL.AppUserDir.Dto;
 
 var builder = WebApplication.CreateBuilder(args);
 

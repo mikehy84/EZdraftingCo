@@ -1,4 +1,4 @@
-﻿namespace EZD_BLL.ProjectDir
+﻿namespace EZD_BLL.ProjectDir.Dto
 {
     public class ProjectDto
     {

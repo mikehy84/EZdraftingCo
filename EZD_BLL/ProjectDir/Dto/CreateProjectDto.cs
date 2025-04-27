@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EZD_BLL.ProjectDir
+namespace EZD_BLL.ProjectDir.Dto
 {
     public class CreateProjectDto
     {

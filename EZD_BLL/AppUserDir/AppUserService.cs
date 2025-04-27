@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using EZD_BLL.AppUserDir;
-using EZD_BLL.AppUserDtoDir;
+using EZD_BLL.AppUserDir.Dto;
 using EZD_BLL.Helper;
 using EZD_DAL.Models;
 using EZD_DAL.Repository.IRepository;

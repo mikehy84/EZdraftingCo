@@ -1,4 +1,5 @@
 @import 'spinner.css';
+@import 'Dashboard.css';
 
 
 
@@ -290,21 +291,7 @@ body {
 }
 
 
-/*user sidebar*/
-.users__list a {
-    margin: 1px 0;
-    padding: 0.2rem 1rem;
-    text-decoration:none;
-    color: var(--Gray-9);
-    background-color: var(--Gray-0);
-    cursor: pointer;
-}
 
-.users__list a:hover {
-    color: var(--Gray-0);
-    background-color: var(--Blue-10);
-    cursor: pointer;
-}
 
 
 

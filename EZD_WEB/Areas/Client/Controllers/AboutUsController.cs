@@ -1,10 +1,11 @@
 ﻿using EZD_BLL.AppUserDir;
-using EZD_BLL.AppUserDtoDir;
+using EZD_BLL.AppUserDir.Dto;
+using EZD_BLL.Helper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EZD_WEB.Areas.Client.Controllers
 {
-    [Area("Client")]
+    [Area(AreaNames.Client)]
     public class AboutUsController : Controller
     {
         private readonly IAppUserService<AppUserDto> _AppUserService;

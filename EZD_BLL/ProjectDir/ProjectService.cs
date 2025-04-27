@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using EZD_BLL.Helper;
+using EZD_BLL.ProjectDir.Dto;
 using EZD_DAL.Models;
 using EZD_DAL.Repository.IRepository;
 using Microsoft.AspNetCore.Http;

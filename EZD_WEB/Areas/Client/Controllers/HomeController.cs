@@ -1,10 +1,11 @@
 using System.Diagnostics;
+using EZD_BLL.Helper;
 using EZD_DAL.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EZD_WEB.Areas.Client.Controllers
 {
-    [Area("Client")]
+    [Area(AreaNames.Client)]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

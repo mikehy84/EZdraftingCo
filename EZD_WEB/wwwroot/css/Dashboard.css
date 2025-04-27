@@ -1,0 +1,81 @@
+﻿.Dashboard__main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content:flex-start;
+    height: 100vh;
+    max-height: 95vh;
+    margin-top: 5rem;
+    padding-left: 14rem;
+    color: var(--Gray-0);
+    background-color: transparent;
+    background-color: var(--Gray-2);
+    font-family: "Russo One", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    /*    background: url(/media/images/home/home_sec1_background.webp);*/
+    /*    background-attachment: fixed;*/
+    /*    background-size: cover;*/
+    /*    background-position: right;*/
+}
+
+.Dashboard__table {
+    width: 70%;
+    margin-top: 5rem;
+    color: var(--Gray-7);
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.Dashboard__table tr {
+    background-color: var(--Gray-3);
+}
+
+.Dashboard__table thead > tr {
+    background-color: var(--Blue-11);
+    color: var(--Gray-2);
+}
+
+.Dashboard__table thead > tr:hover {
+    background-color: var(--Blue-11);
+    color: var(--Gray-1);
+    cursor:default;
+}
+
+.Dashboard__table tr:nth-child(even) {
+    background-color: var(--Gray-4);
+}
+
+
+
+.Dashboard__table tr {
+    border-bottom: 1px solid var(--Gray-5);
+}
+
+.Dashboard__table tr:hover {
+    cursor: pointer;
+    background: var(--Gray-1);
+}
+
+.Dashboard__table td, th {
+    padding: 6px 12px;
+}
+
+
+
+
+/*dashboard__sidebar*/
+.dashboard__sidebar__list a {
+    margin: 1px 0;
+    padding: 0.2rem 1rem;
+    text-decoration: none;
+    color: var(--Gray-9);
+    background-color: var(--Gray-0);
+    cursor: pointer;
+}
+
+.dashboard__sidebar__list a:hover {
+    color: var(--Gray-0);
+    background-color: var(--Blue-10);
+    cursor: pointer;
+}
