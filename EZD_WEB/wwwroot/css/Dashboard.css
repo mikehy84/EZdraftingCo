@@ -22,9 +22,10 @@
 
 .Dashboard__table {
     width: 70%;
-    margin-top: 5rem;
+    margin-top: 3rem;
     color: var(--Gray-7);
     font-family: Helvetica, Arial, sans-serif;
+    box-shadow: 3px 3px 8px var(--Gray-5);
 }
 
 .Dashboard__table tr {
@@ -43,13 +44,13 @@
 }
 
 .Dashboard__table tr:nth-child(even) {
-    background-color: var(--Gray-4);
+    background-color: var(--Gray-3);
 }
 
 
 
 .Dashboard__table tr {
-    border-bottom: 1px solid var(--Gray-5);
+    border-bottom: 1px solid var(--Gray-4);
 }
 
 .Dashboard__table tr:hover {
@@ -78,4 +79,10 @@
     color: var(--Gray-0);
     background-color: var(--Blue-10);
     cursor: pointer;
+}
+
+
+a:link {
+    text-decoration: none;
+    color: var(--Gray-7);
 }

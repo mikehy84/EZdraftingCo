@@ -16,6 +16,7 @@ namespace EZD_BLL.Mapper
 
 
             CreateMap<AppUser, AppUserDto>().ReverseMap();
+            CreateMap<AppUser, AppUserUpdateDto>().ReverseMap();
         }
     }
 }

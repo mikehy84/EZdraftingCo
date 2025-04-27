@@ -13,12 +13,23 @@ namespace EZD_WEB.Areas.Admin.Controllers
         {
             _AppUserService = appUserService;
         }
-        
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
             return View(await _AppUserService.GetAllAsync());
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Update(string id)
+        {
+            return View(await _AppUserService.GetByIdAsync(id));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(string id, AppUserUpdateDto appUserUpdateDto)
+        {
+            return View(await _AppUserService.UpdateAsync(id, appUserUpdateDto));
         }
     }
 }

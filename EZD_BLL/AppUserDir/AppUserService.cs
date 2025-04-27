@@ -7,6 +7,7 @@ using EZD_DAL.Repository.IRepository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc;
 
 
 namespace EZD_BLL.AppUsertDir
@@ -62,23 +63,28 @@ namespace EZD_BLL.AppUsertDir
 
 
 
-        public async Task<AppUserDto> UpdateAsync(string id, AppUserDto appUserDto)
+        public async Task<AppUserUpdateDto> UpdateAsync(string id, AppUserUpdateDto appUserUpdateDto)
         {
-            if (String.IsNullOrEmpty(id))
+            if (string.IsNullOrEmpty(id))
                 throw new ArgumentException("Invalid user ID.", nameof(id));
 
-            if (appUserDto == null)
-                throw new ArgumentNullException(nameof(appUserDto));
+            if (appUserUpdateDto == null)
+                throw new ArgumentNullException(nameof(appUserUpdateDto));
 
             var appUserFromDb = await _unitOfWork.AppUsers.GetAsync(c => c.Id.Equals(id), tracked: true);
 
             if (appUserFromDb == null)
                 throw new KeyNotFoundException($"User with ID {id} not found.");
 
-            _mapper.Map(appUserDto, appUserFromDb);
+            // Map updated fields into the existing entity
+            _mapper.Map(appUserUpdateDto, appUserFromDb);
 
-            return _mapper.Map<AppUserDto>(appUserFromDb);
+            await _unitOfWork.AppUsers.UpdateAsync(appUserFromDb);
+
+            // Return the updated DTO (if needed)
+            return _mapper.Map<AppUserUpdateDto>(appUserFromDb);
         }
+
 
 
 
