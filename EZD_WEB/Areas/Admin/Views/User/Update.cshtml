@@ -7,6 +7,15 @@
 
 <div class="Dashboard__main">
     <h1> Update user</h1>
-    <p>@Model.FirstName</p>
-    
+
+    <form asp-area="Admin" asp-controller="User" asp-action="Update" method="post">
+        @* <input type="hidden" name="id" value="@Model.Id" /> *@
+        <input type="hidden" asp-for="Id" />
+        <input type="text" asp-for="FirstName" />
+        <input type="text" asp-for="LastName" />
+        <input type="text" asp-for="PhoneNumber" />
+        <input type="text" asp-for="JobTitle" />
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
 </div>
