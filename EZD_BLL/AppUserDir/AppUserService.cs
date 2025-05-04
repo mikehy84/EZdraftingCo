@@ -63,13 +63,13 @@ namespace EZD_BLL.AppUsertDir
 
 
 
-        public async Task<AppUserUpdateDto> UpdateAsync(string id, AppUserUpdateDto appUserUpdateDto)
+        public async Task<AppUserDto> UpdateAsync(string id, AppUserDto appUserDto)
         {
             if (string.IsNullOrEmpty(id))
                 throw new ArgumentException("Invalid user ID.", nameof(id));
 
-            if (appUserUpdateDto == null)
-                throw new ArgumentNullException(nameof(appUserUpdateDto));
+            if (appUserDto == null)
+                throw new ArgumentNullException(nameof(appUserDto));
 
             var appUserFromDb = await _unitOfWork.AppUsers.GetAsync(c => c.Id.Equals(id), tracked: true);
 
@@ -77,12 +77,12 @@ namespace EZD_BLL.AppUsertDir
                 throw new KeyNotFoundException($"User with ID {id} not found.");
 
             // Map updated fields into the existing entity
-            _mapper.Map(appUserUpdateDto, appUserFromDb);
+            _mapper.Map(appUserDto, appUserFromDb);
 
             await _unitOfWork.AppUsers.UpdateAsync(appUserFromDb);
 
             // Return the updated DTO (if needed)
-            return _mapper.Map<AppUserUpdateDto>(appUserFromDb);
+            return _mapper.Map<AppUserDto>(appUserFromDb);
         }
 
 

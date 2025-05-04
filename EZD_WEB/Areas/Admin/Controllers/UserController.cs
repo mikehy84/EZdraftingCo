@@ -27,9 +27,9 @@ namespace EZD_WEB.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(string id, AppUserUpdateDto appUserUpdateDto)
+        public async Task<IActionResult> Update(string id, AppUserDto appUserDto)
         {
-            return View(await _AppUserService.UpdateAsync(id, appUserUpdateDto));
+            return View(await _AppUserService.UpdateAsync(id, appUserDto));
         }
     }
 }
