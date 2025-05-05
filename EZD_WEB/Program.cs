@@ -22,7 +22,13 @@ builder.Services.AddControllersWithViews();
 
 var conStr = builder.Configuration.GetConnectionString("EZdraftingAzure");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-options.UseSqlServer(conStr));
+    options.UseSqlServer(conStr, sqlOptions =>
+        sqlOptions.EnableRetryOnFailure(
+            maxRetryCount: 5,
+            maxRetryDelay: TimeSpan.FromSeconds(5),
+            errorNumbersToAdd: null
+        )
+    ));
 
 builder.Services.AddIdentity<AppUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
