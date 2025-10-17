@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EZD_WEB", "EZD_WEB\EZD_WEB.csproj", "{DE2AA61D-61D6-4934-A1BF-2254671DD16D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentation\Presentation.csproj", "{DE2AA61D-61D6-4934-A1BF-2254671DD16D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EZD_BLL", "EZD_BLL\EZD_BLL.csproj", "{2B7E1C2A-5376-4498-8507-41862B6F5CE6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{2B7E1C2A-5376-4498-8507-41862B6F5CE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EZD_DAL", "EZD_DAL\EZD_DAL.csproj", "{7FC731FB-1E75-4BB6-88F3-A91A4B2ED62B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{7FC731FB-1E75-4BB6-88F3-A91A4B2ED62B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{CE23405D-EC2C-4E05-B579-7F831F021E2A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{7FC731FB-1E75-4BB6-88F3-A91A4B2ED62B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FC731FB-1E75-4BB6-88F3-A91A4B2ED62B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FC731FB-1E75-4BB6-88F3-A91A4B2ED62B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE23405D-EC2C-4E05-B579-7F831F021E2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE23405D-EC2C-4E05-B579-7F831F021E2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE23405D-EC2C-4E05-B579-7F831F021E2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE23405D-EC2C-4E05-B579-7F831F021E2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
