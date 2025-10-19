@@ -20,21 +20,31 @@ namespace Infrastructure.Repository
             _db = db;
         }
 
-        public async Task<Project> UpdateAsync(Project project)
+        public Task<bool> ContainsAsync(Project project)
         {
-
-            _db.Projects.Update(project);
-            await SaveAsync();
-            return project;
+            throw new NotImplementedException();
         }
 
-        public async Task<bool> ContainsAsync(Project project)
+        public Task<Project> UpdateAsync(Project project)
         {
-            if (project == null)
-                throw new ArgumentNullException(nameof(project));
-
-            return await _db.Projects.AnyAsync(p => p.BuildingName.Equals(project.BuildingName));
+            throw new NotImplementedException();
         }
+
+        //public async Task<Project> UpdateAsync(Project project)
+        //{
+
+        //    _db.Projects.Update(project);
+        //    await SaveAsync();
+        //    return project;
+        //}
+
+        //public async Task<bool> ContainsAsync(Project project)
+        //{
+        //    if (project == null)
+        //        throw new ArgumentNullException(nameof(project));
+
+        //    return await _db.Projects.AnyAsync(p => p.BuildingName.Equals(project.BuildingName));
+        //}
 
     }
 }

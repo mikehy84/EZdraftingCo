@@ -1,0 +1,39 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Domain.Entities
+{
+    public class ClientProject
+    {
+        public int Id { get; set; }
+        public string ProjectNo { get; set; }
+        public string ProjectName { get; set; }
+        public int EstimatedHour { get; set; }
+        public decimal ProjectRate { get; set; }
+        public string Location { get; set; }
+        public DateTime AwardedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime UpdatedAt { get; set; }
+
+
+        // ClientProject is the child in the
+        // one-to-many relationship
+        public int PersonId { get; set; }
+        public Person Person { get; set; }
+
+
+        // ClientProject is the child in the
+        // one-to-many relationship
+        public int CompanyId { get; set; }
+        public Company Company { get; set; }
+
+
+        // ClientProject is the parent in the
+        // one-to-many relationship
+        public List<Project> Projects { get; set; }
+
+    }
+}

@@ -21,7 +21,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-var conStr = builder.Configuration.GetConnectionString("EZdraftingAzure");
+var conStr = builder.Configuration.GetConnectionString("EZdrafting");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(conStr, sqlOptions =>
         sqlOptions.EnableRetryOnFailure(
@@ -34,6 +34,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddIdentity<AppUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
+
+
 //builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 //    options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
 

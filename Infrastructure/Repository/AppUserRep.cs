@@ -20,21 +20,31 @@ namespace Infrastructure.Repository
             _db = db;
         }
 
-        public async Task<AppUser> UpdateAsync(AppUser appUser)
+        public Task<bool> ContainsAsync(AppUser appUser)
         {
-
-            _db.AppUsers.Update(appUser);
-            await SaveAsync();
-            return appUser;
+            throw new NotImplementedException();
         }
 
-        public async Task<bool> ContainsAsync(AppUser appUser)
+        public Task<AppUser> UpdateAsync(AppUser appUser)
         {
-            if (appUser == null)
-                throw new ArgumentNullException(nameof(appUser));
-
-            return await _db.AppUsers.AnyAsync(p => p.Email.Equals(appUser.Email));
+            throw new NotImplementedException();
         }
+
+        //public async Task<AppUser> UpdateAsync(AppUser appUser)
+        //{
+
+        //    _db.AppUsers.Update(appUser);
+        //    await SaveAsync();
+        //    return appUser;
+        //}
+
+        //public async Task<bool> ContainsAsync(AppUser appUser)
+        //{
+        //    if (appUser == null)
+        //        throw new ArgumentNullException(nameof(appUser));
+
+        //    return await _db.AppUsers.AnyAsync(p => p.Email.Equals(appUser.Email));
+        //}
 
     }
 }

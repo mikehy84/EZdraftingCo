@@ -6,11 +6,11 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
-namespace Presentation.Areas.Client.Controllers
+namespace Presentation.Areas.Manager.Controllers
 {
-    [Area(AreaNames.Client)]
+    [Area(AreaNames.Manager)]
     //[Route("Client/{controller}/{action}")]
-    public class ProjectDev : Controller
+    public class Project : Controller
     {
         private readonly IWebHostEnvironment _hostEnvironment;
         private readonly IProjectService<ProjectDto> _projectService;
@@ -18,7 +18,7 @@ namespace Presentation.Areas.Client.Controllers
         private readonly IOptions<AzureStorageSettings> _storageSettings;
         private readonly IMapper _mapper;
 
-        public ProjectDev(
+        public Project(
             IWebHostEnvironment hostEnvironment,
             IProjectService<ProjectDto> projectService,
             IBlobService blobService,
