@@ -28,5 +28,9 @@ namespace Domain.Entities
         // one-to-many relationship
         public int PersonId { get; set; }
         public Person Person { get; set; }
+
+
+        // Many-to-many relationship
+        public List<ProjectAreaMap> ProjectAreaMap { get; set; }
     }
 }
