@@ -41,11 +41,6 @@ namespace Domain.Entities
         public int CompletionPercentage { get; set; }
         public bool IsDone { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
-
-
-
-
-
-
+        public DateTime UpdatedAt { get; set; }
     }
 }
