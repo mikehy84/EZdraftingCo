@@ -37,5 +37,10 @@ namespace Domain.Entities
         // Person is the parent in the
         // one-to-many relationship
         public List<Project> Projects { get; set; } = new();
+
+
+        // Person is the parent in the
+        // one-to-many relationship
+        public List<TaskLog> TaskLogs { get; set; } = [];
     }
 }
