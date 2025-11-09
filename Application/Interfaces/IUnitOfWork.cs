@@ -9,7 +9,7 @@ namespace Application.Interfaces
     public interface IUnitOfWork
     {
         IProject Projects { get; }
-        IAppUser AppUsers { get; }
+        IUserAccount UserAccounts { get; }
 
         Task Save();
     }

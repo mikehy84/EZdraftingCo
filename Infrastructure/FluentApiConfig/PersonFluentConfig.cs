@@ -50,6 +50,7 @@ namespace Infrastructure.FluentApiConfig
             modelBuilder
                 .Navigation(x => x.Job);
 
+
             modelBuilder
                 .HasOne(x => x.Company)
                 .WithMany(x => x.Persons)
@@ -58,6 +59,16 @@ namespace Infrastructure.FluentApiConfig
 
             modelBuilder
                 .Navigation(x => x.Company);
+
+
+            modelBuilder
+                .HasOne(p => p.UserAccount)
+                .WithOne(u => u.Person)
+                .HasForeignKey<Person>(p => p.AccountId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+
+
         }
     }
 }

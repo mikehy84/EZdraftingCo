@@ -10,22 +10,22 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Repository
 {
-    public class AppUserRep : Repository<AppUser>, IAppUser
+    public class UserAccountRep : Repository<UserAccount>, IUserAccount
     {
         private readonly ApplicationDbContext _db;
 
-        public AppUserRep(ApplicationDbContext db) 
+        public UserAccountRep(ApplicationDbContext db) 
             : base(db)
         {
             _db = db;
         }
 
-        public Task<bool> ContainsAsync(AppUser appUser)
+        public Task<bool> ContainsAsync(UserAccount userAccount)
         {
             throw new NotImplementedException();
         }
 
-        public Task<AppUser> UpdateAsync(AppUser appUser)
+        public Task<UserAccount> UpdateAsync(UserAccount userAccount)
         {
             throw new NotImplementedException();
         }

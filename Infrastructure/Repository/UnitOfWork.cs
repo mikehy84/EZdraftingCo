@@ -14,13 +14,13 @@ namespace Infrastructure.Repository
         private readonly ApplicationDbContext _db;
 
         public IProject Projects { get; private set; }
-        public IAppUser AppUsers { get; private set; }
+        public IUserAccount UserAccounts { get; private set; }
 
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
             Projects = new ProjectRep(_db);
-            AppUsers = new AppUserRep(_db);
+            UserAccounts = new UserAccountRep(_db);
         }
 
 

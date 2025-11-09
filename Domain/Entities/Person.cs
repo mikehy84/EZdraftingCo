@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+
+#nullable enable // Enable nullable reference types
 
 namespace Domain.Entities
 {
@@ -15,16 +13,21 @@ namespace Domain.Entities
         public DateTime DateOfBirth { get; set; }
 
 
+        // optional foreign key to the ASP.NET Identity user
+        public string? AccountId { get; set; } = string.Empty;
+        public UserAccount? UserAccount { get; set; }
+
+
         // Person is the child in the
         // one-to-many relationship
         public int JobId { get; set; }
-        public Job Job { get; set; }
+        public Job? Job { get; set; }
 
 
         // Person is the child in the
         // one-to-many relationship
         public int CompanyId { get; set; }
-        public Company Company { get; set; }
+        public Company? Company { get; set; }
 
 
 

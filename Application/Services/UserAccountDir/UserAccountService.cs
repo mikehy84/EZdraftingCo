@@ -3,18 +3,18 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Application.DTO.AppUserDTO;
+using Application.DTO.UserAccountDTO;
 using Application.Interfaces;
 using Domain.Entities;
 
-namespace Application.Services.AppUserDir
+namespace Application.Services.UserAccountDir
 {
-    public class AppUserService : IAppUserService<AppUserDto>
+    public class UserAccountService : IUserAccountService<UserAccountDto>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public AppUserService(IUnitOfWork unitOfWork, IMapper mapper)
+        public UserAccountService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -22,15 +22,15 @@ namespace Application.Services.AppUserDir
 
         
 
-        public async Task<List<AppUserDto>> GetAllAsync()
+        public async Task<List<UserAccountDto>> GetAllAsync()
         {
-            var appUsers = await _unitOfWork.AppUsers.GetAllAsync();
+            var appUsers = await _unitOfWork.UserAccounts.GetAllAsync();
             if (appUsers == null || !appUsers.Any())
             {
-                return new List<AppUserDto>();
+                return new List<UserAccountDto>();
             }
 
-            return _mapper.Map<List<AppUserDto>>(appUsers);
+            return _mapper.Map<List<UserAccountDto>>(appUsers);
         }
 
 
@@ -39,15 +39,15 @@ namespace Application.Services.AppUserDir
 
 
 
-        public async Task<AppUserDto> GetByIdAsync(string id)
+        public async Task<UserAccountDto> GetByIdAsync(string id)
         {
-            var appUser = await _unitOfWork.AppUsers.GetAsync(p => p.Id.Equals(id));
+            var appUser = await _unitOfWork.UserAccounts.GetAsync(p => p.Id.Equals(id));
             if (appUser == null)
             {
-                return new AppUserDto();
+                return new UserAccountDto();
             }
 
-            return _mapper.Map<AppUserDto>(appUser);
+            return _mapper.Map<UserAccountDto>(appUser);
         }
 
 
@@ -60,7 +60,7 @@ namespace Application.Services.AppUserDir
 
 
 
-        public async Task<AppUserDto> UpdateAsync(string id, AppUserDto appUserDto)
+        public async Task<UserAccountDto> UpdateAsync(string id, UserAccountDto appUserDto)
         {
             if (string.IsNullOrEmpty(id))
                 throw new ArgumentException("Invalid user ID.", nameof(id));
@@ -68,7 +68,7 @@ namespace Application.Services.AppUserDir
             if (appUserDto == null)
                 throw new ArgumentNullException(nameof(appUserDto));
 
-            var appUserFromDb = await _unitOfWork.AppUsers.GetAsync(c => c.Id.Equals(id), tracked: true);
+            var appUserFromDb = await _unitOfWork.UserAccounts.GetAsync(c => c.Id.Equals(id), tracked: true);
 
             if (appUserFromDb == null)
                 throw new KeyNotFoundException($"User with ID {id} not found.");
@@ -76,17 +76,17 @@ namespace Application.Services.AppUserDir
             // Map updated fields into the existing entity
             _mapper.Map(appUserDto, appUserFromDb);
 
-            await _unitOfWork.AppUsers.UpdateAsync(appUserFromDb);
+            await _unitOfWork.UserAccounts.UpdateAsync(appUserFromDb);
 
             // Return the updated DTO (if needed)
-            return _mapper.Map<AppUserDto>(appUserFromDb);
+            return _mapper.Map<UserAccountDto>(appUserFromDb);
         }
 
 
 
 
 
-        public Task<ApiResponse> UpdatePartialAsync(string id, JsonPatchDocument<AppUserDto> model)
+        public Task<ApiResponse> UpdatePartialAsync(string id, JsonPatchDocument<UserAccountDto> model)
         {
             throw new NotImplementedException();
         }
@@ -102,7 +102,7 @@ namespace Application.Services.AppUserDir
             return entity == null;
         }
 
-        public Task<ApiResponse> CreateAsync(AppUserDto model)
+        public Task<ApiResponse> CreateAsync(UserAccountDto model)
         {
             throw new NotImplementedException();
         }

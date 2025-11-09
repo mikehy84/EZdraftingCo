@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.JsonPatch;
 
 
-namespace Application.Services.AppUserDir
+namespace Application.Services.UserAccountDir
 {
-    public interface IAppUserService<T> where T : class
+    public interface IUserAccountService<T> where T : class
     {
         Task<List<T>> GetAllAsync();
         Task<T> GetByIdAsync(string id);

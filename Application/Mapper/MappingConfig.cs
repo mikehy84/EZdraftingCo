@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Application.DTO.AppUserDTO;
+using Application.DTO.UserAccountDTO;
 using Application.ProjectDir.Dto;
 using Domain.Entities;
 
@@ -15,8 +15,8 @@ namespace Application.Mapper
             .ForMember(dest => dest.ImageUrls, opt => opt.Ignore()); // We'll handle this manually
 
 
-            CreateMap<AppUser, AppUserDto>().ReverseMap();
-            CreateMap<AppUser, AppUserUpdateDto>().ReverseMap();
+            CreateMap<UserAccount, UserAccountDto>().ReverseMap();
+            CreateMap<UserAccount, UserAccountUpdateDto>().ReverseMap();
         }
     }
 }

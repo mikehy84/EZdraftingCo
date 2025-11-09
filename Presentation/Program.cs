@@ -7,14 +7,14 @@ using Application.Services;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Identity;
 using Domain.Entities;
-using Application.DTO.AppUserDTO;
+using Application.DTO.UserAccountDTO;
 using Application.ProjectDir.Dto;
 using Infrastructure.Data;
 using Application.Services.Azure;
 using Application.Interfaces;
 using Infrastructure.Repository;
 using Application.Services.ProjectDir;
-using Application.Services.AppUserDir;
+using Application.Services.UserAccountDir;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +31,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         )
     ));
 
-builder.Services.AddIdentity<AppUser, IdentityRole>()
+builder.Services.AddIdentity<UserAccount, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
@@ -67,7 +67,7 @@ builder.Services.AddAutoMapper(typeof(MappingConfig));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddScoped<IProjectService<ProjectDto>, ProjectService>();
-builder.Services.AddScoped<IAppUserService<AppUserDto>, AppUserService>();
+builder.Services.AddScoped<IUserAccountService<UserAccountDto>, UserAccountService>();
 
 var app = builder.Build();
 

@@ -1,7 +1,7 @@
 ﻿
-using Application.DTO.AppUserDTO;
+using Application.DTO.UserAccountDTO;
 using Application.Helper;
-using Application.Services.AppUserDir;
+using Application.Services.UserAccountDir;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Areas.Admin.Controllers
@@ -9,8 +9,8 @@ namespace Presentation.Areas.Admin.Controllers
     [Area(AreaNames.Admin)]
     public class UserController : Controller
     {
-        private readonly IAppUserService<AppUserDto> _AppUserService;
-        public UserController(IAppUserService<AppUserDto> appUserService)
+        private readonly IUserAccountService<UserAccountDto> _AppUserService;
+        public UserController(IUserAccountService<UserAccountDto> appUserService)
         {
             _AppUserService = appUserService;
         }
@@ -28,7 +28,7 @@ namespace Presentation.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(string id, AppUserDto appUserDto)
+        public async Task<IActionResult> Update(string id, UserAccountDto appUserDto)
         {
             await _AppUserService.UpdateAsync(id, appUserDto);
             return RedirectToAction(nameof(Index), new { area = AreaNames.Admin }); ;

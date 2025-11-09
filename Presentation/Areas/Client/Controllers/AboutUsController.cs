@@ -1,7 +1,7 @@
 ﻿
-using Application.DTO.AppUserDTO;
+using Application.DTO.UserAccountDTO;
 using Application.Helper;
-using Application.Services.AppUserDir;
+using Application.Services.UserAccountDir;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Areas.Client.Controllers
@@ -9,9 +9,9 @@ namespace Presentation.Areas.Client.Controllers
     [Area(AreaNames.Client)]
     public class AboutUsController : Controller
     {
-        private readonly IAppUserService<AppUserDto> _AppUserService;
+        private readonly IUserAccountService<UserAccountDto> _AppUserService;
 
-        public AboutUsController(IAppUserService<AppUserDto> appUserService)
+        public AboutUsController(IUserAccountService<UserAccountDto> appUserService)
         {
             _AppUserService = appUserService;
         }

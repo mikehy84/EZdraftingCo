@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.DTO.AppUserDTO
+namespace Application.DTO.UserAccountDTO
 {
-    public class AppUserUpdateDto
+    public class UserAccountUpdateDto
     {
         public string? FirstName { get; set; } = string.Empty;
         public string? LastName { get; set; } = string.Empty;

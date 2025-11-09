@@ -27,7 +27,7 @@ namespace Infrastructure.Data
 
         //public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
-        //public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<UserAccount> UserAccounts { get; set; }
         public DbSet<Area> Areas { get; set; }
         public DbSet<ClientProject> ClientProjects { get; set; }
         public DbSet<Company> Companies { get; set; }
