@@ -44,6 +44,8 @@ builder.Services.AddIdentity<UserAccount, IdentityRole>()
 
 
 
+
+
 // injecting blob service here
 builder.Services.Configure<AzureStorageSettings>(
     builder.Configuration.GetSection("AzureStorage"));
