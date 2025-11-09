@@ -25,11 +25,15 @@ namespace Infrastructure.FluentApiConfig
                 .Property(x => x.InternalProjectNo)
                 .IsRequired();
 
+            modelBuilder
+                .HasIndex(a => new {a.InternalProjectNo, a.ClientProjectId })
+                .IsUnique();
+
             // Relationships Configuration
             modelBuilder
                 .HasOne(x => x.Person)
                 .WithMany(x => x.Projects)
-                .HasForeignKey(x => x.PersonId)
+                .HasForeignKey(x => x.PmId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder

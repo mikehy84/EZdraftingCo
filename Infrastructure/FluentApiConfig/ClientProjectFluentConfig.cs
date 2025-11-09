@@ -18,7 +18,7 @@ namespace Infrastructure.FluentApiConfig
                 .ValueGeneratedOnAdd(); // auto-increment (IDENTITY)
 
             modelBuilder
-                .HasIndex(x => x.ProjectNo)
+                .HasIndex(x => x.ProjectName)
                 .IsUnique();
 
             modelBuilder
@@ -32,17 +32,17 @@ namespace Infrastructure.FluentApiConfig
             modelBuilder
                 .HasOne(x => x.Person)
                 .WithMany(x => x.ClientProjects)
-                .HasForeignKey(x => x.PersonId)
+                .HasForeignKey(x => x.ClientPmId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder
+                .Navigation(x => x.Person);
 
             modelBuilder
                 .HasOne(x => x.Company)
                 .WithMany(x => x.ClientProjects)
                 .HasForeignKey(x => x.CompanyId)
                 .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder
-                .Navigation(x => x.Person);
 
             modelBuilder
                 .Navigation(x => x.Company);

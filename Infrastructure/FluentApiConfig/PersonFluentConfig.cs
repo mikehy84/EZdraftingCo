@@ -48,13 +48,13 @@ namespace Infrastructure.FluentApiConfig
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder
+                .Navigation(x => x.Job);
+
+            modelBuilder
                 .HasOne(x => x.Company)
                 .WithMany(x => x.Persons)
                 .HasForeignKey(x => x.CompanyId)
                 .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder
-                .Navigation(x => x.Job);
 
             modelBuilder
                 .Navigation(x => x.Company);

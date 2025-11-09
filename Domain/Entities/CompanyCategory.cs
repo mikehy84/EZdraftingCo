@@ -15,6 +15,6 @@ namespace Domain.Entities
 
         // CompanyCategory is the parent in the
         // one-to-many relationship
-        public List<Company> Companies { get; set; } = new();
+        public ICollection<Company> Companies { get; set; } = [];
     }
 }

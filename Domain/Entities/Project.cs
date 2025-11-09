@@ -15,22 +15,30 @@ namespace Domain.Entities
         public DateTime UpdatedDate { get; set; }
 
 
-
         // Project is the child in the
         // one-to-many relationship
         public int ClientProjectId { get; set; }
         public ClientProject ClientProject { get; set; }
 
 
-
-
         // Project is the child in the
         // one-to-many relationship
-        public int PersonId { get; set; }
+        public int PmId { get; set; }
         public Person Person { get; set; }
 
 
-        // Many-to-many relationship
-        public List<ProjectAreaMap> ProjectAreaMap { get; set; }
+        // Project is the parent in the
+        // one-to-many relationship
+        public ICollection<Phase> Phases { get; set; } = [];
+
+
+        // Project is the parent in the
+        // one-to-many relationship
+        public ICollection<Area> Areas { get; set; } = [];
+
+
+        // Project is the parent in the
+        // one-to-many relationship
+        public ICollection<TaskLog> TaskLogs { get; set; } = [];
     }
 }

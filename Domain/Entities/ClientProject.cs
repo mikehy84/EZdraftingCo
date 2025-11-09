@@ -21,7 +21,7 @@ namespace Domain.Entities
 
         // ClientProject is the child in the
         // one-to-many relationship
-        public int PersonId { get; set; }
+        public int ClientPmId { get; set; }
         public Person Person { get; set; }
 
 
@@ -33,7 +33,7 @@ namespace Domain.Entities
 
         // ClientProject is the parent in the
         // one-to-many relationship
-        public List<Project> Projects { get; set; }
+        public ICollection<Project> Projects { get; set; } = [];
 
     }
 }

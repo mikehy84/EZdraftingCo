@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class Priority
+    public class TaskName
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
 
-
-        // Priority is the parent in the
+        // TaskName is the parent in the
         // one-to-many relationship
         public ICollection<TaskLog> TaskLogs { get; set; } = [];
     }

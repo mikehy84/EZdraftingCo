@@ -15,9 +15,15 @@ namespace Domain.Entities
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; }
 
+
         // Phase is the child in the
         // one-to-many relationship
         public int ProjectId { get; set; }
         public Project Project { get; set; }
+
+
+        // Phase is the parent in the
+        // one-to-many relationship
+        public ICollection<TaskLog> TaskLogs { get; set; } = [];
     }
 }

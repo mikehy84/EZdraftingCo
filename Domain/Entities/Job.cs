@@ -16,6 +16,6 @@ namespace Domain.Entities
 
         // Job is the parent in the
         // one-to-many relationship
-        public List<Person> Persons { get; set; } = new();
+        public ICollection<Person> Persons { get; set; } = [];
     }
 }

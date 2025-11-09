@@ -10,36 +10,71 @@ namespace Domain.Entities
     {
         public int Id { get; set; }
 
+
+        // TaskLog is the child in the
+        // one-to-many relationship
         public int ProjectId { get; set; }
         public Project Project { get; set; }
 
+
+        // TaskLog is the child in the
+        // many-to-one relationship
         public int AssignorId { get; set; }
         public Person Assignor { get; set; }
 
+
+        // TaskLog is the child in the
+        // one-to-many relationship
         public int AssigneeId { get; set; }
         public Person Assignee { get; set; }
 
-        public int AreaId { get; set; }
-        public Area Area { get; set; }
 
-        public int TaskId { get; set; }
-        public Task Task { get; set; }
-
+        // TaskLog is the child in the
+        // one-to-many relationship
         public int PhaseId { get; set; }
         public Phase Phase { get; set; }
 
+
+        // TaskLog is the child in the
+        // one-to-many relationship
+        public int AreaId { get; set; }
+        public Area Area { get; set; }
+
+
+        // TaskLog is the child in the
+        // one-to-many relationship
+        public int TaskId { get; set; }
+        public TaskName Task { get; set; }
+
+
+        
+
+
         public string Description { get; set; }
 
+
+        // TaskLog is the child in the
+        // one-to-many relationship
         public int PriorityId { get; set; }
         public Priority Priority { get; set; }
 
 
         public DateTime DueDate { get; set; }
-        public DateTime FinishDate { get; set; }
-        public int EstimatedHour { get; set; }
-        public int ActualHour { get; set; }
+        public DateTime StartedAt { get; set; }
+        public DateTime FinishAt { get; set; }
+        public int EstimatedHours { get; set; }
+        public int ActualHours { get; set; }
         public int CompletionPercentage { get; set; }
-        public bool IsDone { get; set; }
+        public string Comment { get; set; }
+
+
+
+        // TaskLog is the child in the
+        // one-to-many relationship
+        public int StatusId { get; set; }
+        public TaskState TaskState { get; set; }
+
+
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; }
     }
