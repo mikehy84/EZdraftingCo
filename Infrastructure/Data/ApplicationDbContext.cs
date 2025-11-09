@@ -6,26 +6,25 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
 {
-    //public class ApplicationDbContext : IdentityDbContext<AppUser>
-    public class ApplicationDbContext: DbContext
+    public class ApplicationDbContext : IdentityDbContext<UserAccount>
     {
 
-        public ApplicationDbContext() { }
+        //public ApplicationDbContext() { }
 
 
         //directly pass connection string
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    if (!optionsBuilder.IsConfigured)
 
-            {
-                optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=EZDrafting;Trusted_Connection=True;TrustServerCertificate=True;");
-            }
-        }
+        //    {
+        //        optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=EZDrafting;Trusted_Connection=True;TrustServerCertificate=True;");
+        //    }
+        //}
 
 
 
-        //public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         public DbSet<UserAccount> UserAccounts { get; set; }
         public DbSet<Area> Areas { get; set; }
@@ -44,6 +43,8 @@ namespace Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);  // <-- CRITICAL LINE
+
             modelBuilder.ApplyConfiguration(new AreaFluentConfig());
             modelBuilder.ApplyConfiguration(new ClientProjectFluentConfig());
             modelBuilder.ApplyConfiguration(new CompanyFluentConfig());
