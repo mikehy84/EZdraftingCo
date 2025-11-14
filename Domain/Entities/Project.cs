@@ -5,7 +5,7 @@ namespace Domain.Entities
     public class Project
     {
         public int Id { get; set; }
-        public string InternalProjectNo { get; set; }
+        public string InternalProjectNo { get; set; } = string.Empty;
         public int ActualHours { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

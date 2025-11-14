@@ -1,0 +1,24 @@
+﻿@model List<PriorityDTO>
+
+<div>
+    <h2>Priority List</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var priority in Model)
+            {
+                <tr>
+                    <td>@priority.Id</td>
+                    <td>@priority.Name</td>
+                    <td>@priority.Definition</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

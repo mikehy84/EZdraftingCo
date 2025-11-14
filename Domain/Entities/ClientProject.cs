@@ -5,11 +5,11 @@ namespace Domain.Entities
     public class ClientProject
     {
         public int Id { get; set; }
-        public string ProjectNo { get; set; }
-        public string ProjectName { get; set; }
+        public string ProjectNo { get; set; } = string.Empty;
+        public string ProjectName { get; set; } = string.Empty;
         public int EstimatedHour { get; set; }
         public decimal ProjectRate { get; set; }
-        public string Location { get; set; }
+        public string Location { get; set; } = string.Empty;
         public DateTime AwardedAt { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime UpdatedAt { get; set; }

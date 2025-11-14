@@ -8,6 +8,7 @@ namespace Application.Interfaces
 {
     public interface IUnitOfWork
     {
+        IPriority Priorities { get; }
         IProject Projects { get; }
         IUserAccount UserAccounts { get; }
 

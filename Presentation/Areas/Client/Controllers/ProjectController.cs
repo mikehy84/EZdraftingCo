@@ -1,5 +1,5 @@
 ﻿using Application.Helper;
-using Application.ProjectDir.Dto;
+using Application.DTO.ProjectDTO;
 using Application.Services.Azure;
 using Application.Services.ProjectDir;
 using AutoMapper;

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Application.DTO.UserAccountDTO;
-using Application.ProjectDir.Dto;
+using Application.DTO.ProjectDTO;
+using Application.DTO.PriorityDTO;
 using Domain.Entities;
 
 namespace Application.Mapper
@@ -10,6 +11,10 @@ namespace Application.Mapper
 
         public MappingConfig() 
         { 
+            CreateMap<PriorityDTO, Priority>().ReverseMap();
+
+
+
             CreateMap<Project, ProjectDto>().ReverseMap();
             CreateMap<CreateProjectDto, ProjectDto>()
             .ForMember(dest => dest.ImageUrls, opt => opt.Ignore()); // We'll handle this manually

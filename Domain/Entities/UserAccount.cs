@@ -8,6 +8,6 @@ namespace Domain.Entities
 {
     public class UserAccount : IdentityUser
     {
-        public Person Person { get; set; }  // optional one-to-one
+        public Person? Person { get; set; }  // optional one-to-one
     }
 }

@@ -39,6 +39,7 @@
                 <a class="navbar__menu-link" asp-area="Client" asp-controller="Home" asp-action="Index">Home</a>
                 <a class="navbar__menu-link" id="services">Services</a>
                 <a class="navbar__menu-link" asp-area="Client" asp-controller="Project" asp-action="Index">Projects</a>
+                <a class="navbar__menu-link" asp-area="Admin" asp-controller="Priority" asp-action="Index">Priorities</a>
                 
                 @if(User.IsInRole("Admin"))
                 {

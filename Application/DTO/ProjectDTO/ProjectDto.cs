@@ -1,4 +1,4 @@
-﻿namespace Application.ProjectDir.Dto
+﻿namespace Application.DTO.ProjectDTO
 {
     public class ProjectDto
     {

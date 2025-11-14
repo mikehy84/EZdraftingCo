@@ -46,7 +46,7 @@ namespace Domain.Entities
         
 
 
-        public string Description { get; set; }
+        public string Description { get; set; } = string.Empty;
 
 
         // TaskLog is the child in the
@@ -61,7 +61,7 @@ namespace Domain.Entities
         public int EstimatedHours { get; set; }
         public int ActualHours { get; set; }
         public int CompletionPercentage { get; set; }
-        public string Comment { get; set; }
+        public string Comment { get; set; } = string.Empty;
 
 
 

@@ -6,8 +6,8 @@ namespace Domain.Entities
     {
         public int Id { get; set; }
         public int PhaseNumber { get; set; }
-        public string Name { get; set; }
-        public string Comment { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Comment { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; }
 
