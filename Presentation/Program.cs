@@ -1,5 +1,5 @@
 using Application.Mapper;
-using Application.DTO.ProjectDTO;
+using Application.DTO.Project;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Azure.Storage.Blobs;
@@ -7,7 +7,7 @@ using Application.Services;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Identity;
 using Domain.Entities;
-using Application.DTO.UserAccountDTO;
+using Application.DTO.UserAccount;
 using Infrastructure.Data;
 using Application.Services.Azure;
 using Application.Interfaces;

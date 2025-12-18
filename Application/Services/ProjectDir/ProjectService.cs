@@ -1,5 +1,5 @@
 ﻿using Application.Helper;
-using Application.DTO.ProjectDTO;
+using Application.DTO.Project;
 using AutoMapper;
 using Domain.Entities;
 using Application.Interfaces;

@@ -1,5 +1,7 @@
 ﻿
 using Application.Interfaces;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
@@ -17,19 +19,25 @@ namespace Infrastructure.Repository
             this.dbSet = _db.Set<T>();
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>>? filter = null, string? includedProps = null)
+        public async Task<IEnumerable<T>> GetAllAsync(
+            Expression<Func<T, bool>>? filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
+            bool asNoTracking = true,
+            params Expression<Func<T, object>>[] includes)
         {
             IQueryable<T> query = dbSet;
+
+            if (asNoTracking)
+                query = query.AsNoTracking();
 
             if (filter != null)
                 query = query.Where(filter);
 
-            if (includedProps != null)
-            {
-                string[] props = includedProps.Split(',', StringSplitOptions.RemoveEmptyEntries);
-                foreach (var prop in props)
-                    query = query.Include(prop);
-            }
+            foreach (var include in includes)
+                query = query.Include(include);
+
+            if (orderBy != null)
+                query = orderBy(query);
 
             return await query.ToListAsync();
         }
@@ -72,5 +80,25 @@ namespace Infrastructure.Repository
         {
             await _db.SaveChangesAsync();
         }
+
+
+
+
+        public async Task<List<TResult>> GetAllProjectedAsync<TResult>(
+            IConfigurationProvider mapperConfig,
+            Expression<Func<T, bool>>? filter = null)
+        {
+            IQueryable<T> query = dbSet.AsNoTracking();
+
+            if (filter != null)
+                query = query.Where(filter);
+
+            return await query
+                .ProjectTo<TResult>(mapperConfig)
+                .ToListAsync();
+        }
+
+
+
     }
 }

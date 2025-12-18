@@ -1,5 +1,5 @@
-﻿using Application.DTO.PriorityDTO;
-using Application.DTO.ProjectDTO;
+﻿using Application.DTO.Priority;
+using Application.DTO.Project;
 using Application.Helper;
 using Application.Interfaces;
 using AutoMapper;
@@ -27,7 +27,7 @@ namespace Presentation.Areas.Admin.Controllers
             try
             {
                 var priorities = await _unitOfWork.Priorities.GetAllAsync();
-                return View(_mapper.Map<IEnumerable<PriorityDTO>>(priorities));
+                return View(_mapper.Map<IEnumerable<PriorityDto>>(priorities));
             }
             catch (Exception ex)
             {

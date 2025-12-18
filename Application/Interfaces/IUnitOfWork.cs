@@ -10,6 +10,7 @@ namespace Application.Interfaces
     {
         IPriority Priorities { get; }
         IProject Projects { get; }
+        IPerson Persons { get; }
         IUserAccount UserAccounts { get; }
 
         Task Save();

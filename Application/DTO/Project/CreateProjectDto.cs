@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.DTO.ProjectDTO
+namespace Application.DTO.Project
 {
     public class CreateProjectDto
     {

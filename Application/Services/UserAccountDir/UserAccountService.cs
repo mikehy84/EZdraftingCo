@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Application.DTO.UserAccountDTO;
+using Application.DTO.UserAccount;
 using Application.Interfaces;
 using Domain.Entities;
 

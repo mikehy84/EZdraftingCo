@@ -1,5 +1,5 @@
 ﻿
-using Application.DTO.UserAccountDTO;
+using Application.DTO.UserAccount;
 using Application.Helper;
 using Application.Services.UserAccountDir;
 using Microsoft.AspNetCore.Mvc;

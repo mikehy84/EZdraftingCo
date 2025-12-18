@@ -1,4 +1,4 @@
-﻿namespace Application.DTO.ProjectDTO
+﻿namespace Application.DTO.Project
 {
     public class ProjectDto
     {

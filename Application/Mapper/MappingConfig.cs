@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
-using Application.DTO.UserAccountDTO;
-using Application.DTO.ProjectDTO;
-using Application.DTO.PriorityDTO;
+using Application.DTO.UserAccount;
+using Application.DTO.Project;
+using Application.DTO.Priority;
 using Domain.Entities;
+using Application.DTO.Person;
 
 namespace Application.Mapper
 {
@@ -11,7 +12,9 @@ namespace Application.Mapper
 
         public MappingConfig() 
         { 
-            CreateMap<PriorityDTO, Priority>().ReverseMap();
+            CreateMap<PriorityDto, Priority>().ReverseMap();
+
+            CreateMap<PersonDto, Person>().ReverseMap();
 
 
 
