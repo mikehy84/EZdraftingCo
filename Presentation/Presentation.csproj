@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-	<Content Remove="wwwroot\js\Dashboard\Person\Person.js" />
 	<Content Remove="wwwroot\js\user.js" />
   </ItemGroup>
 
@@ -42,7 +41,7 @@
   </ItemGroup>
 
   <ItemGroup>
-	<TypeScriptCompile Include="wwwroot\js\Dashboard\Person\Person.js">
+	<TypeScriptCompile Include="wwwroot\js\Dashboard\person.js">
 	  <SubType>Code</SubType>
 	</TypeScriptCompile>
 	<TypeScriptCompile Include="wwwroot\js\user.js" />

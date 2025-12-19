@@ -11,13 +11,13 @@
     z-index: 100;
 }
 
-.dashboard__sidebar__menu {
+.sidebar__menu {
     display: flex;
     flex-direction: column;
     box-shadow: 3px 3px 8px var(--Gray-5);
 }
 
-.dashboard__sidebar__list {
+.sidebar__list {
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -26,8 +26,13 @@
     background-color: #b5c166;
 }
 
-/*.users__list a {
-    padding: 1rem 0.5rem;
+
+.sidebar__link {
     color: var(--Gray-9);
-    cursor: pointer;
-}*/
+    text-decoration: none;
+}
+
+.sidebar__link--active {
+    background-color: #1f2937;
+    color: #fff;
+}
