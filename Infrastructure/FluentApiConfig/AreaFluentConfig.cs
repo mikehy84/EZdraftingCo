@@ -18,7 +18,7 @@ namespace Infrastructure.FluentApiConfig
                 .HasKey(a => a.Id); // Primary Key
 
             modelBuilder
-                .Property(x => x.Id)
+                .Property(a => a.Id)
                 .IsRequired()
                 .ValueGeneratedOnAdd(); // auto-increment (IDENTITY)
 
@@ -40,9 +40,9 @@ namespace Infrastructure.FluentApiConfig
 
             // Relationships Configuration
             modelBuilder
-                .HasOne(a => a.Project)
-                .WithMany(p => p.Areas)
-                .HasForeignKey(a => a.ProjectId)
+                .HasOne(p => p.Project)
+                .WithMany(a => a.Areas)
+                .HasForeignKey(p => p.ProjectId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

@@ -7,38 +7,32 @@ namespace Domain.Entities
         public int Id { get; set; }
 
 
-        // TaskLog is the child in the
-        // one-to-many relationship
+        // TaskLog is the child in the one-to-many relationship
         public int ProjectId { get; set; }
         public Project Project { get; set; }
 
 
-        // TaskLog is the child in the
-        // many-to-one relationship
+        // TaskLog is the child in the many-to-one relationship
         public int AssignorId { get; set; }
         public Person Assignor { get; set; }
 
 
-        // TaskLog is the child in the
-        // one-to-many relationship
+        // TaskLog is the child in the one-to-many relationship
         public int AssigneeId { get; set; }
         public Person Assignee { get; set; }
 
 
-        // TaskLog is the child in the
-        // one-to-many relationship
+        // TaskLog is the child in the one-to-many relationship
         public int PhaseId { get; set; }
         public Phase Phase { get; set; }
 
 
-        // TaskLog is the child in the
-        // one-to-many relationship
+        // TaskLog is the child in the one-to-many relationship
         public int AreaId { get; set; }
         public Area Area { get; set; }
 
 
-        // TaskLog is the child in the
-        // one-to-many relationship
+        // TaskLog is the child in the one-to-many relationship
         public int TaskId { get; set; }
         public TaskName Task { get; set; }
 
@@ -49,8 +43,7 @@ namespace Domain.Entities
         public string Description { get; set; } = string.Empty;
 
 
-        // TaskLog is the child in the
-        // one-to-many relationship
+        // TaskLog is the child in the one-to-many relationship
         public int PriorityId { get; set; }
         public Priority Priority { get; set; }
 
@@ -65,8 +58,7 @@ namespace Domain.Entities
 
 
 
-        // TaskLog is the child in the
-        // one-to-many relationship
+        // TaskLog is the child in the one-to-many relationship
         public int StatusId { get; set; }
         public TaskState TaskState { get; set; }
 

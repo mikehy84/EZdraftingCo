@@ -30,7 +30,7 @@ namespace Infrastructure.Data
         public DbSet<Area> Areas { get; set; }
         public DbSet<ClientProject> ClientProjects { get; set; }
         public DbSet<Company> Companies { get; set; }
-        public DbSet<CompanyCategory> CompanyCategores { get; set; }
+        public DbSet<CompanyType> CompanyTypes { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Person> Persons { get; set; }
         public DbSet<Phase> Phases { get; set; }
@@ -48,7 +48,7 @@ namespace Infrastructure.Data
             modelBuilder.ApplyConfiguration(new AreaFluentConfig());
             modelBuilder.ApplyConfiguration(new ClientProjectFluentConfig());
             modelBuilder.ApplyConfiguration(new CompanyFluentConfig());
-            modelBuilder.ApplyConfiguration(new CompanyCategoryFluentConfig());
+            modelBuilder.ApplyConfiguration(new CompanyTypeFluentConfig());
             modelBuilder.ApplyConfiguration(new JobFluentConfig());
             modelBuilder.ApplyConfiguration(new PersonFluentConfig());
             modelBuilder.ApplyConfiguration(new PhaseFluentConfig());

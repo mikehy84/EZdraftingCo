@@ -17,6 +17,8 @@ namespace Application.Interfaces
         Task SaveAsync();
 
 
-        Task<List<TResult>> GetAllProjectedAsync<TResult>(IConfigurationProvider mapperConfig, Expression<Func<T, bool>>? filter = null);
+        Task<List<TResult>> GetAllProjectedAsync<TResult>(
+            IConfigurationProvider mapperConfig, 
+            Expression<Func<T, bool>>? filter = null);
     }
 }

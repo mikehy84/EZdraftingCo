@@ -6,9 +6,9 @@ using System.Reflection.Emit;
 
 namespace Infrastructure.FluentApiConfig
 {
-    public class CompanyCategoryFluentConfig : IEntityTypeConfiguration<CompanyCategory>
+    public class CompanyTypeFluentConfig : IEntityTypeConfiguration<CompanyType>
     {
-        public void Configure(EntityTypeBuilder<CompanyCategory> modelBuilder)
+        public void Configure(EntityTypeBuilder<CompanyType> modelBuilder)
         {
             modelBuilder
                 .HasKey(x => x.Id); // Primary Key

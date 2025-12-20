@@ -32,13 +32,6 @@ namespace Infrastructure.FluentApiConfig
                 .IsRequired()
                 .HasMaxLength(50); // LastName is required with max length 50
 
-            modelBuilder
-                .Property(x => x.JobId)
-                .IsRequired();
-
-            modelBuilder
-                .Property(x => x.CompanyId)
-                .IsRequired();
 
             // Relationships Configuration
             modelBuilder

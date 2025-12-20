@@ -1,13 +1,5 @@
-﻿
-async function apiGet(url) {
-    const res = await fetch(url);
+﻿import { apiGet } from '../Shared/apiCalls.js';
 
-    if (!res.ok) {
-        throw new Error(`HTTP ${res.status}`);
-    }
-
-    return res.json();
-}
 
 
 async function LoadPersons() {
@@ -33,7 +25,7 @@ export async function renderPersonsTable() {
         const thead = document.createElement('thead');
         const headRow = document.createElement('tr');
 
-        const headers = ['Name', 'Date Of Birth', 'Email', 'Job Title'];
+        const headers = ['Name', 'Date Of Birth', 'Company Name', 'Job Title'];
 
         headers.forEach(text => {
             const th = document.createElement('th');
@@ -65,6 +57,14 @@ export async function renderPersonsTable() {
         const tdDob = document.createElement('td');
         tdDob.textContent = p.dateOfBirth ?? '';
         tr.appendChild(tdDob);
+
+        const tdCompanyName = document.createElement('td');
+        tdCompanyName.textContent = p.companyName ?? '';
+        tr.appendChild(tdCompanyName);
+
+        const tdJobTitle = document.createElement('td');
+        tdJobTitle.textContent = p.jobTitle ?? '';
+        tr.appendChild(tdJobTitle);
 
         tbody.appendChild(tr);
     });

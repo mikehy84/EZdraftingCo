@@ -26,13 +26,13 @@ namespace Infrastructure.FluentApiConfig
 
             // Relationships Configuration
             modelBuilder
-                .HasOne(x => x.CompanyCategory)
+                .HasOne(x => x.CompanyType)
                 .WithMany(x => x.Companies)
-                .HasForeignKey(x => x.CategoryId)
+                .HasForeignKey(x => x.TypeId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder
-                .Navigation(x => x.CompanyCategory);
+                .Navigation(x => x.CompanyType);
         }
     }
 }

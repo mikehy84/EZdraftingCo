@@ -10,42 +10,42 @@ namespace Infrastructure.FluentApiConfig
         public void Configure(EntityTypeBuilder<ClientProject> modelBuilder)
         {
             modelBuilder
-                .HasKey(x => x.Id); // Primary Key
+                .HasKey(cp => cp.Id); // Primary Key
 
             modelBuilder
-                .Property(x => x.Id)
+                .Property(cp => cp.Id)
                 .IsRequired()
                 .ValueGeneratedOnAdd(); // auto-increment (IDENTITY)
 
             modelBuilder
-                .HasIndex(x => x.ProjectName)
+                .HasIndex(cp => cp.ProjectName)
                 .IsUnique();
 
             modelBuilder
-                .Property(x => x.ProjectName);
+                .Property(cp => cp.ProjectName);
 
             modelBuilder
-                .Property(x => x.ProjectRate)
+                .Property(cp => cp.ProjectRate)
                 .HasPrecision(10, 2); // up to 99999999.99
 
             // Relationships Configuration
             modelBuilder
-                .HasOne(x => x.Person)
-                .WithMany(x => x.ClientProjects)
-                .HasForeignKey(x => x.ClientPmId)
+                .HasOne(p => p.Person)
+                .WithMany(cp => cp.ClientProjects)
+                .HasForeignKey(cp => cp.ClientPmId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder
-                .Navigation(x => x.Person);
+                .Navigation(p => p.Person);
 
             modelBuilder
-                .HasOne(x => x.Company)
-                .WithMany(x => x.ClientProjects)
-                .HasForeignKey(x => x.CompanyId)
+                .HasOne(c => c.Company)
+                .WithMany(cp => cp.ClientProjects)
+                .HasForeignKey(cp => cp.CompanyId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder
-                .Navigation(x => x.Company);
+                .Navigation(c => c.Company);
         }
     }
 }

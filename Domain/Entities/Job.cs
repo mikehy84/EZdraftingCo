@@ -10,8 +10,9 @@ namespace Domain.Entities
         public decimal RatePerHour { get; set; }
 
 
-        // Job is the parent in the
-        // one-to-many relationship
+        // Job is the parent in the one-to-many relationship
+        // Job (parent / principal) = one job can belong to many people
+        // Person (child / dependent) = each person optionally has one job (JobId?)
         public ICollection<Person> Persons { get; set; } = [];
     }
 }
