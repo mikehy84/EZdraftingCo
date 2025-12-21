@@ -7,43 +7,40 @@ namespace Domain.Entities
         public int Id { get; set; }
 
 
-        // TaskLog is the child in the one-to-many relationship
+        // Project that this TaskLog belongs to
         public int ProjectId { get; set; }
         public Project Project { get; set; }
 
 
-        // TaskLog is the child in the many-to-one relationship
+        // Person who assigned the task to someone
         public int AssignorId { get; set; }
         public Person Assignor { get; set; }
 
 
-        // TaskLog is the child in the one-to-many relationship
+        // Person who this task is assigned to
         public int AssigneeId { get; set; }
         public Person Assignee { get; set; }
 
 
-        // TaskLog is the child in the one-to-many relationship
+        // Phase that this TaskLog belongs to
         public int PhaseId { get; set; }
         public Phase Phase { get; set; }
 
 
-        // TaskLog is the child in the one-to-many relationship
+        // Are that this TaskLog belongs to
         public int AreaId { get; set; }
         public Area Area { get; set; }
 
 
-        // TaskLog is the child in the one-to-many relationship
+        // Task that this TaskLog is about
         public int TaskId { get; set; }
         public TaskName Task { get; set; }
-
-
-        
 
 
         public string Description { get; set; } = string.Empty;
 
 
-        // TaskLog is the child in the one-to-many relationship
+        // Proiority that this TaskLog has
         public int PriorityId { get; set; }
         public Priority Priority { get; set; }
 
@@ -57,10 +54,9 @@ namespace Domain.Entities
         public string Comment { get; set; } = string.Empty;
 
 
-
-        // TaskLog is the child in the one-to-many relationship
+        // TaskState that this TaskLog is in
         public int StatusId { get; set; }
-        public TaskState TaskState { get; set; }
+        public TaskState TaskStatus { get; set; }
 
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;

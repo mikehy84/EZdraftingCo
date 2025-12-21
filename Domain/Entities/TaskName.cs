@@ -8,7 +8,7 @@ namespace Domain.Entities
         public string Name { get; set; } = string.Empty;
 
 
-        // TaskName is the parent in the one-to-many relationship
+        // TaskLogs that have this TaskName
         public ICollection<TaskLog> TaskLogs { get; set; } = [];
     }
 }

@@ -9,8 +9,7 @@ namespace Domain.Entities
 
 
 
-        // Navigation property for the related TaskLogs
-        // TaskState is the parent in the one-to-many relationship
+        // TaskLogs that are in this TaskState
         public ICollection<TaskLog> TaskLogs { get; set; } = [];
     }
 }

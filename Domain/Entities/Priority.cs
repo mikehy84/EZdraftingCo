@@ -10,7 +10,7 @@ namespace Domain.Entities
 
 
 
-        // Priority is the parent in the one-to-many relationship
+        // TaskLogs that have this Priority
         public ICollection<TaskLog> TaskLogs { get; set; } = [];
     }
 }

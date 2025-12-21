@@ -7,26 +7,42 @@ namespace Domain.Entities
     public class Person
     {
         public int Id { get; set; }
-        public string? SIN { get; set; } = string.Empty; // Social Insurance Number
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public DateTime? DateOfBirth { get; set; }
 
 
         // optional foreign key to the ASP.NET Identity user
-        public string? AccountId { get; set; } = string.Empty;
+        public string? UserAccountId { get; set; }
         public UserAccount? UserAccount { get; set; }
 
 
-        // Person is the child in the one-to-many relationship
+        // Job that this Person holds
         public int? JobId { get; set; }
         public Job? Job { get; set; }
 
 
-        // Person is the child in the one-to-many relationship
+        // Company that this Person belongs to
         public int? CompanyId { get; set; }
         public Company? Company { get; set; }
 
+
+
+
+        // EmployeeProfile for this person
+        public Person EmployeeProfile { get; set; }  // one-to-one
+
+
+        // Roles assigned to this person
+        public ICollection<AssignedRole> AssignedRoles { get; set; } = [];
+
+
+        // PersonRoleMaps where this person assigned roles to others
+        public ICollection<AssignedRole> AssignedBy { get; set; } = [];
+
+
+        // AccountClaims associated with this person
+        public ICollection<AccountClaim> AccountClaims { get; set; } = [];
 
 
         // ClientProjects this person is associated with
@@ -45,11 +61,14 @@ namespace Domain.Entities
         public ICollection<TaskLog> ReceivedTasks { get; set; } = [];
 
 
-        // Roles assigned to this person
-        public ICollection<PersonRoleMap> PersonRoleMaps { get; set; } = [];
+        // EmailAddresses associated with this person
+        public ICollection<EmailAddress> EmailAddresses { get; set; } = [];
 
 
-        // AccountClaims associated with this person
-        public ICollection<AccountClaim> AccountClaims { get; set; } =[];
+        // PhoneNumbers associated with this person
+        public ICollection<Phone> PhoneNumbers { get; set; } = [];
+
+        // Addresses associated with this person
+        public ICollection<Address> Addresses { get; set; } = [];
     }
 }

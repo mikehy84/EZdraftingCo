@@ -39,6 +39,16 @@ namespace Infrastructure.Data
         public DbSet<TaskLog> TaskLogs { get; set; }
         public DbSet<TaskName> TaskNames { get; set; }
         public DbSet<TaskState> TaskStates { get; set; }
+        public DbSet<EmailAddress> EmailAddresss { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<AssignedRole> AssignedRoles { get; set; }
+        public DbSet<AccountClaim> AccountClaims { get; set; }
+        public DbSet<EmployeeProfile> EmployeeProfiles { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<State> States { get; set; }
+        public DbSet<PhoneType> PhoneTypes { get; set; }
+        public DbSet<Phone> Phones { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

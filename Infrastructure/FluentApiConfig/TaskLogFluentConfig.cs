@@ -14,15 +14,15 @@ namespace Infrastructure.FluentApiConfig
         public void Configure(EntityTypeBuilder<TaskLog> modelBuilder)
         {
             modelBuilder
-                .HasKey(a => a.Id);
+                .HasKey(tl => tl.Id);
 
             modelBuilder
-                .Property(a => a.Id)
+                .Property(tl => tl.Id)
                 .IsRequired()
                 .ValueGeneratedOnAdd();
 
             modelBuilder
-                .Property(u => u.ProjectId)
+                .Property(tl => tl.ProjectId)
                 .IsRequired();
 
             modelBuilder
@@ -47,20 +47,22 @@ namespace Infrastructure.FluentApiConfig
 
             // Relationships
             modelBuilder
-                .HasOne(u => u.Project)
+                .HasOne(tl => tl.Project)
                 .WithMany(u => u.TaskLogs)
                 .HasForeignKey(u => u.ProjectId)
                 .OnDelete(DeleteBehavior.Restrict);
+
 
             modelBuilder
                 .Navigation(u => u.Project);
 
 
             modelBuilder
-                .HasOne(e => e.Assignor)
-                .WithMany(e => e.AssignedTasks)
-                .HasForeignKey(e => e.AssignorId)
+                .HasOne(tl => tl.Assignor)
+                .WithMany(p => p.AssignedTasks)
+                .HasForeignKey(tl => tl.AssignorId)
                 .OnDelete(DeleteBehavior.Restrict);
+
 
             modelBuilder
                 .Navigation(e => e.Assignor);
@@ -72,6 +74,7 @@ namespace Infrastructure.FluentApiConfig
                 .HasForeignKey(e => e.AssigneeId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+
             modelBuilder
                 .Navigation(e => e.Assignee);
 
@@ -81,6 +84,7 @@ namespace Infrastructure.FluentApiConfig
                 .WithMany(e => e.TaskLogs)
                 .HasForeignKey(e => e.PhaseId)
                 .OnDelete(DeleteBehavior.Restrict);
+
 
             modelBuilder
                 .Navigation(e => e.Phase);
@@ -92,6 +96,7 @@ namespace Infrastructure.FluentApiConfig
                 .HasForeignKey(e => e.AreaId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+
             modelBuilder
                 .Navigation(e => e.Area);
 
@@ -101,6 +106,7 @@ namespace Infrastructure.FluentApiConfig
                 .WithMany(e => e.TaskLogs)
                 .HasForeignKey(e => e.TaskId)
                 .OnDelete(DeleteBehavior.Restrict);
+
 
             modelBuilder
                 .Navigation(e => e.Task);
@@ -112,6 +118,7 @@ namespace Infrastructure.FluentApiConfig
                 .HasForeignKey(e => e.PriorityId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+
             modelBuilder
                 .Navigation(e => e.Priority);
 
@@ -121,6 +128,7 @@ namespace Infrastructure.FluentApiConfig
                 .WithMany(e => e.TaskLogs)
                 .HasForeignKey(e => e.StatusId)
                 .OnDelete(DeleteBehavior.Restrict);
+
 
             modelBuilder
                 .Navigation(e => e.TaskState);

@@ -6,37 +6,37 @@ namespace Domain.Entities
     {
         public int Id { get; set; }
         public string InternalProjectNo { get; set; } = string.Empty;
+
+
+        // Person who is the Project Manager (PM) for this Project
+        public int ProjectManagerId { get; set; }
+        public Person ProjectManager { get; set; }
+
+
         public int ActualHours { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public bool IsClosed { get; set; } = false;
-        public DateTime CreatedDate { get; set; }
-        public DateTime UpdatedDate { get; set; }
 
 
-        // Project is the child in the one-to-many relationship
+        // ClientProject that this Project belongs to
         public int ClientProjectId { get; set; }
         public ClientProject ClientProject { get; set; }
 
 
-        // Project is the child in the one-to-many relationship
-        public int PmId { get; set; }
-        public Person Person { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
 
 
-        // Project is the parent in the one-to-many relationship
+        // Phases that belong to this Project
         public ICollection<Phase> Phases { get; set; } = [];
 
 
-        // Project is the parent in the one-to-many relationship
+        // Areas that belong to this Project
         public ICollection<Area> Areas { get; set; } = [];
 
 
-        // Project is the parent in the one-to-many relationship
+        // TaskLogs that belong to this Project
         public ICollection<TaskLog> TaskLogs { get; set; } = [];
-
-
-        // Project is the parent in the one-to-many relationship
-        public ICollection<ProjectAreaMap> ProjectAreaMaps { get; set; } = [];
     }
 }

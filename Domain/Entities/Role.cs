@@ -10,10 +10,10 @@ namespace Domain.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty; // "Employee", "ClientContact", "VendorRep", "AppUser"
+        public string Description { get; set; } = string.Empty;
 
-
-        // Role is the parent in the one-to-many relationship
-        public ICollection<PersonRoleMap> PersonRoleMaps { get; set; } = [];
+        // AssignedRoles that belong to this Role
+        public ICollection<AssignedRole> AssignedRoles { get; set; } = [];
     }
 
 }

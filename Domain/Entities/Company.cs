@@ -8,16 +8,16 @@ namespace Domain.Entities
         public string Name { get; set; } = string.Empty;
 
 
-        // Company is the cild in the one-to-many relationship
-        public int TypeId { get; set; }
+        // CompanyType that this Company belongs to
+        public int CompanyTypeId { get; set; }
         public CompanyType CompanyType { get; set; }
 
 
-        // Company is the parent in the one-to-many relationship
+        // Persons that belong to this Company
         public ICollection<Person> Persons { get; set; } = [];
 
 
-        // Company is the parent in the one-to-many relationship
+        // ClientProjects that belong to this Company
         public ICollection<ClientProject> ClientProjects { get; set; } = [];
 
 

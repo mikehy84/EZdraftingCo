@@ -9,7 +9,7 @@ namespace Domain.Entities
 
 
 
-        // CompanyType is the parent in the one-to-many relationship
+        // Companies that belong to this CompanyType
         public ICollection<Company> Companies { get; set; } = [];
     }
 }
