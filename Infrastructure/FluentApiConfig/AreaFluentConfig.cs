@@ -40,10 +40,14 @@ namespace Infrastructure.FluentApiConfig
 
             // Relationships Configuration
             modelBuilder
-                .HasOne(p => p.Project)
-                .WithMany(a => a.Areas)
-                .HasForeignKey(p => p.ProjectId)
+                .HasOne(a => a.Project)
+                .WithMany(p => p.Areas)
+                .HasForeignKey(a => a.ProjectId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+
+            modelBuilder
+                .Navigation(a => a.TaskLogs);
         }
     }
 }
