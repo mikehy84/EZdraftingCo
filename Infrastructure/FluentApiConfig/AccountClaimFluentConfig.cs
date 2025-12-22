@@ -25,6 +25,11 @@ namespace Infrastructure.FluentApiConfig
                 .HasIndex(ac => ac.TokenHash)
                 .IsUnique(); // Unique Index
 
+            modelBuilder
+                .HasIndex(ac => ac.PersonId)
+                .IsUnique() // Unique Index
+                .HasFilter("[IsActive] = 1");
+
 
             // Relationships
             modelBuilder

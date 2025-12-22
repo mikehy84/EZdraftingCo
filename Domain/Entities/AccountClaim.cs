@@ -14,6 +14,9 @@ namespace Domain.Entities
         public DateTime ExpiresAt { get; set; }
         public DateTime? UsedAt { get; set; }
 
+        public bool IsActive { get; set; } = true;
+
+
         // optional foreign key to the ASP.NET Identity user
         public string? UsedByAccountId { get; set; }
         public UserAccount? UsedByAccount { get; set; }

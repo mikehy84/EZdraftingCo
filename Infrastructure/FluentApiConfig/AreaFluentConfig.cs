@@ -1,12 +1,7 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Infrastructure.FluentApiConfig
 {
@@ -24,11 +19,8 @@ namespace Infrastructure.FluentApiConfig
 
             modelBuilder
                 .Property(a => a.Name)
+                .HasMaxLength(100)
                 .IsRequired();
-
-            modelBuilder
-                .Property(a => a.Name)
-                .HasMaxLength(100);
 
             modelBuilder
                 .Property(a => a.ProjectId)

@@ -8,7 +8,7 @@ namespace Domain.Entities
 
 
         // Person who is the client project manager
-        public int ClientPmId { get; set; }
+        public int? ClientPmId { get; set; }
         public Person ClientPm { get; set; }
 
 

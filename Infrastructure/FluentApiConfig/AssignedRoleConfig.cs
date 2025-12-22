@@ -14,29 +14,50 @@ namespace Infrastructure.FluentApiConfig
         public void Configure(EntityTypeBuilder<AssignedRole> modelBuilder)
         {
             modelBuilder
-                .HasKey(ar => ar.Id); // Primary Key
+                .HasKey(ar => ar.Id);
 
             modelBuilder
                 .Property(ar => ar.Id)
                 .IsRequired()
-                .ValueGeneratedOnAdd(); // auto-increment (IDENTITY)
+                .ValueGeneratedOnAdd();
 
             modelBuilder
-                .HasIndex(ar => new { ar.PersonId, ar.RoleId }); // Composite Index on PersonId and RoleId
+                .HasIndex(ar => new { ar.AssigneeId, ar.RoleId }) // Composite Index on PersonId and RoleId
+                .IsUnique(); // Unique constraint on PersonId and RoleId
+
+            modelBuilder
+                .Property(ar => ar.AssignorId)
+                .IsRequired();
 
             modelBuilder
                 .Property(ar => ar.AssignedAt)
                 .IsRequired();
 
             modelBuilder
-                .Property(ar => ar.AssignedByPersonId)
-                .IsRequired();
+                .HasIndex(ar => ar.AssigneeId)
+                .IsUnique()
+                .HasFilter("[IsPrimary] = 1"); // Unique index on PersonId where IsPrimary is true
+
+
 
             // Relationships
             modelBuilder
-                .HasOne(ar => ar.Person)
-                .WithMany(p => p.AssignedRoles)
-                .HasForeignKey(ar => ar.PersonId); 
+                .HasOne(ar => ar.Assignee)
+                .WithMany(p => p.RoleAssignmentsReceived)
+                .HasForeignKey(ar => ar.AssigneeId);
+
+            modelBuilder
+                .HasOne(ar => ar.Role)
+                .WithMany(r => r.AssignedRoles)
+                .HasForeignKey(ar => ar.RoleId);
+
+            modelBuilder
+                .HasOne(ar => ar.Assignor)
+                .WithMany(p => p.RoleAssignmentsMade)
+                .HasForeignKey(ar => ar.AssignorId);
+
+
+
 
 
 

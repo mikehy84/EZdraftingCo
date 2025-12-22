@@ -33,19 +33,18 @@ namespace Domain.Entities
         public Person EmployeeProfile { get; set; }  // one-to-one
 
 
-        // Roles assigned to this person
-        public ICollection<AssignedRole> AssignedRoles { get; set; } = [];
+        // Role thats are assigned to this person
+        public ICollection<AssignedRole> RoleAssignmentsReceived { get; set; } = [];
 
-
-        // PersonRoleMaps where this person assigned roles to others
-        public ICollection<AssignedRole> AssignedBy { get; set; } = [];
+        // Role that this person has assigned to others
+        public ICollection<AssignedRole> RoleAssignmentsMade { get; set; } = [];
 
 
         // AccountClaims associated with this person
         public ICollection<AccountClaim> AccountClaims { get; set; } = [];
 
 
-        // ClientProjects this person is associated with
+        // ClientProjects that are being managed by this person
         public ICollection<ClientProject> ClientProjects { get; set; } = [];
 
 

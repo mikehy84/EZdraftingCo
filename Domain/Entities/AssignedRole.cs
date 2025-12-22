@@ -6,8 +6,8 @@ namespace Domain.Entities
         public int Id { get; set; }
 
         // Person who the role is assigned to
-        public int PersonId { get; set; }
-        public Person Person { get; set; } = null!;
+        public int AssigneeId { get; set; }
+        public Person Assignee { get; set; } = null!;
 
 
         // Role that is assigned to the person
@@ -17,8 +17,8 @@ namespace Domain.Entities
 
         // Audit fields
         // Person who assigned the role
-        public int AssignedByPersonId { get; set; }
-        public Person AssignedByPerson { get; set; }
+        public int AssignorId { get; set; }
+        public Person Assignor { get; set; }
 
 
         public DateTime AssignedAt { get; set; } = DateTime.UtcNow;
