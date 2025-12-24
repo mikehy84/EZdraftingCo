@@ -36,7 +36,7 @@ namespace Infrastructure.FluentApiConfig
             modelBuilder
                 .HasIndex(ar => ar.AssigneeId)
                 .IsUnique()
-                .HasFilter("[IsPrimary] = 1"); // Unique index on PersonId where IsPrimary is true
+                .HasFilter("[IsPrimary] = 1"); // Only rows where IsPrimary = true participate in the unique index.
 
 
 

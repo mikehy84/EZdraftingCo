@@ -35,14 +35,13 @@ namespace Infrastructure.FluentApiConfig
                 .IsUnique(); // Unique index on Email
 
             modelBuilder
-                .HasIndex(ea => new { ea.PersonId, ea.Email})
-                .IsUnique(); // Unique index on PersonId and Email combination
-
-            modelBuilder
                 .HasIndex(ea => ea.PersonId)
                 .IsUnique()
-                .HasFilter("[IsPrimary] = 1"); // Unique index on PersonId where IsPrimary is true
+                .HasFilter("[IsPrimary] = 1"); // Only rows where IsPrimary = true participate in the unique index.
 
+            modelBuilder
+                .HasIndex(ea => new { ea.PersonId, ea.Email })
+                .IsUnique(); // Unique index on PersonId and Email combination
 
             // Relationships
             modelBuilder

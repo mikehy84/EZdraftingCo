@@ -10,10 +10,13 @@ namespace Domain.Entities
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public DateTime? DateOfBirth { get; set; }
+        public bool IsActive { get; set; } = true;
+        public DateTime? DeactivatedAt { get; set; }
+        public DateTime? ReactivatedAt { get; set; }
 
 
         // optional foreign key to the ASP.NET Identity user
-        public string? UserAccountId { get; set; }
+        public string? AccountId { get; set; }
         public UserAccount? UserAccount { get; set; }
 
 
@@ -28,10 +31,8 @@ namespace Domain.Entities
 
 
 
-
         // EmployeeProfile for this person
-        public Person EmployeeProfile { get; set; }  // one-to-one
-
+        public EmployeeProfile? EmployeeProfile { get; set; }  // one-to-one
 
         // Role thats are assigned to this person
         public ICollection<AssignedRole> RoleAssignmentsReceived { get; set; } = [];
@@ -39,30 +40,23 @@ namespace Domain.Entities
         // Role that this person has assigned to others
         public ICollection<AssignedRole> RoleAssignmentsMade { get; set; } = [];
 
-
         // AccountClaims associated with this person
         public ICollection<AccountClaim> AccountClaims { get; set; } = [];
-
 
         // ClientProjects that are being managed by this person
         public ICollection<ClientProject> ClientProjects { get; set; } = [];
 
-
         // Projects this person manages
         public ICollection<Project> Projects { get; set; } = [];
-
 
         // Tasks this person assigned to others
         public ICollection<TaskLog> AssignedTasks { get; set; } = [];
 
-
         // Tasks assigned to this person
         public ICollection<TaskLog> ReceivedTasks { get; set; } = [];
 
-
         // EmailAddresses associated with this person
         public ICollection<EmailAddress> EmailAddresses { get; set; } = [];
-
 
         // PhoneNumbers associated with this person
         public ICollection<Phone> PhoneNumbers { get; set; } = [];

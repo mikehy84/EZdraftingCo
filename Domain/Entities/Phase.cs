@@ -19,9 +19,6 @@ namespace Domain.Entities
         public DateTime UpdatedAt { get; set; }
 
 
-
-
-
         // TaskLogs under this Phase
         public ICollection<TaskLog> TaskLogs { get; set; } = [];
     }

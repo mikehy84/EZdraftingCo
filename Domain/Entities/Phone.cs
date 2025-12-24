@@ -24,7 +24,7 @@ namespace Domain.Entities
         public bool IsPrimary { get; set; }
 
         public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set;
+        public DateTime UpdatedAt { get; set; }
 
     }
 }

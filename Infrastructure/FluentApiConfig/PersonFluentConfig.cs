@@ -11,57 +11,84 @@ namespace Infrastructure.FluentApiConfig
         public void Configure(EntityTypeBuilder<Person> modelBuilder)
         {
             modelBuilder
-                .HasKey(x => x.Id); // Primary Key
+                .HasKey(p => p.Id); // Primary Key
 
             modelBuilder
-                .Property(x => x.Id)
+                .Property(p => p.Id)
                 .IsRequired()
                 .ValueGeneratedOnAdd(); // auto-increment (IDENTITY)
 
             modelBuilder
-                .HasIndex(x => x.SIN)
-                .IsUnique(); // unique constraint on SIN
-
-            modelBuilder
-                .Property(x => x.FirstName)
+                .Property(p => p.FirstName)
                 .IsRequired()
                 .HasMaxLength(50); // FirstName is required with max length 50
 
             modelBuilder
-                .Property(x => x.LastName)
+                .Property(p => p.LastName)
                 .IsRequired()
                 .HasMaxLength(50); // LastName is required with max length 50
 
 
+            // Unique constraint
+            modelBuilder
+                .HasIndex(p => p.AccountId)
+                .IsUnique()
+                .HasFilter("[AccountId] IS NOT NULL"); // Only rows where AccountId has a value participate in the unique index.
+
+
             // Relationships Configuration
             modelBuilder
-                .HasOne(x => x.Job)
-                .WithMany(x => x.Persons)
-                .HasForeignKey(x => x.JobId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder
-                .Navigation(x => x.Job);
-
-
-            modelBuilder
-                .HasOne(x => x.Company)
-                .WithMany(x => x.Persons)
-                .HasForeignKey(x => x.CompanyId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder
-                .Navigation(x => x.Company);
-
-
-            modelBuilder
                 .HasOne(p => p.UserAccount)
-                .WithOne(u => u.Person)
+                .WithOne(ua => ua.Person)
                 .HasForeignKey<Person>(p => p.AccountId)
-                .OnDelete(DeleteBehavior.SetNull);
+                .IsRequired(false);
+
+            modelBuilder
+                .HasOne(p => p.Job)
+                .WithMany(j => j.Persons)
+                .HasForeignKey(p => p.JobId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder
+                .HasOne(p => p.Company)
+                .WithMany(c => c.Persons)
+                .HasForeignKey(p => p.CompanyId)
+                .OnDelete(DeleteBehavior.Restrict);
 
 
+            // Navigation Properties
+            modelBuilder
+                .Navigation(p => p.EmployeeProfile);
 
+            modelBuilder
+                .Navigation(p => p.RoleAssignmentsReceived);
+
+            modelBuilder
+                .Navigation(p => p.RoleAssignmentsMade);
+
+            modelBuilder
+                .Navigation(p => p.AccountClaims);
+
+            modelBuilder
+                .Navigation(p => p.ClientProjects);
+
+            modelBuilder
+                .Navigation(p => p.Projects);
+
+            modelBuilder
+                .Navigation(p => p.AssignedTasks);
+
+            modelBuilder
+                .Navigation(p => p.ReceivedTasks);
+
+            modelBuilder
+                .Navigation(p => p.EmailAddresses);
+
+            modelBuilder
+                .Navigation(p => p.PhoneNumbers);
+
+            modelBuilder
+                .Navigation(p => p.Addresses);
         }
     }
 }

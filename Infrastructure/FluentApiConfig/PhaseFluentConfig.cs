@@ -11,34 +11,36 @@ namespace Infrastructure.FluentApiConfig
         public void Configure(EntityTypeBuilder<Phase> modelBuilder)
         {
             modelBuilder
-                .HasKey(g => g.Id); // Primary Key
+                .HasKey(ph => ph.Id); // Primary Key
 
             modelBuilder
-                .Property(g => g.Id)
+                .Property(ph => ph.Id)
                 .IsRequired()
                 .ValueGeneratedOnAdd(); // auto-increment (IDENTITY)
 
-
             modelBuilder
-                .Property(g => g.PhaseNumber)
+                .Property(ph => ph.ProjectId)
                 .IsRequired();
 
             modelBuilder
-                .Property(a => a.ProjectId)
+                .Property(ph => ph.PhaseNumber)
                 .IsRequired();
 
             modelBuilder
-                .HasIndex(a => new { a.PhaseNumber, a.ProjectId })
+                .HasIndex(ph => new { ph.PhaseNumber, ph.ProjectId })
                 .IsUnique();
-
 
 
             // Relationships Configuration
             modelBuilder
-                .HasOne(a => a.Project)
-                .WithMany(a => a.Phases)
-                .HasForeignKey(a => a.ProjectId)
+                .HasOne(ph => ph.Project)
+                .WithMany(proj => proj.Phases)
+                .HasForeignKey(ph => ph.ProjectId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            // Navigation Properties
+            modelBuilder
+                .Navigation(ph => ph.TaskLogs);
         }
     }
 }

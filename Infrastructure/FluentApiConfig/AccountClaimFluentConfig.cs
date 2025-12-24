@@ -28,7 +28,7 @@ namespace Infrastructure.FluentApiConfig
             modelBuilder
                 .HasIndex(ac => ac.PersonId)
                 .IsUnique() // Unique Index
-                .HasFilter("[IsActive] = 1");
+                .HasFilter("[IsActive] = 1"); // Only rows where IsActive = true participate in the unique index.
 
 
             // Relationships

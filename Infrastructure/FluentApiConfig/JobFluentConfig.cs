@@ -11,16 +11,12 @@ namespace Infrastructure.FluentApiConfig
         public void Configure(EntityTypeBuilder<Job> modelBuilder)
         {
             modelBuilder
-                .HasKey(x => x.Id); // Primary Key
+                .HasKey(j => j.Id); // Primary Key
 
             modelBuilder
-                .Property(x => x.Id)
+                .Property(j => j.Id)
                 .IsRequired()
                 .ValueGeneratedOnAdd(); // auto-increment (IDENTITY)
-
-            modelBuilder
-                .HasIndex(x => x.Title)
-                .IsUnique();
 
             modelBuilder
                 .Property(x => x.Title)
@@ -31,6 +27,15 @@ namespace Infrastructure.FluentApiConfig
                 .Property(x => x.RatePerHour)
                 .IsRequired()
                 .HasPrecision(10, 2); // up to 99999999.99
+
+            // Unique constraint on Title
+            modelBuilder
+                .HasIndex(j => j.Title)
+                .IsUnique();
+
+            // Relationships
+            modelBuilder
+                .Navigation(j => j.Persons);
         }
     }
 }
