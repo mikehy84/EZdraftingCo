@@ -12,7 +12,7 @@ namespace Domain.Entities
         public int Id { get; set; }
 
         // Foreign key to PhoneType
-        public int PhoneTypeId { get; set; }
+        public int TypeId { get; set; }
         public PhoneType PhoneType { get; set; }
 
 
@@ -20,11 +20,16 @@ namespace Domain.Entities
         public int PersonId { get; set; }
         public Person Person { get; set; }
 
+
+        // Foreign key to Country
+        public int CountryId { get; set; }
+        public Country Country { get; set; }
+
+
         public string PhoneNumber { get; set; }
         public bool IsPrimary { get; set; }
 
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-
     }
 }

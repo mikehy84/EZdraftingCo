@@ -63,5 +63,8 @@ namespace Domain.Entities
 
         // Addresses associated with this person
         public ICollection<Address> Addresses { get; set; } = [];
+
+        // TaskComments made by this person
+        public ICollection<TaskComment> TaskComments { get; set; } = [];
     }
 }

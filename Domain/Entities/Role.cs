@@ -12,6 +12,7 @@ namespace Domain.Entities
         public string Name { get; set; } = string.Empty; // "Employee", "ClientContact", "VendorRep", "AppUser"
         public string Description { get; set; } = string.Empty;
 
+
         // AssignedRoles that belong to this Role
         public ICollection<AssignedRole> AssignedRoles { get; set; } = [];
     }

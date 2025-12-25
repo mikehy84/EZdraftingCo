@@ -32,17 +32,21 @@ namespace Infrastructure.FluentApiConfig
                 .IsUnique();
 
             modelBuilder
-                .HasIndex(c => c.Code)
+                .HasIndex(c => c.AlphaCode)
                 .IsUnique();
 
+            modelBuilder
+                .Property(c => c.PhoneCode)
+                .HasMaxLength(25)
+                .IsRequired();
 
             var upperConverter = new ValueConverter<string, string>(
             v => v == null ? null! : v.Trim().ToUpperInvariant(),
             v => v);
 
             modelBuilder
-                .Property(c => c.Code)
-                .HasMaxLength(4)
+                .Property(c => c.AlphaCode)
+                .HasMaxLength(8)
                 .IsRequired()
                 .HasConversion(upperConverter);
         }

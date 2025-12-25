@@ -28,15 +28,15 @@ namespace Domain.Entities
         public DateTime UpdatedDate { get; set; }
 
 
+        // TaskLogs that belong to this Project
+        public ICollection<TaskLog> TaskLogs { get; set; } = [];
+
+
         // Phases that belong to this Project
         public ICollection<Phase> Phases { get; set; } = [];
 
 
         // Areas that belong to this Project
         public ICollection<Area> Areas { get; set; } = [];
-
-
-        // TaskLogs that belong to this Project
-        public ICollection<TaskLog> TaskLogs { get; set; } = [];
     }
 }

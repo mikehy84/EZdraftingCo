@@ -10,43 +10,49 @@ namespace Infrastructure.FluentApiConfig
         public void Configure(EntityTypeBuilder<Project> modelBuilder)
         {
             modelBuilder
-                .HasKey(x => x.Id); // Primary Key
+                .HasKey(p => p.Id); // Primary Key
 
             modelBuilder
-                .Property(x => x.Id)
+                .Property(p => p.Id)
                 .IsRequired()
                 .ValueGeneratedOnAdd(); // auto-increment (IDENTITY)
 
-            modelBuilder
-                .HasIndex(x => x.InternalProjectNo)
-                .IsUnique();
+            
 
             modelBuilder
-                .Property(x => x.InternalProjectNo)
+                .Property(p => p.InternalProjectNo)
                 .IsRequired();
 
+
+            // Constraints
             modelBuilder
-                .HasIndex(a => new {a.InternalProjectNo, a.ClientProjectId })
+                .HasIndex(p => p.InternalProjectNo)
                 .IsUnique();
+
 
             // Relationships Configuration
             modelBuilder
-                .HasOne(x => x.Person)
-                .WithMany(x => x.Projects)
-                .HasForeignKey(x => x.PmId)
+                .HasOne(p => p.ProjectManager)
+                .WithMany(pe => pe.Projects)
+                .HasForeignKey(p => p.ProjectManagerId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder
-                .HasOne(x => x.ClientProject)
-                .WithMany(x => x.Projects)
-                .HasForeignKey(x => x.ClientProjectId)
+                .HasOne(p => p.ClientProject)
+                .WithMany(pe => pe.Projects)
+                .HasForeignKey(p => p.ClientProjectId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+
+            // Navigation Properties Configuration
             modelBuilder
-                .Navigation(x => x.Person);
+                .Navigation(p => p.TaskLogs);
 
             modelBuilder
-                .Navigation(x => x.ClientProject);
+                .Navigation(p => p.Phases);
+
+            modelBuilder
+                .Navigation(p => p.Areas);
         }
     }
 }

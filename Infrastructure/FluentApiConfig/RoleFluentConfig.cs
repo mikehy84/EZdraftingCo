@@ -23,7 +23,19 @@ namespace Infrastructure.FluentApiConfig
 
             modelBuilder
                 .Property(r => r.Name)
+                .HasMaxLength(20)
                 .IsRequired();
+
+
+            // Constraints
+            modelBuilder
+                .HasIndex(r => r.Name)
+                .IsUnique(); // Unique constraint on Name
+
+
+            // Relationships
+            modelBuilder
+                .Navigation(r => r.AssignedRoles);
         }
     }
 }
