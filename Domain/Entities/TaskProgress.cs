@@ -7,7 +7,7 @@ namespace Domain.Entities
         public int Id { get; set; }
 
 
-        // Project that this TaskLog belongs to
+        // Foreign key to TaskAssignment
         public int TaskAssignmentId { get; set; }
         public TaskAssignment TaskAssignment { get; set; }
 

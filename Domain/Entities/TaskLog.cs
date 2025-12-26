@@ -7,12 +7,12 @@ namespace Domain.Entities
         public int Id { get; set; }
 
 
-        // Project that this TaskLog belongs to
+        // Foreign Key to TaskDetail
         public int TaskDetailId { get; set; }
         public TaskDetail TaskDetail { get; set; }
 
 
-        // TaskState that this TaskLog is in
+        // Foreign Key to TaskStatus
         public int StatusId { get; set; }
         public TaskStatus TaskStatus { get; set; }
 

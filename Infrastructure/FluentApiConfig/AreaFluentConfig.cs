@@ -22,10 +22,7 @@ namespace Infrastructure.FluentApiConfig
                 .HasMaxLength(100)
                 .IsRequired();
 
-            modelBuilder
-                .Property(a => a.ProjectId)
-                .IsRequired();
-
+            // Unique Constraint Configuration
             modelBuilder
                 .HasIndex(a => new { a.Name, a.ProjectId })
                 .IsUnique();
@@ -35,7 +32,8 @@ namespace Infrastructure.FluentApiConfig
                 .HasOne(a => a.Project)
                 .WithMany(p => p.Areas)
                 .HasForeignKey(a => a.ProjectId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
 
 
             modelBuilder

@@ -27,14 +27,16 @@ namespace Infrastructure.FluentApiConfig
                 .HasOne(tl => tl.TaskDetail)
                 .WithOne(td => td.TaskLog)
                 .HasForeignKey<TaskLog>(tl => tl.TaskDetailId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
 
 
             modelBuilder
                 .HasOne(tl => tl.TaskStatus)
                 .WithMany(ts => ts.TaskLogs)
                 .HasForeignKey(tl => tl.StatusId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
         }
     }
 }

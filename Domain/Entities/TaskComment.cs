@@ -5,7 +5,7 @@
         public int Id { get; set; }
 
 
-        // Foreign key to the Person who made the comment
+        // Foreign key to TaskProgress
         public int TaskProgressId { get; set; }
         public TaskProgress TaskProgress { get; set; }
 

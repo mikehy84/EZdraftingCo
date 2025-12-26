@@ -66,7 +66,7 @@ namespace Infrastructure.Data
             modelBuilder.ApplyConfiguration(new ProjectFluentConfig());
             modelBuilder.ApplyConfiguration(new TaskLogFluentConfig());
             modelBuilder.ApplyConfiguration(new TaskNameFluentConfig());
-            modelBuilder.ApplyConfiguration(new TaskStateFluentConfig());
+            modelBuilder.ApplyConfiguration(new TaskStatusFluentConfig());
         }
     }
 }

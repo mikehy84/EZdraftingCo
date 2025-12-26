@@ -31,7 +31,8 @@ namespace Infrastructure.FluentApiConfig
                 .HasOne(tc => tc.TaskProgress)
                 .WithMany(tp => tp.TaskComments)
                 .HasForeignKey(tc => tc.TaskProgressId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
         }
     }
 }

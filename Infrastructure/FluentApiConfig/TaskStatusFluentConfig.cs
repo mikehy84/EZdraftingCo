@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.FluentApiConfig
 {
-    public class TaskStateFluentConfig : IEntityTypeConfiguration<Domain.Entities.TaskStatus>
+    public class TaskStatusFluentConfig : IEntityTypeConfiguration<Domain.Entities.TaskStatus>
     {
         public void Configure(EntityTypeBuilder<Domain.Entities.TaskStatus> modelBuilder)
         {
@@ -18,7 +18,7 @@ namespace Infrastructure.FluentApiConfig
 
             modelBuilder
                 .Property(ts => ts.Id)
-                .IsSparse()
+                .IsRequired()
                 .ValueGeneratedOnAdd();
 
             modelBuilder
@@ -26,6 +26,8 @@ namespace Infrastructure.FluentApiConfig
                 .IsRequired()
                 .HasMaxLength(20);
 
+
+            // Unique Constraints
             modelBuilder
                 .HasIndex(ts => ts.Name)
                 .IsUnique();

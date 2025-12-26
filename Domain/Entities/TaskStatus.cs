@@ -9,7 +9,7 @@ namespace Domain.Entities
 
 
 
-        // TaskLogs that are in this TaskState
+        // TaskLogs that have this TaskStatus
         public ICollection<TaskLog> TaskLogs { get; set; } = [];
     }
 }

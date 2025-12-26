@@ -22,10 +22,6 @@ namespace Infrastructure.FluentApiConfig
                 .ValueGeneratedOnAdd();
 
             modelBuilder
-                .Property(tp => tp.TaskAssignmentId)
-                .IsRequired();
-
-            modelBuilder
                 .Property(tp => tp.Date)
                 .IsRequired();
 
@@ -38,7 +34,8 @@ namespace Infrastructure.FluentApiConfig
                 .HasOne(tp => tp.TaskAssignment)
                 .WithMany(ta => ta.TaskProgresses)
                 .HasForeignKey(tp => tp.TaskAssignmentId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
 
             // Navigation properties
             modelBuilder
