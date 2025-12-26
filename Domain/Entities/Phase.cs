@@ -19,7 +19,7 @@ namespace Domain.Entities
         public DateTime UpdatedAt { get; set; }
 
 
-        // TaskLogs under this Phase
-        public ICollection<TaskLog> TaskLogs { get; set; } = [];
+        // TaskDetails associated with this Phase
+        public ICollection<TaskDetail> TaskDetails { get; set; } = [];
     }
 }

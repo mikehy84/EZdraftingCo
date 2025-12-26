@@ -10,7 +10,7 @@ namespace Domain.Entities
 
 
 
-        // TaskLogs that have this Priority
-        public ICollection<TaskLog> TaskLogs { get; set; } = [];
+        // TaskDetails that have this Priority
+        public ICollection<TaskDetail> TaskDetails { get; set; } = [];
     }
 }

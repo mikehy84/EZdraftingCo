@@ -8,7 +8,7 @@ namespace Domain.Entities
         public string Name { get; set; } = string.Empty;
 
 
-        // TaskLogs that have this TaskName
-        public ICollection<TaskLog> TaskLogs { get; set; } = [];
+        // TaskDetails associated with this Task
+        public ICollection<TaskDetail> TaskDetails { get; set; } = [];
     }
 }

@@ -38,7 +38,7 @@ namespace Infrastructure.Data
         public DbSet<Project> Projects { get; set; }
         public DbSet<TaskLog> TaskLogs { get; set; }
         public DbSet<TaskName> TaskNames { get; set; }
-        public DbSet<TaskState> TaskStates { get; set; }
+        public DbSet<Domain.Entities.TaskStatus> TaskStates { get; set; }
         public DbSet<EmailAddress> EmailAddresss { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<AssignedRole> AssignedRoles { get; set; }

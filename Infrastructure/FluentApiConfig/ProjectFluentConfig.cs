@@ -33,20 +33,20 @@ namespace Infrastructure.FluentApiConfig
             // Relationships Configuration
             modelBuilder
                 .HasOne(p => p.ProjectManager)
-                .WithMany(pe => pe.Projects)
+                .WithMany(person => person.Projects)
                 .HasForeignKey(p => p.ProjectManagerId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder
                 .HasOne(p => p.ClientProject)
-                .WithMany(pe => pe.Projects)
+                .WithMany(person => person.Projects)
                 .HasForeignKey(p => p.ClientProjectId)
                 .OnDelete(DeleteBehavior.Restrict);
 
 
             // Navigation Properties Configuration
             modelBuilder
-                .Navigation(p => p.TaskLogs);
+                .Navigation(p => p.TaskDetails);
 
             modelBuilder
                 .Navigation(p => p.Phases);

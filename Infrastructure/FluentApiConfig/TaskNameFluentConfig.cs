@@ -10,17 +10,27 @@ namespace Infrastructure.FluentApiConfig
         public void Configure(EntityTypeBuilder<TaskName> modelBuilder)
         {
             modelBuilder
-                .HasKey(a => a.Id); // Primary Key
+                .HasKey(tn => tn.Id); // Primary Key
 
             modelBuilder
-                .Property(a => a.Id)
+                .Property(tn => tn.Id)
                 .IsRequired()
                 .ValueGeneratedOnAdd(); // auto-increment (IDENTITY)
 
             modelBuilder
-                .Property(a => a.Name)
+                .Property(tn => tn.Name)
                 .HasMaxLength(50)
                 .IsRequired();
+
+
+            // Unique Index on Name
+            modelBuilder
+                .HasIndex(tn => tn.Name)
+                .IsUnique(); // Unique constraint on Name
+
+            // Navigation properties
+            modelBuilder
+                .Navigation(tn => tn.TaskDetails);
         }
     }
 }

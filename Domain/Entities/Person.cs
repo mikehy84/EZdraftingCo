@@ -31,40 +31,47 @@ namespace Domain.Entities
 
 
 
-        // EmployeeProfile for this person
-        public EmployeeProfile? EmployeeProfile { get; set; }  // one-to-one
-
-        // Role thats are assigned to this person
-        public ICollection<AssignedRole> RoleAssignmentsReceived { get; set; } = [];
-
-        // Role that this person has assigned to others
-        public ICollection<AssignedRole> RoleAssignmentsMade { get; set; } = [];
-
-        // AccountClaims associated with this person
-        public ICollection<AccountClaim> AccountClaims { get; set; } = [];
-
-        // ClientProjects that are being managed by this person
-        public ICollection<ClientProject> ClientProjects { get; set; } = [];
-
-        // Projects this person manages
-        public ICollection<Project> Projects { get; set; } = [];
-
-        // Tasks this person assigned to others
-        public ICollection<TaskLog> AssignedTasks { get; set; } = [];
-
-        // Tasks assigned to this person
-        public ICollection<TaskLog> ReceivedTasks { get; set; } = [];
-
-        // EmailAddresses associated with this person
-        public ICollection<EmailAddress> EmailAddresses { get; set; } = [];
-
         // PhoneNumbers associated with this person
         public ICollection<Phone> PhoneNumbers { get; set; } = [];
+
 
         // Addresses associated with this person
         public ICollection<Address> Addresses { get; set; } = [];
 
-        // TaskComments made by this person
-        public ICollection<TaskComment> TaskComments { get; set; } = [];
+
+        // EmployeeProfile for this person
+        public EmployeeProfile? EmployeeProfile { get; set; }  // one-to-one
+
+
+        // Role thats are assigned to this person
+        public ICollection<AssignedRole> RoleAssignmentsReceived { get; set; } = [];
+
+
+        // Role that this person has assigned to others
+        public ICollection<AssignedRole> RoleAssignmentsMade { get; set; } = [];
+
+
+        // AccountClaims associated with this person
+        public ICollection<AccountClaim> AccountClaims { get; set; } = [];
+
+
+        // EmailAddresses associated with this person
+        public ICollection<EmailAddress> EmailAddresses { get; set; } = [];
+
+
+        // Tasks this person assigned to others
+        public ICollection<TaskAssignment> AssignedTasks { get; set; } = [];
+
+
+        // Tasks assigned to this person
+        public ICollection<TaskAssignment> ReceivedTasks { get; set; } = [];
+
+
+        // Projects this person manages
+        public ICollection<Project> Projects { get; set; } = [];
+
+
+        // ClientProjects that are being managed by this person
+        public ICollection<ClientProject> ClientProjects { get; set; } = [];
     }
 }

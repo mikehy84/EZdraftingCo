@@ -24,12 +24,12 @@ namespace Domain.Entities
         public ClientProject ClientProject { get; set; }
 
 
-        public DateTime CreatedDate { get; set; }
-        public DateTime UpdatedDate { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
 
-        // TaskLogs that belong to this Project
-        public ICollection<TaskLog> TaskLogs { get; set; } = [];
+        // TaskDetails that belong to this Project
+        public ICollection<TaskDetail> TaskDetails { get; set; } = [];
 
 
         // Phases that belong to this Project

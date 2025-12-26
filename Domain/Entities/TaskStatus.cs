@@ -2,7 +2,7 @@
 
 namespace Domain.Entities
 {
-    public class TaskState
+    public class TaskStatus
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;

@@ -17,8 +17,8 @@ namespace Domain.Entities
         public Project Project { get; set; }
 
 
-        // TaskLogs that belong to this Area
-        public ICollection<TaskLog> TaskLogs { get; set; } = [];
+        // TaskDetails that belong to this Area
+        public ICollection<TaskDetail> TaskDetails { get; set; } = [];
 
     }
 }

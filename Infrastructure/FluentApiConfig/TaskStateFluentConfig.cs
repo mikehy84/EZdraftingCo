@@ -9,21 +9,30 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.FluentApiConfig
 {
-    public class TaskStateFluentConfig : IEntityTypeConfiguration<TaskState>
+    public class TaskStateFluentConfig : IEntityTypeConfiguration<Domain.Entities.TaskStatus>
     {
-        public void Configure(EntityTypeBuilder<TaskState> modelBuilder)
+        public void Configure(EntityTypeBuilder<Domain.Entities.TaskStatus> modelBuilder)
         {
             modelBuilder
-                .HasKey(u => u.Id);
+                .HasKey(ts => ts.Id);
 
             modelBuilder
-                .Property(u => u.Name)
+                .Property(ts => ts.Id)
+                .IsSparse()
+                .ValueGeneratedOnAdd();
+
+            modelBuilder
+                .Property(ts => ts.Name)
                 .IsRequired()
-                .HasMaxLength(30);
+                .HasMaxLength(20);
 
             modelBuilder
-                .HasIndex(u => u.Name)
+                .HasIndex(ts => ts.Name)
                 .IsUnique();
+
+            // Navigation Properties
+            modelBuilder
+                .Navigation(ts => ts.TaskLogs);
         }
     }
 }

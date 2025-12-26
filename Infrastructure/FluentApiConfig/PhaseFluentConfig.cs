@@ -40,7 +40,7 @@ namespace Infrastructure.FluentApiConfig
 
             // Navigation Properties
             modelBuilder
-                .Navigation(ph => ph.TaskLogs);
+                .Navigation(ph => ph.TaskDetails);
         }
     }
 }

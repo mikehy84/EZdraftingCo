@@ -31,9 +31,9 @@ namespace Infrastructure.FluentApiConfig
                 .HasIndex(p => p.Name)
                 .IsUnique(); // Unique constraint on Name
 
-            // Relationships
+            // Relationship properties
             modelBuilder
-                .Navigation(p => p.TaskLogs);
+                .Navigation(p => p.TaskDetails);
         }
     }
 }

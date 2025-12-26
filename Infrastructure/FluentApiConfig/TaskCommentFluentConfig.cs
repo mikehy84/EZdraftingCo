@@ -13,7 +13,25 @@ namespace Infrastructure.FluentApiConfig
     {
         public void Configure(EntityTypeBuilder<TaskComment> modelBuilder)
         {
+            modelBuilder
+                .HasKey(tc => tc.Id);
 
+            modelBuilder
+                .Property(tc => tc.Id)
+                .IsRequired()
+                .ValueGeneratedOnAdd();
+
+            modelBuilder
+                .Property(tc => tc.Comment)
+                .IsRequired()
+                .HasMaxLength(1000);
+
+            // Relationships
+            modelBuilder
+                .HasOne(tc => tc.TaskProgress)
+                .WithMany(tp => tp.TaskComments)
+                .HasForeignKey(tc => tc.TaskProgressId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

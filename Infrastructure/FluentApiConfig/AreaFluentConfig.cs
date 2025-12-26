@@ -39,7 +39,7 @@ namespace Infrastructure.FluentApiConfig
 
 
             modelBuilder
-                .Navigation(a => a.TaskLogs);
+                .Navigation(a => a.TaskDetails);
         }
     }
 }

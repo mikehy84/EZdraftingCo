@@ -6,17 +6,12 @@
 
 
         // Foreign key to the Person who made the comment
-        public int PersonId { get; set; }
-        public Person Person { get; set; }
-
-
-        // Foreign key to the TaskLog that this comment is about
-        public int TaskLogId { get; set; }
-        public TaskLog TaskLog { get; set; }
+        public int TaskProgressId { get; set; }
+        public TaskProgress TaskProgress { get; set; }
 
 
         public string Comment { get; set; } = string.Empty;
-        public DateTime CreatedAt { get; set; }
-
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime UpdatedAt { get; set; }
     }
 }
