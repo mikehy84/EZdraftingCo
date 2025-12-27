@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.FluentApiConfig
 {
-    public class RoleFluentConfig : IEntityTypeConfiguration<Role>
+    public class AppRoleFluentConfig : IEntityTypeConfiguration<AppRole>
     {
-        public void Configure(EntityTypeBuilder<Role> modelBuilder) 
+        public void Configure(EntityTypeBuilder<AppRole> modelBuilder) 
         {
             modelBuilder
                 .HasKey(r => r.Id); // Primary Key

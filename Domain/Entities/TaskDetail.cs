@@ -26,7 +26,7 @@ namespace Domain.Entities
 
         // Are that this TaskLog belongs to
         public int AreaId { get; set; }
-        public Area Area { get; set; }
+        public ProjectArea Area { get; set; }
 
 
         // Proiority that this TaskLog has

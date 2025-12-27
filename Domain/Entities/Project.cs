@@ -37,6 +37,6 @@ namespace Domain.Entities
 
 
         // Areas that belong to this Project
-        public ICollection<Area> Areas { get; set; } = [];
+        public ICollection<ProjectArea> Areas { get; set; } = [];
     }
 }

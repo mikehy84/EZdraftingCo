@@ -12,7 +12,7 @@ namespace Domain.Entities
 
         // Role that is assigned to the person
         public int RoleId { get; set; }
-        public Role Role { get; set; } = null!;
+        public AppRole AppRole { get; set; } = null!;
 
 
         // Audit fields

@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.FluentApiConfig
 {
-    public class TaskStatusFluentConfig : IEntityTypeConfiguration<Domain.Entities.TaskStatus>
+    public class TaskStateFluentConfig : IEntityTypeConfiguration<Domain.Entities.TaskState>
     {
-        public void Configure(EntityTypeBuilder<Domain.Entities.TaskStatus> modelBuilder)
+        public void Configure(EntityTypeBuilder<Domain.Entities.TaskState> modelBuilder)
         {
             modelBuilder
                 .HasKey(ts => ts.Id);

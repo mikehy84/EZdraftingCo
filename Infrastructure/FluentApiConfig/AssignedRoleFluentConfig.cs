@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.FluentApiConfig
 {
-    public class AssignedRoleConfig : IEntityTypeConfiguration<AssignedRole>
+    public class AssignedRoleFluentConfig : IEntityTypeConfiguration<AssignedRole>
     { 
         public void Configure(EntityTypeBuilder<AssignedRole> modelBuilder)
         {
@@ -45,7 +45,7 @@ namespace Infrastructure.FluentApiConfig
                 .IsRequired();
 
             modelBuilder
-                .HasOne(ar => ar.Role)
+                .HasOne(ar => ar.AppRole)
                 .WithMany(r => r.AssignedRoles)
                 .HasForeignKey(ar => ar.RoleId)
                 .OnDelete(DeleteBehavior.Restrict)

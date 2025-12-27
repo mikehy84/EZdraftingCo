@@ -26,47 +26,69 @@ namespace Infrastructure.Data
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
-        public DbSet<UserAccount> UserAccounts { get; set; }
-        public DbSet<Area> Areas { get; set; }
+        public DbSet<AccountClaim> AccountClaims { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<AppRole> AppRoles { get; set; }
+        public DbSet<AssignedRole> AssignedRoles { get; set; }
         public DbSet<ClientProject> ClientProjects { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<CompanyType> CompanyTypes { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<EmailAddress> EmailAddresss { get; set; }
+        public DbSet<EmployeeProfile> EmployeeProfiles { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Person> Persons { get; set; }
         public DbSet<Phase> Phases { get; set; }
+        public DbSet<Phone> Phones { get; set; }
+        public DbSet<PhoneType> PhoneTypes { get; set; }
         public DbSet<Priority> Priorities { get; set; }
         public DbSet<Project> Projects { get; set; }
+        public DbSet<ProjectArea> ProjectAreas { get; set; }
+        public DbSet<State> States { get; set; }
+        public DbSet<TaskAssignment> TaskAssignments { get; set; }
+        public DbSet<TaskComment> TaskComments { get; set; }
+        public DbSet<TaskDetail> TaskDetails { get; set; }
         public DbSet<TaskLog> TaskLogs { get; set; }
         public DbSet<TaskName> TaskNames { get; set; }
-        public DbSet<Domain.Entities.TaskStatus> TaskStates { get; set; }
-        public DbSet<EmailAddress> EmailAddresss { get; set; }
-        public DbSet<Role> Roles { get; set; }
-        public DbSet<AssignedRole> AssignedRoles { get; set; }
-        public DbSet<AccountClaim> AccountClaims { get; set; }
-        public DbSet<EmployeeProfile> EmployeeProfiles { get; set; }
-        public DbSet<Address> Addresses { get; set; }
-        public DbSet<Country> Countries { get; set; }
-        public DbSet<State> States { get; set; }
-        public DbSet<PhoneType> PhoneTypes { get; set; }
-        public DbSet<Phone> Phones { get; set; }
+        public DbSet<TaskProgress> TaskProgresses { get; set; }
+        public DbSet<TaskState> TaskStates { get; set; }
+        public DbSet<UserAccount> UserAccounts { get; set; }
+
+
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);  // <-- CRITICAL LINE
 
-            modelBuilder.ApplyConfiguration(new AreaFluentConfig());
+            modelBuilder.ApplyConfiguration(new AccountClaimFluentConfig());
+            modelBuilder.ApplyConfiguration(new AddressFluentConfig());
+            modelBuilder.ApplyConfiguration(new AppRoleFluentConfig());
+            modelBuilder.ApplyConfiguration(new AssignedRoleFluentConfig());
             modelBuilder.ApplyConfiguration(new ClientProjectFluentConfig());
             modelBuilder.ApplyConfiguration(new CompanyFluentConfig());
             modelBuilder.ApplyConfiguration(new CompanyTypeFluentConfig());
+            modelBuilder.ApplyConfiguration(new CountryFluentConfig());
+            modelBuilder.ApplyConfiguration(new EmailAddressFluentConfig());
+            modelBuilder.ApplyConfiguration(new EmployeeProfileFluentConfig());
             modelBuilder.ApplyConfiguration(new JobFluentConfig());
             modelBuilder.ApplyConfiguration(new PersonFluentConfig());
             modelBuilder.ApplyConfiguration(new PhaseFluentConfig());
+            modelBuilder.ApplyConfiguration(new PhoneFluentConfig());
+            modelBuilder.ApplyConfiguration(new PhoneTypeFluentConfig());
             modelBuilder.ApplyConfiguration(new PriorityFluentConfig());
+            modelBuilder.ApplyConfiguration(new ProjectAreaFluentConfig());
             modelBuilder.ApplyConfiguration(new ProjectFluentConfig());
+            modelBuilder.ApplyConfiguration(new StateFluentConfig());
+            modelBuilder.ApplyConfiguration(new TaskAssignmentFluentConfig());
+            modelBuilder.ApplyConfiguration(new TaskCommentFluentConfig());
+            modelBuilder.ApplyConfiguration(new TaskDetailFluentConfig());
             modelBuilder.ApplyConfiguration(new TaskLogFluentConfig());
             modelBuilder.ApplyConfiguration(new TaskNameFluentConfig());
-            modelBuilder.ApplyConfiguration(new TaskStatusFluentConfig());
+            modelBuilder.ApplyConfiguration(new TaskProgressFluentConfig());
+            modelBuilder.ApplyConfiguration(new TaskStateFluentConfig());
+            modelBuilder.ApplyConfiguration(new UserAccountFluentConfig());
         }
     }
 }

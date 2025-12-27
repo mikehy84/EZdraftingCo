@@ -1,7 +1,7 @@
 ﻿
 namespace Domain.Entities
 {
-    public class Area
+    public class ProjectArea
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;

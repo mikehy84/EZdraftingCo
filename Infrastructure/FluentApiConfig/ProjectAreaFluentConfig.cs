@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.FluentApiConfig
 {
-    public class AreaFluentConfig : IEntityTypeConfiguration<Area>
+    public class ProjectAreaFluentConfig : IEntityTypeConfiguration<ProjectArea>
     {
-        public void Configure(EntityTypeBuilder<Area> modelBuilder)
+        public void Configure(EntityTypeBuilder<ProjectArea> modelBuilder)
         {
             modelBuilder
                 .HasKey(a => a.Id); // Primary Key

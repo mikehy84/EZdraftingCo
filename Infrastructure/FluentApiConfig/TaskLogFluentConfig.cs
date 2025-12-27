@@ -32,9 +32,9 @@ namespace Infrastructure.FluentApiConfig
 
 
             modelBuilder
-                .HasOne(tl => tl.TaskStatus)
+                .HasOne(tl => tl.TaskState)
                 .WithMany(ts => ts.TaskLogs)
-                .HasForeignKey(tl => tl.StatusId)
+                .HasForeignKey(tl => tl.TaskStateId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired();
         }

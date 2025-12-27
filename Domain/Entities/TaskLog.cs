@@ -13,8 +13,8 @@ namespace Domain.Entities
 
 
         // Foreign Key to TaskStatus
-        public int StatusId { get; set; }
-        public TaskStatus TaskStatus { get; set; }
+        public int TaskStateId { get; set; }
+        public TaskState TaskState { get; set; }
 
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;

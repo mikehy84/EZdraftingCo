@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class Role
+    public class AppRole
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty; // "Employee", "ClientContact", "VendorRep", "AppUser"

@@ -33,7 +33,7 @@ namespace Infrastructure.FluentApiConfig
 
             // Relationship
             modelBuilder
-                .Navigation(pt => pt.Phones);
+                .Navigation(pt => pt.PhoneNumbers);
         }
     }
 }
