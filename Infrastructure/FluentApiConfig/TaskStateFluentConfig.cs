@@ -31,6 +31,17 @@ namespace Infrastructure.FluentApiConfig
             // Navigation Properties
             modelBuilder
                 .Navigation(ts => ts.TaskLogs);
+
+            // Seeding initial data
+            modelBuilder.HasData(
+                new TaskState { Id = 1, Name = "New", Definition = "Task created but not started yet" },
+                new TaskState { Id = 2, Name = "In Progress", Definition = "Actively being worked on" },
+                new TaskState { Id = 3, Name = "Paused", Definition = "Temporarily stopped by choice (not blocked)" },
+                new TaskState { Id = 4, Name = "Cancelled", Definition = "No longer required" },
+                new TaskState { Id = 5, Name = "On Hold", Definition = "Blocked, waiting for input (RFI, approval, info)" },
+                new TaskState { Id = 6, Name = "Completed", Definition = "Work finished and ready for review" },
+                new TaskState { Id = 7, Name = "Closed", Definition = "Approved / accepted, no further action" }
+            );
         }
     }
 }

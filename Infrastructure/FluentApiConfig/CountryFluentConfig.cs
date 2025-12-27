@@ -49,6 +49,16 @@ namespace Infrastructure.FluentApiConfig
                 .HasMaxLength(8)
                 .IsRequired()
                 .HasConversion(upperConverter);
+
+
+            // Seeding initial data
+            modelBuilder.HasData(
+                new Country { Id = 1, Name = "United States", IsoCode = "US", PhoneCode = "+1" },
+                new Country { Id = 2, Name = "Canada", IsoCode = "CA", PhoneCode = "+1" },
+                new Country { Id = 3, Name = "United Kingdom", IsoCode = "GB", PhoneCode = "+44" },
+                new Country { Id = 4, Name = "Australia", IsoCode = "AU", PhoneCode = "+61" },
+                new Country { Id = 5, Name = "Germany", IsoCode = "DE", PhoneCode = "+49" }
+            );
         }
     }
 }

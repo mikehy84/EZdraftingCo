@@ -34,6 +34,16 @@ namespace Infrastructure.FluentApiConfig
             // Relationship properties
             modelBuilder
                 .Navigation(p => p.TaskDetails);
+
+
+            // Seeding initial data
+            modelBuilder.HasData(
+                new Priority { Id = 1, Name = "Urgent", Definition = "High risk of incorrect fabrication; Stop current taks; Fix immediately" },
+                new Priority { Id = 2, Name = "High", Definition = "Important detailing task or issue; should be addressed soon" },
+                new Priority { Id = 3, Name = "Medium", Definition = "Normal detailing task or issue" },
+                new Priority { Id = 4, Name = "Low", Definition = "Minor detailing task or issue" },
+                new Priority { Id = 5, Name = "Trivial", Definition = "Cosmetic or documentation-only issue with no production impact" }
+            );
         }
     }
 }

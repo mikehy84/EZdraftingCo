@@ -28,6 +28,11 @@ namespace Infrastructure.FluentApiConfig
                 .IsRequired()
                 .HasMaxLength(50); // LastName is required with max length 50
 
+            modelBuilder
+                .Property(x => x.RatePerHour)
+                .IsRequired()
+                .HasPrecision(10, 2); // up to 99999999.99
+
 
             // Unique constraint
             modelBuilder

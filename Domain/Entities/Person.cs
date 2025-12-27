@@ -14,6 +14,9 @@ namespace Domain.Entities
         public DateTime? DeactivatedAt { get; set; }
         public DateTime? ReactivatedAt { get; set; }
 
+        public decimal RatePerHour { get; set; }
+
+
 
         // optional foreign key to the ASP.NET Identity user
         public string? AccountId { get; set; }
