@@ -10,12 +10,15 @@ namespace Domain.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
-        public string AlphaCode { get; set; } = string.Empty;
+        public string IsoCode { get; set; } = string.Empty;
         public string PhoneCode { get; set; } = string.Empty;
+
 
         // States or Provinces within this country
         public ICollection<State> States { get; set; } = [];
 
+
+        // Phones associated with this country
         public ICollection<Phone> Phones { get; set; } = [];
     }
 }

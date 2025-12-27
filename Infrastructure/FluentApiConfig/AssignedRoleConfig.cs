@@ -26,10 +26,6 @@ namespace Infrastructure.FluentApiConfig
                 .IsUnique(); // Unique constraint on PersonId and RoleId
 
             modelBuilder
-                .Property(ar => ar.AssignorId)
-                .IsRequired();
-
-            modelBuilder
                 .Property(ar => ar.AssignedAt)
                 .IsRequired();
 
@@ -44,23 +40,23 @@ namespace Infrastructure.FluentApiConfig
             modelBuilder
                 .HasOne(ar => ar.Assignee)
                 .WithMany(p => p.RoleAssignmentsReceived)
-                .HasForeignKey(ar => ar.AssigneeId);
+                .HasForeignKey(ar => ar.AssigneeId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
 
             modelBuilder
                 .HasOne(ar => ar.Role)
                 .WithMany(r => r.AssignedRoles)
-                .HasForeignKey(ar => ar.RoleId);
+                .HasForeignKey(ar => ar.RoleId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
 
             modelBuilder
                 .HasOne(ar => ar.Assignor)
                 .WithMany(p => p.RoleAssignmentsMade)
-                .HasForeignKey(ar => ar.AssignorId);
-
-
-
-
-
-
+                .HasForeignKey(ar => ar.AssignorId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
         }
     }
 }

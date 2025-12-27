@@ -32,7 +32,7 @@ namespace Infrastructure.FluentApiConfig
                 .IsUnique();
 
             modelBuilder
-                .HasIndex(c => c.AlphaCode)
+                .HasIndex(c => c.IsoCode)
                 .IsUnique();
 
             modelBuilder
@@ -45,7 +45,7 @@ namespace Infrastructure.FluentApiConfig
             v => v);
 
             modelBuilder
-                .Property(c => c.AlphaCode)
+                .Property(c => c.IsoCode)
                 .HasMaxLength(8)
                 .IsRequired()
                 .HasConversion(upperConverter);

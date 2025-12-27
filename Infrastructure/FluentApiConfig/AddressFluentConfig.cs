@@ -23,26 +23,22 @@ namespace Infrastructure.FluentApiConfig
 
             modelBuilder
                 .Property(a => a.StreetNumber)
+                .HasMaxLength(10)
                 .IsRequired();
 
             modelBuilder
                 .Property(a => a. StreetName)
+                .HasMaxLength(40)
                 .IsRequired();
 
             modelBuilder
                 .Property(a => a.City)
+                .HasMaxLength(20)
                 .IsRequired();
 
             modelBuilder
                 .Property(a => a.PostalCode)
-                .IsRequired();
-
-            modelBuilder
-                .Property(a => a.StateId)
-                .IsRequired();
-
-            modelBuilder
-                .Property(a => a.PersonId)
+                .HasMaxLength(9)
                 .IsRequired();
 
 
@@ -52,13 +48,15 @@ namespace Infrastructure.FluentApiConfig
                 .HasOne(a => a.State)
                 .WithMany(s => s.Addresses)
                 .HasForeignKey(a => a.StateId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
 
             modelBuilder
                 .HasOne(a => a.Person)
                 .WithMany(p => p.Addresses)
                 .HasForeignKey(a => a.PersonId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
         }
     }
 }

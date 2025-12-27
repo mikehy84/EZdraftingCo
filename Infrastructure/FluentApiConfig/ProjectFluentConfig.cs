@@ -41,7 +41,8 @@ namespace Infrastructure.FluentApiConfig
                 .HasOne(p => p.ClientProject)
                 .WithMany(person => person.Projects)
                 .HasForeignKey(p => p.ClientProjectId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
 
 
             // Navigation Properties Configuration

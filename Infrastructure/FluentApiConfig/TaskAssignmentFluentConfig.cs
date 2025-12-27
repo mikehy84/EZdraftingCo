@@ -16,19 +16,6 @@ namespace Infrastructure.FluentApiConfig
                 .IsRequired()
                 .ValueGeneratedOnAdd();
 
-            modelBuilder
-                .Property(ta => ta.TaskDetailId)
-                .IsRequired();
-
-            modelBuilder
-                .Property(ta => ta.AssignorId)
-                .IsRequired();
-
-            modelBuilder
-                .Property(ta => ta.AssigneeId)
-                .IsRequired();
-
-
 
             // Unique constraint to prevent duplicate assignments of the same task to the same assignee
             modelBuilder
@@ -40,19 +27,22 @@ namespace Infrastructure.FluentApiConfig
                 .HasOne(ta => ta.TaskDetail)
                 .WithMany(td => td.TaskAssignments)
                 .HasForeignKey(ta => ta.TaskDetailId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();  
 
             modelBuilder
                 .HasOne(ta => ta.Assignor)
                 .WithMany(person => person.AssignedTasks)
                 .HasForeignKey(ta => ta.AssignorId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
 
             modelBuilder
                 .HasOne(ta => ta.Assignee)
                 .WithMany(person => person.ReceivedTasks)
                 .HasForeignKey(ta => ta.AssigneeId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
 
 
             // Navigation properties

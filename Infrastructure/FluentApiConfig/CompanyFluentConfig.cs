@@ -37,7 +37,8 @@ namespace Infrastructure.FluentApiConfig
                 .HasOne(c => c.CompanyType)
                 .WithMany(ct => ct.Companies)
                 .HasForeignKey(c => c.CompanyTypeId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
 
             modelBuilder
                 .Navigation(c => c.ClientProjects);

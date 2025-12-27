@@ -22,18 +22,6 @@ namespace Infrastructure.FluentApiConfig
                 .ValueGeneratedOnAdd();
 
             modelBuilder
-                .Property(p => p.TypeId)
-                .IsRequired();
-
-            modelBuilder
-                .Property(p => p.PersonId)
-                .IsRequired();
-
-            modelBuilder
-                .Property(p => p.CountryId)
-                .IsRequired();
-
-            modelBuilder
                 .Property(p => p.PhoneNumber)
                 .HasMaxLength(12)
                 .IsRequired();
@@ -49,19 +37,22 @@ namespace Infrastructure.FluentApiConfig
                 .HasOne(p => p.PhoneType)
                 .WithMany(pt => pt.PhoneNumbers)
                 .HasForeignKey(p => p.PhoneType.Id)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
 
             modelBuilder
                 .HasOne(p => p.Person)
                 .WithMany(pr => pr.PhoneNumbers)
                 .HasForeignKey(p => p.PersonId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
 
             modelBuilder
                 .HasOne(p => p.Country)
                 .WithMany(c => c.Phones)
                 .HasForeignKey(p => p.CountryId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
         }
     }
 }

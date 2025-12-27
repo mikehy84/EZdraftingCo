@@ -19,10 +19,6 @@ namespace Infrastructure.FluentApiConfig
                 .ValueGeneratedOnAdd(); // auto-increment (IDENTITY)
 
             modelBuilder
-                .Property(ph => ph.ProjectId)
-                .IsRequired();
-
-            modelBuilder
                 .Property(ph => ph.PhaseNumber)
                 .IsRequired();
 
@@ -36,7 +32,8 @@ namespace Infrastructure.FluentApiConfig
                 .HasOne(ph => ph.Project)
                 .WithMany(proj => proj.Phases)
                 .HasForeignKey(ph => ph.ProjectId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
 
             // Navigation Properties
             modelBuilder

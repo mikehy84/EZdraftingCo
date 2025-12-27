@@ -13,6 +13,6 @@ namespace Domain.Entities
 
 
         // PhoneNumbers associated with this PhoneType
-        public ICollection<Phone> Phones { get; set; } = [];
+        public ICollection<Phone> PhoneNumbers { get; set; } = [];
     }
 }

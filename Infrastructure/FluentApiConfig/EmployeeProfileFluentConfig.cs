@@ -17,17 +17,14 @@ namespace Infrastructure.FluentApiConfig
                 .HasKey(ep => ep.PersonId);
 
             modelBuilder
-                .Property(ep => ep.PersonId)
+                .Property(ep => ep.SinEncrypted)
+                .HasMaxLength(512)
                 .IsRequired();
 
             modelBuilder
-                .Property(ep => ep.SinEncrypted)
-                .IsRequired()
-                .HasMaxLength(512);
-
-            modelBuilder
                 .Property(ep => ep.SinHash)
-                .HasMaxLength(64);
+                .HasMaxLength(64)
+                .IsRequired();
 
             modelBuilder
                 .Property(ep => ep.SinLast3)
@@ -37,8 +34,7 @@ namespace Infrastructure.FluentApiConfig
             // Unique index on SinHash
             modelBuilder
                 .HasIndex(ep => ep.SinHash)
-                .IsUnique()
-                .HasFilter("[SinHash] IS NOT NULL"); // Only rows where AccountId has a value participate in the unique index.
+                .IsUnique();
 
             // Relationships
             modelBuilder

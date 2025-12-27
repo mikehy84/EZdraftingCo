@@ -18,10 +18,6 @@ namespace Infrastructure.FluentApiConfig
                 .ValueGeneratedOnAdd();
 
             modelBuilder
-                .Property(cp => cp.CompanyId)
-                .IsRequired();
-
-            modelBuilder
                 .Property(cp => cp.ProjectNo)
                 .IsRequired();
 
@@ -49,7 +45,8 @@ namespace Infrastructure.FluentApiConfig
                 .HasOne(cp => cp.Company)
                 .WithMany(c => c.ClientProjects)
                 .HasForeignKey(cp => cp.CompanyId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
 
             modelBuilder
                 .Navigation(cp => cp.Projects);

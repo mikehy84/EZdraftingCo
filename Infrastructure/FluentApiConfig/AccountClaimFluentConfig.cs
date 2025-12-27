@@ -36,8 +36,16 @@ namespace Infrastructure.FluentApiConfig
                 .HasOne(ac => ac.Person)
                 .WithMany(p => p.AccountClaims)
                 .HasForeignKey(ac => ac.PersonId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.NoAction)
+                .IsRequired();
+
+            modelBuilder
+                .HasOne(ac => ac.UsedByAccount)
+                .WithMany(ua => ua.ClaimsUsed)
+                .HasForeignKey(ac => ac.UsedByAccountId)
+                .OnDelete(DeleteBehavior.SetNull)
+                .IsRequired(false); // optional relationship
+
         }
     }
 }

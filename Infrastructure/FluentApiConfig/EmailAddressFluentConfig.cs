@@ -22,14 +22,11 @@ namespace Infrastructure.FluentApiConfig
                 .ValueGeneratedOnAdd();
 
             modelBuilder
-                .Property(ea => ea.PersonId)
-                .IsRequired();
-
-            modelBuilder
                 .Property(ea => ea.Email)
                 .IsRequired()
                 .HasMaxLength(100);
 
+            // Unique Indexes
             modelBuilder
                 .HasIndex(ea => ea.Email)
                 .IsUnique(); // Unique index on Email
@@ -47,7 +44,9 @@ namespace Infrastructure.FluentApiConfig
             modelBuilder
                 .HasOne(ea => ea.Person)
                 .WithMany(p => p.EmailAddresses)
-                .HasForeignKey(ea => ea.PersonId);
+                .HasForeignKey(ea => ea.PersonId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
         }
     }
 }

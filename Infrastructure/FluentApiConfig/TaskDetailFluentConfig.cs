@@ -1,11 +1,7 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Infrastructure.FluentApiConfig
 {
@@ -20,22 +16,6 @@ namespace Infrastructure.FluentApiConfig
                 .Property(td => td.Id)
                 .IsRequired()
                 .ValueGeneratedOnAdd();
-
-            modelBuilder
-                .Property(td => td.TaskNameId)
-                .IsRequired();
-
-            modelBuilder
-                .Property(td => td.ProjectId)
-                .IsRequired();
-
-            modelBuilder
-                .Property(td => td.PhaseId)
-                .IsRequired();
-
-            modelBuilder
-                .Property(td => td.PriorityId)
-                .IsRequired();
 
             modelBuilder
                 .Property(td => td.Description)
@@ -55,19 +35,22 @@ namespace Infrastructure.FluentApiConfig
                 .HasOne(td => td.TaskName)
                 .WithMany(tn => tn.TaskDetails)
                 .HasForeignKey(td => td.TaskNameId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
 
             modelBuilder
                 .HasOne(td => td.Project)
                 .WithMany(p => p.TaskDetails)
                 .HasForeignKey(td => td.ProjectId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
 
             modelBuilder
                 .HasOne(td => td.Phase)
                 .WithMany(ph => ph.TaskDetails)
                 .HasForeignKey(td => td.PhaseId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
 
             modelBuilder
                 .HasOne(td => td.Area)
@@ -79,7 +62,8 @@ namespace Infrastructure.FluentApiConfig
                 .HasOne(td => td.Priority)
                 .WithMany(pr => pr.TaskDetails)
                 .HasForeignKey(td => td.PriorityId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
 
             // Navigation properties
             modelBuilder

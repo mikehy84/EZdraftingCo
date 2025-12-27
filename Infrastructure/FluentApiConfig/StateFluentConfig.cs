@@ -1,11 +1,7 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Infrastructure.FluentApiConfig
 {
@@ -31,10 +27,6 @@ namespace Infrastructure.FluentApiConfig
                 .IsRequired()
                 .HasMaxLength(10);
 
-            modelBuilder
-                .Property(s => s.CountryId)
-                .IsRequired();
-
 
             // Constraints
             modelBuilder
@@ -51,7 +43,8 @@ namespace Infrastructure.FluentApiConfig
                 .HasOne(s => s.Country)
                 .WithMany(c => c.States)
                 .HasForeignKey(s => s.CountryId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
 
 
             // Navigations

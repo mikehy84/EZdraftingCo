@@ -6,6 +6,7 @@ namespace Domain.Entities
     {
         public int Id { get; set; }
 
+
         // Person who need to register an account
         public int PersonId { get; set; }
         public Person Person { get; set; } = null!;
@@ -20,6 +21,5 @@ namespace Domain.Entities
         // optional foreign key to the ASP.NET Identity user
         public string? UsedByAccountId { get; set; }
         public UserAccount? UsedByAccount { get; set; }
-
     }
 }
