@@ -56,6 +56,8 @@ namespace Infrastructure.FluentApiConfig
                 .OnDelete(DeleteBehavior.Restrict);
 
 
+
+
             // Navigation Properties
             modelBuilder
                 .Navigation(p => p.EmployeeProfile);
@@ -75,11 +77,11 @@ namespace Infrastructure.FluentApiConfig
             modelBuilder
                 .Navigation(p => p.Projects);
 
-            modelBuilder
-                .Navigation(p => p.AssignedTasks);
+            //modelBuilder
+            //    .Navigation(p => p.AssignedTasks);
 
-            modelBuilder
-                .Navigation(p => p.ReceivedTasks);
+            //modelBuilder
+            //    .Navigation(p => p.ReceivedTasks);
 
             modelBuilder
                 .Navigation(p => p.EmailAddresses);

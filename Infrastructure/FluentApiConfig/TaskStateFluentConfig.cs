@@ -1,17 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.FluentApiConfig
 {
-    public class TaskStateFluentConfig : IEntityTypeConfiguration<Domain.Entities.TaskState>
+    public class TaskStateFluentConfig : IEntityTypeConfiguration<TaskState>
     {
-        public void Configure(EntityTypeBuilder<Domain.Entities.TaskState> modelBuilder)
+        public void Configure(EntityTypeBuilder<TaskState> modelBuilder)
         {
             modelBuilder
                 .HasKey(ts => ts.Id);

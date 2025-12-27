@@ -34,7 +34,7 @@ namespace Infrastructure.Data
         public DbSet<Company> Companies { get; set; }
         public DbSet<CompanyType> CompanyTypes { get; set; }
         public DbSet<Country> Countries { get; set; }
-        public DbSet<EmailAddress> EmailAddresss { get; set; }
+        public DbSet<EmailAddress> EmailAddresses { get; set; }
         public DbSet<EmployeeProfile> EmployeeProfiles { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Person> Persons { get; set; }
@@ -45,7 +45,7 @@ namespace Infrastructure.Data
         public DbSet<Project> Projects { get; set; }
         public DbSet<ProjectArea> ProjectAreas { get; set; }
         public DbSet<State> States { get; set; }
-        public DbSet<TaskAssignment> TaskAssignments { get; set; }
+        public DbSet<TaskAssignment> TaskAssignments { get; set; } = null!;
         public DbSet<TaskComment> TaskComments { get; set; }
         public DbSet<TaskDetail> TaskDetails { get; set; }
         public DbSet<TaskLog> TaskLogs { get; set; }

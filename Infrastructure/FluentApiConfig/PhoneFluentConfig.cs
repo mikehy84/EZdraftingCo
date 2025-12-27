@@ -36,7 +36,7 @@ namespace Infrastructure.FluentApiConfig
             modelBuilder
                 .HasOne(p => p.PhoneType)
                 .WithMany(pt => pt.PhoneNumbers)
-                .HasForeignKey(p => p.PhoneType.Id)
+                .HasForeignKey(p => p.TypeId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired();
 

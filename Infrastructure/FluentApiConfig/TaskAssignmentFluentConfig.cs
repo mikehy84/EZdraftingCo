@@ -19,7 +19,7 @@ namespace Infrastructure.FluentApiConfig
 
             // Unique constraint to prevent duplicate assignments of the same task to the same assignee
             modelBuilder
-                .HasIndex(ta => new { ta.TaskDetailId, ta.AssigneeId })
+                .HasIndex(ta => new { ta.TaskDetailId, ta.TaskAssigneeId })
                 .IsUnique();
 
             // Relationships
@@ -31,16 +31,16 @@ namespace Infrastructure.FluentApiConfig
                 .IsRequired();  
 
             modelBuilder
-                .HasOne(ta => ta.Assignor)
+                .HasOne(ta => ta.TaskAssignor)
                 .WithMany(person => person.AssignedTasks)
-                .HasForeignKey(ta => ta.AssignorId)
+                .HasForeignKey(ta => ta.TaskAssignorId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired();
 
             modelBuilder
-                .HasOne(ta => ta.Assignee)
+                .HasOne(ta => ta.TaskAssignee)
                 .WithMany(person => person.ReceivedTasks)
-                .HasForeignKey(ta => ta.AssigneeId)
+                .HasForeignKey(ta => ta.TaskAssigneeId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired();
 

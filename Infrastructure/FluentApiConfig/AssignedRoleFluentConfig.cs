@@ -39,7 +39,7 @@ namespace Infrastructure.FluentApiConfig
             // Relationships
             modelBuilder
                 .HasOne(ar => ar.Assignee)
-                .WithMany(p => p.RoleAssignmentsReceived)
+                .WithMany(person => person.RoleAssignmentsReceived)
                 .HasForeignKey(ar => ar.AssigneeId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired();
@@ -53,7 +53,7 @@ namespace Infrastructure.FluentApiConfig
 
             modelBuilder
                 .HasOne(ar => ar.Assignor)
-                .WithMany(p => p.RoleAssignmentsMade)
+                .WithMany(person => person.RoleAssignmentsMade)
                 .HasForeignKey(ar => ar.AssignorId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired();

@@ -13,13 +13,13 @@ namespace Domain.Entities
 
 
         // Person who assigned the task to someone
-        public int AssignorId { get; set; }
-        public Person Assignor { get; set; }
+        public int TaskAssignorId { get; set; }
+        public Person TaskAssignor { get; set; } = null!;
 
 
         // Person who this task is assigned to
-        public int AssigneeId { get; set; }
-        public Person Assignee { get; set; }
+        public int TaskAssigneeId { get; set; }
+        public Person TaskAssignee { get; set; } = null!;
 
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
