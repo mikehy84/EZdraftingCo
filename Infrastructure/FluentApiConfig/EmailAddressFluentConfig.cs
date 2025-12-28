@@ -47,6 +47,25 @@ namespace Infrastructure.FluentApiConfig
                 .HasForeignKey(ea => ea.PersonId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired();
+
+
+            // Seeding initial data
+            modelBuilder.HasData(
+                new EmailAddress
+                {
+                    Id = 1,
+                    PersonId = 1,
+                    Email = "lgrannon@qualitydraftingco.com",
+                    IsPrimary = true
+                },
+                new EmailAddress
+                {
+                    Id = 2,
+                    PersonId = 2,
+                    Email = "mharvey@qualitydraftingco.com",
+                    IsPrimary = true
+                }
+            );
         }
     }
 }

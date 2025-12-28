@@ -53,6 +53,34 @@ namespace Infrastructure.FluentApiConfig
                 .HasForeignKey(p => p.CountryId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired();
+
+
+            // Seeding Initial Data
+            modelBuilder
+                .HasData(
+                    new Phone
+                    {
+                        Id = 1,
+                        TypeId = 1,
+                        PersonId = 1,
+                        CountryId = 1,
+                        PhoneNumber = "1234567890",
+                        IsPrimary = true,
+                        CreatedAt = DateTime.UtcNow,
+                        UpdatedAt = DateTime.UtcNow
+                    },
+                    new Phone
+                    {
+                        Id = 2,
+                        TypeId = 2,
+                        PersonId = 2,
+                        CountryId = 1,
+                        PhoneNumber = "0987654321",
+                        IsPrimary = true,
+                        CreatedAt = DateTime.UtcNow,
+                        UpdatedAt = DateTime.UtcNow
+                    }
+                );
         }
     }
 }

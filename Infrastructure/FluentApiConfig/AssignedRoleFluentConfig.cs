@@ -57,6 +57,30 @@ namespace Infrastructure.FluentApiConfig
                 .HasForeignKey(ar => ar.AssignorId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired();
+
+
+            // Seeding initial data
+            modelBuilder
+                .HasData(
+                    new AssignedRole
+                    {
+                        Id = 1,
+                        AssigneeId = 1,
+                        RoleId = 1, // Owner
+                        AssignorId = 1,
+                        AssignedAt = DateTime.UtcNow,
+                        IsPrimary = true
+                    },
+                    new AssignedRole
+                    {
+                        Id = 2,
+                        AssigneeId = 2,
+                        RoleId = 2, // Employee
+                        AssignorId = 1,
+                        AssignedAt = DateTime.UtcNow,
+                        IsPrimary = true
+                    }
+                );
         }
     }
 }

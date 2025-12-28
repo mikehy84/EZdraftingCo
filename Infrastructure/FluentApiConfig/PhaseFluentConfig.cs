@@ -38,6 +38,31 @@ namespace Infrastructure.FluentApiConfig
             // Navigation Properties
             modelBuilder
                 .Navigation(ph => ph.TaskDetails);
+
+
+            // Seeding initial data
+            modelBuilder.HasData(
+                new Phase
+                {
+                    Id = 1,
+                    ProjectId = 1,
+                    PhaseNumber = 1,
+                    PhaseName = "Office Building",
+                    Comment = "All parts",
+                    CreatedAt = DateTime.UtcNow,
+                    UpdatedAt = DateTime.UtcNow
+                },
+                new Phase
+                {
+                    Id = 2,
+                    ProjectId = 1,
+                    PhaseNumber = 2,
+                    PhaseName = "Office RTUs",
+                    Comment = "Roof Frames",
+                    CreatedAt = DateTime.UtcNow,
+                    UpdatedAt = DateTime.UtcNow
+                }
+            );
         }
     }
 }

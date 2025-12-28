@@ -96,6 +96,34 @@ namespace Infrastructure.FluentApiConfig
 
             modelBuilder
                 .Navigation(p => p.Addresses);
+
+            // Seeding initial data
+            modelBuilder.HasData(
+                new Person
+                {
+                    Id = 1,
+                    FirstName = "Lee",
+                    LastName = "Grannon",
+                    DateOfBirth = new DateTime(1975, 5, 15),
+                    IsActive = true,
+                    RatePerHour = 65.00m,
+                    AccountId = null,
+                    JobId = 1,
+                    CompanyId = 1
+                },
+                new Person
+                {
+                    Id = 2,
+                    FirstName = "Michael",
+                    LastName = "Harvey",
+                    DateOfBirth = new DateTime(1982, 8, 4),
+                    IsActive = true,
+                    RatePerHour = 40.00m,
+                    AccountId = null,
+                    JobId = 6,
+                    CompanyId = 1
+                }
+            );
         }
     }
 }

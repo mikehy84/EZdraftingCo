@@ -113,6 +113,34 @@ namespace Infrastructure.Migrations
                     b.HasIndex("StateId");
 
                     b.ToTable("Addresses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            City = "Parksville",
+                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 940, DateTimeKind.Utc).AddTicks(5763),
+                            IsPrimary = true,
+                            PersonId = 1,
+                            PostalCode = "12345",
+                            StateId = 2,
+                            StreetName = "Main St",
+                            StreetNumber = "123",
+                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 940, DateTimeKind.Utc).AddTicks(5764)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            City = "Nanaimo",
+                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 940, DateTimeKind.Utc).AddTicks(5767),
+                            IsPrimary = false,
+                            PersonId = 2,
+                            PostalCode = "67890",
+                            StateId = 2,
+                            StreetName = "Elm St",
+                            StreetNumber = "456",
+                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 940, DateTimeKind.Utc).AddTicks(5767)
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.AppRole", b =>
@@ -137,6 +165,74 @@ namespace Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("AppRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Business owner with high-level oversight across all projects.",
+                            Name = "Owner"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Internal employee involved in project execution and delivery.",
+                            Name = "Employee"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Client-side personnel involved in coordination, review, and approvals.",
+                            Name = "Client"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Main contractor responsible for overall construction execution.",
+                            Name = "General Contractor"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "Specialty contractor working under the general contractor.",
+                            Name = "Subcontractor"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Description = "Material or component supplier participating in coordination.",
+                            Name = "Vendor"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Description = "Steel fabrication company producing shop components.",
+                            Name = "Fabricator"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Description = "Company responsible for on-site steel erection.",
+                            Name = "Erector"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Description = "Engineer, architect, or design consultant.",
+                            Name = "Consultant"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Description = "Third-party or authority inspection role.",
+                            Name = "Inspector"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Description = "View-only access with no modification rights.",
+                            Name = "ReadOnly"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.AssignedRole", b =>
@@ -176,6 +272,26 @@ namespace Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("AssignedRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AssignedAt = new DateTime(2025, 12, 28, 3, 48, 34, 944, DateTimeKind.Utc).AddTicks(4103),
+                            AssigneeId = 1,
+                            AssignorId = 1,
+                            IsPrimary = true,
+                            RoleId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AssignedAt = new DateTime(2025, 12, 28, 3, 48, 34, 944, DateTimeKind.Utc).AddTicks(4105),
+                            AssigneeId = 2,
+                            AssignorId = 1,
+                            IsPrimary = true,
+                            RoleId = 2
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.ClientProject", b =>
@@ -230,6 +346,34 @@ namespace Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("ClientProjects");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AwardedAt = new DateTime(2025, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CompanyId = 2,
+                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 944, DateTimeKind.Utc).AddTicks(8831),
+                            EstimatedHour = 1240,
+                            Location = "New York, NY",
+                            ProjectName = "Downtown Office",
+                            ProjectNo = "CL-PRJ-001",
+                            ProjectRate = 150.00m,
+                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 944, DateTimeKind.Utc).AddTicks(8832)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AwardedAt = new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CompanyId = 2,
+                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 944, DateTimeKind.Utc).AddTicks(8835),
+                            EstimatedHour = 3000,
+                            Location = "Chicago, IL",
+                            ProjectName = "Lakeside Residential Complex",
+                            ProjectNo = "CL-PRJ-002",
+                            ProjectRate = 120.00m,
+                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 944, DateTimeKind.Utc).AddTicks(8835)
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Company", b =>
@@ -256,6 +400,26 @@ namespace Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("Companies");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CompanyTypeId = 1,
+                            Name = "Quality Drafting Company"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CompanyTypeId = 13,
+                            Name = "Innovatech Corp."
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CompanyTypeId = 7,
+                            Name = "Global Dynamics Inc."
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.CompanyType", b =>
@@ -266,17 +430,100 @@ namespace Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Name")
+                    b.HasIndex("Type")
                         .IsUnique();
 
                     b.ToTable("CompanyTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Comment = "Our own company or internal branches",
+                            Type = "Internal"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Comment = "Project owner or paying client",
+                            Type = "Client"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Comment = "Main contractor responsible for construction",
+                            Type = "General Contractor"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Comment = "Fabrication shop producing steel members",
+                            Type = "Steel Fabricator"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Comment = "Company responsible for site erection",
+                            Type = "Steel Erector"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Comment = "Engineering, architectural, or design consultant",
+                            Type = "Consultant"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Comment = "Material or component supplier",
+                            Type = "Vendor"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Comment = "Specialty contractor under main contract",
+                            Type = "Subcontractor"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Comment = "Third-party or authority inspection body",
+                            Type = "Inspector"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Comment = "Regulatory or permitting authority",
+                            Type = "Authority"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Comment = "Strategic or long-term collaborator",
+                            Type = "Partner"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Comment = "Transport / delivery companies",
+                            Type = "Logistics"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Comment = "IT supports",
+                            Type = "IT"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Country", b =>
@@ -311,6 +558,43 @@ namespace Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("Countries");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IsoCode = "US",
+                            Name = "United States",
+                            PhoneCode = "+1"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IsoCode = "CA",
+                            Name = "Canada",
+                            PhoneCode = "+1"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            IsoCode = "GB",
+                            Name = "United Kingdom",
+                            PhoneCode = "+44"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            IsoCode = "AU",
+                            Name = "Australia",
+                            PhoneCode = "+61"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            IsoCode = "DE",
+                            Name = "Germany",
+                            PhoneCode = "+49"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.EmailAddress", b =>
@@ -351,6 +635,26 @@ namespace Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("EmailAddresses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2025, 12, 27, 19, 48, 34, 945, DateTimeKind.Local).AddTicks(7645),
+                            Email = "lgrannon@qualitydraftingco.com",
+                            IsPrimary = true,
+                            PersonId = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2025, 12, 27, 19, 48, 34, 945, DateTimeKind.Local).AddTicks(7682),
+                            Email = "mharvey@qualitydraftingco.com",
+                            IsPrimary = true,
+                            PersonId = 2,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.EmployeeProfile", b =>
@@ -392,10 +696,6 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("RatePerHour")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("decimal(10,2)");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -407,6 +707,104 @@ namespace Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("Jobs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "General manager",
+                            Title = "Manager"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Entry-level detailer with 1–2 years of experience under supervision.",
+                            Title = "Junior Detailer"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Detailer with solid Tekla experience handling standard projects independently.",
+                            Title = "Intermediate Detailer"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Experienced detailer responsible for complex steel structures and quality control.",
+                            Title = "Senior Detailer"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "Leads detailing teams, coordinates workflow, and ensures drawing standards.",
+                            Title = "Lead Detailer"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Description = "Manages detailing projects, client communication, and delivery milestones.",
+                            Title = "Project Manager"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Description = "Reviews shop drawings for accuracy, standards, and constructability.",
+                            Title = "Checker"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Description = "Entry-level drafter assisting with drawings, markups, and basic Tekla outputs.",
+                            Title = "Junior Drafter"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Description = "Produces shop drawings independently under guidance, with solid Tekla drafting skills.",
+                            Title = "Intermediate Drafter"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Description = "Handles complex drawings, coordinates revisions, and supports detailing quality.",
+                            Title = "Senior Drafter"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Description = "Client-side project manager overseeing scope, schedule, and approvals.",
+                            Title = "Client Project Manager"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Description = "Primary client contact responsible for coordination and communication.",
+                            Title = "Client Representative"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Description = "Client-side engineer reviewing drawings, RFIs, and technical submissions.",
+                            Title = "Client Engineer"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Description = "Represents the client on site and coordinates construction activities.",
+                            Title = "Client Site Manager"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Description = "Reviews quality, compliance, and drawing accuracy on behalf of the client.",
+                            Title = "Client QA/QC"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Description = "Supports client project team with documentation, schedules, and submissions.",
+                            Title = "Client Coordinator"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Person", b =>
@@ -445,6 +843,10 @@ namespace Infrastructure.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<decimal>("RatePerHour")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
+
                     b.Property<DateTime?>("ReactivatedAt")
                         .HasColumnType("datetime2");
 
@@ -459,6 +861,30 @@ namespace Infrastructure.Migrations
                     b.HasIndex("JobId");
 
                     b.ToTable("Persons");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CompanyId = 1,
+                            DateOfBirth = new DateTime(1975, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Lee",
+                            IsActive = true,
+                            JobId = 1,
+                            LastName = "Grannon",
+                            RatePerHour = 65.00m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CompanyId = 1,
+                            DateOfBirth = new DateTime(1982, 8, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Michael",
+                            IsActive = true,
+                            JobId = 6,
+                            LastName = "Harvey",
+                            RatePerHour = 40.00m
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Phase", b =>
@@ -495,6 +921,28 @@ namespace Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("Phases");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Comment = "All parts",
+                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 947, DateTimeKind.Utc).AddTicks(3172),
+                            PhaseName = "Office Building",
+                            PhaseNumber = 1,
+                            ProjectId = 1,
+                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 947, DateTimeKind.Utc).AddTicks(3172)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Comment = "Roof Frames",
+                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 947, DateTimeKind.Utc).AddTicks(3175),
+                            PhaseName = "Office RTUs",
+                            PhaseNumber = 2,
+                            ProjectId = 1,
+                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 947, DateTimeKind.Utc).AddTicks(3176)
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Phone", b =>
@@ -539,6 +987,30 @@ namespace Infrastructure.Migrations
                     b.HasIndex("TypeId");
 
                     b.ToTable("Phones");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CountryId = 1,
+                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 948, DateTimeKind.Utc).AddTicks(581),
+                            IsPrimary = true,
+                            PersonId = 1,
+                            PhoneNumber = "1234567890",
+                            TypeId = 1,
+                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 948, DateTimeKind.Utc).AddTicks(582)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CountryId = 1,
+                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 948, DateTimeKind.Utc).AddTicks(583),
+                            IsPrimary = true,
+                            PersonId = 2,
+                            PhoneNumber = "0987654321",
+                            TypeId = 2,
+                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 948, DateTimeKind.Utc).AddTicks(584)
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.PhoneType", b =>
@@ -551,8 +1023,8 @@ namespace Infrastructure.Migrations
 
                     b.Property<string>("Type")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
 
                     b.HasKey("Id");
 
@@ -560,6 +1032,48 @@ namespace Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("PhoneTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Type = "Mobile"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Type = "Work"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Type = "Home"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Type = "Office"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Type = "Fax"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Type = "Emergency"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Type = "Site"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Type = "After Hours"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Priority", b =>
@@ -584,6 +1098,38 @@ namespace Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("Priorities");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Definition = "High risk of incorrect fabrication; Stop current taks; Fix immediately",
+                            Name = "Urgent"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Definition = "Important detailing task or issue; should be addressed soon",
+                            Name = "High"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Definition = "Normal detailing task or issue",
+                            Name = "Medium"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Definition = "Minor detailing task or issue",
+                            Name = "Low"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Definition = "Cosmetic or documentation-only issue with no production impact",
+                            Name = "Trivial"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Project", b =>
@@ -632,6 +1178,34 @@ namespace Infrastructure.Migrations
                     b.HasIndex("ProjectManagerId");
 
                     b.ToTable("Projects");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ActualHours = 0,
+                            ClientProjectId = 1,
+                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 948, DateTimeKind.Utc).AddTicks(8665),
+                            EndDate = new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            InternalProjectNo = "Internal-PRJ-001",
+                            IsClosed = false,
+                            ProjectManagerId = 2,
+                            StartDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 948, DateTimeKind.Utc).AddTicks(8666)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ActualHours = 0,
+                            ClientProjectId = 2,
+                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 948, DateTimeKind.Utc).AddTicks(8669),
+                            EndDate = new DateTime(2024, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            InternalProjectNo = "Internal-PRJ-002",
+                            IsClosed = false,
+                            ProjectManagerId = 2,
+                            StartDate = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 948, DateTimeKind.Utc).AddTicks(8669)
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.ProjectArea", b =>
@@ -658,6 +1232,26 @@ namespace Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("ProjectAreas");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Main Office",
+                            ProjectId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Shop Office",
+                            ProjectId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Rec. Pool",
+                            ProjectId = 2
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.State", b =>
@@ -683,15 +1277,463 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Code")
+                    b.HasIndex("CountryId", "Code")
                         .IsUnique();
 
-                    b.HasIndex("CountryId");
-
-                    b.HasIndex("Name")
+                    b.HasIndex("CountryId", "Name")
                         .IsUnique();
 
                     b.ToTable("States");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "AB",
+                            CountryId = 1,
+                            Name = "Alberta"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "BC",
+                            CountryId = 1,
+                            Name = "British Columbia"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "MB",
+                            CountryId = 1,
+                            Name = "Manitoba"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "NB",
+                            CountryId = 1,
+                            Name = "New Brunswick"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Code = "NL",
+                            CountryId = 1,
+                            Name = "Newfoundland and Labrador"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Code = "NS",
+                            CountryId = 1,
+                            Name = "Nova Scotia"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Code = "NT",
+                            CountryId = 1,
+                            Name = "Northwest Territories"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Code = "NU",
+                            CountryId = 1,
+                            Name = "Nunavut"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Code = "ON",
+                            CountryId = 1,
+                            Name = "Ontario"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Code = "PE",
+                            CountryId = 1,
+                            Name = "Prince Edward Island"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Code = "QC",
+                            CountryId = 1,
+                            Name = "Quebec"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Code = "SK",
+                            CountryId = 1,
+                            Name = "Saskatchewan"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Code = "YT",
+                            CountryId = 1,
+                            Name = "Yukon"
+                        },
+                        new
+                        {
+                            Id = 101,
+                            Code = "AL",
+                            CountryId = 2,
+                            Name = "Alabama"
+                        },
+                        new
+                        {
+                            Id = 102,
+                            Code = "AK",
+                            CountryId = 2,
+                            Name = "Alaska"
+                        },
+                        new
+                        {
+                            Id = 103,
+                            Code = "AZ",
+                            CountryId = 2,
+                            Name = "Arizona"
+                        },
+                        new
+                        {
+                            Id = 104,
+                            Code = "AR",
+                            CountryId = 2,
+                            Name = "Arkansas"
+                        },
+                        new
+                        {
+                            Id = 105,
+                            Code = "CA",
+                            CountryId = 2,
+                            Name = "California"
+                        },
+                        new
+                        {
+                            Id = 106,
+                            Code = "CO",
+                            CountryId = 2,
+                            Name = "Colorado"
+                        },
+                        new
+                        {
+                            Id = 107,
+                            Code = "CT",
+                            CountryId = 2,
+                            Name = "Connecticut"
+                        },
+                        new
+                        {
+                            Id = 108,
+                            Code = "DE",
+                            CountryId = 2,
+                            Name = "Delaware"
+                        },
+                        new
+                        {
+                            Id = 109,
+                            Code = "FL",
+                            CountryId = 2,
+                            Name = "Florida"
+                        },
+                        new
+                        {
+                            Id = 110,
+                            Code = "GA",
+                            CountryId = 2,
+                            Name = "Georgia"
+                        },
+                        new
+                        {
+                            Id = 111,
+                            Code = "HI",
+                            CountryId = 2,
+                            Name = "Hawaii"
+                        },
+                        new
+                        {
+                            Id = 112,
+                            Code = "ID",
+                            CountryId = 2,
+                            Name = "Idaho"
+                        },
+                        new
+                        {
+                            Id = 113,
+                            Code = "IL",
+                            CountryId = 2,
+                            Name = "Illinois"
+                        },
+                        new
+                        {
+                            Id = 114,
+                            Code = "IN",
+                            CountryId = 2,
+                            Name = "Indiana"
+                        },
+                        new
+                        {
+                            Id = 115,
+                            Code = "IA",
+                            CountryId = 2,
+                            Name = "Iowa"
+                        },
+                        new
+                        {
+                            Id = 116,
+                            Code = "KS",
+                            CountryId = 2,
+                            Name = "Kansas"
+                        },
+                        new
+                        {
+                            Id = 117,
+                            Code = "KY",
+                            CountryId = 2,
+                            Name = "Kentucky"
+                        },
+                        new
+                        {
+                            Id = 118,
+                            Code = "LA",
+                            CountryId = 2,
+                            Name = "Louisiana"
+                        },
+                        new
+                        {
+                            Id = 119,
+                            Code = "ME",
+                            CountryId = 2,
+                            Name = "Maine"
+                        },
+                        new
+                        {
+                            Id = 120,
+                            Code = "MD",
+                            CountryId = 2,
+                            Name = "Maryland"
+                        },
+                        new
+                        {
+                            Id = 121,
+                            Code = "MA",
+                            CountryId = 2,
+                            Name = "Massachusetts"
+                        },
+                        new
+                        {
+                            Id = 122,
+                            Code = "MI",
+                            CountryId = 2,
+                            Name = "Michigan"
+                        },
+                        new
+                        {
+                            Id = 123,
+                            Code = "MN",
+                            CountryId = 2,
+                            Name = "Minnesota"
+                        },
+                        new
+                        {
+                            Id = 124,
+                            Code = "MS",
+                            CountryId = 2,
+                            Name = "Mississippi"
+                        },
+                        new
+                        {
+                            Id = 125,
+                            Code = "MO",
+                            CountryId = 2,
+                            Name = "Missouri"
+                        },
+                        new
+                        {
+                            Id = 126,
+                            Code = "MT",
+                            CountryId = 2,
+                            Name = "Montana"
+                        },
+                        new
+                        {
+                            Id = 127,
+                            Code = "NE",
+                            CountryId = 2,
+                            Name = "Nebraska"
+                        },
+                        new
+                        {
+                            Id = 128,
+                            Code = "NV",
+                            CountryId = 2,
+                            Name = "Nevada"
+                        },
+                        new
+                        {
+                            Id = 129,
+                            Code = "NH",
+                            CountryId = 2,
+                            Name = "New Hampshire"
+                        },
+                        new
+                        {
+                            Id = 130,
+                            Code = "NJ",
+                            CountryId = 2,
+                            Name = "New Jersey"
+                        },
+                        new
+                        {
+                            Id = 131,
+                            Code = "NM",
+                            CountryId = 2,
+                            Name = "New Mexico"
+                        },
+                        new
+                        {
+                            Id = 132,
+                            Code = "NY",
+                            CountryId = 2,
+                            Name = "New York"
+                        },
+                        new
+                        {
+                            Id = 133,
+                            Code = "NC",
+                            CountryId = 2,
+                            Name = "North Carolina"
+                        },
+                        new
+                        {
+                            Id = 134,
+                            Code = "ND",
+                            CountryId = 2,
+                            Name = "North Dakota"
+                        },
+                        new
+                        {
+                            Id = 135,
+                            Code = "OH",
+                            CountryId = 2,
+                            Name = "Ohio"
+                        },
+                        new
+                        {
+                            Id = 136,
+                            Code = "OK",
+                            CountryId = 2,
+                            Name = "Oklahoma"
+                        },
+                        new
+                        {
+                            Id = 137,
+                            Code = "OR",
+                            CountryId = 2,
+                            Name = "Oregon"
+                        },
+                        new
+                        {
+                            Id = 138,
+                            Code = "PA",
+                            CountryId = 2,
+                            Name = "Pennsylvania"
+                        },
+                        new
+                        {
+                            Id = 139,
+                            Code = "RI",
+                            CountryId = 2,
+                            Name = "Rhode Island"
+                        },
+                        new
+                        {
+                            Id = 140,
+                            Code = "SC",
+                            CountryId = 2,
+                            Name = "South Carolina"
+                        },
+                        new
+                        {
+                            Id = 141,
+                            Code = "SD",
+                            CountryId = 2,
+                            Name = "South Dakota"
+                        },
+                        new
+                        {
+                            Id = 142,
+                            Code = "TN",
+                            CountryId = 2,
+                            Name = "Tennessee"
+                        },
+                        new
+                        {
+                            Id = 143,
+                            Code = "TX",
+                            CountryId = 2,
+                            Name = "Texas"
+                        },
+                        new
+                        {
+                            Id = 144,
+                            Code = "UT",
+                            CountryId = 2,
+                            Name = "Utah"
+                        },
+                        new
+                        {
+                            Id = 145,
+                            Code = "VT",
+                            CountryId = 2,
+                            Name = "Vermont"
+                        },
+                        new
+                        {
+                            Id = 146,
+                            Code = "VA",
+                            CountryId = 2,
+                            Name = "Virginia"
+                        },
+                        new
+                        {
+                            Id = 147,
+                            Code = "WA",
+                            CountryId = 2,
+                            Name = "Washington"
+                        },
+                        new
+                        {
+                            Id = 148,
+                            Code = "WV",
+                            CountryId = 2,
+                            Name = "West Virginia"
+                        },
+                        new
+                        {
+                            Id = 149,
+                            Code = "WI",
+                            CountryId = 2,
+                            Name = "Wisconsin"
+                        },
+                        new
+                        {
+                            Id = 150,
+                            Code = "WY",
+                            CountryId = 2,
+                            Name = "Wyoming"
+                        },
+                        new
+                        {
+                            Id = 151,
+                            Code = "DC",
+                            CountryId = 2,
+                            Name = "District of Columbia"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.TaskAssignment", b =>
@@ -727,6 +1769,26 @@ namespace Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("TaskAssignments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 952, DateTimeKind.Utc).AddTicks(5005),
+                            TaskAssigneeId = 2,
+                            TaskAssignorId = 1,
+                            TaskDetailId = 1,
+                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 952, DateTimeKind.Utc).AddTicks(5005)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 952, DateTimeKind.Utc).AddTicks(5008),
+                            TaskAssigneeId = 2,
+                            TaskAssignorId = 1,
+                            TaskDetailId = 2,
+                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 952, DateTimeKind.Utc).AddTicks(5008)
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.TaskComment", b =>
@@ -766,7 +1828,7 @@ namespace Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AreaId")
+                    b.Property<int?>("AreaId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
@@ -795,10 +1857,17 @@ namespace Infrastructure.Migrations
                     b.Property<int>("TaskNameId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
+
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AreaId");
 
                     b.HasIndex("PhaseId");
 
@@ -806,9 +1875,40 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.HasIndex("TaskNameId");
+                    b.HasIndex("TaskNameId", "Title", "ProjectId", "PhaseId")
+                        .IsUnique();
 
                     b.ToTable("TaskDetails");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(5924),
+                            Description = "Initial task detail description",
+                            DueDate = new DateTime(2026, 1, 7, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(5922),
+                            EstimatedHours = 40,
+                            PhaseId = 1,
+                            PriorityId = 1,
+                            ProjectId = 1,
+                            TaskNameId = 1,
+                            Title = "Column to beam",
+                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(5925)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(5930),
+                            Description = "Second task detail description",
+                            DueDate = new DateTime(2026, 1, 12, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(5929),
+                            EstimatedHours = 20,
+                            PhaseId = 2,
+                            PriorityId = 2,
+                            ProjectId = 1,
+                            TaskNameId = 2,
+                            Title = "Column layout",
+                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(5930)
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.TaskLog", b =>
@@ -839,6 +1939,24 @@ namespace Infrastructure.Migrations
                     b.HasIndex("TaskStateId");
 
                     b.ToTable("TaskLogs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(8569),
+                            TaskDetailId = 1,
+                            TaskStateId = 1,
+                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(8569)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(8572),
+                            TaskDetailId = 2,
+                            TaskStateId = 1,
+                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(8572)
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.TaskName", b =>
@@ -860,6 +1978,48 @@ namespace Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("TaskNames");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Back Drafting_E Plans"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Back Drafting_Shop Dwgs"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Checking"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Connecting"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Editing"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Erection Drawings"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Modeling"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Project Management"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.TaskProgress", b =>
@@ -890,6 +2050,44 @@ namespace Infrastructure.Migrations
                     b.HasIndex("TaskAssignmentId");
 
                     b.ToTable("TaskProgresses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 954, DateTimeKind.Utc).AddTicks(1355),
+                            Date = new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SpentHours = 5.0,
+                            TaskAssignmentId = 1,
+                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 954, DateTimeKind.Utc).AddTicks(1356)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 954, DateTimeKind.Utc).AddTicks(1359),
+                            Date = new DateTime(2024, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SpentHours = 3.5,
+                            TaskAssignmentId = 2,
+                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 954, DateTimeKind.Utc).AddTicks(1359)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 954, DateTimeKind.Utc).AddTicks(1361),
+                            Date = new DateTime(2024, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SpentHours = 4.0,
+                            TaskAssignmentId = 1,
+                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 954, DateTimeKind.Utc).AddTicks(1362)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 954, DateTimeKind.Utc).AddTicks(1364),
+                            Date = new DateTime(2024, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SpentHours = 6.0,
+                            TaskAssignmentId = 2,
+                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 954, DateTimeKind.Utc).AddTicks(1364)
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.TaskState", b =>
@@ -899,6 +2097,9 @@ namespace Infrastructure.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Definition")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -911,6 +2112,50 @@ namespace Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("TaskStates");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Definition = "Task created but not started yet",
+                            Name = "New"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Definition = "Actively being worked on",
+                            Name = "In Progress"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Definition = "Temporarily stopped by choice (not blocked)",
+                            Name = "Paused"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Definition = "No longer required",
+                            Name = "Cancelled"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Definition = "Blocked, waiting for input (RFI, approval, info)",
+                            Name = "On Hold"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Definition = "Work finished and ready for review",
+                            Name = "Completed"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Definition = "Approved / accepted, no further action",
+                            Name = "Closed"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.UserAccount", b =>
@@ -1368,6 +2613,11 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.TaskDetail", b =>
                 {
+                    b.HasOne("Domain.Entities.ProjectArea", "Area")
+                        .WithMany("TaskDetails")
+                        .HasForeignKey("AreaId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
                     b.HasOne("Domain.Entities.Phase", "Phase")
                         .WithMany("TaskDetails")
                         .HasForeignKey("PhaseId")
@@ -1375,12 +2625,6 @@ namespace Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("Domain.Entities.Priority", "Priority")
-                        .WithMany("TaskDetails")
-                        .HasForeignKey("PriorityId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Entities.ProjectArea", "Area")
                         .WithMany("TaskDetails")
                         .HasForeignKey("PriorityId")
                         .OnDelete(DeleteBehavior.Restrict)

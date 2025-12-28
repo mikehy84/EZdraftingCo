@@ -54,6 +54,38 @@ namespace Infrastructure.FluentApiConfig
 
             modelBuilder
                 .Navigation(p => p.Areas);
+
+
+            // Seeding initial data
+            modelBuilder
+                .HasData(
+                    new Project
+                    {
+                        Id = 1,
+                        InternalProjectNo = "Internal-PRJ-001",
+                        ProjectManagerId = 2,
+                        ActualHours = 0,
+                        StartDate = new DateTime(2024, 1, 1),
+                        EndDate = new DateTime(2024, 12, 31),
+                        IsClosed = false,
+                        ClientProjectId = 1,
+                        CreatedAt = DateTime.UtcNow,
+                        UpdatedAt = DateTime.UtcNow
+                    },
+                    new Project
+                    {
+                        Id = 2,
+                        InternalProjectNo = "Internal-PRJ-002",
+                        ProjectManagerId = 2,
+                        ActualHours = 0,
+                        StartDate = new DateTime(2024, 2, 1),
+                        EndDate = new DateTime(2024, 11, 30),
+                        IsClosed = false,
+                        ClientProjectId = 2,
+                        CreatedAt = DateTime.UtcNow,
+                        UpdatedAt = DateTime.UtcNow
+                    }
+                );
         }
     }
 }

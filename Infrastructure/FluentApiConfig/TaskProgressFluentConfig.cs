@@ -40,6 +40,48 @@ namespace Infrastructure.FluentApiConfig
             // Navigation properties
             modelBuilder
                 .Navigation(tp => tp.TaskComments);
+
+
+            // Seeding initial data
+            modelBuilder
+                .HasData(
+                    new TaskProgress
+                    {
+                        Id = 1,
+                        TaskAssignmentId = 1,
+                        Date = new DateTime(2024, 1, 15),
+                        SpentHours = 5.0,
+                        CreatedAt = DateTime.UtcNow,
+                        UpdatedAt = DateTime.UtcNow
+                    },
+                    new TaskProgress
+                    {
+                        Id = 2,
+                        TaskAssignmentId = 2,
+                        Date = new DateTime(2024, 1, 16),
+                        SpentHours = 3.5,
+                        CreatedAt = DateTime.UtcNow,
+                        UpdatedAt = DateTime.UtcNow
+                    },
+                    new TaskProgress
+                    {
+                        Id = 3,
+                        TaskAssignmentId = 1,
+                        Date = new DateTime(2024, 1, 17),
+                        SpentHours = 4.0,
+                        CreatedAt = DateTime.UtcNow,
+                        UpdatedAt = DateTime.UtcNow
+                    },
+                    new TaskProgress
+                    {
+                        Id = 4,
+                        TaskAssignmentId = 2,
+                        Date = new DateTime(2024, 1, 18),
+                        SpentHours = 6.0,
+                        CreatedAt = DateTime.UtcNow,
+                        UpdatedAt = DateTime.UtcNow
+                    }
+                );
         }
     }
 }

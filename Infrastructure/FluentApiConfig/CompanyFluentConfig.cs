@@ -45,6 +45,14 @@ namespace Infrastructure.FluentApiConfig
 
             modelBuilder
                 .Navigation(c => c.Persons);
+
+
+            // Seeding initial data
+            modelBuilder.HasData(
+                new Company { Id = 1, Name = "Quality Drafting Company", CompanyTypeId = 1 },
+                new Company { Id = 2, Name = "Innovatech Corp.", CompanyTypeId = 13 },
+                new Company { Id = 3, Name = "Global Dynamics Inc.", CompanyTypeId = 7 }
+            );
         }
     }
 }

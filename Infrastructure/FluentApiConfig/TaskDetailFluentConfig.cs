@@ -18,6 +18,11 @@ namespace Infrastructure.FluentApiConfig
                 .ValueGeneratedOnAdd();
 
             modelBuilder
+                .Property(td => td.Title)
+                .IsRequired()
+                .HasMaxLength(80);
+
+            modelBuilder
                 .Property(td => td.Description)
                 .IsRequired()
                 .HasMaxLength(1000);
@@ -29,6 +34,11 @@ namespace Infrastructure.FluentApiConfig
             modelBuilder
                 .Property(td => td.DueDate)
                 .IsRequired();
+
+            // Unique Constraint Configuration
+            modelBuilder
+                .HasIndex(td => new { td.TaskNameId, td.Title, td.ProjectId, td.PhaseId })
+                .IsUnique();
 
             // Relationships
             modelBuilder
@@ -55,8 +65,9 @@ namespace Infrastructure.FluentApiConfig
             modelBuilder
                 .HasOne(td => td.Area)
                 .WithMany(a => a.TaskDetails)
-                .HasForeignKey(td => td.PriorityId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .HasForeignKey(td => td.AreaId)
+                .OnDelete(DeleteBehavior.SetNull)
+                .IsRequired(false);
 
             modelBuilder
                 .HasOne(td => td.Priority)
@@ -71,6 +82,42 @@ namespace Infrastructure.FluentApiConfig
 
             modelBuilder
                 .Navigation(td => td.TaskAssignments);
+
+
+            // Seeding initial data
+            modelBuilder
+                .HasData(
+                    new TaskDetail
+                    {
+                        Id = 1,
+                        TaskNameId = 1,
+                        Title = "Column to beam",
+                        ProjectId = 1,
+                        PhaseId = 1,
+                        AreaId = null,
+                        PriorityId = 1,
+                        Description = "Initial task detail description",
+                        EstimatedHours = 40,
+                        DueDate = DateTime.UtcNow.AddDays(10),
+                        CreatedAt = DateTime.UtcNow,
+                        UpdatedAt = DateTime.UtcNow
+                    },
+                    new TaskDetail
+                    {
+                        Id = 2,
+                        TaskNameId = 2,
+                        Title = "Column layout",
+                        ProjectId = 1,
+                        PhaseId = 2,
+                        AreaId = null,
+                        PriorityId = 2,
+                        Description = "Second task detail description",
+                        EstimatedHours = 20,
+                        DueDate = DateTime.UtcNow.AddDays(15),
+                        CreatedAt = DateTime.UtcNow,
+                        UpdatedAt = DateTime.UtcNow
+                    }
+                );
         }
     }
 }

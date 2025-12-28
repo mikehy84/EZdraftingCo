@@ -57,6 +57,36 @@ namespace Infrastructure.FluentApiConfig
                 .HasForeignKey(a => a.PersonId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired();
+
+            // Seeding initial data
+            modelBuilder.HasData(
+                new Address
+                {
+                    Id = 1,
+                    StateId = 2,
+                    StreetNumber = "123",
+                    StreetName = "Main St",
+                    City = "Parksville",
+                    PostalCode = "12345",
+                    IsPrimary = true,
+                    PersonId = 1,
+                    CreatedAt = DateTime.UtcNow,
+                    UpdatedAt = DateTime.UtcNow
+                },
+                new Address
+                {
+                    Id = 2,
+                    StateId = 2,
+                    StreetNumber = "456",
+                    StreetName = "Elm St",
+                    City = "Nanaimo",
+                    PostalCode = "67890",
+                    IsPrimary = false,
+                    PersonId = 2,
+                    CreatedAt = DateTime.UtcNow,
+                    UpdatedAt = DateTime.UtcNow
+                }
+            );
         }
     }
 }

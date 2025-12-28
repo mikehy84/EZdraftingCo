@@ -13,6 +13,8 @@ namespace Domain.Entities
         public int TaskNameId { get; set; }
         public TaskName TaskName { get; set; }
 
+        public string Title { get; set; }
+
 
         // Project that this TaskLog belongs to
         public int ProjectId { get; set; }
@@ -25,8 +27,8 @@ namespace Domain.Entities
 
 
         // Are that this TaskLog belongs to
-        public int AreaId { get; set; }
-        public ProjectArea Area { get; set; }
+        public int? AreaId { get; set; }
+        public ProjectArea? Area { get; set; }
 
 
         // Proiority that this TaskLog has

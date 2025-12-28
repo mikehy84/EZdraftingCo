@@ -48,6 +48,30 @@ namespace Infrastructure.FluentApiConfig
             // Navigation properties
             modelBuilder
                 .Navigation(ta => ta.TaskProgresses);
+
+
+            // Seeding initial data
+            modelBuilder
+                .HasData(
+                    new TaskAssignment
+                    {
+                        Id = 1,
+                        TaskDetailId = 1,
+                        TaskAssignorId = 1,
+                        TaskAssigneeId = 2,
+                        CreatedAt = DateTime.UtcNow,
+                        UpdatedAt = DateTime.UtcNow
+                    },
+                    new TaskAssignment
+                    {
+                        Id = 2,
+                        TaskDetailId = 2,
+                        TaskAssignorId = 1,
+                        TaskAssigneeId = 2,
+                        CreatedAt = DateTime.UtcNow,
+                        UpdatedAt = DateTime.UtcNow
+                    }
+                );
         }
     }
 }

@@ -21,6 +21,10 @@ namespace Infrastructure.FluentApiConfig
                 .IsRequired()
                 .ValueGeneratedOnAdd();
 
+            modelBuilder
+                .HasIndex(tl => tl.TaskDetailId)
+                .IsUnique();
+
 
             // Relationships
             modelBuilder
@@ -37,6 +41,27 @@ namespace Infrastructure.FluentApiConfig
                 .HasForeignKey(tl => tl.TaskStateId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired();
+
+
+            // Seeding Initial Data
+            modelBuilder.HasData(
+                new TaskLog
+                {
+                    Id = 1,
+                    TaskDetailId = 1,
+                    TaskStateId = 1,
+                    CreatedAt = DateTime.UtcNow,
+                    UpdatedAt = DateTime.UtcNow
+                },
+                new TaskLog
+                {
+                    Id = 2,
+                    TaskDetailId = 2,
+                    TaskStateId = 1,
+                    CreatedAt = DateTime.UtcNow,
+                    UpdatedAt = DateTime.UtcNow
+                }
+            );
         }
     }
 }

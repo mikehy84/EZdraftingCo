@@ -46,7 +46,8 @@ namespace Infrastructure.FluentApiConfig
                 new CompanyType { Id = 9, Type = "Inspector", Comment = "Third-party or authority inspection body" },
                 new CompanyType { Id = 10, Type = "Authority", Comment = "Regulatory or permitting authority" },
                 new CompanyType { Id = 11, Type = "Partner", Comment = "Strategic or long-term collaborator" },
-                new CompanyType { Id = 12, Type = "Logistics", Comment = "Transport / delivery companies" }
+                new CompanyType { Id = 12, Type = "Logistics", Comment = "Transport / delivery companies" },
+                new CompanyType { Id = 13, Type = "IT", Comment = "IT supports" }
             );
         }
     }

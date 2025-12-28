@@ -38,6 +38,14 @@ namespace Infrastructure.FluentApiConfig
 
             modelBuilder
                 .Navigation(a => a.TaskDetails);
+
+
+            // Seeding Initial Data
+            modelBuilder.HasData(
+                new ProjectArea { Id = 1, Name = "Main Office", ProjectId = 1 },
+                new ProjectArea { Id = 2, Name = "Shop Office", ProjectId = 1 },
+                new ProjectArea { Id = 3, Name = "Rec. Pool", ProjectId = 2 }
+            );
         }
     }
 }

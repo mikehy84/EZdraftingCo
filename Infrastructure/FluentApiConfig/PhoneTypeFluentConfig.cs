@@ -23,7 +23,7 @@ namespace Infrastructure.FluentApiConfig
 
             modelBuilder
                 .Property(pt => pt.Type)
-                .HasMaxLength(10)
+                .HasMaxLength(12)
                 .IsRequired();
 
             // Unique
