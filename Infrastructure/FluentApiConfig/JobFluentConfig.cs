@@ -30,12 +30,12 @@ namespace Infrastructure.FluentApiConfig
 
             // Relationships
             modelBuilder
-                .Navigation(j => j.Persons);
+                .Navigation(j => j.EmployeeProfiles);
 
 
             // Seeding initial data
             modelBuilder.HasData(
-                new Job { Id = 1, Title = "Manager", Description = "General manager" },
+                new Job { Id = 1, Title = "President", Description = "General manager" },
                 new Job { Id = 2, Title = "Junior Detailer", Description = "Entry-level detailer with 1–2 years of experience under supervision." },
                 new Job { Id = 3, Title = "Intermediate Detailer", Description = "Detailer with solid Tekla experience handling standard projects independently." },
                 new Job { Id = 4, Title = "Senior Detailer", Description = "Experienced detailer responsible for complex steel structures and quality control." },

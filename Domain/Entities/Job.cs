@@ -10,9 +10,10 @@ namespace Domain.Entities
 
 
         // Job is the parent in the one-to-many relationship
-        // Job (parent / principal) = one job can belong to many people
-        // Person (child / dependent) = each person optionally has one job
-        // Persons that hold this Job
-        public ICollection<Person> Persons { get; set; } = [];
+        // Job (parent / principal) = one job can belong to many EmployeeProfiles
+        // EmployeeProfiles (child / dependent) = each EmployeeProfiles optionally has one job
+
+        // EmployeeProfiles that hold this Job
+        public ICollection<EmployeeProfile> EmployeeProfiles { get; set; } = [];
     }
 }

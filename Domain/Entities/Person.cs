@@ -9,12 +9,10 @@ namespace Domain.Entities
         public int Id { get; set; }
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
-        public DateTime? DateOfBirth { get; set; }
         public bool IsActive { get; set; } = true;
         public DateTime? DeactivatedAt { get; set; }
         public DateTime? ReactivatedAt { get; set; }
 
-        public decimal RatePerHour { get; set; }
 
 
 
@@ -22,10 +20,6 @@ namespace Domain.Entities
         public string? AccountId { get; set; }
         public UserAccount? UserAccount { get; set; }
 
-
-        // Job that this Person holds
-        public int? JobId { get; set; }
-        public Job? Job { get; set; }
 
 
         // Company that this Person belongs to

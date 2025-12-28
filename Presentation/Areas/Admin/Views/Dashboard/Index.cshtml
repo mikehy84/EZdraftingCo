@@ -5,13 +5,43 @@
 
 <div class="Dashboard__main">
     @* <partial name="UserPanelNavbar/_UserPanelNav" /> *@
-    <h1>Admin Panel</h1>
 
-    <table class="Dashboard__table">
+    
+    <div>
+        <input type="text"
+               class="dashboard__search"
+               placeholder="Search persons by name..."
+               autocomplete="off" />
 
-    </table>
+        <table class="Dashboard__table">
+        </table>
+    </div>
+    
+    
 
 </div>
+
+<script>
+        const searchInput = document.querySelector('.dashboard__search');
+
+    searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase().trim();
+
+        const rows = document
+            .querySelectorAll('.Dashboard__table tbody tr');
+
+        rows.forEach(row => {
+            const nameCell = row.cells[0]; // first column
+            if (!nameCell) return;
+
+            const name = nameCell.textContent.toLowerCase();
+
+            row.style.display = name.includes(query)
+                ? ''
+                : 'none';
+        });
+    });
+</script>
 
 
 

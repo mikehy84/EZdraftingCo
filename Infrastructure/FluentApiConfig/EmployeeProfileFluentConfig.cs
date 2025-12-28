@@ -17,6 +17,11 @@ namespace Infrastructure.FluentApiConfig
                 .HasKey(ep => ep.PersonId);
 
             modelBuilder
+                .Property(x => x.RatePerHour)
+                .IsRequired()
+                .HasPrecision(10, 2); // up to 99999999.99
+
+            modelBuilder
                 .Property(ep => ep.SinEncrypted)
                 .HasMaxLength(512)
                 .IsRequired();
@@ -36,11 +41,21 @@ namespace Infrastructure.FluentApiConfig
                 .HasIndex(ep => ep.SinHash)
                 .IsUnique();
 
+
             // Relationships
             modelBuilder
                 .HasOne(ep => ep.Person)
                 .WithOne(p => p.EmployeeProfile)
-                .HasForeignKey<EmployeeProfile>(ep => ep.PersonId);
+                .HasForeignKey<EmployeeProfile>(ep => ep.PersonId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
+
+            modelBuilder
+               .HasOne(ep => ep.Job)
+               .WithMany(j => j.EmployeeProfiles)
+               .HasForeignKey(ep => ep.JobId)
+               .OnDelete(DeleteBehavior.Restrict)
+               .IsRequired();
         }
     }
 }

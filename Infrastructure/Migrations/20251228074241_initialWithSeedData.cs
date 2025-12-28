@@ -318,13 +318,10 @@ namespace Infrastructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     DeactivatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ReactivatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    RatePerHour = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false),
                     AccountId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    JobId = table.Column<int>(type: "int", nullable: true),
                     CompanyId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -339,12 +336,6 @@ namespace Infrastructure.Migrations
                         name: "FK_Persons_Companies_CompanyId",
                         column: x => x.CompanyId,
                         principalTable: "Companies",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Persons_Jobs_JobId",
-                        column: x => x.JobId,
-                        principalTable: "Jobs",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -508,6 +499,9 @@ namespace Infrastructure.Migrations
                 columns: table => new
                 {
                     PersonId = table.Column<int>(type: "int", nullable: false),
+                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    JobId = table.Column<int>(type: "int", nullable: false),
+                    RatePerHour = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false),
                     SinEncrypted = table.Column<string>(type: "nvarchar(512)", maxLength: 512, nullable: false),
                     SinHash = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
                     SinLast3 = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false)
@@ -516,11 +510,17 @@ namespace Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_EmployeeProfiles", x => x.PersonId);
                     table.ForeignKey(
+                        name: "FK_EmployeeProfiles_Jobs_JobId",
+                        column: x => x.JobId,
+                        principalTable: "Jobs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_EmployeeProfiles_Persons_PersonId",
                         column: x => x.PersonId,
                         principalTable: "Persons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -853,7 +853,7 @@ namespace Infrastructure.Migrations
                 columns: new[] { "Id", "Description", "Title" },
                 values: new object[,]
                 {
-                    { 1, "General manager", "Manager" },
+                    { 1, "General manager", "President" },
                     { 2, "Entry-level detailer with 1–2 years of experience under supervision.", "Junior Detailer" },
                     { 3, "Detailer with solid Tekla experience handling standard projects independently.", "Intermediate Detailer" },
                     { 4, "Experienced detailer responsible for complex steel structures and quality control.", "Senior Detailer" },
@@ -1013,17 +1013,17 @@ namespace Infrastructure.Migrations
                 columns: new[] { "Id", "AwardedAt", "ClientPmId", "CompanyId", "CreatedAt", "EstimatedHour", "Location", "ProjectName", "ProjectNo", "ProjectRate", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2025, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 2, new DateTime(2025, 12, 28, 3, 48, 34, 944, DateTimeKind.Utc).AddTicks(8831), 1240, "New York, NY", "Downtown Office", "CL-PRJ-001", 150.00m, new DateTime(2025, 12, 28, 3, 48, 34, 944, DateTimeKind.Utc).AddTicks(8832) },
-                    { 2, new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 2, new DateTime(2025, 12, 28, 3, 48, 34, 944, DateTimeKind.Utc).AddTicks(8835), 3000, "Chicago, IL", "Lakeside Residential Complex", "CL-PRJ-002", 120.00m, new DateTime(2025, 12, 28, 3, 48, 34, 944, DateTimeKind.Utc).AddTicks(8835) }
+                    { 1, new DateTime(2025, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 2, new DateTime(2025, 12, 28, 7, 42, 39, 293, DateTimeKind.Utc).AddTicks(2173), 1240, "New York, NY", "Downtown Office", "CL-PRJ-001", 150.00m, new DateTime(2025, 12, 28, 7, 42, 39, 293, DateTimeKind.Utc).AddTicks(2174) },
+                    { 2, new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 2, new DateTime(2025, 12, 28, 7, 42, 39, 293, DateTimeKind.Utc).AddTicks(2176), 3000, "Chicago, IL", "Lakeside Residential Complex", "CL-PRJ-002", 120.00m, new DateTime(2025, 12, 28, 7, 42, 39, 293, DateTimeKind.Utc).AddTicks(2177) }
                 });
 
             migrationBuilder.InsertData(
                 table: "Persons",
-                columns: new[] { "Id", "AccountId", "CompanyId", "DateOfBirth", "DeactivatedAt", "FirstName", "IsActive", "JobId", "LastName", "RatePerHour", "ReactivatedAt" },
+                columns: new[] { "Id", "AccountId", "CompanyId", "DeactivatedAt", "FirstName", "IsActive", "LastName", "ReactivatedAt" },
                 values: new object[,]
                 {
-                    { 1, null, 1, new DateTime(1975, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Lee", true, 1, "Grannon", 65.00m, null },
-                    { 2, null, 1, new DateTime(1982, 8, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Michael", true, 6, "Harvey", 40.00m, null }
+                    { 1, null, 1, null, "Lee", true, "Grannon", null },
+                    { 2, null, 1, null, "Michael", true, "Harvey", null }
                 });
 
             migrationBuilder.InsertData(
@@ -1031,8 +1031,8 @@ namespace Infrastructure.Migrations
                 columns: new[] { "Id", "City", "CreatedAt", "IsPrimary", "PersonId", "PostalCode", "StateId", "StreetName", "StreetNumber", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, "Parksville", new DateTime(2025, 12, 28, 3, 48, 34, 940, DateTimeKind.Utc).AddTicks(5763), true, 1, "12345", 2, "Main St", "123", new DateTime(2025, 12, 28, 3, 48, 34, 940, DateTimeKind.Utc).AddTicks(5764) },
-                    { 2, "Nanaimo", new DateTime(2025, 12, 28, 3, 48, 34, 940, DateTimeKind.Utc).AddTicks(5767), false, 2, "67890", 2, "Elm St", "456", new DateTime(2025, 12, 28, 3, 48, 34, 940, DateTimeKind.Utc).AddTicks(5767) }
+                    { 1, "Parksville", new DateTime(2025, 12, 28, 7, 42, 39, 288, DateTimeKind.Utc).AddTicks(8207), true, 1, "12345", 2, "Main St", "123", new DateTime(2025, 12, 28, 7, 42, 39, 288, DateTimeKind.Utc).AddTicks(8209) },
+                    { 2, "Nanaimo", new DateTime(2025, 12, 28, 7, 42, 39, 288, DateTimeKind.Utc).AddTicks(8211), false, 2, "67890", 2, "Elm St", "456", new DateTime(2025, 12, 28, 7, 42, 39, 288, DateTimeKind.Utc).AddTicks(8212) }
                 });
 
             migrationBuilder.InsertData(
@@ -1040,8 +1040,8 @@ namespace Infrastructure.Migrations
                 columns: new[] { "Id", "AssignedAt", "AssigneeId", "AssignorId", "IsPrimary", "RoleId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2025, 12, 28, 3, 48, 34, 944, DateTimeKind.Utc).AddTicks(4103), 1, 1, true, 1 },
-                    { 2, new DateTime(2025, 12, 28, 3, 48, 34, 944, DateTimeKind.Utc).AddTicks(4105), 2, 1, true, 2 }
+                    { 1, new DateTime(2025, 12, 28, 7, 42, 39, 292, DateTimeKind.Utc).AddTicks(7041), 1, 1, true, 1 },
+                    { 2, new DateTime(2025, 12, 28, 7, 42, 39, 292, DateTimeKind.Utc).AddTicks(7043), 2, 1, true, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -1049,8 +1049,8 @@ namespace Infrastructure.Migrations
                 columns: new[] { "Id", "CreatedAt", "Email", "IsPrimary", "PersonId", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2025, 12, 27, 19, 48, 34, 945, DateTimeKind.Local).AddTicks(7645), "lgrannon@qualitydraftingco.com", true, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2, new DateTime(2025, 12, 27, 19, 48, 34, 945, DateTimeKind.Local).AddTicks(7682), "mharvey@qualitydraftingco.com", true, 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                    { 1, new DateTime(2025, 12, 27, 23, 42, 39, 293, DateTimeKind.Local).AddTicks(9950), "lgrannon@qualitydraftingco.com", true, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2, new DateTime(2025, 12, 27, 23, 42, 39, 293, DateTimeKind.Local).AddTicks(9987), "mharvey@qualitydraftingco.com", true, 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
 
             migrationBuilder.InsertData(
@@ -1058,8 +1058,8 @@ namespace Infrastructure.Migrations
                 columns: new[] { "Id", "CountryId", "CreatedAt", "IsPrimary", "PersonId", "PhoneNumber", "TypeId", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2025, 12, 28, 3, 48, 34, 948, DateTimeKind.Utc).AddTicks(581), true, 1, "1234567890", 1, new DateTime(2025, 12, 28, 3, 48, 34, 948, DateTimeKind.Utc).AddTicks(582) },
-                    { 2, 1, new DateTime(2025, 12, 28, 3, 48, 34, 948, DateTimeKind.Utc).AddTicks(583), true, 2, "0987654321", 2, new DateTime(2025, 12, 28, 3, 48, 34, 948, DateTimeKind.Utc).AddTicks(584) }
+                    { 1, 1, new DateTime(2025, 12, 28, 7, 42, 39, 295, DateTimeKind.Utc).AddTicks(9666), true, 1, "1234567890", 1, new DateTime(2025, 12, 28, 7, 42, 39, 295, DateTimeKind.Utc).AddTicks(9667) },
+                    { 2, 1, new DateTime(2025, 12, 28, 7, 42, 39, 295, DateTimeKind.Utc).AddTicks(9668), true, 2, "0987654321", 2, new DateTime(2025, 12, 28, 7, 42, 39, 295, DateTimeKind.Utc).AddTicks(9669) }
                 });
 
             migrationBuilder.InsertData(
@@ -1067,8 +1067,8 @@ namespace Infrastructure.Migrations
                 columns: new[] { "Id", "ActualHours", "ClientProjectId", "CreatedAt", "EndDate", "InternalProjectNo", "IsClosed", "ProjectManagerId", "StartDate", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, 0, 1, new DateTime(2025, 12, 28, 3, 48, 34, 948, DateTimeKind.Utc).AddTicks(8665), new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Internal-PRJ-001", false, 2, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2025, 12, 28, 3, 48, 34, 948, DateTimeKind.Utc).AddTicks(8666) },
-                    { 2, 0, 2, new DateTime(2025, 12, 28, 3, 48, 34, 948, DateTimeKind.Utc).AddTicks(8669), new DateTime(2024, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Internal-PRJ-002", false, 2, new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2025, 12, 28, 3, 48, 34, 948, DateTimeKind.Utc).AddTicks(8669) }
+                    { 1, 0, 1, new DateTime(2025, 12, 28, 7, 42, 39, 296, DateTimeKind.Utc).AddTicks(7102), new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Internal-PRJ-001", false, 2, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2025, 12, 28, 7, 42, 39, 296, DateTimeKind.Utc).AddTicks(7103) },
+                    { 2, 0, 2, new DateTime(2025, 12, 28, 7, 42, 39, 296, DateTimeKind.Utc).AddTicks(7106), new DateTime(2024, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Internal-PRJ-002", false, 2, new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2025, 12, 28, 7, 42, 39, 296, DateTimeKind.Utc).AddTicks(7107) }
                 });
 
             migrationBuilder.InsertData(
@@ -1076,8 +1076,8 @@ namespace Infrastructure.Migrations
                 columns: new[] { "Id", "Comment", "CreatedAt", "PhaseName", "PhaseNumber", "ProjectId", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, "All parts", new DateTime(2025, 12, 28, 3, 48, 34, 947, DateTimeKind.Utc).AddTicks(3172), "Office Building", 1, 1, new DateTime(2025, 12, 28, 3, 48, 34, 947, DateTimeKind.Utc).AddTicks(3172) },
-                    { 2, "Roof Frames", new DateTime(2025, 12, 28, 3, 48, 34, 947, DateTimeKind.Utc).AddTicks(3175), "Office RTUs", 2, 1, new DateTime(2025, 12, 28, 3, 48, 34, 947, DateTimeKind.Utc).AddTicks(3176) }
+                    { 1, "All parts", new DateTime(2025, 12, 28, 7, 42, 39, 295, DateTimeKind.Utc).AddTicks(3365), "Office Building", 1, 1, new DateTime(2025, 12, 28, 7, 42, 39, 295, DateTimeKind.Utc).AddTicks(3365) },
+                    { 2, "Roof Frames", new DateTime(2025, 12, 28, 7, 42, 39, 295, DateTimeKind.Utc).AddTicks(3368), "Office RTUs", 2, 1, new DateTime(2025, 12, 28, 7, 42, 39, 295, DateTimeKind.Utc).AddTicks(3369) }
                 });
 
             migrationBuilder.InsertData(
@@ -1095,8 +1095,8 @@ namespace Infrastructure.Migrations
                 columns: new[] { "Id", "AreaId", "CreatedAt", "Description", "DueDate", "EstimatedHours", "PhaseId", "PriorityId", "ProjectId", "TaskNameId", "Title", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, null, new DateTime(2025, 12, 28, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(5924), "Initial task detail description", new DateTime(2026, 1, 7, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(5922), 40, 1, 1, 1, 1, "Column to beam", new DateTime(2025, 12, 28, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(5925) },
-                    { 2, null, new DateTime(2025, 12, 28, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(5930), "Second task detail description", new DateTime(2026, 1, 12, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(5929), 20, 2, 2, 1, 2, "Column layout", new DateTime(2025, 12, 28, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(5930) }
+                    { 1, null, new DateTime(2025, 12, 28, 7, 42, 39, 300, DateTimeKind.Utc).AddTicks(9334), "Initial task detail description", new DateTime(2026, 1, 7, 7, 42, 39, 300, DateTimeKind.Utc).AddTicks(9332), 40, 1, 1, 1, 1, "Column to beam", new DateTime(2025, 12, 28, 7, 42, 39, 300, DateTimeKind.Utc).AddTicks(9334) },
+                    { 2, null, new DateTime(2025, 12, 28, 7, 42, 39, 300, DateTimeKind.Utc).AddTicks(9338), "Second task detail description", new DateTime(2026, 1, 12, 7, 42, 39, 300, DateTimeKind.Utc).AddTicks(9337), 20, 2, 2, 1, 2, "Column layout", new DateTime(2025, 12, 28, 7, 42, 39, 300, DateTimeKind.Utc).AddTicks(9338) }
                 });
 
             migrationBuilder.InsertData(
@@ -1104,8 +1104,8 @@ namespace Infrastructure.Migrations
                 columns: new[] { "Id", "CreatedAt", "TaskAssigneeId", "TaskAssignorId", "TaskDetailId", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2025, 12, 28, 3, 48, 34, 952, DateTimeKind.Utc).AddTicks(5005), 2, 1, 1, new DateTime(2025, 12, 28, 3, 48, 34, 952, DateTimeKind.Utc).AddTicks(5005) },
-                    { 2, new DateTime(2025, 12, 28, 3, 48, 34, 952, DateTimeKind.Utc).AddTicks(5008), 2, 1, 2, new DateTime(2025, 12, 28, 3, 48, 34, 952, DateTimeKind.Utc).AddTicks(5008) }
+                    { 1, new DateTime(2025, 12, 28, 7, 42, 39, 299, DateTimeKind.Utc).AddTicks(9745), 2, 1, 1, new DateTime(2025, 12, 28, 7, 42, 39, 299, DateTimeKind.Utc).AddTicks(9746) },
+                    { 2, new DateTime(2025, 12, 28, 7, 42, 39, 299, DateTimeKind.Utc).AddTicks(9749), 2, 1, 2, new DateTime(2025, 12, 28, 7, 42, 39, 299, DateTimeKind.Utc).AddTicks(9750) }
                 });
 
             migrationBuilder.InsertData(
@@ -1113,8 +1113,8 @@ namespace Infrastructure.Migrations
                 columns: new[] { "Id", "CreatedAt", "TaskDetailId", "TaskStateId", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2025, 12, 28, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(8569), 1, 1, new DateTime(2025, 12, 28, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(8569) },
-                    { 2, new DateTime(2025, 12, 28, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(8572), 2, 1, new DateTime(2025, 12, 28, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(8572) }
+                    { 1, new DateTime(2025, 12, 28, 7, 42, 39, 301, DateTimeKind.Utc).AddTicks(1622), 1, 1, new DateTime(2025, 12, 28, 7, 42, 39, 301, DateTimeKind.Utc).AddTicks(1624) },
+                    { 2, new DateTime(2025, 12, 28, 7, 42, 39, 301, DateTimeKind.Utc).AddTicks(1627), 2, 1, new DateTime(2025, 12, 28, 7, 42, 39, 301, DateTimeKind.Utc).AddTicks(1627) }
                 });
 
             migrationBuilder.InsertData(
@@ -1122,10 +1122,10 @@ namespace Infrastructure.Migrations
                 columns: new[] { "Id", "CreatedAt", "Date", "SpentHours", "TaskAssignmentId", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2025, 12, 28, 3, 48, 34, 954, DateTimeKind.Utc).AddTicks(1355), new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 5.0, 1, new DateTime(2025, 12, 28, 3, 48, 34, 954, DateTimeKind.Utc).AddTicks(1356) },
-                    { 2, new DateTime(2025, 12, 28, 3, 48, 34, 954, DateTimeKind.Utc).AddTicks(1359), new DateTime(2024, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 3.5, 2, new DateTime(2025, 12, 28, 3, 48, 34, 954, DateTimeKind.Utc).AddTicks(1359) },
-                    { 3, new DateTime(2025, 12, 28, 3, 48, 34, 954, DateTimeKind.Utc).AddTicks(1361), new DateTime(2024, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), 4.0, 1, new DateTime(2025, 12, 28, 3, 48, 34, 954, DateTimeKind.Utc).AddTicks(1362) },
-                    { 4, new DateTime(2025, 12, 28, 3, 48, 34, 954, DateTimeKind.Utc).AddTicks(1364), new DateTime(2024, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), 6.0, 2, new DateTime(2025, 12, 28, 3, 48, 34, 954, DateTimeKind.Utc).AddTicks(1364) }
+                    { 1, new DateTime(2025, 12, 28, 7, 42, 39, 301, DateTimeKind.Utc).AddTicks(3897), new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 5.0, 1, new DateTime(2025, 12, 28, 7, 42, 39, 301, DateTimeKind.Utc).AddTicks(3898) },
+                    { 2, new DateTime(2025, 12, 28, 7, 42, 39, 301, DateTimeKind.Utc).AddTicks(3901), new DateTime(2024, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 3.5, 2, new DateTime(2025, 12, 28, 7, 42, 39, 301, DateTimeKind.Utc).AddTicks(3901) },
+                    { 3, new DateTime(2025, 12, 28, 7, 42, 39, 301, DateTimeKind.Utc).AddTicks(3903), new DateTime(2024, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), 4.0, 1, new DateTime(2025, 12, 28, 7, 42, 39, 301, DateTimeKind.Utc).AddTicks(3904) },
+                    { 4, new DateTime(2025, 12, 28, 7, 42, 39, 301, DateTimeKind.Utc).AddTicks(3906), new DateTime(2024, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), 6.0, 2, new DateTime(2025, 12, 28, 7, 42, 39, 301, DateTimeKind.Utc).AddTicks(3906) }
                 });
 
             migrationBuilder.CreateIndex(
@@ -1291,6 +1291,11 @@ namespace Infrastructure.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_EmployeeProfiles_JobId",
+                table: "EmployeeProfiles",
+                column: "JobId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_EmployeeProfiles_SinHash",
                 table: "EmployeeProfiles",
                 column: "SinHash",
@@ -1313,11 +1318,6 @@ namespace Infrastructure.Migrations
                 name: "IX_Persons_CompanyId",
                 table: "Persons",
                 column: "CompanyId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Persons_JobId",
-                table: "Persons",
-                column: "JobId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Phases_PhaseNumber_ProjectId",
@@ -1526,6 +1526,9 @@ namespace Infrastructure.Migrations
                 name: "AppRoles");
 
             migrationBuilder.DropTable(
+                name: "Jobs");
+
+            migrationBuilder.DropTable(
                 name: "PhoneTypes");
 
             migrationBuilder.DropTable(
@@ -1569,9 +1572,6 @@ namespace Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Companies");
-
-            migrationBuilder.DropTable(
-                name: "Jobs");
 
             migrationBuilder.DropTable(
                 name: "CompanyTypes");

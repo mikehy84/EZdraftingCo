@@ -119,27 +119,27 @@ namespace Infrastructure.Migrations
                         {
                             Id = 1,
                             City = "Parksville",
-                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 940, DateTimeKind.Utc).AddTicks(5763),
+                            CreatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 288, DateTimeKind.Utc).AddTicks(8207),
                             IsPrimary = true,
                             PersonId = 1,
                             PostalCode = "12345",
                             StateId = 2,
                             StreetName = "Main St",
                             StreetNumber = "123",
-                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 940, DateTimeKind.Utc).AddTicks(5764)
+                            UpdatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 288, DateTimeKind.Utc).AddTicks(8209)
                         },
                         new
                         {
                             Id = 2,
                             City = "Nanaimo",
-                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 940, DateTimeKind.Utc).AddTicks(5767),
+                            CreatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 288, DateTimeKind.Utc).AddTicks(8211),
                             IsPrimary = false,
                             PersonId = 2,
                             PostalCode = "67890",
                             StateId = 2,
                             StreetName = "Elm St",
                             StreetNumber = "456",
-                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 940, DateTimeKind.Utc).AddTicks(5767)
+                            UpdatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 288, DateTimeKind.Utc).AddTicks(8212)
                         });
                 });
 
@@ -277,7 +277,7 @@ namespace Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            AssignedAt = new DateTime(2025, 12, 28, 3, 48, 34, 944, DateTimeKind.Utc).AddTicks(4103),
+                            AssignedAt = new DateTime(2025, 12, 28, 7, 42, 39, 292, DateTimeKind.Utc).AddTicks(7041),
                             AssigneeId = 1,
                             AssignorId = 1,
                             IsPrimary = true,
@@ -286,7 +286,7 @@ namespace Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            AssignedAt = new DateTime(2025, 12, 28, 3, 48, 34, 944, DateTimeKind.Utc).AddTicks(4105),
+                            AssignedAt = new DateTime(2025, 12, 28, 7, 42, 39, 292, DateTimeKind.Utc).AddTicks(7043),
                             AssigneeId = 2,
                             AssignorId = 1,
                             IsPrimary = true,
@@ -353,26 +353,26 @@ namespace Infrastructure.Migrations
                             Id = 1,
                             AwardedAt = new DateTime(2025, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CompanyId = 2,
-                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 944, DateTimeKind.Utc).AddTicks(8831),
+                            CreatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 293, DateTimeKind.Utc).AddTicks(2173),
                             EstimatedHour = 1240,
                             Location = "New York, NY",
                             ProjectName = "Downtown Office",
                             ProjectNo = "CL-PRJ-001",
                             ProjectRate = 150.00m,
-                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 944, DateTimeKind.Utc).AddTicks(8832)
+                            UpdatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 293, DateTimeKind.Utc).AddTicks(2174)
                         },
                         new
                         {
                             Id = 2,
                             AwardedAt = new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CompanyId = 2,
-                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 944, DateTimeKind.Utc).AddTicks(8835),
+                            CreatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 293, DateTimeKind.Utc).AddTicks(2176),
                             EstimatedHour = 3000,
                             Location = "Chicago, IL",
                             ProjectName = "Lakeside Residential Complex",
                             ProjectNo = "CL-PRJ-002",
                             ProjectRate = 120.00m,
-                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 944, DateTimeKind.Utc).AddTicks(8835)
+                            UpdatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 293, DateTimeKind.Utc).AddTicks(2177)
                         });
                 });
 
@@ -640,7 +640,7 @@ namespace Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 12, 27, 19, 48, 34, 945, DateTimeKind.Local).AddTicks(7645),
+                            CreatedAt = new DateTime(2025, 12, 27, 23, 42, 39, 293, DateTimeKind.Local).AddTicks(9950),
                             Email = "lgrannon@qualitydraftingco.com",
                             IsPrimary = true,
                             PersonId = 1,
@@ -649,7 +649,7 @@ namespace Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 12, 27, 19, 48, 34, 945, DateTimeKind.Local).AddTicks(7682),
+                            CreatedAt = new DateTime(2025, 12, 27, 23, 42, 39, 293, DateTimeKind.Local).AddTicks(9987),
                             Email = "mharvey@qualitydraftingco.com",
                             IsPrimary = true,
                             PersonId = 2,
@@ -661,6 +661,16 @@ namespace Infrastructure.Migrations
                 {
                     b.Property<int>("PersonId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("JobId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("RatePerHour")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
 
                     b.Property<string>("SinEncrypted")
                         .IsRequired()
@@ -678,6 +688,8 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(3)");
 
                     b.HasKey("PersonId");
+
+                    b.HasIndex("JobId");
 
                     b.HasIndex("SinHash")
                         .IsUnique();
@@ -713,7 +725,7 @@ namespace Infrastructure.Migrations
                         {
                             Id = 1,
                             Description = "General manager",
-                            Title = "Manager"
+                            Title = "President"
                         },
                         new
                         {
@@ -821,9 +833,6 @@ namespace Infrastructure.Migrations
                     b.Property<int?>("CompanyId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("DateOfBirth")
-                        .HasColumnType("datetime2");
-
                     b.Property<DateTime?>("DeactivatedAt")
                         .HasColumnType("datetime2");
 
@@ -835,17 +844,10 @@ namespace Infrastructure.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("JobId")
-                        .HasColumnType("int");
-
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<decimal>("RatePerHour")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("decimal(10,2)");
 
                     b.Property<DateTime?>("ReactivatedAt")
                         .HasColumnType("datetime2");
@@ -858,8 +860,6 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.HasIndex("JobId");
-
                     b.ToTable("Persons");
 
                     b.HasData(
@@ -867,23 +867,17 @@ namespace Infrastructure.Migrations
                         {
                             Id = 1,
                             CompanyId = 1,
-                            DateOfBirth = new DateTime(1975, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Lee",
                             IsActive = true,
-                            JobId = 1,
-                            LastName = "Grannon",
-                            RatePerHour = 65.00m
+                            LastName = "Grannon"
                         },
                         new
                         {
                             Id = 2,
                             CompanyId = 1,
-                            DateOfBirth = new DateTime(1982, 8, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Michael",
                             IsActive = true,
-                            JobId = 6,
-                            LastName = "Harvey",
-                            RatePerHour = 40.00m
+                            LastName = "Harvey"
                         });
                 });
 
@@ -927,21 +921,21 @@ namespace Infrastructure.Migrations
                         {
                             Id = 1,
                             Comment = "All parts",
-                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 947, DateTimeKind.Utc).AddTicks(3172),
+                            CreatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 295, DateTimeKind.Utc).AddTicks(3365),
                             PhaseName = "Office Building",
                             PhaseNumber = 1,
                             ProjectId = 1,
-                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 947, DateTimeKind.Utc).AddTicks(3172)
+                            UpdatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 295, DateTimeKind.Utc).AddTicks(3365)
                         },
                         new
                         {
                             Id = 2,
                             Comment = "Roof Frames",
-                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 947, DateTimeKind.Utc).AddTicks(3175),
+                            CreatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 295, DateTimeKind.Utc).AddTicks(3368),
                             PhaseName = "Office RTUs",
                             PhaseNumber = 2,
                             ProjectId = 1,
-                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 947, DateTimeKind.Utc).AddTicks(3176)
+                            UpdatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 295, DateTimeKind.Utc).AddTicks(3369)
                         });
                 });
 
@@ -993,23 +987,23 @@ namespace Infrastructure.Migrations
                         {
                             Id = 1,
                             CountryId = 1,
-                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 948, DateTimeKind.Utc).AddTicks(581),
+                            CreatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 295, DateTimeKind.Utc).AddTicks(9666),
                             IsPrimary = true,
                             PersonId = 1,
                             PhoneNumber = "1234567890",
                             TypeId = 1,
-                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 948, DateTimeKind.Utc).AddTicks(582)
+                            UpdatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 295, DateTimeKind.Utc).AddTicks(9667)
                         },
                         new
                         {
                             Id = 2,
                             CountryId = 1,
-                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 948, DateTimeKind.Utc).AddTicks(583),
+                            CreatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 295, DateTimeKind.Utc).AddTicks(9668),
                             IsPrimary = true,
                             PersonId = 2,
                             PhoneNumber = "0987654321",
                             TypeId = 2,
-                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 948, DateTimeKind.Utc).AddTicks(584)
+                            UpdatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 295, DateTimeKind.Utc).AddTicks(9669)
                         });
                 });
 
@@ -1185,26 +1179,26 @@ namespace Infrastructure.Migrations
                             Id = 1,
                             ActualHours = 0,
                             ClientProjectId = 1,
-                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 948, DateTimeKind.Utc).AddTicks(8665),
+                            CreatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 296, DateTimeKind.Utc).AddTicks(7102),
                             EndDate = new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             InternalProjectNo = "Internal-PRJ-001",
                             IsClosed = false,
                             ProjectManagerId = 2,
                             StartDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 948, DateTimeKind.Utc).AddTicks(8666)
+                            UpdatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 296, DateTimeKind.Utc).AddTicks(7103)
                         },
                         new
                         {
                             Id = 2,
                             ActualHours = 0,
                             ClientProjectId = 2,
-                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 948, DateTimeKind.Utc).AddTicks(8669),
+                            CreatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 296, DateTimeKind.Utc).AddTicks(7106),
                             EndDate = new DateTime(2024, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             InternalProjectNo = "Internal-PRJ-002",
                             IsClosed = false,
                             ProjectManagerId = 2,
                             StartDate = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 948, DateTimeKind.Utc).AddTicks(8669)
+                            UpdatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 296, DateTimeKind.Utc).AddTicks(7107)
                         });
                 });
 
@@ -1774,20 +1768,20 @@ namespace Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 952, DateTimeKind.Utc).AddTicks(5005),
+                            CreatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 299, DateTimeKind.Utc).AddTicks(9745),
                             TaskAssigneeId = 2,
                             TaskAssignorId = 1,
                             TaskDetailId = 1,
-                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 952, DateTimeKind.Utc).AddTicks(5005)
+                            UpdatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 299, DateTimeKind.Utc).AddTicks(9746)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 952, DateTimeKind.Utc).AddTicks(5008),
+                            CreatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 299, DateTimeKind.Utc).AddTicks(9749),
                             TaskAssigneeId = 2,
                             TaskAssignorId = 1,
                             TaskDetailId = 2,
-                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 952, DateTimeKind.Utc).AddTicks(5008)
+                            UpdatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 299, DateTimeKind.Utc).AddTicks(9750)
                         });
                 });
 
@@ -1884,30 +1878,30 @@ namespace Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(5924),
+                            CreatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 300, DateTimeKind.Utc).AddTicks(9334),
                             Description = "Initial task detail description",
-                            DueDate = new DateTime(2026, 1, 7, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(5922),
+                            DueDate = new DateTime(2026, 1, 7, 7, 42, 39, 300, DateTimeKind.Utc).AddTicks(9332),
                             EstimatedHours = 40,
                             PhaseId = 1,
                             PriorityId = 1,
                             ProjectId = 1,
                             TaskNameId = 1,
                             Title = "Column to beam",
-                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(5925)
+                            UpdatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 300, DateTimeKind.Utc).AddTicks(9334)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(5930),
+                            CreatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 300, DateTimeKind.Utc).AddTicks(9338),
                             Description = "Second task detail description",
-                            DueDate = new DateTime(2026, 1, 12, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(5929),
+                            DueDate = new DateTime(2026, 1, 12, 7, 42, 39, 300, DateTimeKind.Utc).AddTicks(9337),
                             EstimatedHours = 20,
                             PhaseId = 2,
                             PriorityId = 2,
                             ProjectId = 1,
                             TaskNameId = 2,
                             Title = "Column layout",
-                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(5930)
+                            UpdatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 300, DateTimeKind.Utc).AddTicks(9338)
                         });
                 });
 
@@ -1944,18 +1938,18 @@ namespace Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(8569),
+                            CreatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 301, DateTimeKind.Utc).AddTicks(1622),
                             TaskDetailId = 1,
                             TaskStateId = 1,
-                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(8569)
+                            UpdatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 301, DateTimeKind.Utc).AddTicks(1624)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(8572),
+                            CreatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 301, DateTimeKind.Utc).AddTicks(1627),
                             TaskDetailId = 2,
                             TaskStateId = 1,
-                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 953, DateTimeKind.Utc).AddTicks(8572)
+                            UpdatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 301, DateTimeKind.Utc).AddTicks(1627)
                         });
                 });
 
@@ -2055,38 +2049,38 @@ namespace Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 954, DateTimeKind.Utc).AddTicks(1355),
+                            CreatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 301, DateTimeKind.Utc).AddTicks(3897),
                             Date = new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SpentHours = 5.0,
                             TaskAssignmentId = 1,
-                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 954, DateTimeKind.Utc).AddTicks(1356)
+                            UpdatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 301, DateTimeKind.Utc).AddTicks(3898)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 954, DateTimeKind.Utc).AddTicks(1359),
+                            CreatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 301, DateTimeKind.Utc).AddTicks(3901),
                             Date = new DateTime(2024, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SpentHours = 3.5,
                             TaskAssignmentId = 2,
-                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 954, DateTimeKind.Utc).AddTicks(1359)
+                            UpdatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 301, DateTimeKind.Utc).AddTicks(3901)
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 954, DateTimeKind.Utc).AddTicks(1361),
+                            CreatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 301, DateTimeKind.Utc).AddTicks(3903),
                             Date = new DateTime(2024, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SpentHours = 4.0,
                             TaskAssignmentId = 1,
-                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 954, DateTimeKind.Utc).AddTicks(1362)
+                            UpdatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 301, DateTimeKind.Utc).AddTicks(3904)
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 954, DateTimeKind.Utc).AddTicks(1364),
+                            CreatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 301, DateTimeKind.Utc).AddTicks(3906),
                             Date = new DateTime(2024, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SpentHours = 6.0,
                             TaskAssignmentId = 2,
-                            UpdatedAt = new DateTime(2025, 12, 28, 3, 48, 34, 954, DateTimeKind.Utc).AddTicks(1364)
+                            UpdatedAt = new DateTime(2025, 12, 28, 7, 42, 39, 301, DateTimeKind.Utc).AddTicks(3906)
                         });
                 });
 
@@ -2462,11 +2456,19 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.EmployeeProfile", b =>
                 {
+                    b.HasOne("Domain.Entities.Job", "Job")
+                        .WithMany("EmployeeProfiles")
+                        .HasForeignKey("JobId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("Domain.Entities.Person", "Person")
                         .WithOne("EmployeeProfile")
                         .HasForeignKey("Domain.Entities.EmployeeProfile", "PersonId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Job");
 
                     b.Navigation("Person");
                 });
@@ -2482,14 +2484,7 @@ namespace Infrastructure.Migrations
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Domain.Entities.Job", "Job")
-                        .WithMany("Persons")
-                        .HasForeignKey("JobId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.Navigation("Company");
-
-                    b.Navigation("Job");
 
                     b.Navigation("UserAccount");
                 });
@@ -2765,7 +2760,7 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.Job", b =>
                 {
-                    b.Navigation("Persons");
+                    b.Navigation("EmployeeProfiles");
                 });
 
             modelBuilder.Entity("Domain.Entities.Person", b =>

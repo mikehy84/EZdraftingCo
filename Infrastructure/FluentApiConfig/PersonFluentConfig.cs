@@ -28,10 +28,7 @@ namespace Infrastructure.FluentApiConfig
                 .IsRequired()
                 .HasMaxLength(50); // LastName is required with max length 50
 
-            modelBuilder
-                .Property(x => x.RatePerHour)
-                .IsRequired()
-                .HasPrecision(10, 2); // up to 99999999.99
+            
 
 
             // Unique constraint
@@ -47,12 +44,6 @@ namespace Infrastructure.FluentApiConfig
                 .WithOne(ua => ua.Person)
                 .HasForeignKey<Person>(p => p.AccountId)
                 .IsRequired(false);
-
-            modelBuilder
-                .HasOne(p => p.Job)
-                .WithMany(j => j.Persons)
-                .HasForeignKey(p => p.JobId)
-                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder
                 .HasOne(p => p.Company)
@@ -104,11 +95,8 @@ namespace Infrastructure.FluentApiConfig
                     Id = 1,
                     FirstName = "Lee",
                     LastName = "Grannon",
-                    DateOfBirth = new DateTime(1975, 5, 15),
                     IsActive = true,
-                    RatePerHour = 65.00m,
                     AccountId = null,
-                    JobId = 1,
                     CompanyId = 1
                 },
                 new Person
@@ -116,11 +104,8 @@ namespace Infrastructure.FluentApiConfig
                     Id = 2,
                     FirstName = "Michael",
                     LastName = "Harvey",
-                    DateOfBirth = new DateTime(1982, 8, 4),
                     IsActive = true,
-                    RatePerHour = 40.00m,
                     AccountId = null,
-                    JobId = 6,
                     CompanyId = 1
                 }
             );
