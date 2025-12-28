@@ -1,4 +1,5 @@
-﻿import { apiGet } from '../Shared/apiCalls.js';
+﻿import { apiGet } from '../../Shared/apiCalls.js';
+import { renderSearch } from './search.js';
 
 
 
@@ -16,11 +17,18 @@ async function LoadPersons() {
 
 
 
+
+
+
 export async function renderPersonsTable() {
+
+    renderSearch();
+    renderAddBtn();
+
     const persons = await LoadPersons();
     if (!Array.isArray(persons)) return;
 
-    const table = document.querySelector('.Dashboard__table');
+    const table = document.querySelector('.dashboard__table');
     if (!table) return;
 
     /* ---------- THEAD (create once) ---------- */
@@ -67,13 +75,25 @@ export async function renderPersonsTable() {
 
 
 
+async function renderAddBtn() {
+    const container = document.querySelector('.dashboard__container');
+    if (!container) return;
+
+    const btnAdd = document.createElement('botton');
+    btnAdd.textContent = 'Add New Contact'
+    btnAdd.classList.add('btn_add');
+
+    container.prepend(btnAdd);
+
+}
 
 
+export async function addNewPerson() {
 
+    renderAddBtn();
 
+    const container = document.querySelector('.dashboard__container');
+    if (!container) return;
 
-
-
-
-
-
+    
+}

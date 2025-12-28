@@ -1,4 +1,4 @@
-﻿import { renderPersonsTable } from './person.js';
+﻿import { renderPersonsTable } from './Person/person.js';
 
 
 document.querySelector('.sidebar__list')

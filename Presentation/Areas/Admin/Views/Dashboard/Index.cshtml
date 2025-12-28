@@ -3,45 +3,21 @@
     Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
 }
 
-<div class="Dashboard__main">
+<div class="dashboard__main">
     @* <partial name="UserPanelNavbar/_UserPanelNav" /> *@
 
     
-    <div>
-        <input type="text"
-               class="dashboard__search"
-               placeholder="Search persons by name..."
-               autocomplete="off" />
+    <div class="dashboard__container">
 
-        <table class="Dashboard__table">
+        <table class="dashboard__table">
         </table>
+
     </div>
-    
-    
 
 </div>
 
-<script>
-        const searchInput = document.querySelector('.dashboard__search');
+@* <script type="module" src="~/js/Dashboard/search.js"></script> *@
 
-    searchInput.addEventListener('input', () => {
-        const query = searchInput.value.toLowerCase().trim();
-
-        const rows = document
-            .querySelectorAll('.Dashboard__table tbody tr');
-
-        rows.forEach(row => {
-            const nameCell = row.cells[0]; // first column
-            if (!nameCell) return;
-
-            const name = nameCell.textContent.toLowerCase();
-
-            row.style.display = name.includes(query)
-                ? ''
-                : 'none';
-        });
-    });
-</script>
 
 
 
