@@ -2,7 +2,7 @@
 export function onSearchInput(e) {
     const query = e.target.value.toLowerCase().trim();
 
-    const rows = document.querySelectorAll('.dashboard__table tbody tr');
+    const rows = document.querySelectorAll('.person__table tbody tr');
 
     rows.forEach(row => {
         const nameCell = row.cells[0];
@@ -22,25 +22,25 @@ export function onSearchInput(e) {
 
 
 export function renderSearch() {
-    const container = document.querySelector('.dashboard__container');
+    const container = document.querySelector('#person__container');
     if (!container) return;
 
     // Prevent duplicates
-    if (container.querySelector('.table__header')) return;
+    if (container.querySelector('.person__header')) return;
 
     const div = document.createElement('div');
-    div.classList.add('table__header');
+    div.classList.add('person__header');
 
-    const title = document.createElement('h5');
+    const title = document.createElement('h6');
     title.textContent = "Contacts' List";
-    title.classList.add('table__headerTitle');
+    title.classList.add('person__headerTitle');
 
     const searchInput = document.createElement('input');
     searchInput.type = 'text';
     searchInput.name = 'search';
     searchInput.id = 'searchInput';
     searchInput.placeholder = 'Search contacts';
-    searchInput.classList.add('table__searchInput');
+    searchInput.classList.add('person__searchInput');
     searchInput.setAttribute('aria-label', 'Search contacts by name');
 
     // attach listener

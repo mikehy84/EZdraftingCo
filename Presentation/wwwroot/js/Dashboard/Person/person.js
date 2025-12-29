@@ -28,8 +28,19 @@ export async function renderPersonsTable() {
     const persons = await LoadPersons();
     if (!Array.isArray(persons)) return;
 
-    const table = document.querySelector('.dashboard__table');
-    if (!table) return;
+    const container = document.querySelector('#person__container');
+    container.classList.add('person__container');
+    
+    if (!container) return;
+
+    /* ---------- TABLE (create once) ---------- */
+    let table = container.querySelector('table');
+    if (!table) {
+        table = document.createElement('table');
+        table.classList.add('person__table');
+        container.appendChild(table);
+    }
+
 
     /* ---------- THEAD (create once) ---------- */
     if (!table.querySelector('thead')) {
@@ -76,15 +87,19 @@ export async function renderPersonsTable() {
 
 
 async function renderAddBtn() {
-    const container = document.querySelector('.dashboard__container');
+    const container = document.querySelector('#person__container');
     if (!container) return;
 
-    const btnAdd = document.createElement('botton');
-    btnAdd.textContent = 'Add New Contact'
-    btnAdd.classList.add('btn_add');
+    const addbtn = document.querySelector('.btn_add');
+    if (!addbtn) {
+        const btnAdd = document.createElement('button');
+        btnAdd.textContent = 'Add New Contact';
+        btnAdd.type = 'submit';
+        btnAdd.classList.add('btn_add');
 
-    container.prepend(btnAdd);
-
+        container.prepend(btnAdd);
+    }
+    return;
 }
 
 
@@ -92,7 +107,7 @@ export async function addNewPerson() {
 
     renderAddBtn();
 
-    const container = document.querySelector('.dashboard__container');
+    const container = document.querySelector('.person__container');
     if (!container) return;
 
     

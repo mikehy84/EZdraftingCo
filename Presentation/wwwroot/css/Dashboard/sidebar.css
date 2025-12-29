@@ -23,16 +23,29 @@
     align-content: center;
     justify-content: center;
     padding: 1rem 0;
-    background-color: #b5c166;
+    background-color: var(--Green-11);
 }
 
 
+
+
 .sidebar__link {
+    margin: 1px 0;
+    padding: 0.2rem 1rem;
+    text-decoration: none;
     color: var(--Gray-9);
+    background-color: var(--Gray-0);
+    cursor: pointer;
     text-decoration: none;
 }
 
 .sidebar__link--active {
-    background-color: #1f2937;
-    color: #fff;
+    color: var(--Gray-0);
+    background-color: var(--Blue-1);
+}
+
+.sidebar__list a:hover {
+    color: var(--Gray-0);
+    background-color: var(--Blue-10);
+    cursor: pointer;
 }

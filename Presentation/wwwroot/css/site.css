@@ -1,11 +1,13 @@
 @import 'spinner.css';
-@import 'Dashboard/Dashboard.css';
+@import 'Dashboard/dashboard.css';
+@import 'Dashboard/person.css';
+@import 'Dashboard/sidebar.css';
 
 
 
 :root {
     --Blue-0: #e7f5ff;
-    --Blue-1: #d0ebff;
+    --Blue-1: #1f2937; /* sidebar active color*/
     --Blue-2: #a5d8ff;
     --Blue-3: #74c0fc;
     --Blue-4: #4dabf7;
@@ -45,8 +47,8 @@
     --Green-8: #2f9e44;
     --Green-9: #275c32;
     /* main theme, DO NOT CHANGE IT*/
-
     --Green-10: #0c3236;
+    --Green-11: #b5c166; /* table headers and menu bar theme*/
     /* /////////////////////////////////////////////////////////// */
     --Red-0: #fff5f5;
     --Red-1: #ffe3e3;
