@@ -42,25 +42,24 @@ namespace Infrastructure.Repository
             return await query.ToListAsync();
         }
 
-        public async Task<T> GetAsync(Expression<Func<T, bool>>? filter, bool tracked = true, string? includedProps = null)
+        public async Task<T?> GetAsync(
+            Expression<Func<T, bool>> filter,
+            bool tracked = true,
+            params Expression<Func<T, object>>[] includes)
         {
             IQueryable<T> query = dbSet;
 
-            if (!tracked)
-                query = query.AsNoTracking();
+            if (!tracked) query = query.AsNoTracking();
 
-            if (filter != null)
-                query = query.Where(filter);
+            query = query.Where(filter);
 
-            if (!string.IsNullOrWhiteSpace(includedProps))
-            {
-                string[] props = includedProps.Split(",", StringSplitOptions.RemoveEmptyEntries);
-                foreach (var prop in props)
-                    query = query.Include(prop.Trim());
-            }
+            foreach (var inc in includes)
+                query = query.Include(inc);
 
             return await query.FirstOrDefaultAsync();
         }
+
+
 
 
         public async Task CreateAsync(T entity)
@@ -98,7 +97,15 @@ namespace Infrastructure.Repository
                 .ToListAsync();
         }
 
-
+        public Task<TResult> GetProjectedByIdAsync<TResult>(IConfigurationProvider mapperConfig, Expression<Func<T, bool>>? filter = null)
+        {
+            IQueryable<T> query = dbSet.AsNoTracking();
+            if (filter != null)
+                query = query.Where(filter);
+            return query
+                .ProjectTo<TResult>(mapperConfig)
+                .FirstAsync();
+        }
 
     }
 }

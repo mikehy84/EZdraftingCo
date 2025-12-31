@@ -13,17 +13,23 @@ namespace Infrastructure.Repository
     {
         private readonly ApplicationDbContext _db;
 
+        public IAddress Addresses { get; private set; }
+        public IEmailAddress EmailAddresses { get; private set; }
+        public IPerson Persons { get; private set; }
+        public IPhone Phones { get; private set; }
         public IPriority Priorities { get; set; }
         public IProject Projects { get; private set; }
-        public IPerson Persons { get; private set; }
         public IUserAccount UserAccounts { get; private set; }
 
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
+            Addresses = new AddressRep(_db);
+            EmailAddresses = new EmailAddressRep(_db);
+            Persons = new PersonRep(_db);
+            Phones = new PhoneRep(_db);
             Priorities = new PriorityRep(_db);
             Projects = new ProjectRep(_db);
-            Persons = new PersonRep(_db);
             UserAccounts = new UserAccountRep(_db);
         }
 

@@ -15,6 +15,7 @@ namespace Application.Mapper
             CreateMap<PriorityDto, Priority>().ReverseMap();
 
             CreateMap<PersonDto, Person>().ReverseMap();
+            CreateMap<CreatePersonDto, Person>().ReverseMap();
 
 
 

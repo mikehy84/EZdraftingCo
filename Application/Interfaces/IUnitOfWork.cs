@@ -8,9 +8,12 @@ namespace Application.Interfaces
 {
     public interface IUnitOfWork
     {
-        IPriority Priorities { get; }
-        IProject Projects { get; }
+        IAddress Addresses { get; }
+        IEmailAddress EmailAddresses { get; }
         IPerson Persons { get; }
+        IPhone Phones { get; }
+        IProject Projects { get; }
+        IPriority Priorities { get; }
         IUserAccount UserAccounts { get; }
 
         Task Save();
