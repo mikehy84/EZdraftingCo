@@ -5,7 +5,7 @@ import { renderSearch } from './search.js';
 
 async function LoadPersons() {
     try {
-        const persons = await apiGet('/api/persons/all');
+        const persons = await apiGet('/api/persons');
         console.log(persons);
         return persons; // return data
     } catch (error) {
@@ -47,7 +47,7 @@ export async function renderPersonsTable() {
         const thead = document.createElement('thead');
         const headRow = document.createElement('tr');
 
-        const headers = ['Name', 'Company Name'];
+        const headers = ['Name', 'Phone Number', 'Email', 'Company Name'];
 
         headers.forEach(text => {
             const th = document.createElement('th');
@@ -76,6 +76,14 @@ export async function renderPersonsTable() {
         tdName.textContent = ((p.firstName ?? '') + ' ' + (p.lastName ?? '')).trim();
         tr.appendChild(tdName);
 
+        const tdPhone = document.createElement('td');
+        tdPhone.textContent = p.phone ?? '';
+        tr.appendChild(tdPhone);
+
+        const tdEmail = document.createElement('td');
+        tdEmail.textContent = p.email ?? '';
+        tr.appendChild(tdEmail);
+
         const tdCompanyName = document.createElement('td');
         tdCompanyName.textContent = p.companyName ?? '';
         tr.appendChild(tdCompanyName);
@@ -87,8 +95,9 @@ export async function renderPersonsTable() {
 
 
 async function renderAddBtn() {
-    const container = document.querySelector('#person__container');
-    if (!container) return;
+    //const container = document.querySelector('#person__container');
+    const personHeader = document.querySelector('.person__header');
+    if (!personHeader) return;
 
     const addbtn = document.querySelector('.btn_add');
     if (!addbtn) {
@@ -97,7 +106,7 @@ async function renderAddBtn() {
         btnAdd.type = 'submit';
         btnAdd.classList.add('btn_add');
 
-        container.prepend(btnAdd);
+        personHeader.append(btnAdd);
     }
     return;
 }

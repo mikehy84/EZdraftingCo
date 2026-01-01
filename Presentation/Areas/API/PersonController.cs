@@ -25,8 +25,8 @@ namespace Presentation.Areas.API
         }
 
 
-        [HttpGet("all")]
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
         {
 
             try
@@ -44,26 +44,39 @@ namespace Presentation.Areas.API
         }
 
 
+        //[HttpGet("{id:int}")]
+        //public async Task<IActionResult> GetById(int id)
+        //{
+        //    var person = await _unitOfWork.Persons.GetAsync(
+        //        p => p.Id == id,
+        //        tracked: false,
+        //        p => p.EmailAddresses,
+        //        p => p.PhoneNumbers,
+        //        p => p.Addresses
+        //    );
+
+        //    if (person is null) return NotFound();
+
+        //    var primaryEmail = person.EmailAddresses.FirstOrDefault(e => e.IsPrimary);
+        //    var primaryPhone = person.PhoneNumbers.FirstOrDefault(p => p.IsPrimary);
+        //    var primaryAddress = person.Addresses.FirstOrDefault(a => a.IsPrimary);
+
+
+        //    return Ok(_mapper.Map<PersonDto>(person));
+        //}
+
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var person = await _unitOfWork.Persons.GetAsync(
-                p => p.Id == id,
-                tracked: false,
-                p => p.EmailAddresses,
-                p => p.PhoneNumbers,
-                p => p.Addresses
+            var dto = await _unitOfWork.Persons.GetProjectedByIdAsync<PersonDto>(
+                _mapper.ConfigurationProvider,
+                p => p.Id == id
             );
 
-            if (person is null) return NotFound();
-
-            var primaryEmail = person.EmailAddresses.FirstOrDefault(e => e.IsPrimary);
-            var primaryPhone = person.PhoneNumbers.FirstOrDefault(p => p.IsPrimary);
-            var primaryAddress = person.Addresses.FirstOrDefault(a => a.IsPrimary);
-
-
-            return Ok(_mapper.Map<PersonDto>(person));
+            if (dto is null) return NotFound();
+            return Ok(dto);
         }
+
 
 
 

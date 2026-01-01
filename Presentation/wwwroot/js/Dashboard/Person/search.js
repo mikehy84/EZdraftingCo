@@ -6,15 +6,17 @@ export function onSearchInput(e) {
 
     rows.forEach(row => {
         const nameCell = row.cells[0];
-        const companyCell = row.cells[1];
+        const phoneCell = row.cells[1];
+        const companyCell = row.cells[3];
 
         if (!nameCell && !companyCell) return;
 
         const name = nameCell?.textContent.toLowerCase() ?? '';
+        const phone = phoneCell?.textContent.toLowerCase() ?? '';
         const company = companyCell?.textContent.toLowerCase() ?? '';
 
         row.style.display =
-            name.includes(query) || company.includes(query)
+            name.includes(query) || phone.includes(query) || company.includes(query)
                 ? ''
                 : 'none';
     });
@@ -33,7 +35,7 @@ export function renderSearch() {
 
     const title = document.createElement('h6');
     title.textContent = "Contacts' List";
-    title.classList.add('person__headerTitle');
+    title.classList.add('person__title');
 
     const searchInput = document.createElement('input');
     searchInput.type = 'text';

@@ -1,13 +1,12 @@
 ﻿namespace Application.DTO.Person
 {
     public sealed record CreatePersonDto
-    (
-        string FirstName,
-        string LastName,
+    {
+        public string FirstName { get; init; } = string.Empty;
+        public string LastName { get; init; } = string.Empty;
 
-
-        CreatePersonEmailDto? Email,
-        CreatePersonPhone? Phone,
-        CreatePersonAddressDto? Address
-    );
+        public CreatePersonEmailDto? Email { get; init; }
+        public CreatePersonPhoneDto? Phone { get; init; }
+        public CreatePersonAddressDto? Address { get; init; }
+    }
 }

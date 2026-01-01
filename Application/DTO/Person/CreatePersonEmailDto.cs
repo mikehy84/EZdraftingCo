@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace Application.DTO.Person
 {
     public sealed record CreatePersonEmailDto
-    (
-        string Email,
-        bool IsPrimary
-    );
+    {
+        public string Email { get; init; } = string.Empty;
+        public bool IsPrimary { get; init; }
+    }
 }

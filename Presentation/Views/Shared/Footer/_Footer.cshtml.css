@@ -10,6 +10,7 @@
     background-position: right;
     transition: all 0.2s ease-in-out;
     background-color: var(--Blue-10);
+    z-index: auto;
 }
 
 .footer__contact {

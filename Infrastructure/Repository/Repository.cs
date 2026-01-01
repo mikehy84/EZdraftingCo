@@ -60,13 +60,12 @@ namespace Infrastructure.Repository
         }
 
 
-
-
         public async Task CreateAsync(T entity)
         {
             await dbSet.AddAsync(entity);
             await SaveAsync();
         }
+
 
         public async Task RemoveAsync(T entity)
         {
@@ -79,8 +78,6 @@ namespace Infrastructure.Repository
         {
             await _db.SaveChangesAsync();
         }
-
-
 
 
         public async Task<List<TResult>> GetAllProjectedAsync<TResult>(
@@ -97,15 +94,24 @@ namespace Infrastructure.Repository
                 .ToListAsync();
         }
 
-        public Task<TResult> GetProjectedByIdAsync<TResult>(IConfigurationProvider mapperConfig, Expression<Func<T, bool>>? filter = null)
+
+
+
+
+        public Task<TResult?> GetProjectedByIdAsync<TResult>(
+            IConfigurationProvider mapperConfig,
+            Expression<Func<T, bool>>? filter = null)
         {
             IQueryable<T> query = dbSet.AsNoTracking();
+
             if (filter != null)
                 query = query.Where(filter);
+
             return query
                 .ProjectTo<TResult>(mapperConfig)
-                .FirstAsync();
+                .FirstOrDefaultAsync();
         }
+
 
     }
 }

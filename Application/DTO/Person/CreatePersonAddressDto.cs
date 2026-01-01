@@ -7,12 +7,18 @@ using System.Threading.Tasks;
 namespace Application.DTO.Person
 {
     public sealed record CreatePersonAddressDto
-    (
-        int StateId,
-        string StreetNumber,
-        string? StreetName,
-        string City,
-        string? PostalCode,
-        bool IsPrimary
-    );
+    {
+        public int StateId { get; init; }
+
+        public string StreetNumber { get; init; } = string.Empty;
+
+        public string? StreetName { get; init; }
+
+        public string City { get; init; } = string.Empty;
+
+        public string? PostalCode { get; init; }
+
+        public bool IsPrimary { get; init; }
+    }
+
 }
