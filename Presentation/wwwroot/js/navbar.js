@@ -4,24 +4,23 @@ let prevScrollPos = window.scrollY;
 
 window.onscroll = function () {
     const currentScrollPos = window.scrollY;
-    const navbarBottom = document.getElementById("navbar__bottom");
-    const navbarTop = document.getElementById("navbar__top");
+    const navbarBottom = document.querySelector(".nav__btm");
+    const navbarTop = document.getElementById("nav__top");
 
-    const logoBlue = document.getElementById("navbar__logo-blue");
-    const logoWhite = document.getElementById("navbar__logo-white");
+    const logoBlue = document.getElementById("logo__blue");
+    const logoWhite = document.getElementById("logo__white");
 
-    const navbarMenuList = document.getElementById("navbar__menu-list");
-    const navbarBottomATags = navbarMenuList.querySelectorAll(".navbar__menu-list a");
+    const navbarMenuList = document.getElementById("navbar__list");
+    const navbarBottomATags = navbarMenuList.querySelectorAll(".navbar__list a");
 
-    const burger = document.querySelector(".navbar__burger-icon");
-    const burgerBefore = document.querySelector(".navbar__burger-icon");
-    const burgerAfter = document.querySelector(".navbar__burger-icon");
+    const burger = document.querySelector(".burger__icon");
+    const burgerBefore = document.querySelector(".burger__icon");
+    const burgerAfter = document.querySelector(".burger__icon");
 
     if (prevScrollPos > currentScrollPos) {
         // Scrolling up
-        navbarBottom.style.transform = "translateY(0)";
-        navbarBottom.style.backgroundColor = "transparent";
-        navbarBottom.style.boxShadow = "0 0 0";
+        navbarBottom.classList.remove('scroldown');
+        navbarBottom.classList.add('scrolup');
 
         logoWhite.style.display = "block";
         logoBlue.style.display = "none";
@@ -52,9 +51,8 @@ window.onscroll = function () {
 
     } else {
         // Scrolling down
-        navbarBottom.style.transform = "translateY(2.5rem)"; /* Adjust based on navbar height */
-        navbarBottom.style.backgroundColor = "var(--Gray-0)";
-        navbarBottom.style.boxShadow = "0px 5px 15px var(--Gray-8)";
+        navbarBottom.classList.remove('scrolup');
+        navbarBottom.classList.add('scroldown');
 
         logoWhite.style.display = "none";
         logoBlue.style.display = "block";
@@ -87,22 +85,22 @@ window.onscroll = function () {
 };
 
 
-const menuBtn = document.querySelector(".navbar__burger-btn");
+const menuBtn = document.querySelector(".burger__btn");
 let isOpen = false;
 menuBtn.addEventListener("click", () => {
     if (!isOpen) {
         menuBtn.classList.add("open");
         burger.style.backgroundColor.opacity = "0";
 
-        document.getElementById("navbar__burger-list").style.opacity = "1";
-        document.getElementById("navbar__burger-list").style.transform = "scaleY(1)";
+        document.getElementById("burger__list").style.opacity = "1";
+        document.getElementById("burger__list").style.transform = "scaleY(1)";
         isOpen = true;
     } else {
         menuBtn.classList.remove("open");
         burger.style.backgroundColor.opacity = "1";
 
-        document.getElementById("navbar__burger-list").style.opacity = "0";
-        document.getElementById("navbar__burger-list").style.transform = "scaleY(0)";
+        document.getElementById("burger__list").style.opacity = "0";
+        document.getElementById("burger__list").style.transform = "scaleY(0)";
         isOpen = false;
     }
 });

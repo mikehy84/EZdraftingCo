@@ -1,5 +1,5 @@
 ﻿.dashboard__sidebar {
-    position: fixed;
+    position: absolute;
     top: 8rem;
     left: 0;
     display: flex;
@@ -8,13 +8,13 @@
     justify-content: space-between;
     padding: 0;
     color: var(--Gray-9);
-    z-index: 100;
+    box-shadow: 0px 0px 8px var(--Gray-9);
+    z-index:1;
 }
 
 .sidebar__menu {
     display: flex;
     flex-direction: column;
-    box-shadow: 3px 3px 8px var(--Gray-5);
 }
 
 .sidebar__list {
@@ -47,5 +47,4 @@
 .sidebar__list a:hover {
     color: var(--Gray-0);
     background-color: var(--Blue-10);
-    cursor: pointer;
 }

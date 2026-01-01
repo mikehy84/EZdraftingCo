@@ -26,10 +26,11 @@
 <body>
     <header class="header">
         <partial name="Header/_Navbar" />
-        <partial name="Sidebar/_Sidebar" />
     </header>
 
     <main role="main" class="main">
+        <partial name="Sidebar/_Sidebar" />
+
         @RenderBody()
     </main>
 
