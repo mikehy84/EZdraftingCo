@@ -1,37 +1,43 @@
 ﻿import { apiGet } from '../../Shared/apiCalls.js';
 import { renderSearch } from './search.js';
+import { showLoader, hideLoader } from '../../Shared/loader.js';
 
 
 
 async function LoadPersons() {
+
+    showLoader();
+
     try {
         const persons = await apiGet('/api/persons');
+        
         console.log(persons);
-        return persons; // return data
+        return persons;
     } catch (error) {
         console.error('Failed to load persons:', error);
+        return [];
+    } finally {
+        hideLoader();
     }
 }
 
 
 
-
-
-
-
-
 export async function renderPersonsTable() {
 
+   
+
+    const persons = await LoadPersons();
     renderSearch();
     renderAddBtn();
 
-    const persons = await LoadPersons();
     if (!Array.isArray(persons)) return;
 
-    const container = document.querySelector('#person__container');
-    container.classList.add('person__container');
-    
+    const container = document.querySelector('.person__container');
+
     if (!container) return;
+
+    
 
     /* ---------- TABLE (create once) ---------- */
     let table = container.querySelector('table');
@@ -118,6 +124,4 @@ export async function addNewPerson() {
 
     const container = document.querySelector('.person__container');
     if (!container) return;
-
-    
 }
