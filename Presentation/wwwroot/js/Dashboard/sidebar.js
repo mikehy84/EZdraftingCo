@@ -3,6 +3,9 @@
 
 document.querySelector('.sidebar__list')
     .addEventListener('click', async (e) => {
+
+        
+
         const link = e.target.closest('.sidebar__link');
         if (!link) return;
 

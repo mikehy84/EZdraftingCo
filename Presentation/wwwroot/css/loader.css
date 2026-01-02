@@ -3,11 +3,11 @@
     display: none;
     justify-content:center;
     align-items:center;
-    border: 20px solid #f3f3f3;
-    border-top: 20px solid #3498db;
+    border: 12px solid #f3f3f3;
+    border-top: 12px solid #3498db;
     border-radius: 50%;
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     animation: spin 1s linear infinite;
 }
 

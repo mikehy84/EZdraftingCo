@@ -174,8 +174,9 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: var(--Blue-11);
-    flex-grow:1;
+    background-color: var(--Gray-3);
+/*    background: url(/media/images/home/home_sec1_background.webp);*/
+    flex-grow: 1;
 }
 
 .std__btn {

@@ -10,7 +10,7 @@ async function LoadPersons() {
 
     try {
         const persons = await apiGet('/api/persons');
-        
+
         console.log(persons);
         return persons;
     } catch (error) {
@@ -25,7 +25,8 @@ async function LoadPersons() {
 
 export async function renderPersonsTable() {
 
-   
+    const container = document.querySelector('.person__container');
+    container.style.display = "flex";
 
     const persons = await LoadPersons();
     renderSearch();
@@ -33,11 +34,15 @@ export async function renderPersonsTable() {
 
     if (!Array.isArray(persons)) return;
 
-    const container = document.querySelector('.person__container');
+
+
+    container.style.backgroundColor = "var(--Gray-2)";
+    container.style.boxShadow = "0px 0px 8px var(--Gray-9)";
 
     if (!container) return;
 
-    
+
+
 
     /* ---------- TABLE (create once) ---------- */
     let table = container.querySelector('table');
