@@ -36,8 +36,8 @@ export async function renderPersonsTable() {
 
 
 
-    container.style.backgroundColor = "var(--Gray-2)";
-    container.style.boxShadow = "0px 0px 8px var(--Gray-9)";
+    container.style.backgroundColor = "var(--TableBackgroundDark)";
+    container.style.boxShadow = "var(--TableBoxShadowDark)";
 
     if (!container) return;
 

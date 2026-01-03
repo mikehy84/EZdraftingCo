@@ -43,7 +43,7 @@
     width: 100vw;
     height: 5rem;
     padding: 0 5vw;
-    background-color: var(--Blue-10);
+/*    background-color: var(--Blue-10);*/
     transition: transform 0.3s ease-in-out, background-color 0.5s ease-in-out;
 }
 
@@ -81,7 +81,7 @@
 
 .scrolup {
     transform: translateY(0);
-    background-color: var(--Blue-10);
+/*    background-color: var(--Blue-10);*/
     box-shadow: 0 0 0;
 }
 
