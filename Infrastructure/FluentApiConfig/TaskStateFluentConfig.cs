@@ -30,7 +30,7 @@ namespace Infrastructure.FluentApiConfig
 
             // Navigation Properties
             modelBuilder
-                .Navigation(ts => ts.TaskLogs);
+                .Navigation(ts => ts.TaskDetails);
 
             // Seeding initial data
             modelBuilder.HasData(

@@ -1,5 +1,6 @@
 ﻿
 using Application.Interfaces;
+using Domain.Entities;
 using Infrastructure.Data;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,8 @@ namespace Infrastructure.Repository
         public IPhone Phones { get; private set; }
         public IPriority Priorities { get; set; }
         public IProject Projects { get; private set; }
+        public ITaskAssignment TaskAssignments { get; private set; }
+        public ITaskDetail TaskDetails { get; private set; }
         public IUserAccount UserAccounts { get; private set; }
 
         public UnitOfWork(ApplicationDbContext db)
@@ -30,6 +33,8 @@ namespace Infrastructure.Repository
             Phones = new PhoneRep(_db);
             Priorities = new PriorityRep(_db);
             Projects = new ProjectRep(_db);
+            TaskAssignments = new TaskAssignmentRep(_db);
+            TaskDetails = new TaskDetailRep(_db);
             UserAccounts = new UserAccountRep(_db);
         }
 

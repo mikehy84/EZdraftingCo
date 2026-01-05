@@ -8,6 +8,5 @@ namespace Application.Interfaces
         Task<Person> UpdateAsync(Person person);
 
         Task<bool> ContainsAsync(Person person);
-
     }
 }

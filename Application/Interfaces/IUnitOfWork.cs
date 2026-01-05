@@ -14,6 +14,8 @@ namespace Application.Interfaces
         IPhone Phones { get; }
         IProject Projects { get; }
         IPriority Priorities { get; }
+        ITaskAssignment TaskAssignments { get; }
+        ITaskDetail TaskDetails { get; }
         IUserAccount UserAccounts { get; }
 
         Task Save();

@@ -76,10 +76,19 @@ namespace Infrastructure.FluentApiConfig
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired();
 
-            // Navigation properties
             modelBuilder
-                .Navigation(td => td.TaskLog);
+                .Property(td => td.TaskStateId)
+                .HasDefaultValue(1)
+                .IsRequired();
 
+            modelBuilder
+                .HasOne(td => td.TaskState)
+                .WithMany(ts => ts.TaskDetails)
+                .HasForeignKey(td => td.TaskStateId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
+
+            // Navigation properties
             modelBuilder
                 .Navigation(td => td.TaskAssignments);
 

@@ -10,7 +10,7 @@ namespace Domain.Entities
 
 
 
-        // TaskLogs that have this TaskStatus
-        public ICollection<TaskLog> TaskLogs { get; set; } = [];
+        // TaskDetails that have this TaskStatus
+        public ICollection<TaskDetail> TaskDetails { get; set; } = [];
     }
 }

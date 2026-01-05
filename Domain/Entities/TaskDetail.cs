@@ -28,7 +28,7 @@ namespace Domain.Entities
 
         // Are that this TaskLog belongs to
         public int? AreaId { get; set; }
-        public ProjectArea? Area { get; set; }
+        public ProjectArea Area { get; set; }
 
 
         // Proiority that this TaskLog has
@@ -39,12 +39,15 @@ namespace Domain.Entities
         public string Description { get; set; } = string.Empty;
         public int EstimatedHours { get; set; }
         public DateTime DueDate { get; set; }
+
+
+        // Foreign Key to TaskStatus
+        public int TaskStateId { get; set; }
+        public TaskState TaskState { get; set; }
+
+
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; }
-
-
-        // TaskLog that this TaskDetail belongs to
-        public TaskLog TaskLog { get; set; }
 
 
         // TaskAssignments associated with this TaskDetail

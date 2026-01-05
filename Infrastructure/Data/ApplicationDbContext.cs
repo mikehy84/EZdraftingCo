@@ -48,7 +48,6 @@ namespace Infrastructure.Data
         public DbSet<TaskAssignment> TaskAssignments { get; set; } = null!;
         public DbSet<TaskComment> TaskComments { get; set; }
         public DbSet<TaskDetail> TaskDetails { get; set; }
-        public DbSet<TaskLog> TaskLogs { get; set; }
         public DbSet<TaskName> TaskNames { get; set; }
         public DbSet<TaskProgress> TaskProgresses { get; set; }
         public DbSet<TaskState> TaskStates { get; set; }
@@ -84,7 +83,6 @@ namespace Infrastructure.Data
             modelBuilder.ApplyConfiguration(new TaskAssignmentFluentConfig());
             modelBuilder.ApplyConfiguration(new TaskCommentFluentConfig());
             modelBuilder.ApplyConfiguration(new TaskDetailFluentConfig());
-            modelBuilder.ApplyConfiguration(new TaskLogFluentConfig());
             modelBuilder.ApplyConfiguration(new TaskNameFluentConfig());
             modelBuilder.ApplyConfiguration(new TaskProgressFluentConfig());
             modelBuilder.ApplyConfiguration(new TaskStateFluentConfig());
