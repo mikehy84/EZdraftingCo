@@ -1,4 +1,5 @@
 ﻿import { renderPersonsTable } from './Person/person.js';
+import { renderTaskLogTable } from './Task/taskLog.js';
 
 
 document.querySelector('.sidebar__list')
@@ -29,8 +30,8 @@ document.querySelector('.sidebar__list')
                 console.log('companies clicked');
                 break;
 
-            case 'rfi':
-                console.log('RFI clicked');
+            case 'task':
+                await renderTaskLogTable();
                 break;
         }
     });

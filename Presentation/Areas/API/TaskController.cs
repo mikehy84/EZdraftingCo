@@ -24,13 +24,15 @@ namespace Presentation.Areas.API
             _logger = logger;
         }
 
-        [HttpGet]
+        [HttpGet("tasklog")]
         public async Task<IActionResult> GetAll()
         {
             try
             {
                 var taskAssignments = await _unitOfWork.TaskAssignments
                     .GetAllProjectedAsync<TaskAssignmentDto>(_mapper.ConfigurationProvider);
+
+
 
                 return Ok(taskAssignments.OrderBy(ta => ta.Id));
             }

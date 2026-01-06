@@ -48,6 +48,8 @@ namespace Application.Mapper
 
             CreateMap<TaskDetail, CreateTaskDetailDto>().ReverseMap();
 
+            CreateMap<TaskProgress, TaskProgressDto>().ReverseMap();
+
             CreateMap<TaskAssignment, TaskAssignmentDto>()
                 .ForMember(dto => dto.ProjectName, opt => opt.MapFrom(taskAssignment =>
                     taskAssignment.TaskDetail.Project.ClientProject.ProjectName
@@ -57,6 +59,26 @@ namespace Application.Mapper
                 ))
                 .ForMember(dto => dto.PriorityName, opt => opt.MapFrom(taskAssignment =>
                     taskAssignment.TaskDetail.Priority.Name
+                ))
+                .ForMember(dto => dto.Title, opt => opt.MapFrom (taskAssignment =>
+                    taskAssignment.TaskDetail.Title
+                ))
+                .ForMember(dto => dto.EstimatedHours, opt => opt.MapFrom(taskAssignment =>
+                    taskAssignment.TaskDetail.EstimatedHours
+                ))
+                // FILTERED progress list
+                .ForMember(dto => dto.TaskProgresses, opt => opt.MapFrom(ta =>
+                    ta.TaskProgresses
+                        .Where(tp => tp.TaskAssignmentId == ta.Id)
+                ))
+                // CALCULATED spent hours
+                .ForMember(dto => dto.SpentHours, opt => opt.MapFrom(ta =>
+                    ta.TaskProgresses
+                        .Where(tp => tp.TaskAssignmentId == ta.Id)
+                        .Sum(tp => tp.SpentHours)
+                ))
+                .ForMember(dto => dto.TaskStateName, opt => opt.MapFrom(taskAssignment =>
+                    taskAssignment.TaskDetail.TaskState.Name
                 ))
                 .ReverseMap();
         }
