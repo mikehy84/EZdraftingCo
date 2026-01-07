@@ -25,8 +25,10 @@ async function LoadPersons() {
 
 export async function renderPersonsTable() {
 
-    const container = document.querySelector('.table__container');
-    container.style.display = "flex";
+    const container = document.querySelector('#table__container');
+
+    container.classList.add('table__container--visible');
+
 
     const persons = await LoadPersons();
     renderSearch();
@@ -36,8 +38,7 @@ export async function renderPersonsTable() {
 
 
 
-    container.style.backgroundColor = "var(--TableBackgroundDark)";
-    container.style.boxShadow = "var(--TableBoxShadowDark)";
+    
 
     if (!container) return;
 
@@ -127,6 +128,6 @@ export async function addNewPerson() {
 
     renderAddBtn();
 
-    const container = document.querySelector('.table__container');
+    const container = document.querySelector('#table__container');
     if (!container) return;
 }
