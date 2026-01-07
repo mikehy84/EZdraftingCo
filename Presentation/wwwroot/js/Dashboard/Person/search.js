@@ -24,7 +24,7 @@ export function onSearchInput(e) {
 
 
 export function renderSearch() {
-    const container = document.querySelector('#person__container');
+    const container = document.querySelector('#container');
     if (!container) return;
 
     // Prevent duplicates
