@@ -25,7 +25,7 @@ async function LoadTaskLog() {
 
 export async function renderTaskLogTable() {
 
-    //const container = document.querySelector('.person__container');
+    //const container = document.querySelector('.table__container');
     //container.style.display = "flex";
 
     const tasklogs = await LoadTaskLog();
@@ -48,7 +48,7 @@ export async function renderTaskLogTable() {
     //let table = container.querySelector('table');
     //if (!table) {
     //    table = document.createElement('table');
-    //    table.classList.add('person__table');
+    //    table.classList.add('table__table');
     //    container.appendChild(table);
     //}
 
@@ -106,8 +106,8 @@ export async function renderTaskLogTable() {
 
 
 //async function renderAddBtn() {
-//    //const container = document.querySelector('#person__container');
-//    const personHeader = document.querySelector('.person__header');
+//    //const container = document.querySelector('#table__container');
+//    const personHeader = document.querySelector('.table__header');
 //    if (!personHeader) return;
 
 //    const addbtn = document.querySelector('.btn_add');
@@ -127,6 +127,6 @@ export async function renderTaskLogTable() {
 
 //    renderAddBtn();
 
-//    const container = document.querySelector('.person__container');
+//    const container = document.querySelector('.table__container');
 //    if (!container) return;
 //}

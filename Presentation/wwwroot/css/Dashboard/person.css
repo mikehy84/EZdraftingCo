@@ -1,4 +1,4 @@
-﻿.person__container {
+﻿.table__container {
     position: relative;
     display: none;
     flex-direction: column;
@@ -16,17 +16,17 @@
     flex-grow: 1;
 }
 
-.person__header {
+.table__header {
     display: flex;
     align-content: center;
     justify-content: space-between;
-/*    background-color: var(--Blue-10);*/
+    /*    background-color: var(--Blue-10);*/
     width: 100%;
     height: 2.5rem;
     margin-bottom: 0.5rem;
 }
 
-.person__title {
+.table__title {
     margin: auto;
     margin-left: 5px;
     font-size: 1.5rem;
@@ -34,7 +34,7 @@
     color: var(--Gray-0);
 }
 
-.person__searchInput {
+.table__searchInput {
     margin: 0 2rem;
     text-indent: 0.5rem;
     border: 1px solid var(--Gray-4);
@@ -43,7 +43,7 @@
     flex-grow: 1;
 }
 
-.person__nameInput::placeholder {
+.table__nameInput::placeholder {
     color: var(--Gray-5);
 }
 
@@ -57,42 +57,42 @@
 }
 
 
-.person__table {
+.table__table {
     color: var(--Gray-7);
     font-family: Helvetica, Arial, sans-serif;
     width: 100%;
 }
 
-.person__table tr {
+.table__table tr {
     background-color: var(--Gray-3);
 }
 
-.person__table thead > tr {
+.table__table thead > tr {
     background-color: var(--Blue-11);
     color: var(--Gray-2);
 }
 
-.person__table thead > tr:hover {
+.table__table thead > tr:hover {
     background-color: var(--Blue-11);
     color: var(--Gray-1);
     cursor: default;
 }
 
-.person__table tr:nth-child(even) {
+.table__table tr:nth-child(even) {
     background-color: var(--Gray-3);
 }
 
 
 
-.person__table tr {
+.table__table tr {
     border-bottom: 1px solid var(--Gray-4);
 }
 
-    .person__table tr:hover {
+    .table__table tr:hover {
         cursor: pointer;
         background: var(--Gray-1);
     }
 
-.person__table td, th {
+.table__table td, th {
     padding: 0.5rem 1rem;
 }
