@@ -1,5 +1,6 @@
 ﻿import { apiGet } from '../../Shared/apiCalls.js';
-import { renderSearch } from './search.js';
+import { renderSearch } from '../../Shared/search.js';
+import { renderAddBtn } from '../../Shared/button.js';
 import { showLoader, hideLoader } from '../../Shared/loader.js';
 
 
@@ -38,7 +39,7 @@ export async function renderPersonsTable() {
 
 
 
-    
+
 
     if (!container) return;
 
@@ -106,22 +107,7 @@ export async function renderPersonsTable() {
 
 
 
-async function renderAddBtn() {
-    //const container = document.querySelector('#table__container');
-    const personHeader = document.querySelector('.table__header');
-    if (!personHeader) return;
 
-    const addbtn = document.querySelector('.btn_add');
-    if (!addbtn) {
-        const btnAdd = document.createElement('button');
-        btnAdd.textContent = 'Add New Contact';
-        btnAdd.type = 'submit';
-        btnAdd.classList.add('btn_add');
-
-        personHeader.append(btnAdd);
-    }
-    return;
-}
 
 
 export async function addNewPerson() {

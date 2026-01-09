@@ -50,7 +50,7 @@ namespace Application.Mapper
 
             CreateMap<TaskProgress, TaskProgressDto>().ReverseMap();
 
-            CreateMap<TaskAssignment, TaskAssignmentDto>()
+            CreateMap<TaskAssignment, TaskLogDto>()
                 .ForMember(dto => dto.ProjectName, opt => opt.MapFrom(taskAssignment =>
                     taskAssignment.TaskDetail.Project.ClientProject.ProjectName
                 ))

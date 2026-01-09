@@ -1,20 +1,18 @@
 ﻿import { apiGet } from '../../Shared/apiCalls.js';
-//import { renderSearch } from './search.js';
+import { renderSearch } from '../../Shared/search.js';
+import { renderAddBtn } from '../../Shared/button.js';
 import { showLoader, hideLoader } from '../../Shared/loader.js';
 
 
+const API_URL = '/api/tasks';
 
-async function LoadTaskLog() {
-
+async function LoadData(url) {
     showLoader();
 
     try {
-        const tasklogs = await apiGet('/api/tasks/tasklog');
-
-        console.log(tasklogs);
-        return tasklogs;
+        return await apiGet(url);
     } catch (error) {
-        console.error('Failed to load tasklogs:', error);
+        console.error('Failed to load data:', error);
         return [];
     } finally {
         hideLoader();
@@ -23,52 +21,67 @@ async function LoadTaskLog() {
 
 
 
+
+async function getDataHeaders(url) {
+    const data = await LoadData(url);
+
+    if (!Array.isArray(data) || data.length === 0) return [];
+
+    return Object.keys(data[0]);
+}
+
+
+
+
+
+
+
+
+
+
+
+
 export async function renderTaskLogTable() {
 
-    //const container = document.querySelector('.table__container');
-    //container.style.display = "flex";
+    const container = document.querySelector('#table__container');
 
-    const tasklogs = await LoadTaskLog();
-    //renderSearch();
-    //renderAddBtn();
+    container.classList.add('table__container--visible');
 
-    //if (!Array.isArray(persons)) return;
+    const data = await LoadData(API_URL);
 
+    renderSearch();
+    renderAddBtn();
 
+    if (!Array.isArray(data)) container.innerHTML = '<h5 style="margin: 0;">No records are currently available.</h5>';
+    console.log(data);
 
-    //container.style.backgroundColor = "var(--TableBackgroundDark)";
-    //container.style.boxShadow = "var(--TableBoxShadowDark)";
+    if (!container) return;
 
-    //if (!container) return;
+    /* ---------- TABLE (create once) ---------- */
+    let table = container.querySelector('table');
+    if (!table) {
+       table = document.createElement('table');
+       table.classList.add('table__table');
+       container.appendChild(table);
+    }
 
+    /* ---------- THEAD (create once) ---------- */
+    if (!table.querySelector('thead')) {
+       const thead = document.createElement('thead');
+       const headRow = document.createElement('tr');
 
+        // const headers = await getDataHeaders(API_URL);
+        const headers = ['Id', 'Project Name', 'Priority', 'Assignee', 'Estimated Hours', 'Spent Hours', 'Status', 'Created At'];
 
+       headers.forEach(text => {
+           const th = document.createElement('th');
+           th.textContent = text;
+           headRow.appendChild(th);
+       });
 
-    ///* ---------- TABLE (create once) ---------- */
-    //let table = container.querySelector('table');
-    //if (!table) {
-    //    table = document.createElement('table');
-    //    table.classList.add('table__table');
-    //    container.appendChild(table);
-    //}
-
-
-    ///* ---------- THEAD (create once) ---------- */
-    //if (!table.querySelector('thead')) {
-    //    const thead = document.createElement('thead');
-    //    const headRow = document.createElement('tr');
-
-    //    const headers = ['Name', 'Phone Number', 'Email', 'Company Name'];
-
-    //    headers.forEach(text => {
-    //        const th = document.createElement('th');
-    //        th.textContent = text;
-    //        headRow.appendChild(th);
-    //    });
-
-    //    thead.appendChild(headRow);
-    //    table.appendChild(thead);
-    //}
+       thead.appendChild(headRow);
+       table.appendChild(thead);
+    }
 
     ///* ---------- TBODY (get or create) ---------- */
     //let tbody = table.querySelector('tbody');
@@ -102,7 +115,6 @@ export async function renderTaskLogTable() {
     //    tbody.appendChild(tr);
     //});
 }
-
 
 
 //async function renderAddBtn() {
