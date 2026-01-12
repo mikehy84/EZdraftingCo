@@ -16,8 +16,10 @@ namespace Application.Mapper
         { 
             CreateMap<Priority, PriorityDto>().ReverseMap();
 
-
             CreateMap<Person, PersonDto>()
+                .ForMember(dto => dto.Name, opt => opt.MapFrom(person =>
+                    $"{person.FirstName} {person.LastName}"
+                ))
                 .ForMember(dto => dto.Email, opt => opt.MapFrom(person =>
                     person.EmailAddresses
                      .Where(ea => ea.IsPrimary)

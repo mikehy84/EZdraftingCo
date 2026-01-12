@@ -34,7 +34,7 @@ namespace Presentation.Areas.API
                 var persons = await _unitOfWork.Persons
                     .GetAllProjectedAsync<PersonDto>(_mapper.ConfigurationProvider);
 
-                return Ok(persons);
+                return Ok(persons.OrderBy(p => p.Id));
             }
             catch (Exception ex)
             {

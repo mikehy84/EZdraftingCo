@@ -23,7 +23,7 @@ export function onSearchInput(e) {
 }
 
 
-export function renderSearch() {
+export function renderSearch(tableTitle) {
     const container = document.querySelector('#table__container');
     if (!container) return;
 
@@ -34,7 +34,7 @@ export function renderSearch() {
     div.classList.add('table__header');
 
     const title = document.createElement('h6');
-    title.textContent = "Contacts' List";
+    title.textContent = tableTitle +"s List" || 'List';
     title.classList.add('table__title');
 
     const searchInput = document.createElement('input');

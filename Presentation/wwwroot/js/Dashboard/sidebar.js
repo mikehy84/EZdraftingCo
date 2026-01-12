@@ -1,11 +1,11 @@
-﻿import { renderPersonsTable } from './Person/person.js';
-import { renderTaskLogTable } from './Task/taskLog.js';
+﻿// import { renderDashboardTable } from './Task/taskLog.js';
+import { renderDashboardTable } from './dashboardTable.js';
+import { TASK_TABLE, PERSON_TABLE} from '../Shared/constants.js';
+
 
 
 document.querySelector('.sidebar__list')
     .addEventListener('click', async (e) => {
-
-        
 
         const link = e.target.closest('.sidebar__link');
         if (!link) return;
@@ -18,20 +18,19 @@ document.querySelector('.sidebar__list')
         // Add active class to clicked link
         link.classList.add('sidebar__link--active');
 
-
         const action = link.dataset.action;
 
         switch (action) {
-            case 'person':
-                await renderPersonsTable();
+            case PERSON_TABLE.name:
+                await renderDashboardTable(PERSON_TABLE);
                 break;
 
-            case 'company': 
+            case 'company':
                 console.log('companies clicked');
                 break;
 
             case 'task':
-                await renderTaskLogTable();
+                await renderDashboardTable(TASK_TABLE);
                 break;
         }
     });
