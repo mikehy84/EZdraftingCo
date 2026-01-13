@@ -5,7 +5,7 @@ export const TASK_TABLE = {
   name: 'task',
   url: '/api/tasks',
   headers: ['Id', 'Project Name', 'Priority', 'Assignee', 'Estimated Hours', 'Spent Hours', 'Status', 'Created At'],
-  columns: ['id', 'projectName', 'priorityName', 'assigneeName', 'estimatedHours', 'spentHours', 'status', 'createdAt']
+  columns: ['id', 'projectName', 'priorityName', 'assigneeName', 'estimatedHours', 'spentHours', 'taskStateName', 'createdAt']
 };
 
 
