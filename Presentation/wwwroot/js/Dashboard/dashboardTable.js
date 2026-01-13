@@ -2,9 +2,10 @@
 import { renderAddBtn } from '../Shared/button.js';
 import { LoadData } from '../Shared/dataService.js';
 import {
-  ensureTableSkeleton,
-  renderTableRows,
-  renderEmptyState
+    ensureTableSkeleton,
+    renderTableRows,
+    renderEmptyState,
+    applyTableStyles
 } from '../Shared/table/index.js';
 
 
@@ -23,6 +24,7 @@ export async function renderDashboardTable(tableConfig = {}) {
     if (renderEmptyState(data, container)) return;
 
     renderTableRows(tbody, data, tableConfig.columns);
+    applyTableStyles(tbody);
 }
 
 
