@@ -1,6 +1,6 @@
 ﻿// import { renderDashboardTable } from './Task/taskLog.js';
 import { renderDashboardTable } from './dashboardTable.js';
-import { TASK_TABLE, PERSON_TABLE} from '../Shared/constants.js';
+import { TASK_TABLE, PERSON_TABLE} from '../../shared/table/tableConfig.js';
 
 
 

@@ -1,12 +1,12 @@
-﻿import { renderSearch } from '../Shared/search.js';
-import { renderAddBtn } from '../Shared/button.js';
-import { LoadData } from '../Shared/dataService.js';
+﻿import { renderSearch } from '../../shared/ui/search.js';
+import { renderAddBtn } from '../../shared/ui/button.js';
+import { LoadData } from '../../data/dataService.js';
 import {
     ensureTableSkeleton,
     renderTableRows,
     renderEmptyState,
     applyTableStyles
-} from '../Shared/table/index.js';
+} from '../../shared/table/index.js';
 
 
 

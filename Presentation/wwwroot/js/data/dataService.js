@@ -1,4 +1,4 @@
-﻿import { showLoader, hideLoader } from './loader.js';
+﻿import { showLoader, hideLoader } from '../shared/ui/loader.js';
 
 export async function apiGet(url) {
     const res = await fetch(url);
@@ -21,4 +21,16 @@ export async function LoadData(url) {
     } finally {
         hideLoader();
     }
+}
+
+
+export function formatDate(value) {
+  if (!value) return '—';
+  return new Date(value).toLocaleString('en-CA', {
+    year: 'numeric',
+    month: 'short',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
 }

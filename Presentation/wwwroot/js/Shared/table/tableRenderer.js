@@ -1,4 +1,4 @@
-
+import { formatDate } from "../../data/dataService.js";
 
 
 
@@ -15,16 +15,37 @@ export function renderTableRows(tbody, data, columns) {
             td.style.alignItems = 'center';
             td.style.gap = '8px';
             const span = document.createElement('span');
+            span.classList.add('status__span');
 
-            switch (item[key]) {
-              case 'New':
+            const status = item[key]?.toLowerCase();
+            switch (status) {
+              case 'new':
                 span.classList.add('status__span--new');
                 break;
-              case 'In Progress':
-                span.classList.add('status__span--inprogress');
+              case 'in progress':
+                span.classList.add('status__span--inProgress');
+                break;
+              case 'paused':
+                span.classList.add('status__span--paused');
+                break;
+              case 'canceled':
+                span.classList.add('status__span--canceled');
+                break;
+              case 'on hold':
+                span.classList.add('status__span--onHold');
+                break;
+              case 'completed':
+                span.classList.add('status__span--completed');
+                break;
+              case 'closed':
+                span.classList.add('status__span--closed');
                 break;
             }
             td.prepend(span);
+          }
+
+          if (key === 'createdAt') {
+            td.textContent = formatDate(item[key]);
           }
 
 
@@ -40,18 +61,26 @@ export function applyTableStyles(tbody) {
   const tds = tbody.querySelectorAll('td');
 
   for (const td of tds) {
-    switch (td.textContent) {
-      case 'High':
-        // td.parentElement.classList.add('table__tr--high');
-        td.classList.add('table__tr--high');
-        break;
-      case 'Urgent':
+    switch (td.textContent.toLowerCase()) {
+      case 'urgent':
         // td.parentElement.classList.add('table__tr--urgent');
-        td.classList.add('table__tr--urgent');
+        td.classList.add('table__td--urgent');
         break;
-      case 'Medium':
-        // td.parentElement.classList.add('table__tr--Medium');
-        td.classList.add('table__tr--Medium');
+      case 'high':
+        // td.parentElement.classList.add('table__tr--high');
+        td.classList.add('table__td--high');
+        break;
+      case 'normal':
+        // td.parentElement.classList.add('table__tr--normal');
+        td.classList.add('table__td--normal');
+        break;
+      case 'low':
+        // td.parentElement.classList.add('table__tr--low');
+        td.classList.add('table__td--low');
+        break;
+      case 'trivial':
+        // td.parentElement.classList.add('table__tr--trivial');
+        td.classList.add('table__td--trivial');
         break;
     }
   }
