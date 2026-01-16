@@ -3,36 +3,42 @@ using Application.DTO.Project;
 using Application.Helper;
 using Application.Interfaces;
 using AutoMapper;
+using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Presentation.Areas.Admin.Controllers
+namespace Presentation.Areas.API
 {
-    [Area(AreaNames.Admin)]
-    public class PriorityController : Controller
+    [Route("api/priorities")]
+    [ApiController]
+    [Area(AreaNames.API)]
+    public class PriorityController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly ILogger<PriorityController> _logger;
 
-        public PriorityController(IUnitOfWork unitOfWork, IMapper mapper)
+        public PriorityController(IUnitOfWork unitOfWork, IMapper mapper, ILogger<PriorityController> logger)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _logger = logger;
         }
 
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> GetAll()
         {
             try
             {
-                var priorities = await _unitOfWork.Priorities.GetAllAsync();
-                return View(_mapper.Map<IEnumerable<PriorityDto>>(priorities));
+                var priorities = await _unitOfWork.Priorities
+                    .GetAllAsync();
+                var dtos = _mapper.Map<IEnumerable<PriorityDto>>(priorities);
+                return Ok(dtos.OrderBy(p => p.Id));
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Failed to load priorities");
-                return View("Error");
+                return NotFound("Error");
             }
 
         }

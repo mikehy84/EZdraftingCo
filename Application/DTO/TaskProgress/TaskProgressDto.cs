@@ -1,4 +1,4 @@
-﻿namespace Application.DTO.Task
+﻿namespace Application.DTO.TaskProgress
 {
     public class TaskProgressDto
     {

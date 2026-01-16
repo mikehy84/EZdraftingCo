@@ -1,5 +1,6 @@
 ﻿using Application.DTO.Person;
-using Application.DTO.Task;
+using Application.DTO.TaskAssignment;
+using Application.DTO.TaskDetail;
 using Application.Interfaces;
 using AutoMapper;
 using Domain.Entities;
@@ -7,17 +8,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Areas.API
 {
-    [Route("api/tasks")]
+    [Route("api/TaskAssignments")]
     [ApiController]
     [Area("API")]
 
-    public class TaskController : ControllerBase
+    public class TaskAssignmentController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly ILogger<TaskController> _logger;
+        private readonly ILogger<TaskAssignmentController> _logger;
 
-        public TaskController(IUnitOfWork unitOfWork, IMapper mapper, ILogger<TaskController> logger)
+        public TaskAssignmentController(IUnitOfWork unitOfWork, IMapper mapper, ILogger<TaskAssignmentController> logger)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -25,14 +26,12 @@ namespace Presentation.Areas.API
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAllTaskAssignments()
         {
             try
             {
                 var taskAssignments = await _unitOfWork.TaskAssignments
-                    .GetAllProjectedAsync<TaskLogDto>(_mapper.ConfigurationProvider);
-
-
+                    .GetAllProjectedAsync<TaskAssignmentDto>(_mapper.ConfigurationProvider);
 
                 return Ok(taskAssignments.OrderBy(ta => ta.Id));
             }

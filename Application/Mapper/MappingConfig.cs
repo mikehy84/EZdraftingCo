@@ -1,7 +1,10 @@
 ﻿using Application.DTO.Person;
+using Application.DTO.Phase;
 using Application.DTO.Priority;
 using Application.DTO.Project;
-using Application.DTO.Task;
+using Application.DTO.TaskAssignment;
+using Application.DTO.TaskDetail;
+using Application.DTO.TaskProgress;
 using Application.DTO.UserAccount;
 using Application.Interfaces;
 using AutoMapper;
@@ -39,6 +42,7 @@ namespace Application.Mapper
 
 
             CreateMap<Project, ProjectDto>().ReverseMap();
+            CreateMap<Phase, PhaseDto>().ReverseMap();
 
             CreateMap<Project, CreateProjectDto>()
             .ForMember(dest => dest.ImageUrls, opt => opt.Ignore()); // We'll handle this manually
@@ -48,11 +52,12 @@ namespace Application.Mapper
             CreateMap<UserAccount, UserAccountUpdateDto>().ReverseMap();
 
 
+            CreateMap<TaskDetail, TaskDetailDto>().ReverseMap();
             CreateMap<TaskDetail, CreateTaskDetailDto>().ReverseMap();
 
             CreateMap<TaskProgress, TaskProgressDto>().ReverseMap();
 
-            CreateMap<TaskAssignment, TaskLogDto>()
+            CreateMap<TaskAssignment, TaskAssignmentDto>()
                 .ForMember(dto => dto.ProjectName, opt => opt.MapFrom(taskAssignment =>
                     taskAssignment.TaskDetail.Project.ClientProject.ProjectName
                 ))

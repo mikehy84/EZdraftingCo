@@ -3,7 +3,7 @@
 export const TASK_TABLE = {
   title: 'Task',
   name: 'task',
-  url: '/api/tasks',
+  url: '/api/TaskAssignments',
   headers: ['Id', 'Project Name', 'Priority', 'Assignee', 'Estimated Hours', 'Spent Hours', 'Status', 'Created At'],
   columns: ['id', 'projectName', 'priorityName', 'assigneeName', 'estimatedHours', 'spentHours', 'taskStateName', 'createdAt']
 };

@@ -41,7 +41,7 @@ export function renderSearch(tableTitle) {
     searchInput.type = 'text';
     searchInput.name = 'search';
     searchInput.id = 'searchInput';
-    searchInput.placeholder = 'Search contacts';
+    searchInput.placeholder = `Search ${tableTitle}s...`;
     searchInput.classList.add('table__searchInput');
     searchInput.setAttribute('aria-label', 'Search contacts by name');
 

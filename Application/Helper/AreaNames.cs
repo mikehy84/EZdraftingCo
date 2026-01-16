@@ -13,6 +13,6 @@ namespace Application.Helper
         public const string Manager = "Manager";
         public const string Employee = "Employee";
         public const string Client = "Client";
+        public const string API = "API";
     }
-
 }

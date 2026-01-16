@@ -17,11 +17,13 @@ namespace Infrastructure.Repository
         public IAddress Addresses { get; private set; }
         public IEmailAddress EmailAddresses { get; private set; }
         public IPerson Persons { get; private set; }
+        public IPhase Phases { get; private set; }
         public IPhone Phones { get; private set; }
         public IPriority Priorities { get; set; }
         public IProject Projects { get; private set; }
         public ITaskAssignment TaskAssignments { get; private set; }
         public ITaskDetail TaskDetails { get; private set; }
+        public ITaskName TaskNames { get; private set; }
         public IUserAccount UserAccounts { get; private set; }
 
         public UnitOfWork(ApplicationDbContext db)
@@ -30,11 +32,13 @@ namespace Infrastructure.Repository
             Addresses = new AddressRep(_db);
             EmailAddresses = new EmailAddressRep(_db);
             Persons = new PersonRep(_db);
+            Phases = new PhaseRep(_db);
             Phones = new PhoneRep(_db);
             Priorities = new PriorityRep(_db);
             Projects = new ProjectRep(_db);
             TaskAssignments = new TaskAssignmentRep(_db);
             TaskDetails = new TaskDetailRep(_db);
+            TaskNames = new TaskNameRep(_db);
             UserAccounts = new UserAccountRep(_db);
         }
 

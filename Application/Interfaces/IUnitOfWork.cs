@@ -11,11 +11,13 @@ namespace Application.Interfaces
         IAddress Addresses { get; }
         IEmailAddress EmailAddresses { get; }
         IPerson Persons { get; }
+        IPhase Phases { get; }
         IPhone Phones { get; }
         IProject Projects { get; }
         IPriority Priorities { get; }
         ITaskAssignment TaskAssignments { get; }
         ITaskDetail TaskDetails { get; }
+        ITaskName TaskNames { get; }
         IUserAccount UserAccounts { get; }
 
         Task Save();

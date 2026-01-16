@@ -1,4 +1,5 @@
 ﻿using Application.DTO.Person;
+using Application.DTO.TaskProgress;
 using Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -7,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.DTO.Task
+namespace Application.DTO.TaskAssignment
 {
-    public class TaskLogDto
+    public class TaskAssignmentDto
     {
         public int Id { get; init; }
 
