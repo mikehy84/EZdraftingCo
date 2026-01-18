@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Application.DTO.TaskAssignment;
+using Application.DTO.TaskProgress;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,5 +19,6 @@ namespace Application.DTO.TaskDetail
         public int EstimatedHours { get; init; }
         public string SpentHours { get; init; } = string.Empty;
         public string TaskStateName { get; init; } = string.Empty;
+        public List<TaskAssignmentDto> TaskAssignments { get; init; } = [];
     }
 }

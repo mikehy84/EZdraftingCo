@@ -2,8 +2,10 @@
 using Application.DTO.Phase;
 using Application.DTO.Priority;
 using Application.DTO.Project;
+using Application.DTO.ProjectArea;
 using Application.DTO.TaskAssignment;
 using Application.DTO.TaskDetail;
+using Application.DTO.TaskName;
 using Application.DTO.TaskProgress;
 using Application.DTO.UserAccount;
 using Application.Interfaces;
@@ -17,8 +19,6 @@ namespace Application.Mapper
 
         public MappingConfig() 
         { 
-            CreateMap<Priority, PriorityDto>().ReverseMap();
-
             CreateMap<Person, PersonDto>()
                 .ForMember(dto => dto.Name, opt => opt.MapFrom(person =>
                     $"{person.FirstName} {person.LastName}"
@@ -37,23 +37,60 @@ namespace Application.Mapper
                 )).ReverseMap();
 
 
+
             CreateMap<Person, CreatePersonDto>().ReverseMap();
 
 
 
-            CreateMap<Project, ProjectDto>().ReverseMap();
             CreateMap<Phase, PhaseDto>().ReverseMap();
 
+
+
+            CreateMap<Priority, PriorityDto>().ReverseMap();
+
+
+
+            CreateMap<Project, ProjectDto>()
+                .ForMember(dto => dto.ProjectManagerName, opt => opt.MapFrom(project =>
+                    $"{project.ProjectManager.FirstName} {project.ProjectManager.LastName}"
+                ))
+                .ForMember(dto => dto.ActualHours, opt => opt.MapFrom(project =>
+                    project.TaskDetails
+                        .SelectMany(td => td.TaskAssignments)
+                        .SelectMany(ta => ta.TaskProgresses)
+                        .Sum(tp => (int?)tp.SpentHours) ?? 0
+                ))
+                .ForMember(dto => dto.ClientProjectName, opt => opt.MapFrom(project =>
+                    project.ClientProject.ProjectName
+                ))
+                .ForMember(d => d.ClientPmName, opt => opt.MapFrom(project =>
+                    project.ClientProject.ClientPm
+                ));
+
+
+
+            CreateMap<ProjectArea, ProjectAreaDto>().ReverseMap();
+
+
+
             CreateMap<Project, CreateProjectDto>()
-            .ForMember(dest => dest.ImageUrls, opt => opt.Ignore()); // We'll handle this manually
+                .ForMember(dest => dest.ImageUrls, opt => opt.Ignore()); // We'll handle this manually
+
 
 
             CreateMap<UserAccount, UserAccountDto>().ReverseMap();
             CreateMap<UserAccount, UserAccountUpdateDto>().ReverseMap();
 
 
+
             CreateMap<TaskDetail, TaskDetailDto>().ReverseMap();
             CreateMap<TaskDetail, CreateTaskDetailDto>().ReverseMap();
+
+
+
+            CreateMap<TaskName, TaskNameDto>().ReverseMap();
+
+
 
             CreateMap<TaskProgress, TaskProgressDto>().ReverseMap();
 
@@ -67,7 +104,7 @@ namespace Application.Mapper
                 .ForMember(dto => dto.PriorityName, opt => opt.MapFrom(taskAssignment =>
                     taskAssignment.TaskDetail.Priority.Name
                 ))
-                .ForMember(dto => dto.Title, opt => opt.MapFrom (taskAssignment =>
+                .ForMember(dto => dto.Title, opt => opt.MapFrom(taskAssignment =>
                     taskAssignment.TaskDetail.Title
                 ))
                 .ForMember(dto => dto.EstimatedHours, opt => opt.MapFrom(taskAssignment =>
@@ -86,8 +123,7 @@ namespace Application.Mapper
                 ))
                 .ForMember(dto => dto.TaskStateName, opt => opt.MapFrom(taskAssignment =>
                     taskAssignment.TaskDetail.TaskState.Name
-                ))
-                .ReverseMap();
+                ));
         }
     }
 }

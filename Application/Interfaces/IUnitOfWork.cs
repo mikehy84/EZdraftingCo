@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ namespace Application.Interfaces
         IPhase Phases { get; }
         IPhone Phones { get; }
         IProject Projects { get; }
+        IProjectArea ProjectAreas { get; }
         IPriority Priorities { get; }
         ITaskAssignment TaskAssignments { get; }
         ITaskDetail TaskDetails { get; }

@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces
 {
-    public interface IProjectArea : IRepository<ProjectArea>
+    public interface IPhase : IRepository<Phase>
     {
-        Task<ProjectArea> UpdateAsync(ProjectArea projectArea);
+        Task<Phase> UpdateAsync(Phase phase);
 
-        Task<bool> ContainsAsync (ProjectArea projectArea);
+        Task<bool> ContainsAsync (Phase phase);
     }
 }

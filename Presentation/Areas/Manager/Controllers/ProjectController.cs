@@ -41,55 +41,55 @@ namespace Presentation.Areas.Manager.Controllers
 
 
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(CreateProjectDto createProjectDto)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(createProjectDto);
-            }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Create(CreateProjectDto createProjectDto)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(createProjectDto);
+        //    }
 
-            var allowedContentType = "image/webp";
-            var allowedExtension = ".webp";
+        //    var allowedContentType = "image/webp";
+        //    var allowedExtension = ".webp";
 
-            // Validate all uploaded files
-            foreach (var file in createProjectDto.Photos)
-            {
-                var extension = Path.GetExtension(file.FileName).ToLowerInvariant();
-                var contentType = file.ContentType.ToLowerInvariant();
+        //    // Validate all uploaded files
+        //    foreach (var file in createProjectDto.Photos)
+        //    {
+        //        var extension = Path.GetExtension(file.FileName).ToLowerInvariant();
+        //        var contentType = file.ContentType.ToLowerInvariant();
 
-                if (extension != allowedExtension || contentType != allowedContentType)
-                {
-                    ModelState.AddModelError("photos", "Only WebP images are allowed.");
-                    ModelState.Clear();
-                    return View("Create");
-                }
-            }
-
-
-            var projectDto = _mapper.Map<ProjectDto>(createProjectDto);
-
-            if (createProjectDto.Photos != null && createProjectDto.Photos.Count > 0)
-            {
-                var containerName = _storageSettings.Value.ContainerName;
-                var imageUrls = await _blobService.UploadBlob(containerName, createProjectDto.Photos);
-                projectDto.ImageUrls = imageUrls.ToArray();
-            }
+        //        if (extension != allowedExtension || contentType != allowedContentType)
+        //        {
+        //            ModelState.AddModelError("photos", "Only WebP images are allowed.");
+        //            ModelState.Clear();
+        //            return View("Create");
+        //        }
+        //    }
 
 
+        //    var projectDto = _mapper.Map<ProjectDto>(createProjectDto);
+
+        //    if (createProjectDto.Photos != null && createProjectDto.Photos.Count > 0)
+        //    {
+        //        var containerName = _storageSettings.Value.ContainerName;
+        //        var imageUrls = await _blobService.UploadBlob(containerName, createProjectDto.Photos);
+        //        projectDto.ImageUrls = imageUrls.ToArray();
+        //    }
 
 
-            var response = await _projectService.CreateAsync(projectDto);
 
-            if (!response.IsSuccess)
-            {
-                ModelState.AddModelError(string.Empty, "Failed to create project.");
-                return View(createProjectDto);
-            }
 
-            return RedirectToAction("Index");
-        }
+        //    var response = await _projectService.CreateAsync(projectDto);
+
+        //    if (!response.IsSuccess)
+        //    {
+        //        ModelState.AddModelError(string.Empty, "Failed to create project.");
+        //        return View(createProjectDto);
+        //    }
+
+        //    return RedirectToAction("Index");
+        //}
 
         //public async Task<IActionResult> Index()
         //{
@@ -131,68 +131,68 @@ namespace Presentation.Areas.Manager.Controllers
 
 
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateDev(CreateProjectDto createProjectDto, IFormFile? file)
-        {
-            if (!ModelState.IsValid)
-            {
-                string wwwRootPath = _hostEnvironment.WebRootPath;
-                if (file != null)
-                {
-                    //provides new name and path for uploading image 
-                    string fileName = Guid.NewGuid().ToString();
-                    var filePath = Path.Combine(wwwRootPath, @"img\projects\");
-                    var extention = Path.GetExtension(file.FileName);
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> CreateDev(CreateProjectDto createProjectDto, IFormFile? file)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        string wwwRootPath = _hostEnvironment.WebRootPath;
+        //        if (file != null)
+        //        {
+        //            //provides new name and path for uploading image 
+        //            string fileName = Guid.NewGuid().ToString();
+        //            var filePath = Path.Combine(wwwRootPath, @"img\projects\");
+        //            var extention = Path.GetExtension(file.FileName);
 
-                    string fileFullPath = Path.Combine(filePath, fileName + extention);
+        //            string fileFullPath = Path.Combine(filePath, fileName + extention);
 
-                    using var fileSteams = new FileStream(fileFullPath, FileMode.Create);
-                    file.CopyTo(fileSteams);
+        //            using var fileSteams = new FileStream(fileFullPath, FileMode.Create);
+        //            file.CopyTo(fileSteams);
 
-                    // deletes all existing images in the /img/product folder
-                    var projectImgs = Directory.GetFiles(filePath, "*.*");
-                    foreach (var image in projectImgs)
-                    {
-                        System.IO.File.Delete(image);
-                    }
+        //            // deletes all existing images in the /img/product folder
+        //            var projectImgs = Directory.GetFiles(filePath, "*.*");
+        //            foreach (var image in projectImgs)
+        //            {
+        //                System.IO.File.Delete(image);
+        //            }
 
-                    createProjectDto.ImageUrls.Append(fileFullPath);
-
-
-                }
+        //            createProjectDto.ImageUrls.Append(fileFullPath);
 
 
-                return View(createProjectDto);
-            }
+        //        }
 
-            var allowedContentType = "image/webp";
-            var allowedExtension = ".webp";
+
+        //        return View(createProjectDto);
+        //    }
+
+        //    var allowedContentType = "image/webp";
+        //    var allowedExtension = ".webp";
 
             
 
 
-            var projectDto = _mapper.Map<ProjectDto>(createProjectDto);
+        //    var projectDto = _mapper.Map<ProjectDto>(createProjectDto);
 
-            if (createProjectDto.Photos != null && createProjectDto.Photos.Count > 0)
-            {
-                var containerName = _storageSettings.Value.ContainerName;
-                var imageUrls = await _blobService.UploadBlob(containerName, createProjectDto.Photos);
-                projectDto.ImageUrls = imageUrls.ToArray();
-            }
-
-
+        //    if (createProjectDto.Photos != null && createProjectDto.Photos.Count > 0)
+        //    {
+        //        var containerName = _storageSettings.Value.ContainerName;
+        //        var imageUrls = await _blobService.UploadBlob(containerName, createProjectDto.Photos);
+        //        projectDto.ImageUrls = imageUrls.ToArray();
+        //    }
 
 
-            var response = await _projectService.CreateAsync(projectDto);
 
-            if (!response.IsSuccess)
-            {
-                ModelState.AddModelError(string.Empty, "Failed to create project.");
-                return View(createProjectDto);
-            }
 
-            return RedirectToAction("Index");
-        }
+        //    var response = await _projectService.CreateAsync(projectDto);
+
+        //    if (!response.IsSuccess)
+        //    {
+        //        ModelState.AddModelError(string.Empty, "Failed to create project.");
+        //        return View(createProjectDto);
+        //    }
+
+        //    return RedirectToAction("Index");
+        //}
     }
 }

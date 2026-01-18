@@ -22,7 +22,6 @@
     <Folder Include="DTO\Address\" />
     <Folder Include="DTO\Email\" />
     <Folder Include="DTO\Area\" />
-    <Folder Include="DTO\NewFolder\" />
     <Folder Include="DTO\Phone\" />
   </ItemGroup>
 

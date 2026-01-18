@@ -74,7 +74,7 @@ namespace Presentation.Areas.Client.Controllers
             {
                 var containerName = _storageSettings.Value.ContainerName;
                 var imageUrls = await _blobService.UploadBlob(containerName, createProjectDto.Photos);
-                projectDto.ImageUrls = imageUrls.ToArray();
+                //projectDto.ImageUrls = imageUrls.ToArray();
             }
 
 

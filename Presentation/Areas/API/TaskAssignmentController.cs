@@ -25,6 +25,8 @@ namespace Presentation.Areas.API
             _logger = logger;
         }
 
+
+        // This is for task log
         [HttpGet]
         public async Task<IActionResult> GetAllTaskAssignments()
         {
