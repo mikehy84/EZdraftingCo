@@ -19,18 +19,22 @@ namespace Application.Interfaces
         );
 
         Task CreateAsync(T entity);
+
+        Task CreateWithNoSaveAsync(T entity);
+
         Task RemoveAsync(T entity);
         Task SaveAsync();
 
 
         Task<List<TResult>> GetAllProjectedAsync<TResult>(
             IConfigurationProvider mapperConfig, 
-            Expression<Func<T, bool>>? filter = null);
+            Expression<Func<T, bool>>? filter = null
+            );
 
 
         Task<TResult?> GetProjectedByIdAsync<TResult>(
             IConfigurationProvider mapperConfig,
             Expression<Func<T, bool>> filter
-        );
+            );
     }
 }

@@ -1,9 +1,9 @@
 ﻿using Application.DTO.Person;
-using Application.DTO.TaskAssignment;
 using Application.DTO.TaskDetail;
 using Application.Interfaces;
 using AutoMapper;
 using Domain.Entities;
+using Humanizer;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Areas.API
@@ -44,18 +44,48 @@ namespace Presentation.Areas.API
         }
 
 
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var result = await _unitOfWork.TaskDetails.GetProjectedByIdAsync<TaskDetailDto>(
+                _mapper.ConfigurationProvider,
+                td => td.Id == id
+            );
+
+            if (result is null) return NotFound();
+            return Ok(result);
+        }
+
+
         [HttpPost]
-        public async Task<IActionResult> CreateTask([FromBody] CreateTaskDetailDto createTaskDetailDto)
+        public async Task<IActionResult> CreateTaskDetail([FromBody] CreateTaskDetailDto createTaskDetailDto)
         {
             try
             {
-                var taskDetail = _mapper.Map<TaskDetail>(createTaskDetailDto);
-                await _unitOfWork.TaskDetails.CreateAsync(taskDetail);
+                // 1) create TaskDetail
+                var newTaskDetail = _mapper.Map<TaskDetail>(createTaskDetailDto);
+                await _unitOfWork.TaskDetails.CreateAsync(newTaskDetail);
 
-                var createdTaskDetailDto = _mapper.Map<CreateTaskDetailDto>(taskDetail);
 
-                return CreatedAtAction(nameof(GetAllTaskDetails), new { id = createdTaskDetailDto.Id }, createdTaskDetailDto);
+                // 2) optionally create assignment
+                if (createTaskDetailDto.AssigneeId.HasValue && createTaskDetailDto.AssignorId.HasValue)
+                {
+                    var newAssignment = new TaskAssignment
+                    {
+                        TaskDetailId = newTaskDetail.Id,
+                        TaskAssignorId = createTaskDetailDto.AssignorId.Value,
+                        TaskAssigneeId = createTaskDetailDto.AssigneeId.Value,
+                    };
+
+                    await _unitOfWork.TaskAssignments.CreateAsync(newAssignment);
+                }
+
+
+                // 4) return a read DTO
+                var resultDto = _mapper.Map<TaskDetailDto>(newTaskDetail);
+                return CreatedAtAction(nameof(GetById), new { id = newTaskDetail.Id }, resultDto);
             }
+
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Failed to create task detail");

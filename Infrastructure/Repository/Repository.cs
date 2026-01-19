@@ -67,6 +67,12 @@ namespace Infrastructure.Repository
         }
 
 
+        public async Task CreateWithNoSaveAsync(T entity)
+        {
+            await dbSet.AddAsync(entity);
+        }
+
+
         public async Task RemoveAsync(T entity)
         {
             dbSet.Remove(entity);
@@ -111,7 +117,5 @@ namespace Infrastructure.Repository
                 .ProjectTo<TResult>(mapperConfig)
                 .FirstOrDefaultAsync();
         }
-
-
     }
 }
