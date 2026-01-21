@@ -2,6 +2,7 @@
 @import 'loader.css';
 @import 'Dashboard/dashboard.css';
 @import 'Dashboard/table.css';
+@import 'Dashboard/form.css';
 @import 'Dashboard/sidebar.css';
 
 
@@ -305,13 +306,3 @@ body {
     color: var(--LinkInWhite);
     transition: all 0.2s ease-in-out;
 }
-
-
-
-
-
-
-
-
-
-

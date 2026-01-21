@@ -23,7 +23,7 @@ export function onSearchInput(e) {
 }
 
 
-export function renderSearch(tableTitle) {
+export function renderTableHeader(tableTitle) {
     const container = document.querySelector('#table__container');
     if (!container) return;
 

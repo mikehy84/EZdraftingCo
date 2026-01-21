@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Areas.API
 {
-    [Route("api/TaskNames")]
+    [Route("api/taskNames")]
     [ApiController]
     [Area(AreaNames.API)]
     public class TaskNameController : ControllerBase

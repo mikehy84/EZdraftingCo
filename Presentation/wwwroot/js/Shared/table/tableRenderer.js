@@ -10,6 +10,8 @@ export function renderTableRows(tbody, data, columns) {
           const td = document.createElement('td');
           td.textContent = item[key] ?? '';
 
+          // =========================================== //
+          // Make a function from the following later on //
           if (key === 'taskStateName') {
             td.style.display = 'flex';
             td.style.alignItems = 'center';

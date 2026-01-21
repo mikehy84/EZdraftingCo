@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Areas.API
 {
-    [Route("api/projectArea")]
+    [Route("api/projectAreas")]
     [ApiController]
     public class ProjectAreaController : ControllerBase
     {
