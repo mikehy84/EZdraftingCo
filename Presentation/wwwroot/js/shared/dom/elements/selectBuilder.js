@@ -1,4 +1,4 @@
-import { apiGet } from '../../data/dataService.js';
+import { apiGet } from '../../api/dataService.js';
 
 export async function createSelectFromConfig(config, parentDom) {
 

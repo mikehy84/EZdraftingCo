@@ -1,10 +1,11 @@
-﻿import { LoadData } from '../../data/dataService.js';
+﻿import { LoadData } from '../../shared/api/dataService.js';
+import { TASK_PRIORITY_CLASS_MAP } from "../../shared/config/index.js";
 import {
     ensureTableSkeleton,
     renderTableRows,
     renderEmptyState,
-    applyTableStyles
-} from '../../shared/table/index.js';
+    applyTaskPriorityStyles
+} from '../../shared/dom/table/index.js';
 
 
 
@@ -21,5 +22,5 @@ export async function renderDashboardTable(tableConfig = {}) {
     if (renderEmptyState(data, container)) return;
 
     renderTableRows(tbody, data, tableConfig.columns);
-    applyTableStyles(tbody);
+    applyTaskPriorityStyles(tbody, TASK_PRIORITY_CLASS_MAP);
 }

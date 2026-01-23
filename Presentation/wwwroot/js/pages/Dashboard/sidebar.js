@@ -1,9 +1,9 @@
 ﻿// import { renderDashboardTable } from './Task/taskLog.js';
-import { renderDashboardTable } from './dashboardTable.js';
-import { TASK_TABLE, PERSON_TABLE } from '../../shared/table/tableConfig.js';
-import { addTaskForm } from "../../shared/form/TaskDetail.js"
-import { renderTableHeader } from '../../shared/table/tableHeader.js';
-import { renderAddBtn } from '../../shared/form/addBtn.js';
+import { renderDashboardTable } from './index.js';
+import { TASK_TABLE, PERSON_TABLE } from '../../shared/config/index.js';
+import { addTaskForm } from "../../shared/dom/form/index.js"
+import { renderTableHeader } from '../../shared/dom/table/index.js';
+import { renderAddBtn } from '../../shared/dom/elements/index.js';
 
 
 
@@ -34,7 +34,11 @@ document.querySelector('.sidebar__list')
                 console.log('companies clicked');
                 break;
 
-            case 'task':
+            case 'project':
+                console.log('companies clicked');
+                break;
+
+            case TASK_TABLE.name:
                 await renderDashboardTable(TASK_TABLE);
                 renderTableHeader(TASK_TABLE.title);
                 renderAddBtn(TASK_TABLE.title, addTaskForm);

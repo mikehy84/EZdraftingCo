@@ -1,0 +1,57 @@
+import { formatDate } from "../../api/dataService.js";
+import { STATUS_CLASS_MAP } from "../../config/uiConfigs.js"
+
+
+
+
+export function renderTableRows(tbody, data, columns) {
+  for (const item of data) {
+    const tr = document.createElement('tr');
+
+      columns.forEach(key => {
+        const td = document.createElement('td');
+        td.textContent = item[key] ?? '';
+
+        // =========================================== //
+        if (key === 'taskStateName') {
+          td.textContent = item[key] ?? '';
+          renderStatusCell(td, item[key], STATUS_CLASS_MAP);
+        }
+
+        if (key === 'createdAt') {
+          td.textContent = formatDate(item[key]);
+        }
+
+        tr.appendChild(td);
+      });
+
+      tbody.appendChild(tr);
+  }
+}
+
+
+export function renderStatusCell(td, statusText, statusClassMap) {
+
+  td.classList.add('table__td--status');
+
+  const span = document.createElement('span');
+  span.classList.add('status__span');
+
+  const status = (statusText ?? '').toLowerCase();
+
+  const cls = statusClassMap[status];
+  if (cls) span.classList.add(cls);
+
+  td.prepend(span);
+}
+
+
+export function applyTaskPriorityStyles(tbody, priorityClassMap) {
+  const tds = tbody.querySelectorAll('td');
+
+  for (const td of tds) {
+    const priority = (td.textContent ?? '').toLowerCase();
+    const cls = priorityClassMap[priority];
+    if (cls) td.classList.add(cls);
+  }
+}

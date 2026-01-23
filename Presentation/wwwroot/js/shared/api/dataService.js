@@ -1,4 +1,4 @@
-﻿import { showLoader, hideLoader } from '../shared/ui/loader.js';
+﻿import { showLoader, hideLoader } from '../ui/loader.js';
 
 export async function apiGet(url) {
     const res = await fetch(url);

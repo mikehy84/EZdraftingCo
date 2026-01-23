@@ -1,5 +1,5 @@
-import { createSelectFromConfig } from "../ui/selectBuilder.js"
-import { SELECT_CONFIGS } from "../config/selectConfigs.js"
+import { createSelectFromConfig } from "../../dom/elements/index.js"
+import { SELECT_CONFIGS } from "../../config/selects.js"
 
 export function addTaskForm({ headers, formClass = 'form__form' }, { reset = true } = {}) {
     const container = document.querySelector('#form__container');
