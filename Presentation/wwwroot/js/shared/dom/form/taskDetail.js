@@ -1,7 +1,7 @@
-import { createSelectFromConfig } from "../../dom/elements/index.js"
-import { SELECT_CONFIGS } from "../../config/selects.js"
+import { createSelectWithData, loadSelect, createSelectElement } from "../../dom/elements/index.js"
+import { SELECT_CONFIGS } from "../../config/index.js"
 
-export function addTaskForm({ headers, formClass = 'form__form' }, { reset = true } = {}) {
+export async function renderFormTaskDetail({ headers, formClass = 'form__form' }, { reset = true } = {}) {
     const container = document.querySelector('#form__container');
 
     if (!container) {
@@ -21,11 +21,39 @@ export function addTaskForm({ headers, formClass = 'form__form' }, { reset = tru
     form.id = 'taskDetailForm';
     form.classList.add('form__body');
 
-    createSelectFromConfig(SELECT_CONFIGS.taskNames, form);
-    createSelectFromConfig(SELECT_CONFIGS.projects, form);
-    // createSelectFromConfig(SELECT_CONFIGS.phases, form);
-    // createSelectFromConfig(SELECT_CONFIGS.areas, form);
-    createSelectFromConfig(SELECT_CONFIGS.priorities, form);
+    const projectSelect = await createSelectWithData(SELECT_CONFIGS.projects, form);
+    const taskNameSelect = createSelectElement(SELECT_CONFIGS.taskNames);
+    const prioritySelect = createSelectElement(SELECT_CONFIGS.priorities);
+    const phaseSelect = createSelectElement(SELECT_CONFIGS.phases);
+    const areaSelect = createSelectElement(SELECT_CONFIGS.areas);
+
+    // Append selects to form
+    form.appendChild(taskNameSelect);
+    form.appendChild(prioritySelect);
+    form.appendChild(phaseSelect);
+    form.appendChild(areaSelect);
+
+    // Initially disable dependent selects
+    taskNameSelect.disabled = true;
+    prioritySelect.disabled = true;
+    phaseSelect.disabled = true;
+    areaSelect.disabled = true;
+
+
+    projectSelect.addEventListener('change', async (e) => {
+        const projectId = e.target.value;
+
+        prioritySelect.disabled = !projectId;
+        taskNameSelect.disabled = !projectId;
+        phaseSelect.disabled = !projectId;
+        areaSelect.disabled = !projectId;
+
+        await loadSelect(SELECT_CONFIGS.priorities, prioritySelect);
+        await loadSelect(SELECT_CONFIGS.taskNames, taskNameSelect);
+        await loadSelect(SELECT_CONFIGS.phases, phaseSelect, projectId);
+        await loadSelect(SELECT_CONFIGS.areas, areaSelect, projectId);
+    });
+
 
     container.appendChild(form);
 

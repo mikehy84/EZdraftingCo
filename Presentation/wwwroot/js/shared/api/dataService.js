@@ -1,14 +1,26 @@
 ﻿import { showLoader, hideLoader } from '../ui/loader.js';
 
-export async function apiGet(url) {
-    const res = await fetch(url);
+
+
+export async function apiGet(url, id = null) {
+    try {
+        const finalUrl = id ? `${url}/${id}` : url;
+
+        const res = await fetch(finalUrl);
 
     if (!res.ok) {
-        throw new Error(`HTTP ${res.status}`);
+        throw new Error(`HTTP ${res.status} - ${res.statusText}`);
     }
 
-    return res.json();
+    return await res.json();
+
+    } catch (err) {
+        console.error(`apiGet failed for: ${url}`, err);
+        return null; // safe fallback
+    }
 }
+
+
 
 
 export async function LoadData(url) {
@@ -22,6 +34,7 @@ export async function LoadData(url) {
         hideLoader();
     }
 }
+
 
 
 export function formatDate(value) {

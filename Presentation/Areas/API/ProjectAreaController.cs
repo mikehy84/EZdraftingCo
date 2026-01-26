@@ -1,4 +1,5 @@
-﻿using Application.DTO.ProjectArea;
+﻿using Application.DTO.Phase;
+using Application.DTO.ProjectArea;
 using Application.Interfaces;
 using AutoMapper;
 using Domain.Entities;
@@ -30,9 +31,9 @@ namespace Presentation.Areas.API
             {
                 var projectAreas = await _unitOfWork.ProjectAreas.GetAllAsync(pa => pa.ProjectId == id);
 
-                var dtos = _mapper.Map<ProjectAreaDto>(projectAreas);
+                var dtos = _mapper.Map<IEnumerable<ProjectAreaDto>>(projectAreas);
 
-                return Ok(dtos);
+                return Ok(dtos.OrderBy(d => d.Id));
             }
             catch (Exception ex)
             {

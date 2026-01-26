@@ -8,7 +8,7 @@
  * Returns { table, tbody }
  */
 
-export function ensureTableSkeleton({ headers, tableClass = 'table__table' }, { reset = true } = {}) {
+export function createTableSkeleton({ headers, tableClass = 'table__table' }, { reset = true } = {}) {
     const container = document.querySelector('#table__container');
 
     if (!container) {

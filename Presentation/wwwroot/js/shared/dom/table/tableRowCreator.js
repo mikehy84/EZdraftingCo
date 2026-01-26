@@ -4,7 +4,7 @@ import { STATUS_CLASS_MAP } from "../../config/uiConfigs.js"
 
 
 
-export function renderTableRows(tbody, data, columns) {
+export function createTableRows(tbody, data, columns) {
   for (const item of data) {
     const tr = document.createElement('tr');
 
@@ -15,7 +15,7 @@ export function renderTableRows(tbody, data, columns) {
         // =========================================== //
         if (key === 'taskStateName') {
           td.textContent = item[key] ?? '';
-          renderStatusCell(td, item[key], STATUS_CLASS_MAP);
+          handleStatusCell(td, item[key], STATUS_CLASS_MAP);
         }
 
         if (key === 'createdAt') {
@@ -30,7 +30,7 @@ export function renderTableRows(tbody, data, columns) {
 }
 
 
-export function renderStatusCell(td, statusText, statusClassMap) {
+export function handleStatusCell(td, statusText, statusClassMap) {
 
   td.classList.add('table__td--status');
 

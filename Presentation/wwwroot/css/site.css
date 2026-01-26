@@ -4,6 +4,7 @@
 @import 'Dashboard/table.css';
 @import 'Dashboard/form.css';
 @import 'Dashboard/sidebar.css';
+@import 'shared/domElements.css';
 
 
 
@@ -27,7 +28,7 @@
     --Blue-13: #1864ab;
     /*    -----------------------------------------------*/
     --Gray-0: #f8f9fa;
-    --Gray-1: #f1f3f5;
+    --Gray-1: #f1f3f5; /*forms background color*/
     --Gray-2: #e9ecef;
     --Gray-3: #dee2e6;
     --Gray-4: #ced4da;

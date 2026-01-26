@@ -1,29 +1,30 @@
-﻿
+﻿import { createBtnAdd } from '../elements/index.js';
+
 export function onSearchInput(e) {
     const query = e.target.value.toLowerCase().trim();
 
     const rows = document.querySelectorAll('.table__table tbody tr');
 
     rows.forEach(row => {
-        const nameCell = row.cells[0];
-        const phoneCell = row.cells[1];
-        const companyCell = row.cells[3];
+        const firstCell = row.cells[0];
+        const secondCell = row.cells[1];
+        const thirdCell = row.cells[3];
 
-        if (!nameCell && !companyCell) return;
+        if (!firstCell && !secondCell) return;
 
-        const name = nameCell?.textContent.toLowerCase() ?? '';
-        const phone = phoneCell?.textContent.toLowerCase() ?? '';
-        const company = companyCell?.textContent.toLowerCase() ?? '';
+        const first = firstCell?.textContent.toLowerCase() ?? '';
+        const second = secondCell?.textContent.toLowerCase() ?? '';
+        const third = thirdCell?.textContent.toLowerCase() ?? '';
 
         row.style.display =
-            name.includes(query) || phone.includes(query) || company.includes(query)
+            first.includes(query) || second.includes(query) || third.includes(query)
                 ? ''
                 : 'none';
     });
 }
 
 
-export function renderTableHeader(tableTitle) {
+export function createTableHeader(text, formAdd) {
     const container = document.querySelector('#table__container');
     if (!container) return;
 
@@ -34,19 +35,21 @@ export function renderTableHeader(tableTitle) {
     div.classList.add('table__header');
 
     const title = document.createElement('h6');
-    title.textContent = tableTitle +"s List" || 'List';
+    title.textContent = text +"s List" || 'List';
     title.classList.add('table__title');
 
     const searchInput = document.createElement('input');
     searchInput.type = 'text';
     searchInput.name = 'search';
     searchInput.id = 'searchInput';
-    searchInput.placeholder = `Search ${tableTitle}s...`;
+    searchInput.placeholder = `Search ${text}s...`;
     searchInput.classList.add('table__searchInput');
     searchInput.setAttribute('aria-label', 'Search contacts by name');
 
     // attach listener
     searchInput.addEventListener('input', onSearchInput);
+    createBtnAdd(div, text, formAdd);
+
 
     div.prepend(searchInput);
     div.prepend(title);

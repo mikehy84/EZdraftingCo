@@ -1,10 +1,6 @@
-
-
-
-
-export function renderAddBtn(text = 'Add New', onClick) {
-  const tableHeader = document.querySelector('.table__header');
-  if (!tableHeader) return;
+export function createBtnAdd(div, title, onClick) {
+  // const tableHeader = document.querySelector('.table__header');
+  if (!div) return;
 
   let btnAdd = document.querySelector('#addNewBtn');
   if (!btnAdd) {
@@ -12,10 +8,10 @@ export function renderAddBtn(text = 'Add New', onClick) {
     btnAdd.id = 'addNewBtn';
     btnAdd.type = 'button';
     btnAdd.classList.add('btn_add');
-    tableHeader.append(btnAdd);
+    div.append(btnAdd);
   }
 
-  btnAdd.textContent = `Add New ${text}`;
+  btnAdd.textContent = `Add New ${title}`;
 
   // IMPORTANT: replace old handler
   btnAdd.onclick = null;

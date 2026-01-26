@@ -25,6 +25,26 @@ namespace Presentation.Areas.API
         }
 
 
+        //[HttpGet]
+
+        //public async Task<IActionResult> GetAll()
+        //{
+        //    try
+        //    {
+        //        var phases = await _unitOfWork.Phases.GetAllAsync();
+
+        //        var dtos = _mapper.Map<IEnumerable<PhaseDto>>(phases);
+
+        //        return Ok(dtos.OrderBy(d => d.Id));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.LogError(ex, "Failed to load phases");
+        //        return StatusCode(500, "Failed to load phases");
+        //    }
+        //}
+
+
         [HttpGet("{projectId:int}")]
         public async Task<IActionResult> GetAllByProjectId(int projectId)
         {
