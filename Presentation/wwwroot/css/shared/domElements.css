@@ -3,7 +3,13 @@
     padding: 0 0.6rem;
     border: 0;
     color: var(--Gray-1);
-    background-color: var(--Blue-12);
+    background-color: var(--Blue-7);
+    box-shadow: 0px 0px 5px var(--Gray-8);
+}
+
+.btn_add:hover {
+    color: var(--Gray-0);
+    background-color: var(--Blue-8);
     box-shadow: 0px 0px 5px var(--Gray-6);
 }
 
@@ -11,8 +17,15 @@
     width: 100%;
     height: 2rem;
     padding: 6px;
-    background-color: var(--Gray-2);
+    background-color: var(--InputBackground);
+    border-radius: var(--InputBorderRadius);
+    border: var(--InputBorder);
+    box-shadow: var(--InputBoxShadow);
     cursor: pointer;
+}
+
+.select:hover {
+    box-shadow: var(--InputHover);
 }
 
 .select__project {

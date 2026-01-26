@@ -1,5 +1,6 @@
 import { createSelectWithData, loadSelect, createSelectElement } from "../../dom/elements/index.js"
 import { SELECT_CONFIGS } from "../../config/index.js"
+import { createFormHeader } from "./formHeader.js";
 
 export async function renderFormTaskDetail({ headers, formClass = 'form__form' }, { reset = true } = {}) {
     const container = document.querySelector('#form__container');
@@ -20,6 +21,8 @@ export async function renderFormTaskDetail({ headers, formClass = 'form__form' }
     const form = document.createElement('form');
     form.id = 'taskDetailForm';
     form.classList.add('form__body');
+
+    createFormHeader('Add Task Detail');
 
     const projectSelect = await createSelectWithData(SELECT_CONFIGS.projects, form);
     const taskNameSelect = createSelectElement(SELECT_CONFIGS.taskNames);

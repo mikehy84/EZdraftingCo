@@ -127,6 +127,14 @@
     --BurgerIcon: orangered;
     --LinkInWhite: orangered;
     --LinkInBlack: greenyellow;
+
+
+    --InputBackground: var(--Gray-2);
+    --InputBorderRadius: 6px;
+    --InputBorder: 1px solid var(--Blue-5);
+    --InputBoxShadow: 0px 0px 6px var(--Gray-6);
+    --InputHover: 0px 0px 7px var(--Gray-7);
+    --FormBackground: var(--Gray-4);
 }
 
 *:focus {

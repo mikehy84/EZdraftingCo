@@ -1,6 +1,6 @@
 ﻿
 
-export function renderFormHeader(formTitle) {
+export function createFormHeader(titleText) {
     const container = document.querySelector('#form__container');
     if (!container) return;
 
@@ -11,21 +11,9 @@ export function renderFormHeader(formTitle) {
     div.classList.add('form__header');
 
     const title = document.createElement('h6');
-    title.textContent = formTitle +"s List" || 'List';
+    title.textContent = titleText +"s List" || 'List';
     title.classList.add('form__title');
 
-    const searchInput = document.createElement('input');
-    searchInput.type = 'text';
-    searchInput.name = 'search';
-    searchInput.id = 'searchInput';
-    searchInput.placeholder = `Search ${formTitle}s...`;
-    searchInput.classList.add('form__searchInput');
-    searchInput.setAttribute('aria-label', 'Search contacts by name');
-
-    // attach listener
-    searchInput.addEventListener('input', onSearchInput);
-
-    div.prepend(searchInput);
     div.prepend(title);
     container.prepend(div);
 }
