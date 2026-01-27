@@ -1,0 +1,48 @@
+﻿@model List<TaskAssignmentDto>
+
+<div id="table__container" class="table__container--visible">
+    <div class="table__header">
+        <h6 class="table__title">Tasks List</h6>
+        <input 
+            type="text" 
+            name="search" 
+            id="searchInput"
+            placeholder="Search Tasks..." 
+            class="table__searchInput" 
+            aria-label="Search contacts by name"
+            />
+
+        <button id="addNewBtn" type="button" class="btn_add">Add New Task</button>
+    </div>
+    <table class="table__table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Project Name</th>
+                <th>Priority</th>
+                <th>Assignee</th>
+                <th>Estimated Hours</th>
+                <th>Spent Hours</th>
+                <th>Status</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.ProjectName</td>
+                    <td>@item.PriorityName</td>
+                    <td>@item.AssigneeName</td>
+                    <td>@item.EstimatedHours</td>
+                    <td>@item.SpentHours</td>
+                    <td class="table__td--status"><span class="status__span"></span>@item.TaskStateName</td>
+                    <td>@item.CreatedAt</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="loader" id="table__loader" style="display: none;"></div>
+</div>
