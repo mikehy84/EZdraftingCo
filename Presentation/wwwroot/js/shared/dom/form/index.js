@@ -1,2 +1,2 @@
-// shared/dom/form/index.js
 export * from './taskDetail.js';
+export * from './formHeader.js';

@@ -1,11 +1,11 @@
 import { apiGet } from '../../api/dataService.js';
 
-export async function createSelectWithData(config, parentDom, id = null) {
+export async function createSelectWithData(config, parentDom, id = null, disabled = true) {
 
   if (!config?.api) throw new Error('config.api is required');
   if (!parentDom) throw new Error('parentDom is required');
 
-  const select = createSelectElement(config);
+  const select = createSelectElement(config, parentDom, disabled);
 
   createDefaultOption(config, select);
 
@@ -37,7 +37,7 @@ export async function loadSelect(config, select, id) {
 
 
 //////////////// HELPERS ////////////////////////
-export function createSelectElement(config) {
+export function createSelectElement(config, parentDom, disabled = true) {
   const select = document.createElement('select');
 
   select.classList.add('select');
@@ -51,6 +51,10 @@ export function createSelectElement(config) {
   }
 
   select.required = config.required ?? true;
+  select.disabled = disabled;
+
+  if (parentDom)
+    parentDom.appendChild(select);
 
   return select;
 }

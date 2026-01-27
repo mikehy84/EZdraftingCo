@@ -1,6 +1,11 @@
-import { createSelectWithData, loadSelect, createSelectElement } from "../../dom/elements/index.js"
-import { SELECT_CONFIGS } from "../../config/index.js"
-import { createFormHeader } from "./formHeader.js";
+import {
+    createSelectWithData,
+    loadSelect,
+    createSelectElement,
+    createInputElement
+} from "../../dom/elements/index.js"
+import { SELECT_CONFIGS, INPUT_CONFIGS } from "../../config/index.js"
+import { createFormHeader } from "./index.js";
 
 export async function renderFormTaskDetail({ headers, formClass = 'form__form' }, { reset = true } = {}) {
     const container = document.querySelector('#form__container');
@@ -17,31 +22,18 @@ export async function renderFormTaskDetail({ headers, formClass = 'form__form' }
         container.innerHTML = '';
     }
 
-      // Form
+    // Form
     const form = document.createElement('form');
     form.id = 'taskDetailForm';
     form.classList.add('form__body');
 
     createFormHeader('Add Task Detail');
 
-    const projectSelect = await createSelectWithData(SELECT_CONFIGS.projects, form);
-    const taskNameSelect = createSelectElement(SELECT_CONFIGS.taskNames);
-    const prioritySelect = createSelectElement(SELECT_CONFIGS.priorities);
-    const phaseSelect = createSelectElement(SELECT_CONFIGS.phases);
-    const areaSelect = createSelectElement(SELECT_CONFIGS.areas);
-
-    // Append selects to form
-    form.appendChild(taskNameSelect);
-    form.appendChild(prioritySelect);
-    form.appendChild(phaseSelect);
-    form.appendChild(areaSelect);
-
-    // Initially disable dependent selects
-    taskNameSelect.disabled = true;
-    prioritySelect.disabled = true;
-    phaseSelect.disabled = true;
-    areaSelect.disabled = true;
-
+    const projectSelect = await createSelectWithData(SELECT_CONFIGS.projects, form, null, false);
+    const taskNameSelect = createSelectElement(SELECT_CONFIGS.taskNames, form);
+    const prioritySelect = createSelectElement(SELECT_CONFIGS.priorities, form);
+    const phaseSelect = createSelectElement(SELECT_CONFIGS.phases, form);
+    const areaSelect = createSelectElement(SELECT_CONFIGS.areas, form);
 
     projectSelect.addEventListener('change', async (e) => {
         const projectId = e.target.value;
@@ -56,6 +48,9 @@ export async function renderFormTaskDetail({ headers, formClass = 'form__form' }
         await loadSelect(SELECT_CONFIGS.phases, phaseSelect, projectId);
         await loadSelect(SELECT_CONFIGS.areas, areaSelect, projectId);
     });
+
+    createInputElement(INPUT_CONFIGS.title, form);
+
 
 
     container.appendChild(form);

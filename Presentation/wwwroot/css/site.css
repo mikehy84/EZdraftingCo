@@ -135,6 +135,10 @@
     --InputBoxShadow: 0px 0px 6px var(--Gray-6);
     --InputHover: 0px 0px 7px var(--Gray-7);
     --FormBackground: var(--Gray-4);
+
+    --InputFocus: 1px solid var(--Blue-4);
+    --InputFocusBoxShadow: 0px 0px 4px var(--Blue-9);
+    --InputFocusBackground: var(--Gray-1);
 }
 
 *:focus {
