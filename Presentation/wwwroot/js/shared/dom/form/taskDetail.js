@@ -1,10 +1,10 @@
 import {
-    createSelectWithData,
-    loadSelect,
-    createSelectElement,
-    createInputElement
+    selectBuilderWithData, divBuilder, labelBuilder,
+    loadSelect, textareaBuilder,
+    selectBuilder,
+    inputBuilder
 } from "../../dom/elements/index.js"
-import { SELECT_CONFIGS, INPUT_CONFIGS } from "../../config/index.js"
+import { SELECT_CONFIGS, FORM_CONFIGS } from "../../config/index.js"
 import { createFormHeader } from "./index.js";
 
 export async function renderFormTaskDetail({ headers, formClass = 'form__form' }, { reset = true } = {}) {
@@ -29,61 +29,61 @@ export async function renderFormTaskDetail({ headers, formClass = 'form__form' }
 
     createFormHeader('Add Task Detail');
 
-    const projectSelect = await createSelectWithData(SELECT_CONFIGS.projects, form, null, false);
-    const taskNameSelect = createSelectElement(SELECT_CONFIGS.taskNames, form);
-    const prioritySelect = createSelectElement(SELECT_CONFIGS.priorities, form);
-    const phaseSelect = createSelectElement(SELECT_CONFIGS.phases, form);
-    const areaSelect = createSelectElement(SELECT_CONFIGS.areas, form);
-
-    projectSelect.addEventListener('change', async (e) => {
-        const projectId = e.target.value;
-
-        prioritySelect.disabled = !projectId;
-        taskNameSelect.disabled = !projectId;
-        phaseSelect.disabled = !projectId;
-        areaSelect.disabled = !projectId;
-
-        await loadSelect(SELECT_CONFIGS.priorities, prioritySelect);
-        await loadSelect(SELECT_CONFIGS.taskNames, taskNameSelect);
-        await loadSelect(SELECT_CONFIGS.phases, phaseSelect, projectId);
-        await loadSelect(SELECT_CONFIGS.areas, areaSelect, projectId);
-    });
-
-    createInputElement(INPUT_CONFIGS.title, form);
+    formBuilder(form);
 
 
+    const projectSelect = await selectBuilderWithData(formConfig.project, form, null, false);
+    // const projectSelect = await selectBuilderWithData(SELECT_CONFIGS.projects, form, null, false);
+    // const taskNameSelect = selectBuilder(SELECT_CONFIGS.taskNames, form);
+    // const prioritySelect = selectBuilder(SELECT_CONFIGS.priorities, form);
+    // const phaseSelect = selectBuilder(SELECT_CONFIGS.phases, form);
+    // const areaSelect = selectBuilder(SELECT_CONFIGS.areas, form);
+
+    // projectSelect.addEventListener('change', async (e) => {
+    //     const projectId = e.target.value;
+
+    //     prioritySelect.disabled = !projectId;
+    //     taskNameSelect.disabled = !projectId;
+    //     phaseSelect.disabled = !projectId;
+    //     areaSelect.disabled = !projectId;
+
+    //     await loadSelect(formConfig.priority, prioritySelect);
+    //     await loadSelect(formConfig.taskName, taskNameSelect);
+    //     await loadSelect(formConfig.phase, phaseSelect, projectId);
+    //     await loadSelect(formConfig.area, areaSelect, projectId);
+    // });
 
     container.appendChild(form);
 
     console.log('Add Btn clicked.');
-
-    // // CREATE TABLE
-    // const table = document.createElement('table');
-    // table.classList.add(tableClass);
-    // container.appendChild(table);
-
-    // // CREATE THEAD
-    // const thead = document.createElement('thead');
-    // const headRow = document.createElement('tr');
-
-    // headers.forEach(text => {
-    //     const th = document.createElement('th');
-    //     th.textContent = text;
-    //     headRow.appendChild(th);
-    // });
-
-    // thead.appendChild(headRow);
-    // table.appendChild(thead);
-
-    // // CREATE TBODY
-    // const tbody = document.createElement('tbody');
-    // table.appendChild(tbody);
-
-    // // ADD LOADER
-    // const loader = document.createElement('div');
-    // loader.classList.add('loader');
-    // loader.id = 'table__loader';
-    // container.appendChild(loader);
-
-    // return { container, table, tbody };
 }
+
+
+
+async function buildField(fieldConfig, parentDom) {
+  switch (fieldConfig.type) {
+    case 'input':
+      return inputBuilder(fieldConfig, parentDom);
+
+    case 'textarea':
+      return textareaBuilder(fieldConfig, parentDom);
+
+    case 'select':
+      return selectBuilder(
+        fieldConfig,
+        parentDom
+      );
+  }
+}
+
+
+const formConfig = FORM_CONFIGS.taskDetailForm;
+
+async function formBuilder(formDom) {
+
+    for (const field of Object.values(formConfig)) {
+        const div = divBuilder(formDom);
+        const label = labelBuilder(field.label, div);
+        await buildField(field, div);
+    }
+};

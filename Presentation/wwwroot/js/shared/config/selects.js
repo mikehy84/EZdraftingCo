@@ -3,7 +3,7 @@ export const SELECT_CONFIGS = {
     title: "Task Name",
     api: '/api/taskNames',
     columns: ['name'],
-    id: 'taskNameId',
+    id: 'taskName',
     className: 'select__taskName'
   },
 
@@ -11,7 +11,7 @@ export const SELECT_CONFIGS = {
     title: "Project",
     api: '/api/projects',
     columns: ['internalProjectNo', 'clientProjectName'],
-    id: 'projectId',
+    id: 'project',
     className: 'select__project'
   },
 
@@ -19,7 +19,7 @@ export const SELECT_CONFIGS = {
     title: "Phase",
     api: '/api/phases',
     columns: ['phaseNumber', 'phaseName'],
-    id: 'phaseId',
+    id: 'phase',
     className: 'select__phase'
   },
 
@@ -27,7 +27,7 @@ export const SELECT_CONFIGS = {
     title: "Area",
     api: '/api/projectAreas',
     columns: ['name'],
-    id: 'areaId',
+    id: 'area',
     className: 'select__area',
     allowEmpty: true,
   },
@@ -36,7 +36,7 @@ export const SELECT_CONFIGS = {
     title: "Priority",
     api: '/api/priorities',
     columns: ['name'],
-    id: 'priorityId',
+    id: 'priority',
     className: 'select__priority'
   },
 
@@ -44,7 +44,7 @@ export const SELECT_CONFIGS = {
     title: "Assignee",
     api: '/api/persons',
     columns: ['firstName', 'lastName'],
-    id: 'assigneeId',
+    id: 'assignee',
     className: 'select__assignee',
     allowEmpty: true,
   }

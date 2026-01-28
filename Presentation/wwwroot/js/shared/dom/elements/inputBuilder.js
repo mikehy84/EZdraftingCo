@@ -1,6 +1,6 @@
 
 
-export function createInputElement(config, parentDom) {
+export function inputBuilder(config, parentDom) {
     const input = document.createElement('input');
 
     input.classList.add('input');
