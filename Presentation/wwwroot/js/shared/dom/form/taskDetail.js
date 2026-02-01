@@ -1,11 +1,14 @@
 import {
-    selectBuilderWithData, divBuilder, labelBuilder,
+    divBuilder, labelBuilder,
     loadSelect, textareaBuilder,
     selectBuilder,
     inputBuilder
 } from "../../dom/elements/index.js"
 import { SELECT_CONFIGS, FORM_CONFIGS } from "../../config/index.js"
 import { createFormHeader } from "./index.js";
+
+
+const formConfig = FORM_CONFIGS.taskDetailForm;
 
 export async function renderFormTaskDetail({ headers, formClass = 'form__form' }, { reset = true } = {}) {
     const container = document.querySelector('#form__container');
@@ -23,39 +26,29 @@ export async function renderFormTaskDetail({ headers, formClass = 'form__form' }
     }
 
     // Form
-    const form = document.createElement('form');
-    form.id = 'taskDetailForm';
-    form.classList.add('form__body');
+    const formDom = document.createElement('form');
+    formDom.id = 'taskDetailForm';
+    formDom.classList.add('form__body');
 
     createFormHeader('Add Task Detail');
 
-    formBuilder(form);
+  const refs = await formBuilder(formConfig, formDom);
 
+  await loadSelect(SELECT_CONFIGS.projects, refs.project, null);
 
-    const projectSelect = await selectBuilderWithData(formConfig.project, form, null, false);
-    // const projectSelect = await selectBuilderWithData(SELECT_CONFIGS.projects, form, null, false);
-    // const taskNameSelect = selectBuilder(SELECT_CONFIGS.taskNames, form);
-    // const prioritySelect = selectBuilder(SELECT_CONFIGS.priorities, form);
-    // const phaseSelect = selectBuilder(SELECT_CONFIGS.phases, form);
-    // const areaSelect = selectBuilder(SELECT_CONFIGS.areas, form);
+  // handle project change
+  refs.project.addEventListener('change', async (e) => {
+      const projectId = e.target.value;
 
-    // projectSelect.addEventListener('change', async (e) => {
-    //     const projectId = e.target.value;
+      // load dependent selects
+      await loadSelect(SELECT_CONFIGS.phases, refs.phase, projectId);
+      await loadSelect(SELECT_CONFIGS.areas, refs.area, projectId);
+      await loadSelect(SELECT_CONFIGS.taskNames, refs.taskName);
+      await loadSelect(SELECT_CONFIGS.priorities, refs.priority);
+      await loadSelect(SELECT_CONFIGS.persons, refs.assignee);
+  });
 
-    //     prioritySelect.disabled = !projectId;
-    //     taskNameSelect.disabled = !projectId;
-    //     phaseSelect.disabled = !projectId;
-    //     areaSelect.disabled = !projectId;
-
-    //     await loadSelect(formConfig.priority, prioritySelect);
-    //     await loadSelect(formConfig.taskName, taskNameSelect);
-    //     await loadSelect(formConfig.phase, phaseSelect, projectId);
-    //     await loadSelect(formConfig.area, areaSelect, projectId);
-    // });
-
-    container.appendChild(form);
-
-    console.log('Add Btn clicked.');
+    container.appendChild(formDom);
 }
 
 
@@ -69,21 +62,39 @@ async function buildField(fieldConfig, parentDom) {
       return textareaBuilder(fieldConfig, parentDom);
 
     case 'select':
-      return selectBuilder(
-        fieldConfig,
-        parentDom
-      );
+      return selectBuilder(fieldConfig.select, parentDom, fieldConfig.disabled ?? false);
   }
 }
 
 
-const formConfig = FORM_CONFIGS.taskDetailForm;
+async function formBuilder(formConfig, formDom) {
+  const refs = {};
 
-async function formBuilder(formDom) {
+  // Object.entries(formConfig) => converts the object into an array of [key, value] pairs.
+  // [
+  //   ['title',   { type:'input', ... }],
+  //   ['project', { type:'select', ... }],
+  //   ['phase',   { type:'select', ... }],
+  //   ['area',    { type:'select', ... }]
+  // ]
 
-    for (const field of Object.values(formConfig)) {
-        const div = divBuilder(formDom);
-        const label = labelBuilder(field.label, div);
-        await buildField(field, div);
-    }
-};
+  // [fieldKey, field] => destructuring each pair into key and value
+  // so => const [fieldKey, field] = ['project', {...}];
+  // means => fieldKey = 'project'; field = { type:'select', select: SELECT_CONFIGS.projects }
+
+  for (const [fieldKey, field] of Object.entries(formConfig)) {
+    const div = divBuilder(formDom);
+
+    // label: handle select label vs input label
+    const labelConfig = field.label;
+    if (labelConfig)
+      labelBuilder(labelConfig, div);
+
+    const el = await buildField(field, div);
+
+    // store reference
+    refs[fieldKey] = el;
+  }
+
+  return refs;
+}

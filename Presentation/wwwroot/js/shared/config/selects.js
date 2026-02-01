@@ -20,7 +20,8 @@ export const SELECT_CONFIGS = {
     api: '/api/phases',
     columns: ['phaseNumber', 'phaseName'],
     id: 'phase',
-    className: 'select__phase'
+    className: 'select__phase',
+    allowEmpty: true,
   },
 
   areas: {

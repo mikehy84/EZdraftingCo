@@ -1,43 +1,35 @@
 import { apiGet } from '../../api/dataService.js';
 
-export async function selectBuilderWithData(config, parentDom, id = null, disabled = true) {
+export async function loadSelect(selectConfig, select, parentId) {
 
-  if (!config?.api) throw new Error('config.api is required');
-  if (!parentDom) throw new Error('parentDom is required');
+  select.innerHTML = ''; // clear existing options
 
-  const select = selectBuilder(config, parentDom, disabled);
+  createDefaultOption(selectConfig, select);
 
-  createDefaultOption(config, select);
+  const data = await apiGet(selectConfig.api, parentId);
 
-  const data = await apiGet(config.api, id);
+  const list = Array.isArray(data) ? data : [];
 
-  const list = prepareSelectList(select, data, config);
+  if (list.length === 0 || selectConfig.allowEmpty) {
+    createNoneOption(select);
+  }
 
-  populateSelectOptions(select, list, config);
+  for (const item of list) {
+    const option = document.createElement('option');
+    option.value = item.id ?? item.Id ?? '';
 
-  parentDom.appendChild(select);
+    option.textContent = selectConfig.columns
+      .map((k) => item[k] ?? '')
+      .filter((v) => v != null && String(v).trim() !== '')
+      .join(' - ');
 
-  return select;
+    select.appendChild(option);
+  }
 }
-
-
-
-export async function loadSelect(config, select, id) {
-
-  select.innerHTML = '';
-  createDefaultOption(config, select);
-
-  const data = await apiGet(config.api, id);
-
-  const list = prepareSelectList(select, data, config);
-
-  populateSelectOptions(select, list, config);
-}
-
 
 
 //////////////// HELPERS ////////////////////////
-export function selectBuilder(config, parentDom, disabled = true) {
+export function selectBuilder(config, parentDom, disabled) {
   const select = document.createElement('select');
 
   select.classList.add('select');
@@ -51,7 +43,7 @@ export function selectBuilder(config, parentDom, disabled = true) {
   }
 
   select.required = config.required ?? true;
-  select.disabled = disabled;
+  // select.disabled = config.disabled;
 
   if (parentDom)
     parentDom.appendChild(select);
@@ -75,30 +67,4 @@ export function createNoneOption(select) {
   opt.value = '';
   opt.textContent = 'None';
   select.appendChild(opt);
-}
-
-export function prepareSelectList(select, data, config) {
-  const list = Array.isArray(data) ? data : [];
-
-  if (config.allowEmpty || list.length === 0) {
-    createNoneOption(select);
-  }
-
-  return list;
-}
-
-
-export function populateSelectOptions(select, list, config) {
-  for (const item of list) {
-    const option = document.createElement('option');
-
-    option.value = item.id ?? item.Id ?? '';
-
-    option.textContent = config.columns
-      .map(k => item[k] ?? '')
-      .filter(v => v != null && String(v).trim() !== '')
-      .join(' - ');
-
-    select.appendChild(option);
-  }
 }
