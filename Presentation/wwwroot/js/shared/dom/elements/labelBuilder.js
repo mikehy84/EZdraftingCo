@@ -4,7 +4,7 @@ export function labelBuilder(config, parentDom) {
   if (!config) throw new Error('createLabelElement: config is required');
 
   const label = document.createElement('label');
-  label.classList.add('label');
+  label.classList.add('form__label');
 
   if (config.className) {
     label.classList.add(config.className);

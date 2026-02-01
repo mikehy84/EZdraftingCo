@@ -43,7 +43,7 @@ export function createTableHeader(text, formAdd) {
     searchInput.name = 'search';
     searchInput.id = 'searchInput';
     searchInput.placeholder = `Search ${text}s...`;
-    searchInput.classList.add('table__searchInput');
+    searchInput.classList.add('form__input');
     searchInput.setAttribute('aria-label', 'Search contacts by name');
 
     // attach listener

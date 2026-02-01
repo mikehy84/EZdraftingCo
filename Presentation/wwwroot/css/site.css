@@ -132,12 +132,12 @@
     --InputBackground: var(--Gray-2);
     --InputBorderRadius: 6px;
     --InputBorder: 1px solid var(--Blue-5);
-    --InputBoxShadow: 0px 0px 6px var(--Gray-6);
+    --InputBoxShadow: 0px 0px 2px var(--Gray-5);
     --InputHover: 0px 0px 7px var(--Gray-7);
-    --FormBackground: var(--Gray-4);
+    --FormBackground: var(--Gray-3);
 
     --InputFocus: 1px solid var(--Blue-4);
-    --InputFocusBoxShadow: 0px 0px 4px var(--Blue-9);
+    --InputFocusBoxShadow: 0px 0px 2px var(--Blue-9);
     --InputFocusBackground: var(--Gray-1);
 }
 

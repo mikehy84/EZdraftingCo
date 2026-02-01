@@ -8,9 +8,9 @@ export const FORM_CONFIGS = {
       api: '/api/projects',
       columns: ['internalProjectNo', 'clientProjectName'],
       id: 'project',
-      className: 'select__project',
+      className: ['form__select', 'select__project'],
       select: SELECT_CONFIGS.projects,
-      label: { text: 'Project:', htmlFor: 'project', className: 'label--required' },
+      label: { text: 'Project:', htmlFor: 'project', className: 'form__label' },
       required: true,
       onChangeKey: 'projectChanged'
     },
@@ -21,9 +21,9 @@ export const FORM_CONFIGS = {
       api: '/api/priorities',
       columns: ['name'],
       id: 'priority',
-      className: 'select__priority',
+      className: ['form__select', 'select__priority'],
       select: SELECT_CONFIGS.priorities,
-      label: { text: 'Priority:', htmlFor: 'priority', className: 'label--required' },
+      label: { text: 'Priority:', htmlFor: 'priority', className: 'form__label' },
       required: true,
       disabled: true
     },
@@ -34,9 +34,9 @@ export const FORM_CONFIGS = {
       api: '/api/taskNames',
       columns: ['name'],
       id: 'taskName',
-      className: 'select__taskName',
+      className: ['form__select', 'select__taskName'],
       select: SELECT_CONFIGS.taskNames,
-      label: { text: 'Task Name:', htmlFor: 'taskName', className: 'label--required' },
+      label: { text: 'Task Name:', htmlFor: 'taskName', className: 'form__label' },
       dependsOn: 'project',
       disabled: true
     },
@@ -47,9 +47,9 @@ export const FORM_CONFIGS = {
       api: '/api/phases',
       columns: ['phaseNumber', 'phaseName'],
       id: 'phase',
-      className: 'select__phase',
+      className: ['form__select', 'select__phase'],
       select: SELECT_CONFIGS.phases,
-      label: { text: 'Phase:', htmlFor: 'phase', className: 'label--required' },
+      label: { text: 'Phase:', htmlFor: 'phase', className: 'form__label' },
       dependsOn: 'project',
       allowEmpty: true,
       disabled: true
@@ -61,9 +61,9 @@ export const FORM_CONFIGS = {
       api: '/api/projectAreas',
       columns: ['name'],
       id: 'area',
-      className: 'select__area',
+      className: ['form__select', 'select__area'],
       select: SELECT_CONFIGS.areas,
-      label: { text: 'Area:', htmlFor: 'area', className: 'label--required' },
+      label: { text: 'Area:', htmlFor: 'area', className: 'form__label' },
       dependsOn: 'project',
       allowEmpty: true,
       disabled: true
@@ -75,10 +75,10 @@ export const FORM_CONFIGS = {
       api: '/api/persons',
       columns: ['firstName', 'lastName'],
       id: 'assignee',
-      className: 'select__assignee',
+      className: ['form__select', 'select__assignee'],
       allowEmpty: true,
       select: SELECT_CONFIGS.persons,
-      label: { text: 'Assignee:', htmlFor: 'assignee', className: 'label--required' },
+      label: { text: 'Assignee:', htmlFor: 'assignee', className: 'form__label' },
       allowEmpty: true,
       disabled: true
     },
@@ -86,16 +86,24 @@ export const FORM_CONFIGS = {
     title: {
       type: 'input',
       id: 'taskTitle',
-      label: { text: 'Title:', htmlFor: 'taskTitle', className: 'label--required' },
-      className: 'input',
+      label: { text: 'Title:', htmlFor: 'taskTitle', className: 'form__label' },
+      className: 'form__input',
       required: true
     },
 
     description: {
       type: 'textarea',
       id: 'taskDescription',
-      label: { text: 'Description:', htmlFor: 'taskDescription', className: 'label--required' },
-      className: 'textarea'
+      label: { text: 'Description:', htmlFor: 'taskDescription', className: 'form__label' },
+      className: 'form__textarea'
+    },
+
+    estimatedHours: {
+      type: 'input',
+      id: 'estimatedHours',
+      label: { text: 'Estimated Hours:', htmlFor: 'estimatedHours', className: 'form__label' },
+      className: 'form__input',
+      required: true
     },
   }
 };

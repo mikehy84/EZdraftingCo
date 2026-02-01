@@ -2,7 +2,7 @@ export function textareaBuilder(config, parentDom) {
   if (!config) throw new Error('textareaBuilder: config is required');
 
   const textarea = document.createElement('textarea');
-  textarea.classList.add('textarea');
+  textarea.classList.add('form__textarea');
 
   if (config.className) {
     textarea.classList.add(config.className);

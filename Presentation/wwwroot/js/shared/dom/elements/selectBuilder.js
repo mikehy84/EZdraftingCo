@@ -3,6 +3,7 @@ import { apiGet } from '../../api/dataService.js';
 export async function loadSelect(selectConfig, select, parentId) {
 
   select.innerHTML = ''; // clear existing options
+  select.disabled =  false;
 
   createDefaultOption(selectConfig, select);
 
@@ -29,21 +30,24 @@ export async function loadSelect(selectConfig, select, parentId) {
 
 
 //////////////// HELPERS ////////////////////////
-export function selectBuilder(config, parentDom, disabled) {
+export function selectBuilder(config, parentDom) {
   const select = document.createElement('select');
 
-  select.classList.add('select');
-
   if (config.className) {
-    select.classList.add(config.className);
+    const classes = Array.isArray(config.className)
+      ? config.className
+      : config.className.split(' ');
+
+    classes.filter(Boolean).forEach(c => select.classList.add(c));
   }
+
 
   if (config.id) {
     select.id = config.id;
   }
 
   select.required = config.required ?? true;
-  // select.disabled = config.disabled;
+  select.disabled = config.disabled;
 
   if (parentDom)
     parentDom.appendChild(select);
