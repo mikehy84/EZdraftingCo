@@ -4,13 +4,11 @@
 
 .form__container--visible {
     display: flex;
-    position: relative;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: fit-content;
-    max-width: 1200px;
-    height: 300px;
+    min-width: 500px;
+    max-width: 1600px;
     min-height: fit-content;
     padding: 10px;
     font-size:  14px;
@@ -25,13 +23,18 @@
 .form__body {
     display: grid;
     /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
-    grid-template-columns: minmax(fit-content, 300px) 1fr;
-    grid-template-rows: auto 1fr auto;
+    /* grid-template-columns: repeat(2, minmax(200px, 1fr)) auto; */
+    /* grid-template-columns: 250px 250px 250px; */
+    grid-template-rows: repeat(5, 4rem) auto 3rem;
     grid-template-areas:
-        "s1"
-        "s2"
-        "s3"
-        "s4";
+        "project project"
+        "phase area"
+        "taskName priority"
+        "assignee estimatedHours"
+        "title title"
+        "des des"
+        "none submit";
+
     gap: 5px;
     /* background-color: var(--Gray-4); */
     color: var(--Gray-7);

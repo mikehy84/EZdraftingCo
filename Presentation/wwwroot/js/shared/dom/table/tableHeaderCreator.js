@@ -1,4 +1,5 @@
-﻿import { createBtnAdd } from '../elements/index.js';
+﻿import { createBtn } from '../elements/index.js';
+import { BUTTON_CONFIGS } from '../../config/index.js';
 
 export function onSearchInput(e) {
     const query = e.target.value.toLowerCase().trim();
@@ -24,7 +25,7 @@ export function onSearchInput(e) {
 }
 
 
-export function createTableHeader(text, formAdd) {
+export function createTableHeader(text, func) {
     const container = document.querySelector('#table__container');
     if (!container) return;
 
@@ -48,7 +49,8 @@ export function createTableHeader(text, formAdd) {
 
     // attach listener
     searchInput.addEventListener('input', onSearchInput);
-    createBtnAdd(div, text, formAdd);
+
+    createBtn(BUTTON_CONFIGS.btnAdd, div, func);
 
 
     div.prepend(searchInput);

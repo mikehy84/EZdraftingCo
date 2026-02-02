@@ -13,7 +13,7 @@ import {
 
 
 
-export async function renderDashboardTable(tableConfig = {}, formAdd) {
+export async function renderDashboardTable(tableConfig = {}, func) {
 
     let { container, table, tbody } = createTableSkeleton({ headers: tableConfig.headers, reset: true });
 
@@ -22,7 +22,7 @@ export async function renderDashboardTable(tableConfig = {}, formAdd) {
 
     if (handleEmptyState(data, container)) return;
 
-    createTableHeader(tableConfig.title, formAdd);
+    createTableHeader(tableConfig.title, func);
     createTableRows(tbody, data, tableConfig.columns);
     applyTaskPriorityStyles(tbody, TASK_PRIORITY_CLASS_MAP);
 }

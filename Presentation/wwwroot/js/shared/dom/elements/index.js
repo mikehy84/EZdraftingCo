@@ -1,4 +1,4 @@
-export * from "./btnAdd.js";
+export * from "./btnBuilder.js";
 export * from "./selectBuilder.js";
 export * from "./inputBuilder.js";
 export * from "./divBuilder.js";

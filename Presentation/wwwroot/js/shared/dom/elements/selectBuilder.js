@@ -8,6 +8,7 @@ export async function loadSelect(selectConfig, select, parentId) {
   createDefaultOption(selectConfig, select);
 
   const data = await apiGet(selectConfig.api, parentId);
+  console.log('loadSelect data:', data);
 
   const list = Array.isArray(data) ? data : [];
 

@@ -1,14 +1,35 @@
+
+
 .btn_add {
     width: fit-content;
     margin-left: auto;
     padding: 0 0.6rem;
     border: 0;
+    border-radius: var(--InputBorderRadius);
     color: var(--Gray-1);
     background-color: var(--Blue-7);
-    box-shadow: 0px 0px 5px var(--Gray-8);
+    box-shadow: 0px 0px 5px var(--Gray-0);
 }
 
 .btn_add:hover {
+    color: var(--Gray-0);
+    background-color: var(--Blue-8);
+    box-shadow: 0px 0px 5px var(--Gray-6);
+}
+
+.btn_submit {
+    width: 40%;
+    height: 100%;
+    margin-left: auto;
+    padding: 0 0.6rem;
+    border: 0;
+    border-radius: var(--InputBorderRadius);
+    color: var(--Gray-1);
+    background-color: var(--Blue-7);
+    box-shadow: 0px 0px 5px var(--Gray-0);
+}
+
+.btn_submit:hover {
     color: var(--Gray-0);
     background-color: var(--Blue-8);
     box-shadow: 0px 0px 5px var(--Gray-6);
@@ -41,7 +62,45 @@
     justify-content: flex-start;
     background-color: var(--FormBackground);
     width: 100%;
+    min-width: 15rem;
     padding: 6px;
+}
+
+
+
+.form__field--project {
+    grid-area: project;
+}
+
+.form__field--phase {
+    grid-area: phase;
+}
+.form__field--area {
+    grid-area: area;
+}
+.form__field--priority {
+    grid-area: priority;
+}
+.form__field--taskName {
+    grid-area: taskName;
+}
+.form__field--assignee {
+    grid-area: assignee;
+}
+.form__field--title {
+    grid-area: title;
+}
+.form__field--estimatedHours {
+    grid-area: estimatedHours;
+}
+.form__field--description {
+    grid-area: des;
+}
+.form__field--submit {
+    grid-area: submit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -79,7 +138,6 @@
 .form__label {
     padding-left: 4px;
     font-family: Helvetica, Arial, sans-serif;
-    font-size: 16px;
     color: var(--Gray-7);
 }
 

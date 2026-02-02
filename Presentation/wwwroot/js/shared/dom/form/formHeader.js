@@ -11,7 +11,7 @@ export function createFormHeader(titleText) {
     div.classList.add('form__header');
 
     const title = document.createElement('h6');
-    title.textContent = titleText +"s List" || 'List';
+    title.textContent = titleText;
     title.classList.add('form__title');
 
     div.prepend(title);
