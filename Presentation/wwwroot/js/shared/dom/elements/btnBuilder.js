@@ -6,7 +6,7 @@ export function createBtn(config, parentElement, func) {
   if (!btnAdd) {
     btnAdd = document.createElement('button');
     btnAdd.id = config.id;
-    btnAdd.type = 'button';
+    btnAdd.type = config.type;
     btnAdd.classList.add(config.className);
     btnAdd.textContent = config.text;
     parentElement.append(btnAdd);

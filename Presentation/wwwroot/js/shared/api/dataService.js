@@ -21,8 +21,28 @@ export async function apiGet(url, id = null) {
 }
 
 
+export async function apiPost(url, payload) {
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status} - ${res.statusText}`);
+    }
+
+    return await res.json();
+  } catch (err) {
+    console.error(`apiPost failed for: ${url}`, err);
+    throw err;
+  }
+}
 
 
+
+//////////////////////////////////////////////////////////////////////////////
 export async function LoadData(url) {
     showLoader();
     try {

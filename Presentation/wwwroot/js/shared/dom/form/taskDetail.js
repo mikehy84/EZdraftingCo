@@ -7,6 +7,7 @@ import {
 } from "../../dom/elements/index.js"
 import { FORM_CONFIGS } from "../../config/index.js"
 import { createFormHeader } from "./index.js";
+import { handleSubmit } from "../../api/collectData.js";
 
 
 
@@ -30,12 +31,18 @@ export async function renderFormTaskDetail({ reset = true } = {}) {
 
   // Form
   const formDom = document.createElement('form');
-  formDom.id = 'taskDetailForm';
+  formDom.method = "post";
+  formDom.id = "taskDetailForm";
+  formDom.enctype = "multipart/form-data";
   formDom.classList.add('form__body');
 
   createFormHeader('New Task');
 
   const refs = await formBuilder(formConfig, formDom);
+
+  formDom.addEventListener('submit', (e) =>
+    handleSubmit(e, refs, formDom)
+  );
 
   await loadSelect(formConfig.project, refs.project, null);
 
@@ -105,8 +112,6 @@ async function formBuilder(formConfig, formDom) {
     // store reference
     refs[fieldKey] = el;
   }
-
-  console.log('form refs:', refs);
 
   return refs;
 }

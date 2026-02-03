@@ -15,6 +15,7 @@ export const BUTTON_CONFIGS = {
 
   btnSubmit: {
     text: "Submit",
+    type: "submit",
     api: '/api/',
     id: 'btnSubmit',
     className: 'btn_submit'

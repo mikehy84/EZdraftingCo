@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Areas.API
 {
-    [Route("api/taskDetails")]
+    [Route("api/taskdetails")]
     [ApiController]
     [Area("API")]
 
