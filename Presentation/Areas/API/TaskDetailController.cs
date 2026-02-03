@@ -68,12 +68,14 @@ namespace Presentation.Areas.API
 
 
                 // 2) optionally create assignment
-                if (createTaskDetailDto.AssigneeId.HasValue && createTaskDetailDto.AssignorId.HasValue)
+                //if (createTaskDetailDto.AssigneeId.HasValue && createTaskDetailDto.AssignorId.HasValue)
+                if (createTaskDetailDto.AssigneeId.HasValue)
                 {
                     var newAssignment = new TaskAssignment
                     {
                         TaskDetailId = newTaskDetail.Id,
-                        TaskAssignorId = createTaskDetailDto.AssignorId.Value,
+                        //TaskAssignorId = createTaskDetailDto.AssignorId.Value,
+                        TaskAssignorId = 2,
                         TaskAssigneeId = createTaskDetailDto.AssigneeId.Value,
                     };
 

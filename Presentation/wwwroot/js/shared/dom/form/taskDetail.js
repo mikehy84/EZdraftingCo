@@ -8,6 +8,7 @@ import {
 import { FORM_CONFIGS } from "../../config/index.js"
 import { createFormHeader } from "./index.js";
 import { handleSubmit } from "../../api/collectData.js";
+import { TASK_TABLE } from "../../config/tables.js";
 
 
 
@@ -40,9 +41,11 @@ export async function renderFormTaskDetail({ reset = true } = {}) {
 
   const refs = await formBuilder(formConfig, formDom);
 
-  formDom.addEventListener('submit', (e) =>
-    handleSubmit(e, refs, formDom)
-  );
+  formDom.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    await handleSubmit(e, refs, formDom);
+    // await renderDashboardTable(TASK_TABLE, renderFormTaskDetail);
+  });
 
   await loadSelect(formConfig.project, refs.project, null);
 
