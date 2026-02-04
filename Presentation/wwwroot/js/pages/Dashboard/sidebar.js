@@ -23,6 +23,8 @@ document.querySelector('.sidebar__list')
 
         switch (action) {
             case PERSON_TABLE.name:
+                document.querySelector('#table__container').innerHTML = '';
+                document.querySelector('#form__container').innerHTML = '';
                 await renderDashboardTable(PERSON_TABLE);
                 break;
 

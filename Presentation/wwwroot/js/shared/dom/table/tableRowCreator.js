@@ -25,7 +25,8 @@ export function createTableRows(tbody, data, columns) {
         tr.appendChild(td);
       });
 
-      tbody.appendChild(tr);
+      // tbody.appendChild(tr);
+      tbody.prepend(tr);
   }
 }
 

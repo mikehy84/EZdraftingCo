@@ -3,6 +3,7 @@ import { TASK_PRIORITY_CLASS_MAP } from "../../shared/config/index.js";
 import {
     createTableSkeleton,
     createTableHeader,
+    createSearchBar,
     createTableRows,
     handleEmptyState,
     applyTaskPriorityStyles
@@ -22,6 +23,7 @@ export async function renderDashboardTable(tableConfig = {}, func) {
 
     if (handleEmptyState(data, container)) return;
 
+    createSearchBar(tableConfig.title, func);
     createTableHeader(tableConfig.title, func);
     createTableRows(tbody, data, tableConfig.columns);
     applyTaskPriorityStyles(tbody, TASK_PRIORITY_CLASS_MAP);

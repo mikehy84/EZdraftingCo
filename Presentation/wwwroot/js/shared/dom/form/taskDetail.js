@@ -80,6 +80,7 @@ async function buildField(fieldConfig, parentDom) {
 
     case 'textarea':
       return textareaBuilder(fieldConfig, parentDom);
+
     case 'button':
       return createBtn(fieldConfig.btn, parentDom );
   }

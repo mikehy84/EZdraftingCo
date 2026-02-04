@@ -33,7 +33,7 @@ namespace Presentation.Areas.API
                 var taskDetails = await _unitOfWork.TaskDetails
                     .GetAllProjectedAsync<TaskDetailDto>(_mapper.ConfigurationProvider);
 
-                return Ok(taskDetails.OrderBy(ta => ta.Id));
+                return Ok(taskDetails.OrderByDescending(ta => ta.Id));
             }
             catch (Exception ex)
             {

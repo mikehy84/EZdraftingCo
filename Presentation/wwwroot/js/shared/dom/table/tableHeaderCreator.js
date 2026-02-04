@@ -1,5 +1,6 @@
 ﻿import { createBtn } from '../elements/index.js';
 import { BUTTON_CONFIGS } from '../../config/index.js';
+import { divBuilder } from '../elements/index.js';
 
 export function onSearchInput(e) {
     const query = e.target.value.toLowerCase().trim();
@@ -39,6 +40,21 @@ export function createTableHeader(text, func) {
     title.textContent = text +"s List" || 'List';
     title.classList.add('table__title');
 
+    div.prepend(title);
+    container.prepend(div);
+}
+
+
+export function createSearchBar(text, func) {
+    const container = document.querySelector('#table__container');
+    if (!container) return;
+
+    // prevent duplicates
+    if (container.querySelector('.table__searchBar')) return;
+
+    const searchBarDiv = divBuilder(container);
+    searchBarDiv.classList.add('table__searchBar');
+
     const searchInput = document.createElement('input');
     searchInput.type = 'text';
     searchInput.name = 'search';
@@ -50,10 +66,10 @@ export function createTableHeader(text, func) {
     // attach listener
     searchInput.addEventListener('input', onSearchInput);
 
-    createBtn(BUTTON_CONFIGS.btnAdd, div, func);
+    createBtn(BUTTON_CONFIGS.btnAdd, searchBarDiv, func);
 
 
-    div.prepend(searchInput);
-    div.prepend(title);
-    container.prepend(div);
+    searchBarDiv.prepend(searchInput);
+
+    container.prepend(searchBarDiv);
 }

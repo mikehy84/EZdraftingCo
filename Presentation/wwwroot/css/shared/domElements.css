@@ -2,37 +2,32 @@
 
 .btn_add {
     width: fit-content;
-    margin-left: auto;
+    height: 1.5rem;
+    margin: auto;
     padding: 0 0.6rem;
     border: 0;
-    border-radius: var(--InputBorderRadius);
-    color: var(--Gray-1);
-    background-color: var(--Blue-7);
-    box-shadow: 0px 0px 5px var(--Gray-0);
+    color: var(--TextLight);
+    background-color: var(--BtnAddBackground);
 }
 
 .btn_add:hover {
     color: var(--Gray-0);
-    background-color: var(--Blue-8);
-    box-shadow: 0px 0px 5px var(--Gray-6);
+    box-shadow: var(--BtnAddBoxShadow);
 }
 
 .btn_submit {
-    width: 40%;
-    height: 100%;
+    width: 30%;
+    height: 1.5rem;
     margin-left: auto;
-    padding: 0 0.6rem;
+    padding: 0 1rem;
     border: 0;
-    border-radius: var(--InputBorderRadius);
-    color: var(--Gray-1);
-    background-color: var(--Blue-7);
-    box-shadow: 0px 0px 5px var(--Gray-0);
+    color: var(--TextLight);
+    background-color: var(--BtnAddBackground);
 }
 
 .btn_submit:hover {
     color: var(--Gray-0);
-    background-color: var(--Blue-8);
-    box-shadow: 0px 0px 5px var(--Gray-6);
+    box-shadow: var(--BtnAddBoxShadow);
 }
 
 
@@ -60,7 +55,7 @@
     flex-direction: column;
     align-content: flex-start;
     justify-content: flex-start;
-    background-color: var(--FormBackground);
+    /* background-color: var(--FormLight); */
     width: 100%;
     min-width: 15rem;
     padding: 6px;
@@ -107,11 +102,11 @@
 /* ============================= input styles ============================= */
 .form__input,
 .form__select {
-    height: 2rem;
+    height: 1.5rem;
     margin: auto 0;
-    padding: 6px;
+    padding: 3px;
+    color: var(--TextDark);
     background-color: var(--InputBackground);
-    border-radius: var(--InputBorderRadius);
     border: var(--InputBorder);
     box-shadow: var(--InputBoxShadow);
     flex-grow: 1;
@@ -128,7 +123,6 @@
     max-height: 12rem;
     padding: 6px;
     background-color: var(--InputBackground);
-    border-radius: var(--InputBorderRadius);
     border: var(--InputBorder);
     box-shadow: var(--InputBoxShadow);
 }
@@ -138,7 +132,7 @@
 .form__label {
     padding-left: 4px;
     font-family: Helvetica, Arial, sans-serif;
-    color: var(--Gray-7);
+    color: var(--TextDark);
 }
 
 
@@ -150,6 +144,5 @@
 .form__select:focus,
 .form__select:hover {
     border: var(--InputFocus);
-    box-shadow: var(--InputFocusBoxShadow);
     background-color: var(--InputFocusBackground);
 }

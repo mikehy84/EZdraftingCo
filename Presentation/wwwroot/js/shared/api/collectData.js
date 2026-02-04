@@ -1,4 +1,6 @@
-
+import { TASK_TABLE } from '../config/index.js';
+import { renderDashboardTable } from '../../pages/dashboard/index.js';
+import { renderFormTaskDetail } from '../dom/form/index.js';
 
 export function collectTaskDetailDto(refs) {
   return {
@@ -24,7 +26,6 @@ function toInt(v) {
 }
 
 
-
 import { apiPost } from './dataService.js';
 
 export async function handleSubmit(e, refs, formEl) {
@@ -42,10 +43,11 @@ export async function handleSubmit(e, refs, formEl) {
     }
 
     const result = await apiPost('/api/taskdetails', dto);
-    console.log('Created:', result);
+
+    await renderDashboardTable(TASK_TABLE, renderFormTaskDetail);
+
 
     resetAfterSubmit(refs);
-    alert('Task created successfully ✅');
 
   } catch (err) {
     console.error('Create failed:', err);
@@ -54,6 +56,7 @@ export async function handleSubmit(e, refs, formEl) {
     if (submitBtn) submitBtn.disabled = false;
   }
 }
+
 
 
 

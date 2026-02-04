@@ -10,8 +10,9 @@
     min-width: 500px;
     max-width: 1600px;
     min-height: fit-content;
+    margin-top: 8rem;
     padding: 10px;
-    font-size:  14px;
+    font-size:  12px;
     font-family: Helvetica, Arial, sans-serif;
     background-color: none;
     flex-grow: 1;
@@ -41,17 +42,18 @@
     font-family: Helvetica, Arial, sans-serif;
     width: 100%;
     padding: 6px;
-    background-color: var(--FormBackground);
+    background-color: var(--FormLight);
 }
 
 .form__header {
     display: flex;
     align-content: center;
     justify-content: space-between;
-    background-color: var(--Blue-11);
     width: 100%;
     height: 2.5rem;
     padding: 6px;
+    background-color: var(--HeaderBackground);
+    color: var(--TextLight);
 }
 
 .form__title {
@@ -59,5 +61,4 @@
     margin-left: 5px;
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--Gray-2);
 }
