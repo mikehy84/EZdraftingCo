@@ -1,6 +1,6 @@
 export const BUTTON_CONFIGS = {
   btnAdd: {
-    text: "+ Add New",
+    text: " Add New",
     api: '/api/',
     id: 'btnAdd',
     className: 'btn_add'

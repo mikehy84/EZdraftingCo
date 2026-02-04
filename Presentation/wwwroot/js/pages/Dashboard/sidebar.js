@@ -25,6 +25,8 @@ document.querySelector('.sidebar__list')
             case PERSON_TABLE.name:
                 document.querySelector('#table__container').innerHTML = '';
                 document.querySelector('#form__container').innerHTML = '';
+                const form = document.querySelector('#form__container');
+                form.classList.remove('form__container--visible');
                 await renderDashboardTable(PERSON_TABLE);
                 break;
 

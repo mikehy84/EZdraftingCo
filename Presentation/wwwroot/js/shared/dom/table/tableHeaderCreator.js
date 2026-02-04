@@ -1,4 +1,4 @@
-﻿import { createBtn } from '../elements/index.js';
+﻿import { createBtnAdd } from '../elements/index.js';
 import { BUTTON_CONFIGS } from '../../config/index.js';
 import { divBuilder } from '../elements/index.js';
 
@@ -66,7 +66,7 @@ export function createSearchBar(text, func) {
     // attach listener
     searchInput.addEventListener('input', onSearchInput);
 
-    createBtn(BUTTON_CONFIGS.btnAdd, searchBarDiv, func);
+    createBtnAdd(BUTTON_CONFIGS.btnAdd, searchBarDiv, func);
 
 
     searchBarDiv.prepend(searchInput);

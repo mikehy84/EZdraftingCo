@@ -3,7 +3,7 @@ import {
   loadSelect, textareaBuilder,
   selectBuilder,
   inputBuilder, resetFields,
-  createBtn
+  createBtnSubmit
 } from "../../dom/elements/index.js"
 import { FORM_CONFIGS } from "../../config/index.js"
 import { createFormHeader } from "./index.js";
@@ -66,7 +66,7 @@ export async function renderFormTaskDetail({ reset = true } = {}) {
 
   container.appendChild(formDom);
 
-  // createBtn(formDom, BUTTON_CONFIGS.submit);
+  // createBtnAdd(formDom, BUTTON_CONFIGS.submit);
 }
 
 
@@ -82,7 +82,7 @@ async function buildField(fieldConfig, parentDom) {
       return textareaBuilder(fieldConfig, parentDom);
 
     case 'button':
-      return createBtn(fieldConfig.btn, parentDom );
+      return createBtnSubmit(fieldConfig.btn, parentDom );
   }
 }
 

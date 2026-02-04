@@ -1,6 +1,9 @@
 
 
 .btn_add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: fit-content;
     height: 1.5rem;
     margin: auto;
@@ -14,6 +17,11 @@
     color: var(--Gray-0);
     box-shadow: var(--BtnAddBoxShadow);
 }
+
+.icon__add{
+    font-size: 1.2rem;
+    margin-right: 4px;
+    vertical-align: middle;}
 
 .btn_submit {
     width: 30%;
