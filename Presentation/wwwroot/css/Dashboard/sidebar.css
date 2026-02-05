@@ -1,51 +1,46 @@
 ﻿.dashboard__sidebar {
-    position: absolute;
-    top: 8rem;
+    position: fixed;
+    top: 0;
     left: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 3px;
-    color: var(--Gray-9);
-    background-color: var(--TableBackgroundDark);
-    box-shadow: var(--TableBoxShadowDark);
+    height: 100%;
+    padding-top: 8rem;
+    color: var(--TextDark);
+    background-color: var(--LightBackground);
     z-index: 1;
 }
 
-.sidebar__menu {
-    display: flex;
-    flex-direction: column;
-}
-
 .sidebar__list {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: center;
-    padding: 1rem 0;
-    background-color: var(--Green-11);
 }
 
 
 
 
 .sidebar__link {
-    margin: 1px 0;
+    display: flex;
+    align-items: center;
     padding: 0.2rem 1rem;
     text-decoration: none;
-    color: var(--Gray-9);
-    background-color: var(--Gray-0);
+    color: var(--TextDark);
+    height: 2.5rem;
     cursor: pointer;
     text-decoration: none;
 }
 
 .sidebar__link--active {
-    color: var(--Gray-0);
-    background-color: var(--Blue-1);
+    color: var(--TextLight);
+    background-color: var(--DarkBackground);
 }
 
 .sidebar__list a:hover {
-    color: var(--Gray-0);
-    background-color: var(--Blue-10);
+    color: var(--TextLight);
+    background-color: var(--DarkBackground);
 }

@@ -1,0 +1,60 @@
+﻿<nav class="navbar" id="navbar">
+    <!-- Top Section -->
+    <div class="nav__top" id="nav__top">
+        <a class="top__link" href="mailto:info@ezdraftingco.com">info@ezdraftingco.com</a>
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="nav__btm" id="nav__btm">
+
+        <!-- Logo -->
+        <a class="logo__link" asp-controller="Home" asp-action="Index">
+            <div class="logo__box">
+                <img class="logo__blue" id="logo__blue" loading="lazy" src="/media/logo/zettarex B.png"
+                    alt="zettarex_Logo" />
+                <img class="logo__white" id="logo__white" loading="lazy" src="/media/logo/zettarex W.png"
+                    alt="zettarex_Logo" />
+            </div>
+        </a>
+
+        <!-- Burger Button -->
+        <div class="burger__btn">
+            <div class="burger__icon" id="burger"></div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="burger__list" id="burger__list">
+            <a class="burger__link" asp-area="Client" asp-controller="Home" asp-action="Index">Home</a>
+            <a class="burger__link" asp-area="Client" asp-controller="Home" asp-action="Index">Services</a>
+            <a class="burger__link" asp-area="Client" asp-controller="Project" asp-action="Index">Projects</a>
+            <a class="burger__link" asp-area="Client" asp-controller="Home" asp-action="Index">About us</a>
+            <a class="burger__link" asp-area="Client" asp-controller="Home" asp-action="Index">Contact us</a>
+            <img class="navbar__burger-logo" loading="lazy" src="/media/logo/ez-code_B2.webp" alt="EZDRAFTING_Logo" />
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="navbar__menu">
+            <div class="navbar__list" id="navbar__list">
+                @* <a class="nav__link" id="services" asp-controller="Services" asp-action="Index">Services</a> *@
+                @* <a class="nav__link" asp-controller="About" asp-action="Index">About us</a> *@
+                @* <a class="nav__link" asp-controller="Contact" asp-action="Index">Contact us</a> *@
+                <a class="nav__link" asp-area="Client" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="nav__link" id="services">Services</a>
+                <a class="nav__link" asp-area="Client" asp-controller="Project" asp-action="Index">Projects</a>
+                <a class="nav__link" asp-area="Admin" asp-controller="Priority" asp-action="Index">Priorities</a>
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <a class="nav__link" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Admin</a>
+                }
+
+                <a class="nav__link" asp-area="Client" asp-controller="AboutUs" asp-action="Index">About us</a>
+                <a class="nav__link" id="contact">Contact us</a>
+                @* <partial class="nav__link" name="_LoginPartial" /> *@
+            </div>
+        </div>
+    </div>
+    <script src="~/js/shared/ui/dashNavbar.js"></script>
+
+
+</nav>

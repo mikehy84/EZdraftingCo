@@ -33,12 +33,11 @@
     --Gray-3: #dee2e6;
     --Gray-4: #ced4da;
     --Gray-5: #adb5bd; /*box-shadow*/
-    --Gray-6: #868e96;
+    --Gray-6: #868e96; /*--DarkBackground*/
     --Gray-7: #495057;
     --Gray-8: #343a40;
     --Gray-9: #212529;
-    --TableBackgroundDark: #15161763; /* tables back ground*/
-    --TableBoxShadowDark: 0px 0px 12px var(--Blue-3);
+
     /*    -----------------------------------------------*/
 
     --Green-0: #ebfbee;
@@ -124,6 +123,7 @@
     --Orange-9: #d9480f;
 
     --WhiteSmoke: #f5f5f5;
+    --Snow: #FFFAFA;
     /* /////////////////////////////////////////////////////////// */
     --boxShadow: 0px 0px 10px var(--Gray-6);
     --BurgerIcon: orangered;
@@ -135,10 +135,15 @@
     --TextDark: var(--Gray-7);
 
 
-    --FormLight: var(--WhiteSmoke);
-    --TheadDark: var(--Gray-6);
+    --LightBackground: var(--WhiteSmoke);
+    --SnowBackground: var(--Snow);
+    --DarkBackground: var(--Gray-6);
+    --FaintBackground: #868e969c;
     --HeaderBackground: var(--Blue-11);
 
+
+    --TableBackgroundDark: #15161763;
+    --TableBoxShadowDark: 0px 0px 12px var(--Gray-6);
 
     /* --InputBackground: var(--Gray-1); */
     --InputBorder: 1px solid var(--Gray-5);
@@ -202,7 +207,8 @@ body {
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--Gray-3);
-    background: url(/media/images/home/background2.png);
+    background: url(/media/images/home/background3.png);
+    background-size: cover;
     flex-grow: 1;
 }
 

@@ -8,6 +8,9 @@
     width: 100vw;
     height: 5rem;
     padding: 0;
+    background-color: var(--DarkBackground);
+    background-color: var(--Blue-10);
+    background-color: var(--HeaderBackground);
     z-index: 100;
 }
 

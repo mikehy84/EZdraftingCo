@@ -46,6 +46,10 @@ export async function handleSubmit(e, refs, formEl) {
 
     await renderDashboardTable(TASK_TABLE, renderFormTaskDetail);
 
+    const container = document.querySelector('#form__container');
+    container.classList.remove('form__container--visible');
+    container.classList.add('form__container');
+
 
     resetAfterSubmit(refs);
 
