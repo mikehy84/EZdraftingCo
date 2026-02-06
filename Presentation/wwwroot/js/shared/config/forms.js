@@ -113,6 +113,11 @@ export const FORM_CONFIGS = {
     submit: {
       type: 'button',
       btn: BUTTON_CONFIGS.btnSubmit,
+    },
+
+    cancel: {
+      type: 'button',
+      btn: BUTTON_CONFIGS.btnCancel,
     }
   }
 };

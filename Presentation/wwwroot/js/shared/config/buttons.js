@@ -33,5 +33,13 @@ export const BUTTON_CONFIGS = {
     api: '/api/',
     id: 'btnDelete',
     className: 'btn_delete'
+  },
+
+    btnCancel: {
+    text: "Cancel",
+    type: "button",
+    api: '/api/',
+    id: 'btnCancel',
+    className: 'btn_cancel'
   }
 };
