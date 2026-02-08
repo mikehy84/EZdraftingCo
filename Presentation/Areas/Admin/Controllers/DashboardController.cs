@@ -5,12 +5,14 @@ using Application.Helper;
 using Application.Interfaces;
 using AutoMapper;
 using Humanizer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Areas.Admin.Controllers
 {
     [Area(AreaNames.Admin)]
     [Route("Admin/Dashboard")]
+    [Authorize]
     public class DashboardController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
