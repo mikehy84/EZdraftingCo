@@ -1,24 +1,26 @@
 ﻿.form__container {
-    display: none;
+    position: absolute;
+    right: 10px;
+    margin-top: 6.5rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    width: fit-content;
+    font-size: 12px;
+    font-family: Helvetica, Arial, sans-serif;
+
+    background-color: var(--LightBackground);
+    box-shadow: var(--TableBoxShadowDark);
+
+    transform: translateX(60rem);
+    transform-origin: right;
+    transition: transform 0.5s ease-in-out;
 }
 
 .form__container--visible {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    min-width: 500px;
-    min-height: fit-content;
-    margin-top: 3rem;
-    padding: 10px;
-    font-size:  12px;
-    font-family: Helvetica, Arial, sans-serif;
-    background-color: none;
-    flex-grow: 1;
-    background-color: var(--FaintBackground);
-    box-shadow: var(--TableBoxShadowDark);
+    transform: translateX(0);
 }
 
 
@@ -35,18 +37,18 @@
         "assignee estimatedHours"
         "title title"
         "des des"
-        "none submit";
+        "cancel submit";
 
     /* background-color: var(--Gray-4); */
     color: var(--Gray-7);
     font-family: Helvetica, Arial, sans-serif;
-    width: 50%;
+    width: 100%;
     padding: 6px;
     background-color: var(--LightBackground);
 }
 
 .form__header {
-    width: 50%;
+    width: 100%;
     height: 2.5rem;
     padding: 6px;
     background-color: var(--HeaderBackground);

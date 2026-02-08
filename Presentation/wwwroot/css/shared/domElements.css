@@ -117,7 +117,7 @@
 }
 .form__field--submit {
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
     grid-area: submit;
 }
@@ -125,8 +125,7 @@
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    padding-right: 5rem;
-    grid-area: submit;
+    grid-area: cancel;
 }
 
 

@@ -1,5 +1,6 @@
 import { BUTTON_CONFIGS } from './buttons.js';
 import { SELECT_CONFIGS } from './selects.js';
+import { handleCancel } from '../dom/buttonHandlers.js';
 
 
 export const FORM_CONFIGS = {
@@ -112,12 +113,13 @@ export const FORM_CONFIGS = {
 
     submit: {
       type: 'button',
-      btn: BUTTON_CONFIGS.btnSubmit,
+      btn: BUTTON_CONFIGS.btnSubmit
     },
 
     cancel: {
       type: 'button',
       btn: BUTTON_CONFIGS.btnCancel,
+      onClick: handleCancel
     }
   }
 };

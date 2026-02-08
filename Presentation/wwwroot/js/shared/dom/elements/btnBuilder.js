@@ -1,25 +1,22 @@
-export function createBtn(config, parentElement, func) {
-  // const tableHeader = document.querySelector('.table__header');
+export function createBtn(config, parentElement) {
   if (!parentElement) return;
 
-  let btnAdd = document.querySelector(`#${config.id}`);
-  if (!btnAdd) {
-    btnAdd = document.createElement('button');
-    btnAdd.id = config.id;
-    btnAdd.type = config.type;
-    btnAdd.classList.add('btn')
-    btnAdd.classList.add(config.className);
-    btnAdd.textContent = config.text;
-    parentElement.append(btnAdd);
+  let btn = document.querySelector(`#${config.id}`);
+  if (!btn) {
+    btn = document.createElement('button');
+    btn.id = config.id;
+    btn.type = config.type ?? 'button';
+    btn.classList.add('btn', config.className);
+    btn.textContent = config.text;
+    parentElement.append(btn);
   }
 
-  // IMPORTANT: replace old handler
-  btnAdd.onclick = null;
-
-  if (typeof func === 'function') {
-    btnAdd.addEventListener('click', func);
+  btn.onclick = null; // ✅ correct
+  if (typeof config.onClick === 'function') {
+    btn.onclick = config.onClick; // ✅ replaces old handler
   }
 }
+
 
 
 export function createBtnAdd(config, parentElement, func) {

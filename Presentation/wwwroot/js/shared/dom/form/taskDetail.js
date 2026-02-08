@@ -7,14 +7,13 @@ import {
 } from "../../dom/elements/index.js"
 import { FORM_CONFIGS } from "../../config/index.js"
 import { createFormHeader } from "./index.js";
-import { handleSubmit } from "../../api/collectData.js";
-import { TASK_TABLE } from "../../config/tables.js";
+import { handleSubmit } from "../buttonHandlers.js";
 
 
 
 export async function renderFormTaskDetail({ reset = true } = {}) {
 
-  const formConfig = FORM_CONFIGS.taskDetailForm;
+  const taskDetailFormConfig = FORM_CONFIGS.taskDetailForm;
 
   const container = document.querySelector('#form__container');
 
@@ -39,7 +38,7 @@ export async function renderFormTaskDetail({ reset = true } = {}) {
 
   createFormHeader('New Task');
 
-  const refs = await formBuilder(formConfig, formDom);
+  const refs = await formBuilder(taskDetailFormConfig, formDom);
 
   formDom.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -47,7 +46,7 @@ export async function renderFormTaskDetail({ reset = true } = {}) {
     // await renderDashboardTable(TASK_TABLE, renderFormTaskDetail);
   });
 
-  await loadSelect(formConfig.project, refs.project, null);
+  await loadSelect(taskDetailFormConfig.project, refs.project, null);
 
   // handle project change
   refs.project.addEventListener('change', async (e) => {
@@ -57,12 +56,14 @@ export async function renderFormTaskDetail({ reset = true } = {}) {
     resetFields(refs);
 
     // load dependent selects
-    await loadSelect(formConfig.phase, refs.phase, projectId);
-    await loadSelect(formConfig.area, refs.area, projectId);
-    await loadSelect(formConfig.taskName, refs.taskName);
-    await loadSelect(formConfig.priority, refs.priority);
-    await loadSelect(formConfig.assignee, refs.assignee);
+    await loadSelect(taskDetailFormConfig.phase, refs.phase, projectId);
+    await loadSelect(taskDetailFormConfig.area, refs.area, projectId);
+    await loadSelect(taskDetailFormConfig.taskName, refs.taskName);
+    await loadSelect(taskDetailFormConfig.priority, refs.priority);
+    await loadSelect(taskDetailFormConfig.assignee, refs.assignee);
   });
+
+
 
   container.appendChild(formDom);
 
@@ -70,19 +71,19 @@ export async function renderFormTaskDetail({ reset = true } = {}) {
 }
 
 
-async function buildField(fieldConfig, parentDom) {
-  switch (fieldConfig.type) {
+async function buildElement(ElementConfig, parentDom) {
+  switch (ElementConfig.type) {
     case 'select':
-      return selectBuilder(fieldConfig, parentDom, fieldConfig.disabled ?? false);
+      return selectBuilder(ElementConfig, parentDom, ElementConfig.disabled ?? false);
 
     case 'input':
-      return inputBuilder(fieldConfig, parentDom);
+      return inputBuilder(ElementConfig, parentDom);
 
     case 'textarea':
-      return textareaBuilder(fieldConfig, parentDom);
+      return textareaBuilder(ElementConfig, parentDom);
 
     case 'button':
-      return createBtn(fieldConfig.btn, parentDom );
+      return createBtn({ ...ElementConfig.btn, onClick: ElementConfig.onClick }, parentDom);
   }
 }
 
@@ -100,18 +101,18 @@ async function formBuilder(formConfig, formDom) {
 
   // [fieldKey, field] => destructuring each pair into key and value
   // so => const [fieldKey, field] = ['project', {...}];
-  // means => fieldKey = 'project'; field = { type:'select', select: SELECT_CONFIGS.projects }
+  // means => fieldKey = 'project'; fieldConfig = { type:'select', select: SELECT_CONFIGS.projects }
 
-  for (const [fieldKey, field] of Object.entries(formConfig)) {
+  for (const [fieldKey, fieldConfig] of Object.entries(formConfig)) {
     const div = divBuilder(formDom, 'form__field');
     div.classList.add(`form__field--${fieldKey}`);
 
     // label: handle select label vs input label
-    const labelConfig = field.label;
+    const labelConfig = fieldConfig.label;
     if (labelConfig)
       labelBuilder(labelConfig, div);
 
-    const el = await buildField(field, div);
+    const el = await buildElement(fieldConfig, div);
 
     // store reference
     refs[fieldKey] = el;

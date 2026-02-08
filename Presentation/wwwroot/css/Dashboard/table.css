@@ -112,13 +112,11 @@
     width: 1rem;
     height: 1rem;
     border-radius: 0.5rem;
-    position: relative;
-    overflow: hidden;
 }
 
 .status__span--new {
-    background: linear-gradient(135deg, var(--Green-5), var(--Green-8));
-    box-shadow: 0 0px 8px var(--Green-3);
+    background: var(--Green-2);
+    /* box-shadow: 0 0px 4px var(--Gray-9); */
 }
 
 .status__span--inProgress {
@@ -151,32 +149,13 @@
     box-shadow: 0 0px 8px var(--Violet-3);
 }
 
-.status__span--new::after {
-    content: '';
-    position: absolute;
-    inset: -50%;
-    background: linear-gradient(120deg,
-            transparent 40%,
-            var(--Gray-2) 50%,
-            transparent 60%);
-    animation: shine 2s infinite;
-}
-
 .table__td--status {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-@keyframes shine {
-    from {
-        transform: translateX(-100%);
-    }
 
-    to {
-        transform: translateX(100%);
-    }
-}
 
 
 /* ===================== Task priority styles ===================== */

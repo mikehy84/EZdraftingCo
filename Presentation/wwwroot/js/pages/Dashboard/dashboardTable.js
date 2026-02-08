@@ -19,7 +19,6 @@ export async function renderDashboardTable(tableConfig = {}, func) {
     let { container, table, tbody } = createTableSkeleton({ headers: tableConfig.headers, reset: true });
 
     const data = await LoadData(tableConfig.url);
-    console.log('Data loaded:', data);
 
     if (handleEmptyState(data, container)) return;
 
