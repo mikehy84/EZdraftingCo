@@ -14,6 +14,7 @@ namespace Infrastructure.Repository
     {
         private readonly ApplicationDbContext _db;
 
+        public IAccountClaim AccountClaims { get; private set; }
         public IAddress Addresses { get; private set; }
         public IEmailAddress EmailAddresses { get; private set; }
         public IPerson Persons { get; private set; }
@@ -30,6 +31,7 @@ namespace Infrastructure.Repository
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
+            AccountClaims = new AccountClaimRep(_db); 
             Addresses = new AddressRep(_db);
             EmailAddresses = new EmailAddressRep(_db);
             Persons = new PersonRep(_db);

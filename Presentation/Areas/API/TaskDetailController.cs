@@ -4,6 +4,7 @@ using Application.Interfaces;
 using AutoMapper;
 using Domain.Entities;
 using Humanizer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Areas.API
@@ -14,12 +15,18 @@ namespace Presentation.Areas.API
 
     public class TaskDetailController : ControllerBase
     {
+        private readonly UserManager<UserAccount> _userManager;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly ILogger<TaskDetailController> _logger;
 
-        public TaskDetailController(IUnitOfWork unitOfWork, IMapper mapper, ILogger<TaskDetailController> logger)
+        public TaskDetailController(
+            UserManager<UserAccount> userManager,
+            IUnitOfWork unitOfWork, 
+            IMapper mapper, 
+            ILogger<TaskDetailController> logger)
         {
+            _userManager = userManager;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _logger = logger;
@@ -74,7 +81,7 @@ namespace Presentation.Areas.API
                     var newAssignment = new TaskAssignment
                     {
                         TaskDetailId = newTaskDetail.Id,
-                        //TaskAssignorId = createTaskDetailDto.AssignorId.Value,
+                        //TaskAssignorId = _userManager.GetUserId(User),
                         TaskAssignorId = 2,
                         TaskAssigneeId = createTaskDetailDto.AssigneeId.Value,
                     };

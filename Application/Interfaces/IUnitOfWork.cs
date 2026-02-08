@@ -9,6 +9,7 @@ namespace Application.Interfaces
 {
     public interface IUnitOfWork
     {
+        IAccountClaim AccountClaims { get; }
         IAddress Addresses { get; }
         IEmailAddress EmailAddresses { get; }
         IPerson Persons { get; }

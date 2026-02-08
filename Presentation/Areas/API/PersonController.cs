@@ -1,8 +1,10 @@
 ﻿using Application.DTO.Person;
+using Application.Helper;
 using Application.Interfaces;
 using AutoMapper;
 using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace Presentation.Areas.API
@@ -124,5 +126,11 @@ namespace Presentation.Areas.API
                 return BadRequest("Error");
             }
         }
+
+
+
+
+        
+
     }
 }
