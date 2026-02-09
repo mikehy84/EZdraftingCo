@@ -53,7 +53,7 @@ namespace Domain.Entities
 
 
         // EmailAddresses associated with this person
-        public ICollection<EmailAddress> EmailAddresses { get; set; } = [];
+        public ICollection<Email> EmailAddresses { get; set; } = [];
 
 
         // Tasks this person assigned to others

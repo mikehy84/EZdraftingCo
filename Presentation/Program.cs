@@ -1,19 +1,20 @@
-using Application.Mapper;
 using Application.DTO.Project;
-using Microsoft.AspNetCore.Cors.Infrastructure;
-using Microsoft.EntityFrameworkCore;
-using Azure.Storage.Blobs;
-using Application.Services;
-using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Identity;
-using Domain.Entities;
 using Application.DTO.UserAccount;
-using Infrastructure.Data;
-using Application.Services.Azure;
 using Application.Interfaces;
-using Infrastructure.Repository;
+using Application.Mapper;
+using Application.Services;
+using Application.Services.Azure;
+using Application.Services.EmailService;
 using Application.Services.ProjectDir;
 using Application.Services.UserAccountDir;
+using Azure.Storage.Blobs;
+using Domain.Entities;
+using Infrastructure.Data;
+using Infrastructure.Repository;
+using Microsoft.AspNetCore.Cors.Infrastructure;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -58,6 +59,11 @@ builder.Services.AddSingleton<BlobServiceClient>(sp =>
 
 // Register your blob service
 builder.Services.AddScoped<IBlobService, BlobService>();
+
+builder.Services.AddScoped<IAccountClaimService, AccountClaimService>();
+
+builder.Services.AddScoped<IEmailSender, SendGridEmailSender>();
+
 
 
 

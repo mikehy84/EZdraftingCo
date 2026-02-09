@@ -1,9 +1,11 @@
 ﻿using Application.DTO.Person;
 using Application.Helper;
 using Application.Interfaces;
+using Application.Services.EmailService;
 using AutoMapper;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -18,11 +20,20 @@ namespace Application.Services.UserAccountDir
 
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly IEmailSender _emailSender;
+        private readonly string _baseUrl;
 
-        public AccountClaimService(IUnitOfWork unitOfWork, IMapper mapper)
+        public AccountClaimService(
+            IUnitOfWork unitOfWork, 
+            IMapper mapper, 
+            IEmailSender emailSender,
+            IConfiguration config)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _emailSender = emailSender;
+            _baseUrl = config["App:PublicBaseUrl"]
+                ?? throw new InvalidOperationException("PublicBaseUrl is not configured.");
         }
 
 
@@ -89,7 +100,16 @@ namespace Application.Services.UserAccountDir
             await _unitOfWork.Save();
         }
 
+        public async Task SendInviteAsync(string email, string token)
+        {
+            var link = $"{_baseUrl}/register?token={token}";
 
+            await _emailSender.SendAsync(
+                email,
+                "Account registration invite",
+                $"Click here to register: <a href=\"{link}\">Register</a>"
+            );
+        }
 
 
 

@@ -69,7 +69,7 @@ namespace Infrastructure.Data
             modelBuilder.ApplyConfiguration(new CompanyFluentConfig());
             modelBuilder.ApplyConfiguration(new CompanyTypeFluentConfig());
             modelBuilder.ApplyConfiguration(new CountryFluentConfig());
-            modelBuilder.ApplyConfiguration(new EmailAddressFluentConfig());
+            modelBuilder.ApplyConfiguration(new EmailFluentConfig());
             modelBuilder.ApplyConfiguration(new EmployeeProfileFluentConfig());
             modelBuilder.ApplyConfiguration(new JobFluentConfig());
             modelBuilder.ApplyConfiguration(new PersonFluentConfig());

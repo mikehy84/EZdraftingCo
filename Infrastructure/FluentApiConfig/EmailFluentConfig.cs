@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.FluentApiConfig
 {
-    public class EmailAddressFluentConfig : IEntityTypeConfiguration<EmailAddress>
+    public class EmailFluentConfig : IEntityTypeConfiguration<Email>
     {
-        public void Configure(EntityTypeBuilder<EmailAddress> modelBuilder)
+        public void Configure(EntityTypeBuilder<Email> modelBuilder)
         {
             modelBuilder
                 .HasKey(ea => ea.Id);
@@ -22,13 +22,13 @@ namespace Infrastructure.FluentApiConfig
                 .ValueGeneratedOnAdd();
 
             modelBuilder
-                .Property(ea => ea.Email)
+                .Property(ea => ea.EmailAddress)
                 .IsRequired()
                 .HasMaxLength(100);
 
             // Unique Indexes
             modelBuilder
-                .HasIndex(ea => ea.Email)
+                .HasIndex(ea => ea.EmailAddress)
                 .IsUnique(); // Unique index on Email
 
             modelBuilder
@@ -37,7 +37,7 @@ namespace Infrastructure.FluentApiConfig
                 .HasFilter("[IsPrimary] = 1"); // Only rows where IsPrimary = true participate in the unique index.
 
             modelBuilder
-                .HasIndex(ea => new { ea.PersonId, ea.Email })
+                .HasIndex(ea => new { ea.PersonId, ea.EmailAddress })
                 .IsUnique(); // Unique index on PersonId and Email combination
 
             // Relationships
@@ -51,18 +51,18 @@ namespace Infrastructure.FluentApiConfig
 
             // Seeding initial data
             modelBuilder.HasData(
-                new EmailAddress
+                new Email
                 {
                     Id = 1,
                     PersonId = 1,
-                    Email = "lgrannon@qualitydraftingco.com",
+                    EmailAddress = "lgrannon@qualitydraftingco.com",
                     IsPrimary = true
                 },
-                new EmailAddress
+                new Email
                 {
                     Id = 2,
                     PersonId = 2,
-                    Email = "mharvey@qualitydraftingco.com",
+                    EmailAddress = "mharvey@qualitydraftingco.com",
                     IsPrimary = true
                 }
             );

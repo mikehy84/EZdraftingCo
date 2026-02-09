@@ -11,7 +11,7 @@ namespace Application.Interfaces
     {
         IAccountClaim AccountClaims { get; }
         IAddress Addresses { get; }
-        IEmailAddress EmailAddresses { get; }
+        IEmail Emails { get; }
         IPerson Persons { get; }
         IPhase Phases { get; }
         IPhone Phones { get; }

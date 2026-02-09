@@ -1,6 +1,8 @@
 ﻿using Application.DTO.Person;
 using Application.Helper;
 using Application.Interfaces;
+using Application.Services.EmailService;
+using Application.Services.UserAccountDir;
 using AutoMapper;
 using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -18,12 +20,23 @@ namespace Presentation.Areas.API
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly ILogger<PersonController> _logger;
+        // 
+        private readonly IAccountClaimService _accountClaimService;
+        private readonly IEmailSender _emailSender;
 
-        public PersonController(IUnitOfWork unitOfWork, IMapper mapper, ILogger<PersonController> logger)
+        public PersonController(
+            IUnitOfWork unitOfWork, 
+            IMapper mapper, 
+            ILogger<PersonController> logger,
+            IAccountClaimService accountClaimService,
+            IEmailSender emailSender
+            )
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _logger = logger;
+            _accountClaimService = accountClaimService;
+            _emailSender = emailSender;
         }
 
 
@@ -46,26 +59,6 @@ namespace Presentation.Areas.API
         }
 
 
-        //[HttpGet("{id:int}")]
-        //public async Task<IActionResult> GetById(int id)
-        //{
-        //    var person = await _unitOfWork.Persons.GetAsync(
-        //        p => p.Id == id,
-        //        tracked: false,
-        //        p => p.EmailAddresses,
-        //        p => p.PhoneNumbers,
-        //        p => p.Addresses
-        //    );
-
-        //    if (person is null) return NotFound();
-
-        //    var primaryEmail = person.EmailAddresses.FirstOrDefault(e => e.IsPrimary);
-        //    var primaryPhone = person.PhoneNumbers.FirstOrDefault(p => p.IsPrimary);
-        //    var primaryAddress = person.Addresses.FirstOrDefault(a => a.IsPrimary);
-
-
-        //    return Ok(_mapper.Map<PersonDto>(person));
-        //}
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById(int id)
@@ -81,9 +74,6 @@ namespace Presentation.Areas.API
 
 
 
-
-
-
         [HttpPost]
         public async Task<IActionResult> CreatePerson([FromBody] CreatePersonDto createPersonDto)
         {
@@ -94,9 +84,9 @@ namespace Presentation.Areas.API
 
                 if(createPersonDto.Email is not null)
                 {
-                    var email = _mapper.Map<EmailAddress>(createPersonDto.Email);
+                    var email = _mapper.Map<Email>(createPersonDto.Email);
                     email.PersonId = person.Id;
-                    await _unitOfWork.EmailAddresses.CreateAsync(email);
+                    await _unitOfWork.Emails.CreateAsync(email);
                 }
 
                 if(createPersonDto.Phone is not null)
@@ -111,6 +101,17 @@ namespace Presentation.Areas.API
                     var address = _mapper.Map<Address>(createPersonDto.Address);
                     address.PersonId = person.Id;
                     await _unitOfWork.Addresses.CreateAsync(address);
+                }
+
+                if (createPersonDto.SendInvite)
+                {
+                    var rawToken = await _accountClaimService.CreateClaimForPersonAsync(person.Id, 5);
+
+                    await _emailSender.SendAsync(
+                        createPersonDto.Email.EmailAddress,
+                        "Account Registration Invite",
+                        $"Register using this link: https://app/register?token={rawToken}"
+                    );
                 }
 
                 var resultDto = _mapper.Map<PersonDto>(person);

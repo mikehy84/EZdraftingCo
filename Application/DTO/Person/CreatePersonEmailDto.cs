@@ -8,7 +8,7 @@ namespace Application.DTO.Person
 {
     public sealed record CreatePersonEmailDto
     {
-        public string Email { get; init; } = string.Empty;
+        public string EmailAddress { get; init; } = string.Empty;
         public bool IsPrimary { get; init; }
     }
 }

@@ -11,21 +11,21 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Repository
 {
-    public class EmailAddressRep : Repository<EmailAddress>, IEmailAddress
+    public class EmailRep : Repository<Email>, IEmail
     {
         private readonly ApplicationDbContext _db;
 
-        public EmailAddressRep(ApplicationDbContext db) : base(db)
+        public EmailRep(ApplicationDbContext db) : base(db)
         {
             _db = db;
         }
 
-        public Task<bool> ContainsAsync(EmailAddress emailAddress)
+        public Task<bool> ContainsAsync(Email email)
         {
             throw new NotImplementedException();
         }
 
-        public Task<EmailAddress> UpdateAsync(EmailAddress emailAddress)
+        public Task<Email> UpdateAsync(Email email)
         {
             throw new NotImplementedException();
         }

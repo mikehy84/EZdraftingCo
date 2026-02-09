@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class EmailAddress
+    public class Email
     {
         public int Id { get; set; }
 
         public int PersonId { get; set; }
         public Person Person { get; set; }
 
-        public string Email { get; set; }
+        public string EmailAddress { get; set; }
         public bool IsPrimary { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; }
