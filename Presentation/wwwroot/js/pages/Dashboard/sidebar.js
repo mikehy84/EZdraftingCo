@@ -1,7 +1,7 @@
 ﻿// import { renderDashboardTable } from './Task/taskLog.js';
 import { renderDashboardTable } from './index.js';
-import { TASK_TABLE, PERSON_TABLE } from '../../shared/config/index.js';
-import { renderFormTaskDetail } from "../../shared/dom/form/index.js"
+import { TASK_TABLE_CONFIG, PERSON_TABLE_CONFIG } from '../../shared/configs/tables/tables.config.js';
+import { renderFormTaskDetail, renderFormAddContact } from "../../shared/dom/forms/index.js"
 
 
 
@@ -22,12 +22,12 @@ document.querySelector('.sidebar__list')
         const action = link.dataset.action;
 
         switch (action) {
-            case PERSON_TABLE.name:
+            case PERSON_TABLE_CONFIG.name:
                 document.querySelector('#table__container').innerHTML = '';
                 document.querySelector('#form__container').innerHTML = '';
                 const form = document.querySelector('#form__container');
                 form.classList.remove('form__container--visible');
-                await renderDashboardTable(PERSON_TABLE);
+                await renderDashboardTable(PERSON_TABLE_CONFIG, renderFormAddContact);
                 break;
 
             case 'company':
@@ -38,8 +38,8 @@ document.querySelector('.sidebar__list')
                 console.log('companies clicked');
                 break;
 
-            case TASK_TABLE.name:
-                await renderDashboardTable(TASK_TABLE, renderFormTaskDetail);
+            case TASK_TABLE_CONFIG.name:
+                await renderDashboardTable(TASK_TABLE_CONFIG, renderFormTaskDetail);
                 break;
         }
     });

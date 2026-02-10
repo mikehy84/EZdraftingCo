@@ -1,4 +1,4 @@
-﻿import { showLoader, hideLoader } from '../ui/loader.js';
+﻿import { showLoader, hideLoader } from '../components/loader.js';
 
 
 

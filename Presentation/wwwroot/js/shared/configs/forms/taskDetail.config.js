@@ -1,10 +1,8 @@
-import { BUTTON_CONFIGS } from './buttons.js';
-import { SELECT_CONFIGS } from './selects.js';
-import { handleCancel } from '../dom/buttonHandlers.js';
+import { BUTTON_CONFIGS } from '../elements/index.config.js';
+import { handleCancel } from '../../dom/handlers/buttonHandlers.js';
 
 
-export const FORM_CONFIGS = {
-  taskDetailForm: {
+export const TASK_DETAIL_FORM_CONFIGS = {
     project: {
       type: 'select',
       title: "Project",
@@ -12,20 +10,17 @@ export const FORM_CONFIGS = {
       columns: ['internalProjectNo', 'clientProjectName'],
       id: 'project',
       className: ['form__select', 'select__project'],
-      // select: SELECT_CONFIGS.projects,
       label: { text: 'Project:', htmlFor: 'project', className: 'form__label' },
-      required: true,
-      onChangeKey: 'projectChanged'
+      required: true
     },
 
-      phase: {
+    phase: {
       type: 'select',
       title: "Phase",
       api: '/api/phases',
       columns: ['phaseNumber', 'phaseName'],
       id: 'phase',
       className: ['form__select', 'select__phase'],
-      // select: SELECT_CONFIGS.phases,
       label: { text: 'Phase:', htmlFor: 'phase', className: 'form__label' },
       dependsOn: 'project',
       allowEmpty: true,
@@ -39,7 +34,6 @@ export const FORM_CONFIGS = {
       columns: ['name'],
       id: 'area',
       className: ['form__select', 'select__area'],
-      // select: SELECT_CONFIGS.areas,
       label: { text: 'Area:', htmlFor: 'area', className: 'form__label' },
       dependsOn: 'project',
       allowEmpty: true,
@@ -53,7 +47,6 @@ export const FORM_CONFIGS = {
       columns: ['name'],
       id: 'priority',
       className: ['form__select', 'select__priority'],
-      // select: SELECT_CONFIGS.priorities,
       label: { text: 'Priority:', htmlFor: 'priority', className: 'form__label' },
       required: true,
       disabled: true
@@ -66,13 +59,10 @@ export const FORM_CONFIGS = {
       columns: ['name'],
       id: 'taskName',
       className: ['form__select', 'select__taskName'],
-      // select: SELECT_CONFIGS.taskNames,
       label: { text: 'Task Name:', htmlFor: 'taskName', className: 'form__label' },
       dependsOn: 'project',
       disabled: true
     },
-
-
 
     assignee: {
       type: 'select',
@@ -121,5 +111,4 @@ export const FORM_CONFIGS = {
       btn: BUTTON_CONFIGS.btnCancel,
       onClick: handleCancel
     }
-  }
 };

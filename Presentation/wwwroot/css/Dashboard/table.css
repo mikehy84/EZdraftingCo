@@ -9,7 +9,7 @@
     align-items: center;
     width: 100%;
     /* max-width: 1200px; */
-    height: 300px;
+    height: 100%;
     min-height: fit-content;
     padding: 10px;
     margin-top: 3rem;
@@ -80,7 +80,7 @@
 }
 
 .table__table tr {
-    text-align: center;
+    /* text-align: center; */
     background-color: var(--LightBackground);
     color: var(--TextDark);
     border-bottom: 3px solid var(--Gray-3);

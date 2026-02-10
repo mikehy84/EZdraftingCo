@@ -1,4 +1,4 @@
-import { apiGet } from '../../api/dataService.js';
+import { apiGet } from '../../dataService/apiCalls.js';
 
 export async function loadSelect(selectConfig, select, parentId) {
 

@@ -1,6 +1,6 @@
-﻿import { createBtnAdd } from '../elements/index.js';
-import { BUTTON_CONFIGS } from '../../config/index.js';
-import { divBuilder } from '../elements/index.js';
+﻿import { createBtnAdd } from '../builders/index.js';
+import { BUTTON_CONFIGS } from '../../configs/elements/index.config.js';
+import { divBuilder } from '../builders/index.js';
 
 export function onSearchInput(e) {
     const query = e.target.value.toLowerCase().trim();

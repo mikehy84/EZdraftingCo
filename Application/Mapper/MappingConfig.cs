@@ -26,7 +26,7 @@ namespace Application.Mapper
                 .ForMember(dto => dto.Email, opt => opt.MapFrom(person =>
                     person.EmailAddresses
                      .Where(ea => ea.IsPrimary)
-                     .Select(ea => ea.Email)
+                     .Select(ea => ea.EmailAddress)
                      .FirstOrDefault()
                 ))
                 .ForMember(dto => dto.Phone, opt => opt.MapFrom(person =>

@@ -1,5 +1,5 @@
-﻿import { LoadData } from '../../shared/api/dataService.js';
-import { TASK_PRIORITY_CLASS_MAP } from "../../shared/config/index.js";
+﻿import { LoadData } from '../../shared/dataService/apiCalls.js';
+import { TASK_PRIORITY_CLASS_MAP } from "../../shared/configs/uis/ui.configs.js";
 import {
     createTableSkeleton,
     createTableHeader,
@@ -7,7 +7,7 @@ import {
     createTableRows,
     handleEmptyState,
     applyTaskPriorityStyles
-} from '../../shared/dom/table/index.js';
+} from '../../shared/dom/tables/index.js';
 
 
 

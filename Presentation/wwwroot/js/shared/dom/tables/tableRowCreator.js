@@ -1,5 +1,5 @@
-import { formatDate } from "../../api/dataService.js";
-import { STATUS_CLASS_MAP } from "../../config/uiConfigs.js"
+import { formatDate } from "../../dataService/apiCalls.js";
+import { STATUS_CLASS_MAP } from "../../configs/uis/ui.configs.js"
 
 
 

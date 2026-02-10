@@ -1,7 +1,7 @@
-import { apiPost, collectTaskDetailDto } from '../api/index.js';
-import { TASK_TABLE } from '../config/index.js'
-import { renderDashboardTable } from '../../pages/dashboard/index.js'
-import {renderFormTaskDetail} from '../dom/form/index.js'
+import { apiPost, collectTaskDetailDto } from '../../dataService/index.js';
+import { TASK_TABLE_CONFIG } from '../../configs/tables/tables.config.js'
+import { renderDashboardTable } from '../../../pages/dashboard/index.js'
+import {renderFormTaskDetail} from '../forms/index.js'
 
 
 
@@ -21,7 +21,7 @@ export async function handleSubmit(e, refs, formEl) {
 
     const result = await apiPost('/api/taskdetails', dto);
 
-    await renderDashboardTable(TASK_TABLE, renderFormTaskDetail);
+    await renderDashboardTable(TASK_TABLE_CONFIG, renderFormTaskDetail);
 
     const container = document.querySelector('#form__container');
     // container.classList.remove('form__container--visible');

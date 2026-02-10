@@ -1,4 +1,4 @@
-export function createBtn(config, parentElement) {
+export function btnBuilder(config, parentElement) {
   if (!parentElement) return;
 
   let btn = document.querySelector(`#${config.id}`);

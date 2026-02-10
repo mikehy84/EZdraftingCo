@@ -34,7 +34,7 @@ namespace Infrastructure.Data
         public DbSet<Company> Companies { get; set; }
         public DbSet<CompanyType> CompanyTypes { get; set; }
         public DbSet<Country> Countries { get; set; }
-        public DbSet<EmailAddress> EmailAddresses { get; set; }
+        public DbSet<Email> EmailAddresses { get; set; }
         public DbSet<EmployeeProfile> EmployeeProfiles { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Person> Persons { get; set; }

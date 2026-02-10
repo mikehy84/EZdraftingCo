@@ -1,6 +1,6 @@
 
 // Task Table headers
-export const TASK_TABLE = {
+export const TASK_TABLE_CONFIG = {
   title: 'Task',
   name: 'task',
   url: '/api/TaskAssignments',
@@ -10,7 +10,7 @@ export const TASK_TABLE = {
 
 
 // Person Table headers
-export const PERSON_TABLE = {
+export const PERSON_TABLE_CONFIG = {
   title: 'Contact',
   name: 'contact',
   url: '/api/persons',
