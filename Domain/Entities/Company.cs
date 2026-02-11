@@ -20,7 +20,5 @@ namespace Domain.Entities
         // ClientProjects that belong to this Company
         public ICollection<ClientProject> ClientProjects { get; set; } = [];
 
-
-
     }
 }

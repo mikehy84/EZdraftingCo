@@ -1,4 +1,5 @@
-﻿using Application.DTO.Person;
+﻿using Application.DTO.company;
+using Application.DTO.Person;
 using Application.DTO.Phase;
 using Application.DTO.Priority;
 using Application.DTO.Project;
@@ -18,7 +19,13 @@ namespace Application.Mapper
     {
 
         public MappingConfig() 
-        { 
+        {
+            CreateMap<Company, CompanyDto>()
+                .ForMember(dto => dto.CompanyType, opt => opt.MapFrom(companyType => 
+                    companyType.CompanyType.Type
+                ));
+
+
             CreateMap<Person, PersonDto>()
                 .ForMember(dto => dto.Name, opt => opt.MapFrom(person =>
                     $"{person.FirstName} {person.LastName}"

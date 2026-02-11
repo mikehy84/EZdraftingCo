@@ -1,6 +1,7 @@
 ﻿using Application.DTO.Person;
 using Application.DTO.TaskAssignment;
 using Application.DTO.TaskDetail;
+using Application.Helper;
 using Application.Interfaces;
 using AutoMapper;
 using Domain.Entities;
@@ -10,7 +11,7 @@ namespace Presentation.Areas.API
 {
     [Route("api/TaskAssignments")]
     [ApiController]
-    [Area("API")]
+    [Area(AreaNames.API)]
 
     public class TaskAssignmentController : ControllerBase
     {

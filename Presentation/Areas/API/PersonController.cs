@@ -13,7 +13,7 @@ namespace Presentation.Areas.API
 {
     [Route("api/persons")]
     [ApiController]
-    [Area("API")]
+    [Area(AreaNames.API)]
     public class PersonController : ControllerBase
     {
 

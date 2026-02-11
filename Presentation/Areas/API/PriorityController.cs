@@ -30,8 +30,7 @@ namespace Presentation.Areas.API
         {
             try
             {
-                var priorities = await _unitOfWork.Priorities
-                    .GetAllAsync();
+                var priorities = await _unitOfWork.Priorities.GetAllAsync();
                 var dtos = _mapper.Map<IEnumerable<PriorityDto>>(priorities);
                 return Ok(dtos.OrderBy(p => p.Id));
             }

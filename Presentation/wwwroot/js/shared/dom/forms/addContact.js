@@ -29,7 +29,7 @@ export async function renderFormAddContact({ reset = true } = {}) {
   formDom.enctype = "multipart/form-data";
   formDom.classList.add('form__body');
 
-  createFormHeader('New Task');
+  createFormHeader('New Person');
 
   const refs = await formBuilder(ADD_CONTACT_FORM_CONFIGS, formDom);
 
@@ -39,21 +39,17 @@ export async function renderFormAddContact({ reset = true } = {}) {
     // await renderDashboardTable(TASK_TABLE_CONFIG, renderFormTaskDetail);
   });
 
-  await loadSelect(ADD_CONTACT_FORM_CONFIGS.project, refs.project, null);
+  await loadSelect(ADD_CONTACT_FORM_CONFIGS.company, refs.company, null);
 
   // handle project change
-  refs.project.addEventListener('change', async (e) => {
+  refs.company.addEventListener('change', async (e) => {
 
-    const projectId = e.target.value;
+    const companyId = e.target.value;
 
     resetFields(refs);
 
     // load dependent selects
-    await loadSelect(ADD_CONTACT_FORM_CONFIGS.phase, refs.phase, projectId);
-    await loadSelect(ADD_CONTACT_FORM_CONFIGS.area, refs.area, projectId);
-    await loadSelect(ADD_CONTACT_FORM_CONFIGS.taskName, refs.taskName);
-    await loadSelect(ADD_CONTACT_FORM_CONFIGS.priority, refs.priority);
-    await loadSelect(ADD_CONTACT_FORM_CONFIGS.assignee, refs.assignee);
+    await loadSelect(ADD_CONTACT_FORM_CONFIGS.phase, refs.phase, companyId);
   });
 
 

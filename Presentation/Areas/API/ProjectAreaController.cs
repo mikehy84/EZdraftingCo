@@ -1,5 +1,6 @@
 ﻿using Application.DTO.Phase;
 using Application.DTO.ProjectArea;
+using Application.Helper;
 using Application.Interfaces;
 using AutoMapper;
 using Domain.Entities;
@@ -10,6 +11,7 @@ namespace Presentation.Areas.API
 {
     [Route("api/projectAreas")]
     [ApiController]
+    [Area(AreaNames.API)]
     public class ProjectAreaController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;

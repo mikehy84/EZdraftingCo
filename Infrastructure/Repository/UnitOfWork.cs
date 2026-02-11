@@ -16,6 +16,7 @@ namespace Infrastructure.Repository
 
         public IAccountClaim AccountClaims { get; private set; }
         public IAddress Addresses { get; private set; }
+        public ICompany Companies { get; private set; }
         public IEmail Emails { get; private set; }
         public IPerson Persons { get; private set; }
         public IPhase Phases { get; private set; }
@@ -33,6 +34,7 @@ namespace Infrastructure.Repository
             _db = db;
             AccountClaims = new AccountClaimRep(_db); 
             Addresses = new AddressRep(_db);
+            Companies = new CompanyRep(_db);
             Emails = new EmailRep(_db);
             Persons = new PersonRep(_db);
             Phases = new PhaseRep(_db);
