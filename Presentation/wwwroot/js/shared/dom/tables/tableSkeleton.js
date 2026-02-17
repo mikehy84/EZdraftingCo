@@ -38,6 +38,7 @@ export function createTableSkeleton({ headers, tableClass = 'table__table' }, { 
         headRow.appendChild(th);
     });
 
+
     thead.appendChild(headRow);
     table.appendChild(thead);
 

@@ -1,14 +1,15 @@
 import { formatDate } from "../../dataService/apiCalls.js";
 import { STATUS_CLASS_MAP } from "../../configs/uis/ui.configs.js"
+import { handleTaskDetailUpdate } from "../forms/index.js";
 
 
 
 
-export function createTableRows(tbody, data, columns) {
+export function createTableRows(tbody, data, config) {
   for (const item of data) {
     const tr = document.createElement('tr');
 
-      columns.forEach(key => {
+      config.columns.forEach(key => {
         const td = document.createElement('td');
         td.textContent = item[key] ?? '';
 
@@ -23,6 +24,10 @@ export function createTableRows(tbody, data, columns) {
         }
 
         tr.appendChild(td);
+      });
+
+      tr.addEventListener('click', () => {
+        handleTaskDetailUpdate(item);
       });
 
       // tbody.appendChild(tr);

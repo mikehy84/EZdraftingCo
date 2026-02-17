@@ -16,7 +16,13 @@ import {
 
 export async function renderDashboardTable(tableConfig = {}, func) {
 
-    let { container, table, tbody } = createTableSkeleton({ headers: tableConfig.headers, reset: true });
+    let { container, table, tbody } = createTableSkeleton(
+        {
+            headers: tableConfig.headers,
+            actions: tableConfig.actions,
+            reset: true
+        }
+    );
 
     const data = await LoadData(tableConfig.url);
 
@@ -24,6 +30,6 @@ export async function renderDashboardTable(tableConfig = {}, func) {
 
     createSearchBar(tableConfig.title, func);
     createTableHeader(tableConfig.title, func);
-    createTableRows(tbody, data, tableConfig.columns);
+    createTableRows(tbody, data, tableConfig);
     applyTaskPriorityStyles(tbody, TASK_PRIORITY_CLASS_MAP);
 }

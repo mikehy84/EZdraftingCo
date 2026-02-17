@@ -40,7 +40,7 @@ namespace Presentation.Areas.API
         }
 
 
-        [HttpGet]
+        [HttpGet("all")]
         public async Task<IActionResult> GetAll()
         {
 
@@ -49,7 +49,29 @@ namespace Presentation.Areas.API
                 var persons = await _unitOfWork.Persons
                     .GetAllProjectedAsync<PersonDto>(_mapper.ConfigurationProvider);
 
-                return Ok(persons.OrderBy(p => p.Id));
+                return Ok(persons
+                    .OrderBy(p => p.Id));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to load persons");
+                return NotFound("Error");
+            }
+        }
+
+
+        [HttpGet("qdc")]
+        public async Task<IActionResult> GetAllQdcPersons()
+        {
+
+            try
+            {
+                var persons = await _unitOfWork.Persons
+                    .GetAllProjectedAsync<PersonDto>(_mapper.ConfigurationProvider);
+
+                return Ok(persons
+                    .Where(p => p.CompanyId == 1)
+                    .OrderBy(p => p.Id));
             }
             catch (Exception ex)
             {

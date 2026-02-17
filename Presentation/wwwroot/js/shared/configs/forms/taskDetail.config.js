@@ -67,7 +67,7 @@ export const TASK_DETAIL_FORM_CONFIGS = {
     assignee: {
       type: 'select',
       title: "Assignee",
-      api: '/api/persons',
+      api: '/api/persons/qdc',
       columns: ['name'],
       id: 'assignee',
       className: ['form__select', 'select__assignee'],
