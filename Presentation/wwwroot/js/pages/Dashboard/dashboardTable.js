@@ -30,6 +30,6 @@ export async function renderDashboardTable(tableConfig = {}, func) {
 
     createSearchBar(tableConfig.title, func);
     createTableHeader(tableConfig.title, func);
-    createTableRows(tbody, data, tableConfig);
+    createTableRows(tbody, data, tableConfig.columns);
     applyTaskPriorityStyles(tbody, TASK_PRIORITY_CLASS_MAP);
 }

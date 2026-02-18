@@ -5,11 +5,11 @@ import { handleTaskDetailUpdate } from "../forms/index.js";
 
 
 
-export function createTableRows(tbody, data, config) {
+export function createTableRows(tbody, data, columns) {
   for (const item of data) {
     const tr = document.createElement('tr');
 
-      config.columns.forEach(key => {
+      columns.forEach(key => {
         const td = document.createElement('td');
         td.textContent = item[key] ?? '';
 

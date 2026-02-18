@@ -6,7 +6,7 @@ import { API_ROUTES } from "../../dataService/index.js";
 export const TASK_TABLE_CONFIG = {
   title: 'Task',
   name: 'task',
-  url: API_ROUTES.taskDetails.base,
+  url: API_ROUTES.taskAssignments.base,
   headers: ['Id', 'Project Name', 'Priority', 'Assignee', 'Estimated Hours', 'Spent Hours', 'Status', 'Created At'],
   columns: ['id', 'projectName', 'priorityName', 'assigneeName', 'estimatedHours', 'spentHours', 'taskStateName', 'createdAt']
 };

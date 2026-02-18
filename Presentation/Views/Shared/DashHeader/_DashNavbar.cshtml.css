@@ -10,7 +10,7 @@
     padding: 0;
     background-color: var(--DarkBackground);
     background-color: var(--Blue-10);
-    background-color: var(--HeaderBackground);
+/*    background-color: var(--HeaderBackground);*/
     z-index: 100;
 }
 
@@ -85,7 +85,7 @@
 
 .scrolup {
     transform: translateY(0);
-/*    background-color: var(--Blue-10);*/
+    background-color: var(--Blue-10);
     box-shadow: 0 0 0;
 }
 
