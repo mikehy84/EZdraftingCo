@@ -87,6 +87,17 @@
     /* transition: background-color 0.12s ease; */
 }
 
+
+.task-detail__div {
+    position: absolute;
+    margin: auto;
+    width: 50%;
+    height: 50%;
+    background-color: var(--LightBackground);
+    color: var(--TextDark);
+    border: 1px solid var(--Gray-9);
+}
+
 .table__table tr:hover {
     cursor: pointer;
     background-color: var(--Gray-2);

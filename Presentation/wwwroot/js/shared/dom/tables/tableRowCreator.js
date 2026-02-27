@@ -8,6 +8,7 @@ import { handleTaskDetailUpdate } from "../forms/index.js";
 export function createTableRows(tbody, data, columns) {
   for (const item of data) {
     const tr = document.createElement('tr');
+    tr.id = item.id;
 
       columns.forEach(key => {
         const td = document.createElement('td');
@@ -26,8 +27,8 @@ export function createTableRows(tbody, data, columns) {
         tr.appendChild(td);
       });
 
-      tr.addEventListener('click', () => {
-        handleTaskDetailUpdate(item);
+      tr.addEventListener('click', (e) => {
+        handleTaskDetailUpdate(e, tr, item);
       });
 
       // tbody.appendChild(tr);

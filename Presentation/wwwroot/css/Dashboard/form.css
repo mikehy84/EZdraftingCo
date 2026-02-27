@@ -17,6 +17,10 @@
     transform: translateX(60rem);
     transform-origin: right;
     transition: transform 0.5s ease-in-out;
+
+    border-left: 1px solid var(--HeaderBackground);
+    /* background: rgba(255, 255, 255, 0.021);
+    backdrop-filter: blur(12px); */
 }
 
 .form__container--visible {
@@ -39,12 +43,10 @@
         "des des"
         "cancel submit";
 
-    /* background-color: var(--Gray-4); */
     color: var(--Gray-7);
     font-family: Helvetica, Arial, sans-serif;
     width: 100%;
     padding: 6px;
-    background-color: var(--LightBackground);
 }
 
 .form__header {
