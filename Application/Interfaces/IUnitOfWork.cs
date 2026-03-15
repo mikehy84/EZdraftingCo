@@ -22,6 +22,7 @@ namespace Application.Interfaces
         ITaskAssignment TaskAssignments { get; }
         ITaskDetail TaskDetails { get; }
         ITaskName TaskNames { get; }
+        ITaskProgress TaskProgresses { get; }
         IUserAccount UserAccounts { get; }
 
         Task Save();

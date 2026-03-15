@@ -14,6 +14,8 @@ namespace Application.DTO.TaskAssignment
     public class TaskAssignmentDto
     {
         public int Id { get; init; }
+        public int TaskDetailId { get; init; }
+        public string TaskName { get; init; } = string.Empty;
 
         [Display(Name = "Project Name")]
         public string ProjectName { get; init; } = string.Empty;

@@ -90,11 +90,6 @@ namespace Application.Mapper
 
 
 
-            CreateMap<TaskDetail, TaskDetailDto>().ReverseMap();
-            CreateMap<TaskDetail, CreateTaskDetailDto>().ReverseMap();
-
-
-
             CreateMap<TaskName, TaskNameDto>().ReverseMap();
 
 
@@ -104,6 +99,9 @@ namespace Application.Mapper
             CreateMap<TaskAssignment, TaskAssignmentDto>()
                 .ForMember(dto => dto.ProjectName, opt => opt.MapFrom(taskAssignment =>
                     taskAssignment.TaskDetail.Project.ClientProject.ProjectName
+                ))
+                .ForMember(dto => dto.TaskName, opt => opt.MapFrom(taskAssignment =>
+                    taskAssignment.TaskDetail.TaskName.Name
                 ))
                 .ForMember(dto => dto.AssigneeName, opt => opt.MapFrom(taskAssignment =>
                     $"{taskAssignment.TaskAssignee.FirstName} {taskAssignment.TaskAssignee.LastName}"
@@ -131,6 +129,20 @@ namespace Application.Mapper
                 .ForMember(dto => dto.TaskStateName, opt => opt.MapFrom(taskAssignment =>
                     taskAssignment.TaskDetail.TaskState.Name
                 ));
+
+
+            CreateMap<TaskDetail, TaskDetailDto>()
+                .ForMember( dto => dto.ProjectName, opt => opt.MapFrom(taskDetail =>
+                    taskDetail.Project.ClientProject.ProjectName
+                ))
+                .ForMember(dto => dto.TaskName, opt => opt.MapFrom(taskDetail => 
+                    taskDetail.TaskName.Name    
+                ))
+                .ForMember(dto => dto.PhaseNumber, opt => opt.MapFrom( taskDetail => 
+                    taskDetail.Phase.PhaseNumber       
+                ));
+
+            CreateMap<TaskDetail, CreateTaskDetailDto>().ReverseMap();
         }
     }
 }

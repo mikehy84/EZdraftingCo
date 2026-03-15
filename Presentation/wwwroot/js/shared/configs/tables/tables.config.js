@@ -7,8 +7,17 @@ export const TASK_TABLE_CONFIG = {
   title: 'Task',
   name: 'task',
   url: API_ROUTES.taskAssignments.base,
-  headers: ['Id', 'Project Name', 'Priority', 'Assignee', 'Estimated Hours', 'Spent Hours', 'Status', 'Created At'],
-  columns: ['id', 'projectName', 'priorityName', 'assigneeName', 'estimatedHours', 'spentHours', 'taskStateName', 'createdAt']
+  headers: ['Id', 'Priority', 'Project Name', 'Task Name', 'Assignee', 'Estimated Hours', 'Spent Hours', 'Status', 'Created At'],
+  columns: ['id', 'priorityName', 'projectName', 'taskName', 'assigneeName', 'estimatedHours', 'spentHours', 'taskStateName', 'createdAt']
+};
+
+
+export const TASK_DETAIL_TABLE_CONFIG = {
+  title: 'Task Details',
+  name: 'taskDetail',
+  url: API_ROUTES.taskDetails.base,
+  headers: ['Id', 'Priority', 'Project Name', 'Task Name', 'Title', 'Phase Number', 'Assignee', 'Estimated Hours', 'Status', 'Created At'],
+  columns: ['id', 'priorityName', 'projectName', 'taskName', 'title', 'phaseNumber', 'assigneeName', 'estimatedHours', 'taskStateName', 'createdAt']
 };
 
 

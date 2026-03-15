@@ -11,6 +11,7 @@ export async function handleTaskDetailUpdate(e, tr, item) {
         existingDetailDiv.remove();
         return;
     }
+
     const detailDiv = divBuilder(container, 'task-detail__div', `task-detail-${item.id}`);
     detailDiv.textContent = `Loading details for task ${item.id}...`;
 

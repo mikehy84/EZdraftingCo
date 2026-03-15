@@ -6,8 +6,8 @@ export const API_ROUTES = {
   },
 
   taskDetails: {
-    base: '/api/taskdetails',
-    byId: (id) => `/api/taskdetails/${id}`,
+    base: '/api/taskDetails',
+    byId: (id) => `/api/taskDetails/${id}`,
   },
 
   taskAssignments: {

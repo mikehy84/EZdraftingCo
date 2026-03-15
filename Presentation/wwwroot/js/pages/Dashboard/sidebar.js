@@ -1,6 +1,6 @@
 ﻿// import { renderDashboardTable } from './Task/taskLog.js';
 import { renderDashboardTable } from './index.js';
-import { TASK_TABLE_CONFIG, PERSON_TABLE_CONFIG } from '../../shared/configs/tables/tables.config.js';
+import { TASK_TABLE_CONFIG, PERSON_TABLE_CONFIG, TASK_DETAIL_TABLE_CONFIG } from '../../shared/configs/tables/tables.config.js';
 import { renderFormTaskDetail, renderFormAddContact } from "../../shared/dom/forms/index.js"
 
 
@@ -38,8 +38,8 @@ document.querySelector('.sidebar__list')
                 console.log('companies clicked');
                 break;
 
-            case TASK_TABLE_CONFIG.name:
-                await renderDashboardTable(TASK_TABLE_CONFIG, renderFormTaskDetail);
+            case TASK_DETAIL_TABLE_CONFIG.name:
+                await renderDashboardTable(TASK_DETAIL_TABLE_CONFIG, renderFormTaskDetail);
                 break;
         }
     });

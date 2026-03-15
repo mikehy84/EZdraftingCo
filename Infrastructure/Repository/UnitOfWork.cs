@@ -27,6 +27,7 @@ namespace Infrastructure.Repository
         public ITaskAssignment TaskAssignments { get; private set; }
         public ITaskDetail TaskDetails { get; private set; }
         public ITaskName TaskNames { get; private set; }
+        public ITaskProgress TaskProgresses { get; private set; }
         public IUserAccount UserAccounts { get; private set; }
 
         public UnitOfWork(ApplicationDbContext db)
@@ -45,6 +46,7 @@ namespace Infrastructure.Repository
             TaskAssignments = new TaskAssignmentRep(_db);
             TaskDetails = new TaskDetailRep(_db);
             TaskNames = new TaskNameRep(_db);
+            TaskProgresses = new TaskProgressRep(_db);
             UserAccounts = new UserAccountRep(_db);
         }
 

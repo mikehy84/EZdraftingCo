@@ -25,6 +25,7 @@ export async function renderDashboardTable(tableConfig = {}, func) {
     );
 
     const data = await LoadData(tableConfig.url);
+    console.log(data);
 
     if (handleEmptyState(data, container)) return;
 

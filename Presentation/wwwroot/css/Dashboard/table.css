@@ -90,12 +90,14 @@
 
 .task-detail__div {
     position: absolute;
-    margin: auto;
-    width: 50%;
-    height: 50%;
+    right: 0;
+    margin-left: auto;
+    width: 30%;
+    height: 100vh;
     background-color: var(--LightBackground);
     color: var(--TextDark);
     border: 1px solid var(--Gray-9);
+    overflow: none;
 }
 
 .table__table tr:hover {
